@@ -1,0 +1,96 @@
+# Workflow chạy Discord Cybersecurity News Bot trên GitHub Actions (MIỄN PHÍ).
+#
+# - Chạy theo lịch: mỗi 3 GIỜ (cron của GitHub Actions là UTC!
+#   0 */3 * * * UTC = 07:00, 10:00, 13:00, 16:00, 19:00, 22:00, 01:00, 04:00 giờ VN).
+#   Muốn đổi tần suất -> sửa dòng cron dưới đây (ví dụ "0 */6 * * *" = 6 giờ/lần).
+# - Chạy tay: tab Actions -> News Bot -> Run workflow (có input dry_run).
+# - Bot chạy MỘT LẦN rồi thoát (KHÔNG while True, KHÔNG server).
+# - State được commit/push lại vào repo sau mỗi lần chạy CHỈ KHI file đổi.
+# - Bí mật (DISCORD_BOT_TOKEN, AI_API_KEY...)  -> GitHub Secrets.
+#   Biến cấu hình thường (HOT_ENABLED, HOT_ALLOW_WITHOUT_AI) -> GitHub Variables.
+
+name: News Bot
+
+on:
+  schedule:
+    # Lưu ý: GitHub cron dùng UTC, không phải giờ Việt Nam.
+    # 0 */3 * * * = 00:00, 03:00, 06:00... UTC (07:00, 10:00, 13:00... giờ VN).
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Chạy thử (1 = không đăng thật, chỉ in ra log)"
+        required: false
+        default: "0"
+
+# Cần quyền ghi để commit/push file state.
+permissions:
+  contents: write
+
+# Chạy tuần tự: hai lần chạy KHÔNG được đè state lên nhau.
+# cancel-in-progress: false -> lần đang chạy KHÔNG bị hủy giữa chừng.
+concurrency:
+  group: news-bot-state
+  cancel-in-progress: false
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Cài dependencies
+        run: pip install -r requirements.txt
+
+      - name: Chạy bot
+        env:
+          # Discord token (BẮT BUỘC - khai báo trong Settings > Secrets > Actions)
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          # AI (TÙY CHỌN - để trống secret nào thì env đó rỗng; AI_PROVIDER
+          # rỗng => bot tự chạy rule-based thuần, không gọi API AI nào)
+          AI_PROVIDER: ${{ secrets.AI_PROVIDER }}
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_MODEL: ${{ secrets.AI_MODEL }}
+          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+          AI_TIMEOUT_SECONDS: ${{ secrets.AI_TIMEOUT_SECONDS }}
+          AI_MAX_CANDIDATES: ${{ secrets.AI_MAX_CANDIDATES }}
+          # TIN NÓNG (tùy chọn) - KHÔNG phải bí mật -> đọc từ GitHub Variables
+          # (Settings > Secrets and variables > Actions > Variables).
+          # Biến chưa set / để rỗng -> env rỗng -> config giữ mặc định
+          # (HOT_ENABLED=bật, HOT_ALLOW_WITHOUT_AI=tắt).
+          HOT_ENABLED: ${{ vars.HOT_ENABLED }}
+          HOT_ALLOW_WITHOUT_AI: ${{ vars.HOT_ALLOW_WITHOUT_AI }}
+          # DRY_RUN lấy từ input khi chạy tay; mặc định 0 khi chạy theo lịch.
+          DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
+        run: python main.py
+
+      # Commit state (G2): add + commit TRƯỚC, rồi pull --rebase, rồi push.
+      # Bản cũ pull --rebase khi working tree còn thay đổi -> rebase không chạy;
+      # nay working tree đã sạch nên rebase thật sự chạy, không cần "|| true".
+      # if: always() -> state VẪN được lưu nếu bot lỗi giữa chừng; commit chỉ
+      # xảy ra khi file state THẬT SỰ đổi (git status --porcelain có output).
+      # Lưu ý: bot exit 1 vì state hỏng -> state KHÔNG đổi -> KHÔNG commit gì;
+      # file backup .corrupt* được gitignore, KHÔNG bao giờ được add (chỉ add
+      # đúng state/news_state.json).
+      - name: Commit & push state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain state/news_state.json)" ]; then
+            git add state/news_state.json
+            git commit -m "chore(state): cap nhat state sau khi chay bot [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          else
+            echo "state/news_state.json khong doi - bo qua commit."
+          fi

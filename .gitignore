@@ -1,0 +1,23 @@
+# Secrets / biến môi trường - TUYỆT ĐỐI không commit
+.env
+
+# Bytecode Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Lưu ý: state/news_state.json KHÔNG được ignore -
+# workflow cần commit/push file này để bot nhớ state giữa các lần chạy.
+
+# File state hỏng (backup khi load lỗi) - KHÔNG commit bản sao lỗi.
+# "*.corrupt*" khớp news_state.json.corrupt và news_state.json.corrupt.1, ...
+.corrupt*
+*.corrupt*
+
+# File tạm ghi state (state.save ghi nguyên tử qua path.tmp) - KHÔNG commit.
+*.tmp
