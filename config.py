@@ -42,15 +42,33 @@ AI_CANDIDATE_MIN_SCORE = 45
 # điểm >= mức này (và các điều kiện khác vẫn đạt). AI tắt/lỗi -> không được cứu.
 AI_RESCUE_MIN_SCORE = 85
 
-# Tối đa số bài đăng mỗi ngày (theo múi giờ Việt Nam).
-# ĐÂY LÀ QUOTA TIN THƯỜNG - GIỮ NGUYÊN GIÁ TRỊ VÀ Ý NGHĨA.
-MAX_POSTS_PER_DAY = 2
+# Tối đa số bài TIN THƯỜNG mỗi ngày (theo múi giờ Việt Nam).
+# = số khung giờ (sáng / trưa / chiều) x MAX_POSTS_PER_SLOT.
+MAX_POSTS_PER_DAY = 3
+
+# Tối đa số bài TIN THƯỜNG trong MỖI khung giờ: mỗi khung chỉ đăng bài hot
+# nhất (điểm cao nhất) 1 bài. Khung nào chưa có bài đạt ngưỡng thì bỏ qua,
+# KHÔNG dồn sang khung sau (không đăng bù).
+MAX_POSTS_PER_SLOT = 1
+
+# Các khung giờ đăng tin THƯỜNG theo giờ Việt Nam: (tên, giờ bắt đầu, giờ kết thúc).
+# Khung là [bắt đầu, kết thúc) - ví dụ ("sáng", 6, 11) = từ 06:00 tới 10:59.
+# Trong cùng một khung, các lần chạy sau bài đã đăng sẽ không đăng thêm bài
+# thường; nếu lần chạy đầu chưa có bài tốt thì lần chạy sau trong khung vẫn
+# được thử lại. Ngoài các khung (21:00-05:59) bot chỉ xét TIN NÓNG.
+# Workflow chạy 07h, 10h, 13h, 16h, 19h, 22h, 01h, 04h (giờ VN) -> sáng: 07h+10h,
+# trưa: 13h, chiều: 16h+19h.
+NORMAL_POST_SLOTS = (
+    ("sáng", 6, 11),
+    ("trưa", 11, 15),
+    ("chiều", 15, 21),
+)
 
 # =====================================================================
 # 2b. TIN NÓNG (HOT NEWS) - quota RIÊNG, không đụng MAX_POSTS_PER_DAY
 # =====================================================================
 
-# Tối đa bài TIN NÓNG mỗi ngày (tổng tối đa = 2 thường + 2 nóng).
+# Tối đa bài TIN NÓNG mỗi ngày (tổng tối đa = 3 thường + 2 nóng).
 MAX_HOT_POSTS_PER_DAY = 2
 
 # Bật/tắt hẳn tính năng tin nóng. "0" / "false" / "off" / "no" = tắt.
@@ -85,7 +103,7 @@ HOT_ALLOW_WITHOUT_AI = os.environ.get(
 # 3. TIMEZONE
 # =====================================================================
 
-# Giới hạn 2 bài/ngày được tính theo múi giờ này, KHÔNG phải UTC.
+# Quota ngày và các khung giờ sáng/trưa/chiều tính theo múi giờ này, KHÔNG phải UTC.
 TIMEZONE = "Asia/Ho_Chi_Minh"
 
 # =====================================================================

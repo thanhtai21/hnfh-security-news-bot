@@ -40,7 +40,8 @@ TƯƠNG THÍCH NGƯỢC TUYỆT ĐỐI - file state cũ vẫn load được, kh�
 - Mục "ai_rejected" thiếu "scope"    -> coi là "all".
 
 QUOTA HAI LOẠI (C1/C2):
-- daily_posts + posts.kind="normal": quota tin THƯỜNG (MAX_POSTS_PER_DAY = 2).
+- daily_posts + posts.kind="normal": quota tin THƯỜNG (MAX_POSTS_PER_DAY = 3,
+  mỗi khung sáng/trưa/chiều 1 bài - xem posts_in_window).
 - daily_hot_posts + posts.kind="hot": quota tin NÓNG (MAX_HOT_POSTS_PER_DAY).
 - posts_today(day)  CHỈ đếm bài kind != "hot" -> analyzer.select_articles
   GIỮ NGUYÊN, không phải sửa.
@@ -454,6 +455,29 @@ class NewsState:
         Đếm trực tiếp từ danh sách posts (kind là nguồn sự thật về loại bài).
         """
         return self._count_kind(day, hot=False)
+
+    def posts_in_window(self, day, start_hour, end_hour):
+        """
+        Số bài THƯỜNG đã đăng trong ngày `day` mà giờ đăng (giờ VN, lấy từ
+        trường posted_at) nằm trong khung [start_hour, end_hour).
+        Dùng cho quota theo khung sáng/trưa/chiều. Không bao giờ đếm bài hot.
+        FAIL-CLOSED: bản ghi không đọc được posted_at -> coi như nằm trong khung
+        (tính vào quota khung) để không đăng dư.
+        """
+        total = 0
+        for item in self.posts:
+            if not isinstance(item, dict) or item.get("day") != day:
+                continue
+            if str(item.get("kind") or "normal").lower() == "hot":
+                continue
+            try:
+                hour = datetime.fromisoformat(str(item.get("posted_at"))).hour
+            except (TypeError, ValueError):
+                total += 1
+                continue
+            if start_hour <= hour < end_hour:
+                total += 1
+        return total
 
     def hot_posts_today(self, day):
         """

@@ -4,8 +4,8 @@ main.py - Điều phối toàn bộ bot chạy MỘT LẦN rồi thoát (dùng c
 
 Luồng:
 1. Đọc state (bài đã đăng, quota theo ngày, bộ nhớ bài bị AI loại).
-2. GATE QUOTA: tính quota CÒN LẠI = tin THƯỜNG (MAX_POSTS_PER_DAY = 2,
-   giữ nguyên ý nghĩa) + tin NÓNG (MAX_HOT_POSTS_PER_DAY). Hết cả hai
+2. GATE QUOTA: tính quota CÒN LẠI = tin THƯỜNG (3 bài/ngày: mỗi khung
+   sáng/trưa/chiều 1 bài hot nhất) + tin NÓNG (MAX_HOT_POSTS_PER_DAY). Hết cả hai
    -> trả về NGAY, KHÔNG fetch RSS, KHÔNG gọi AI.
 3. Fetch toàn bộ RSS (collector.py).
 4. Chấm điểm (analyzer.analyze_articles) + tính corroboration
@@ -35,6 +35,8 @@ import sys
 import traceback
 
 from config import (
+    MAX_POSTS_PER_SLOT,
+    NORMAL_POST_SLOTS,
     AI_CANDIDATE_MIN_SCORE,
     DISCORD_BOT_TOKEN_ENV,
     DISCORD_CHANNEL_ID,
@@ -125,13 +127,30 @@ def load_state():
 # QUOTA CÒN LẠI (E1) - cách tính GIỐNG analyzer.select_articles
 # =====================================================================
 
+def get_current_slot(now):
+    """
+    Trả về (tên, giờ bắt đầu, giờ kết thúc) của khung giờ đăng tin THƯỜNG
+    chứa thời điểm `now` (giờ VN), hoặc None nếu đang ngoài mọi khung.
+    """
+    hour = now.hour
+    for name, start_hour, end_hour in NORMAL_POST_SLOTS:
+        if start_hour <= hour < end_hour:
+            return name, start_hour, end_hour
+    return None
+
+
 def compute_quota(state, now):
     """
     Trả về (remaining_normal, remaining_hot):
-    - remaining_normal = max(0, MAX_POSTS_PER_DAY - state.posts_today(day))
-      (posts_today KHÔNG đếm bài kind="hot" -> quota thường giữ nguyên ý nghĩa).
+    - remaining_normal (tin THƯỜNG) = min(còn quota ngày, còn quota KHUNG GIỜ):
+        + quota ngày  = MAX_POSTS_PER_DAY - state.posts_today(day)
+        + quota khung = MAX_POSTS_PER_SLOT - số bài thường đã đăng trong khung
+          sáng/trưa/chiều hiện tại.
+      Ngoài mọi khung giờ -> 0 (chỉ xét tin nóng). Mỗi lần chạy vì vậy chỉ
+      đăng tối đa 1 bài thường: bài hot nhất của khung.
+      (posts_today KHÔNG đếm bài kind="hot".)
     - remaining_hot = max(0, MAX_HOT_POSTS_PER_DAY - state.hot_posts_today(day))
-      nếu HOT_ENABLED, ngược lại 0 (tắt tính năng -> không có slot nóng).
+      nếu HOT_ENABLED, ngược lại 0. LOGIC TIN NÓNG GIỮ NGUYÊN.
 
     FAIL-CLOSED (A3): không đọc được số bài đã đăng -> coi như HẾT quota
     (an toàn) -> KHÔNG đăng thêm. Trường hợp state là None (chưa có file)
@@ -139,13 +158,30 @@ def compute_quota(state, now):
     """
     day = today_key(now)
 
-    try:
-        posted_normal = state.posts_today(day) if state is not None else 0
-    except Exception as exc:
-        logger.warning("[STATE] Lỗi đọc posts_today (%r) -> coi như hết "
-                       "quota (an toàn).", exc)
-        posted_normal = MAX_POSTS_PER_DAY
-    remaining_normal = max(0, MAX_POSTS_PER_DAY - posted_normal)
+    slot = get_current_slot(now)
+    if slot is None:
+        remaining_normal = 0
+        logger.info("[SLOT] %02d:%02d - ngoài khung giờ sáng/trưa/chiều -> "
+                    "không đăng tin thường, chỉ xét tin nóng.",
+                    now.hour, now.minute)
+    else:
+        slot_name, slot_start, slot_end = slot
+        try:
+            posted_day = state.posts_today(day) if state is not None else 0
+            posted_slot = (state.posts_in_window(day, slot_start, slot_end)
+                           if state is not None else 0)
+        except Exception as exc:
+            logger.warning("[STATE] Lỗi đọc quota thường (%r) -> coi như hết "
+                           "quota (an toàn).", exc)
+            posted_day = MAX_POSTS_PER_DAY
+            posted_slot = MAX_POSTS_PER_SLOT
+        remaining_normal = max(0, min(MAX_POSTS_PER_DAY - posted_day,
+                                      MAX_POSTS_PER_SLOT - posted_slot))
+        logger.info("[SLOT] Khung %s (%02d:00-%02d:00): đã đăng %d/%d trong khung, "
+                    "%d/%d trong ngày -> còn %d bài thường.",
+                    slot_name, slot_start, slot_end,
+                    posted_slot, MAX_POSTS_PER_SLOT,
+                    posted_day, MAX_POSTS_PER_DAY, remaining_normal)
 
     if not HOT_ENABLED:
         return remaining_normal, 0
@@ -379,7 +415,8 @@ def gather_and_select(state, now):
     logger.info("[FILTER] Kiểm tra lại bằng code (threshold=%d, quota thường %d, "
                 "quota nóng %d)...",
                 MIN_SCORE_TO_POST, remaining_normal, remaining_hot)
-    normal_selected = select_articles(normal_list, state, now)
+    # select_articles chỉ biết quota NGÀY -> cắt thêm theo quota KHUNG GIỜ.
+    normal_selected = select_articles(normal_list, state, now)[:remaining_normal]
     hot_selected = select_hot_articles(hot_list, state, now,
                                        already_selected=normal_selected)
 
