@@ -19,7 +19,7 @@ on:
   schedule:
     # Lưu ý: GitHub cron dùng UTC, không phải giờ Việt Nam.
     # 0 */3 * * * = 00:00, 03:00, 06:00... UTC (07:00, 10:00, 13:00... giờ VN).
-    - cron: "0 */3 * * *"
+    - cron: "17 */2 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
