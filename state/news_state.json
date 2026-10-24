@@ -1,7 +1,45 @@
 {
   "version": 1,
-  "last_run": null,
+  "last_run": "2026-10-24T09:40:46.101402+07:00",
   "daily_posts": {},
+  "daily_hot_posts": {},
   "posts": [],
-  "ai_rejected": []
+  "ai_rejected": [
+    {
+      "link": "https://thehackernews.com/2026/10/two-cvss-90-linux-ksmbd-rce-flaws.html",
+      "fingerprint": "3967003acbf9ad3e",
+      "rejected_at": "2026-10-24T09:40:46.100968+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/in-other-news-tor-exit-relays-hijacked-banks-spot-rogue-ai-agents-self-rebuilding-macos-ransomware/",
+      "fingerprint": "f50ccaf83653e7f2",
+      "rejected_at": "2026-10-24T09:40:46.101094+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+      "fingerprint": "41fa788b4dbea918",
+      "rejected_at": "2026-10-24T09:40:46.101158+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/abandoned-popcorn-time-app-exposed-millions-of-device-to-rce-attacks/",
+      "fingerprint": "5895ded50441c40e",
+      "rejected_at": "2026-10-24T09:40:46.101212+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/php-shares-mitigation-for-new-and-unpatched-rce-vulnerability/",
+      "fingerprint": "464d8706e85dd428",
+      "rejected_at": "2026-10-24T09:40:46.101269+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-to-get-ai-powered-context-aware-phishing-detection/",
+      "fingerprint": "41bb9ad3d693b6f8",
+      "rejected_at": "2026-10-24T09:40:46.101324+07:00",
+      "scope": "all"
+    }
+  ]
 }
