@@ -1,8 +1,9 @@
 {
   "version": 1,
-  "last_run": "2026-10-25T10:02:26.940703+07:00",
+  "last_run": "2026-10-25T10:44:52.222446+07:00",
   "daily_posts": {
-    "2026-10-24": 2
+    "2026-10-24": 2,
+    "2026-10-25": 1
   },
   "daily_hot_posts": {},
   "posts": [
@@ -24,6 +25,16 @@
       "fingerprint": "ae211fc4d11af754",
       "day": "2026-10-24",
       "posted_at": "2026-10-24T09:45:28.474214+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "CISA Flags Two Actively Exploited Critical Flaws in Collabora Online and Arista VeloCloud",
+      "link": "https://thehackernews.com/2026/10/cisa-flags-two-actively-exploited.html",
+      "source": "The Hacker News",
+      "score": 69,
+      "fingerprint": "6b53695401b9fbd1",
+      "day": "2026-10-25",
+      "posted_at": "2026-10-25T10:44:52.222237+07:00",
       "kind": "normal"
     }
   ],
