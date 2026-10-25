@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-25T15:05:27.061130+07:00",
+  "last_run": "2026-10-25T23:05:25.546211+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1
@@ -39,84 +39,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://thehackernews.com/2026/10/two-cvss-90-linux-ksmbd-rce-flaws.html",
-      "fingerprint": "3967003acbf9ad3e",
-      "rejected_at": "2026-10-24T09:40:46.100968+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/in-other-news-tor-exit-relays-hijacked-banks-spot-rogue-ai-agents-self-rebuilding-macos-ransomware/",
-      "fingerprint": "f50ccaf83653e7f2",
-      "rejected_at": "2026-10-24T09:40:46.101094+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
-      "fingerprint": "41fa788b4dbea918",
-      "rejected_at": "2026-10-24T09:40:46.101158+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/abandoned-popcorn-time-app-exposed-millions-of-device-to-rce-attacks/",
-      "fingerprint": "5895ded50441c40e",
-      "rejected_at": "2026-10-24T09:40:46.101212+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/php-shares-mitigation-for-new-and-unpatched-rce-vulnerability/",
-      "fingerprint": "464d8706e85dd428",
-      "rejected_at": "2026-10-24T09:40:46.101269+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-to-get-ai-powered-context-aware-phishing-detection/",
-      "fingerprint": "41bb9ad3d693b6f8",
-      "rejected_at": "2026-10-24T09:40:46.101324+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/quest-diagnostics-confirms-data-breach-exposed-patient-records/",
-      "fingerprint": "20891d1a9d650a5f",
-      "rejected_at": "2026-10-24T09:45:28.474268+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/attackers-exploit-third-velocloud-orchestrator-zero-day-in-four-months/",
-      "fingerprint": "4a7fe2d9ceab9376",
-      "rejected_at": "2026-10-24T09:45:28.474302+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/hpe-patches-eight-max-severity-rce-and-auth-bypass-aos-flaws/",
-      "fingerprint": "842913cb3e17d451",
-      "rejected_at": "2026-10-24T09:45:28.474335+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/threatsday-ai-secrets-leak-pingcap.html",
-      "fingerprint": "2225816eef7eaa41",
-      "rejected_at": "2026-10-24T09:45:28.474363+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/irans-prince-of-persia-apt-hosts-cc-in-us-for-first-time-since-2016/",
-      "fingerprint": "013de2a93a8624ad",
-      "rejected_at": "2026-10-24T09:45:28.474392+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/litellm-compromised-in-fresh-supply-chain-attack/",
-      "fingerprint": "4b597914a12e88d6",
-      "rejected_at": "2026-10-24T09:45:28.474422+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/ruby-fixes-three-regex-engine-bugs.html",
-      "fingerprint": "540d573d04542525",
-      "rejected_at": "2026-10-24T09:45:28.474447+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html",
       "fingerprint": "a34109d4656858a9",
