@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-25T00:45:12.127864+07:00",
+  "last_run": "2026-10-25T10:02:26.940703+07:00",
   "daily_posts": {
     "2026-10-24": 2
   },
@@ -116,6 +116,12 @@
       "link": "https://www.securityweek.com/quest-diagnostics-reports-cyber-breach-affecting-certain-patient-records/",
       "fingerprint": "561ffbc7a9445180",
       "rejected_at": "2026-10-25T00:45:12.127792+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
+      "fingerprint": "2c6e80aea460956a",
+      "rejected_at": "2026-10-25T10:02:26.940531+07:00",
       "scope": "all"
     }
   ]
