@@ -285,6 +285,30 @@ async def post_to_forum(token, channel_id, title, content, tag_names,
         return result
 
 
+def _log_forbidden_diagnostics(client, channel_id):
+    """
+    Chạy khi gặp 403 Forbidden: ghi ra bot đang ở những server nào và có
+    thấy kênh mục tiêu không, để biết lỗi do quyền kênh, sai server, hay sai
+    bot/token. Chỉ ghi tên + ID (KHÔNG ghi token).
+    """
+    try:
+        guilds = list(client.guilds)
+        logger.error("[DIAG] Bot id=%s đang ở %d server.",
+                     getattr(client.user, "id", "?"), len(guilds))
+        for guild in guilds:
+            channels = list(guild.channels)
+            found = any(getattr(c, "id", None) == channel_id for c in channels)
+            forums = ["%s(%s)" % (c.name, c.id) for c in channels
+                      if isinstance(c, discord.ForumChannel)]
+            logger.error("[DIAG] Server '%s' (%s): bot thấy %d kênh | "
+                         "kênh mục tiêu %s: %s | forum nhìn thấy: %s",
+                         guild.name, guild.id, len(channels), channel_id,
+                         "CÓ THẤY" if found else "KHÔNG THẤY",
+                         ", ".join(forums) or "(không có)")
+    except Exception as exc:  # chẩn đoán không được làm hỏng luồng chính
+        logger.error("[DIAG] Không chẩn đoán được: %r", exc)
+
+
 async def _post_to_forum_inner(token, channel_id, title, content, tag_names,
                                result, dry_run):
     """Phần lõi (có client) của post_to_forum."""
@@ -341,6 +365,7 @@ async def _post_to_forum_inner(token, channel_id, title, content, tag_names,
             logger.info("[DISCORD] Success: post '%s' (thread_id=%s, tags=%d)",
                         title[:60], result["thread_id"], len(applied))
         except discord.Forbidden as exc:
+            _log_forbidden_diagnostics(client, channel_id)
             result["error"] = (
                 "403 Forbidden - thiếu quyền. Cần: View Channel, Send Messages, "
                 "Embed Links, Read Message History, Create Public Threads, "
