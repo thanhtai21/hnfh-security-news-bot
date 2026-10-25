@@ -40,7 +40,7 @@ AI_CANDIDATE_MIN_SCORE = 45
 
 # Bài rule < ngưỡng đăng (85 / special) CHỈ được đăng nếu AI thật sự chấm
 # điểm >= mức này (và các điều kiện khác vẫn đạt). AI tắt/lỗi -> không được cứu.
-AI_RESCUE_MIN_SCORE = 85
+AI_RESCUE_MIN_SCORE = 80
 
 # Tối đa số bài TIN THƯỜNG mỗi ngày (theo múi giờ Việt Nam).
 # = số khung giờ (sáng / trưa / chiều) x MAX_POSTS_PER_SLOT.
