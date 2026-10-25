@@ -305,6 +305,29 @@ def _log_forbidden_diagnostics(client, channel_id):
                          guild.name, guild.id, len(channels), channel_id,
                          "CÓ THẤY" if found else "KHÔNG THẤY",
                          ", ".join(forums) or "(không có)")
+            if found:
+                target = next(c for c in channels
+                              if getattr(c, "id", None) == channel_id)
+                me = guild.me
+                perms = target.permissions_for(me)
+                names = [
+                    ("view_channel", "Xem kênh"),
+                    ("send_messages", "Tạo bài đăng (Create Posts)"),
+                    ("send_messages_in_threads", "Gửi tin trong bài đăng"),
+                    ("create_public_threads", "Tạo thread công khai"),
+                    ("embed_links", "Nhúng liên kết"),
+                    ("read_message_history", "Đọc lịch sử"),
+                    ("administrator", "Administrator"),
+                ]
+                summary = ", ".join(
+                    "%s=%s" % (label, "CÓ" if getattr(perms, attr, False)
+                               else "THIẾU")
+                    for attr, label in names)
+                logger.error("[DIAG] Quyền của bot trên kênh mục tiêu: %s",
+                             summary)
+                logger.error("[DIAG] Bot bị timeout đến: %s | role cao nhất: %s",
+                             getattr(me, "timed_out_until", None),
+                             getattr(getattr(me, "top_role", None), "name", "?"))
     except Exception as exc:  # chẩn đoán không được làm hỏng luồng chính
         logger.error("[DIAG] Không chẩn đoán được: %r", exc)
 
