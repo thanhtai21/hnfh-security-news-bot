@@ -28,7 +28,7 @@ DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 # =====================================================================
 
 # Điểm tối thiểu để một bài được đăng.
-MIN_SCORE_TO_POST = 85
+MIN_SCORE_TO_POST = 80
 
 # Bài trong khoảng [SPECIAL_MIN_SCORE, MIN_SCORE_TO_POST) chỉ được đăng
 # nếu có "yếu tố đặc biệt" (xem analyzer.py - SPECIAL_SIGNALS).
