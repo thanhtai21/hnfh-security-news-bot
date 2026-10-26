@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-26T07:05:34.221288+07:00",
+  "last_run": "2026-10-26T13:05:26.796843+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -50,18 +50,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html",
-      "fingerprint": "a34109d4656858a9",
-      "rejected_at": "2026-10-25T00:45:12.127690+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/quest-diagnostics-reports-cyber-breach-affecting-certain-patient-records/",
-      "fingerprint": "561ffbc7a9445180",
-      "rejected_at": "2026-10-25T00:45:12.127792+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
       "fingerprint": "2c6e80aea460956a",
