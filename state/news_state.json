@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-26T22:15:36.032461+07:00",
+  "last_run": "2026-10-27T04:03:32.796059+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -60,12 +60,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html",
-      "fingerprint": "5951a9f1da276784",
-      "rejected_at": "2026-10-25T15:05:27.060985+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
       "fingerprint": "c7e4d64c740a7d51",
