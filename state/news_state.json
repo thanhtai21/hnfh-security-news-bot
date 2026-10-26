@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "last_run": "2026-10-26T14:52:40.277164+07:00",
+  "last_run": "2026-10-26T17:05:38.234470+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
-    "2026-10-26": 1
+    "2026-10-26": 2
   },
   "daily_hot_posts": {},
   "posts": [
@@ -47,6 +47,16 @@
       "day": "2026-10-26",
       "posted_at": "2026-10-26T07:05:34.220957+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "PHP2Shell security flaws now sucessfully exploited in the wild",
+      "link": "https://www.bleepingcomputer.com/news/security/php2shell-security-flaws-now-sucessfully-exploited-in-the-wild/",
+      "source": "BleepingComputer",
+      "score": 68,
+      "fingerprint": "f7fa7c2261057729",
+      "day": "2026-10-26",
+      "posted_at": "2026-10-26T17:05:38.234229+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -72,6 +82,18 @@
       "link": "https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html",
       "fingerprint": "3f8e9cf549b91ecc",
       "rejected_at": "2026-10-26T14:52:40.277049+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html",
+      "fingerprint": "8677b0edce79b1d7",
+      "rejected_at": "2026-10-26T17:05:38.234340+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/mythos-5-ignored-real-world-harm-in-july-attack/",
+      "fingerprint": "1a0c95fffc924227",
+      "rejected_at": "2026-10-26T17:05:38.234404+07:00",
       "scope": "all"
     }
   ]
