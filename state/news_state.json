@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "last_run": "2026-10-27T07:05:38.492818+07:00",
+  "last_run": "2026-10-27T11:05:36.043229+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
-    "2026-10-27": 1
+    "2026-10-27": 2
   },
   "daily_hot_posts": {},
   "posts": [
@@ -67,6 +67,16 @@
       "fingerprint": "07752e7c65f90084",
       "day": "2026-10-27",
       "posted_at": "2026-10-27T07:05:38.492202+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "Critical 'HTTP2Shell' Brotli vulnerability triggers emergency patches",
+      "link": "https://www.bleepingcomputer.com/news/security/critical-http2shell-brotli-vulnerability-triggers-emergency-patches/",
+      "source": "BleepingComputer",
+      "score": 47,
+      "fingerprint": "4facfda2509334e7",
+      "day": "2026-10-27",
+      "posted_at": "2026-10-27T11:05:36.042999+07:00",
       "kind": "normal"
     }
   ],
@@ -135,6 +145,12 @@
       "link": "https://thehackernews.com/2026/10/ucreator-android-spyware-can-steal.html",
       "fingerprint": "367c3aa50492fda1",
       "rejected_at": "2026-10-27T07:05:38.492752+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/chinese-man-extradited-for-role-in-36-million-cryptocurrency-scam/",
+      "fingerprint": "8428bb13dedb4b19",
+      "rejected_at": "2026-10-27T11:05:36.043138+07:00",
       "scope": "all"
     }
   ]
