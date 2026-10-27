@@ -1,10 +1,11 @@
 {
   "version": 1,
-  "last_run": "2026-10-27T04:03:32.796059+07:00",
+  "last_run": "2026-10-27T07:05:38.492818+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
-    "2026-10-26": 2
+    "2026-10-26": 2,
+    "2026-10-27": 1
   },
   "daily_hot_posts": {},
   "posts": [
@@ -57,6 +58,16 @@
       "day": "2026-10-26",
       "posted_at": "2026-10-26T17:05:38.234229+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "University of Copenhagen data breach exposes data of 525,000 people",
+      "link": "https://www.bleepingcomputer.com/news/security/university-of-copenhagen-data-breach-exposes-data-of-525-000-people/",
+      "source": "BleepingComputer",
+      "score": 62,
+      "fingerprint": "07752e7c65f90084",
+      "day": "2026-10-27",
+      "posted_at": "2026-10-27T07:05:38.492202+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -82,6 +93,48 @@
       "link": "https://www.securityweek.com/mythos-5-ignored-real-world-harm-in-july-attack/",
       "fingerprint": "1a0c95fffc924227",
       "rejected_at": "2026-10-26T17:05:38.234404+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/attackers-use-microsoft-teams-it.html",
+      "fingerprint": "a3050dd93ebfaa8e",
+      "rejected_at": "2026-10-27T07:05:38.492423+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html",
+      "fingerprint": "65966f4358323713",
+      "rejected_at": "2026-10-27T07:05:38.492505+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/dutch-police-arrest-two-over-nfc-relay-attacks-that-drained-400000/",
+      "fingerprint": "016c3b3790c149fd",
+      "rejected_at": "2026-10-27T07:05:38.492574+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://therecord.media/dutch-police-extradite-chinese-national-money-laundering-scams",
+      "fingerprint": "1bbc121324ebf732",
+      "rejected_at": "2026-10-27T07:05:38.492624+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/weekly-recap-this2shell-that2shell.html",
+      "fingerprint": "1353ec8bfb5276d2",
+      "rejected_at": "2026-10-27T07:05:38.492667+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/php-issues-second-windows-security.html",
+      "fingerprint": "412c221b12c98507",
+      "rejected_at": "2026-10-27T07:05:38.492708+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/ucreator-android-spyware-can-steal.html",
+      "fingerprint": "367c3aa50492fda1",
+      "rejected_at": "2026-10-27T07:05:38.492752+07:00",
       "scope": "all"
     }
   ]
