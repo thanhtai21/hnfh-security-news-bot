@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "last_run": "2026-10-27T11:05:36.043229+07:00",
+  "last_run": "2026-10-27T15:05:33.736820+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
-    "2026-10-27": 2
+    "2026-10-27": 3
   },
   "daily_hot_posts": {},
   "posts": [
@@ -77,6 +77,16 @@
       "fingerprint": "4facfda2509334e7",
       "day": "2026-10-27",
       "posted_at": "2026-10-27T11:05:36.042999+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "Former pentester used ARTEX AI to steal 8.2 million data records",
+      "link": "https://www.bleepingcomputer.com/news/security/former-pentester-used-artex-ai-to-steal-82-million-data-records/",
+      "source": "BleepingComputer",
+      "score": 65,
+      "fingerprint": "62e939815e885ecc",
+      "day": "2026-10-27",
+      "posted_at": "2026-10-27T15:05:33.736603+07:00",
       "kind": "normal"
     }
   ],
@@ -151,6 +161,18 @@
       "link": "https://www.bleepingcomputer.com/news/security/chinese-man-extradited-for-role-in-36-million-cryptocurrency-scam/",
       "fingerprint": "8428bb13dedb4b19",
       "rejected_at": "2026-10-27T11:05:36.043138+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html",
+      "fingerprint": "94933ef0bd046aa5",
+      "rejected_at": "2026-10-27T15:05:33.736713+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/maritime-coalition-launches-free-vulnerability-database-for-ship-and-port-systems/",
+      "fingerprint": "c2fec1fa67ab6feb",
+      "rejected_at": "2026-10-27T15:05:33.736763+07:00",
       "scope": "all"
     }
   ]
