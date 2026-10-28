@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "last_run": "2026-10-28T11:05:37.883372+07:00",
+  "last_run": "2026-10-28T15:05:36.925055+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
     "2026-10-27": 3,
-    "2026-10-28": 2
+    "2026-10-28": 3
   },
   "daily_hot_posts": {},
   "posts": [
@@ -108,6 +108,16 @@
       "fingerprint": "5a8e09f1ff14733e",
       "day": "2026-10-28",
       "posted_at": "2026-10-28T11:05:37.882789+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "CISA Confirms Active Exploitation of Two PHP2Shell Flaws Enabling Remote Code Execution",
+      "link": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html",
+      "source": "The Hacker News",
+      "score": 58,
+      "fingerprint": "3efcaaa868aabbc5",
+      "day": "2026-10-28",
+      "posted_at": "2026-10-28T15:05:36.924873+07:00",
       "kind": "normal"
     }
   ],
@@ -254,6 +264,12 @@
       "link": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
       "fingerprint": "163b67a5a43e2f51",
       "rejected_at": "2026-10-28T11:05:37.883269+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/ios-macos-27-2-patch-286-bugs-fix-for-exploited-flaw-backported-to-ios-18/",
+      "fingerprint": "5af3a37f87cc5882",
+      "rejected_at": "2026-10-28T15:05:36.924978+07:00",
       "scope": "all"
     }
   ]
