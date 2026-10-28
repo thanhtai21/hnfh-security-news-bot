@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-28T23:41:50.133226+07:00",
+  "last_run": "2026-10-29T05:05:23.424565+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -122,18 +122,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html",
-      "fingerprint": "94933ef0bd046aa5",
-      "rejected_at": "2026-10-27T15:05:33.736713+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/maritime-coalition-launches-free-vulnerability-database-for-ship-and-port-systems/",
-      "fingerprint": "c2fec1fa67ab6feb",
-      "rejected_at": "2026-10-27T15:05:33.736763+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://www.bleepingcomputer.com/news/security/japans-gmo-urges-customers-to-shut-down-pcs-amid-ransomware-threat/",
       "fingerprint": "edbec8b059e536cc",
