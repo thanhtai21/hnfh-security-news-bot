@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "last_run": "2026-10-28T07:05:39.876508+07:00",
+  "last_run": "2026-10-28T11:05:37.883372+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
     "2026-10-27": 3,
-    "2026-10-28": 1
+    "2026-10-28": 2
   },
   "daily_hot_posts": {},
   "posts": [
@@ -98,6 +98,16 @@
       "fingerprint": "32500d6c3b68a774",
       "day": "2026-10-28",
       "posted_at": "2026-10-28T07:05:39.875675+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "University of New Mexico hospital diverts ambulances after cyberattack",
+      "link": "https://therecord.media/university-of-new-mexico-hospital-diverts-cyber-incident",
+      "source": "The Record",
+      "score": 51,
+      "fingerprint": "5a8e09f1ff14733e",
+      "day": "2026-10-28",
+      "posted_at": "2026-10-28T11:05:37.882789+07:00",
       "kind": "normal"
     }
   ],
@@ -214,6 +224,36 @@
       "link": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
       "fingerprint": "59dcef2ce45c4188",
       "rejected_at": "2026-10-28T07:05:39.876447+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://therecord.media/malaysian-national-indicted-after-scam-centers-raid-madagascar",
+      "fingerprint": "1ebafdfdce0e1ada",
+      "rejected_at": "2026-10-28T11:05:37.882971+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://therecord.media/malicious-apps-russian-anxiety-gas-prices-drone-strikes",
+      "fingerprint": "f94c03f049ddc72f",
+      "rejected_at": "2026-10-28T11:05:37.883061+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/hpe-patches-dozens-of-critical-flaws-in-networking-products/",
+      "fingerprint": "2672cfc415fdc501",
+      "rejected_at": "2026-10-28T11:05:37.883133+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html",
+      "fingerprint": "ec1d21818cfdf63f",
+      "rejected_at": "2026-10-28T11:05:37.883199+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/warp-discloses-breach-exposing-ai-agent-logs-user-telemetry-data/",
+      "fingerprint": "163b67a5a43e2f51",
+      "rejected_at": "2026-10-28T11:05:37.883269+07:00",
       "scope": "all"
     }
   ]
