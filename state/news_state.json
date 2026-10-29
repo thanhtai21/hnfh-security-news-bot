@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-29T15:05:43.990204+07:00",
+  "last_run": "2026-10-29T20:12:09.453164+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -153,60 +153,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/japans-gmo-urges-customers-to-shut-down-pcs-amid-ransomware-threat/",
-      "fingerprint": "edbec8b059e536cc",
-      "rejected_at": "2026-10-28T07:05:39.875853+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/unm-health-ransomware-attack-disrupts-patient-care-surgeries/",
-      "fingerprint": "0f7fb17123093361",
-      "rejected_at": "2026-10-28T07:05:39.875936+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/lazarus-abuses-south-korean-security.html",
-      "fingerprint": "5779cd34748948a2",
-      "rejected_at": "2026-10-28T07:05:39.876020+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/apple/apple-backports-coregraphics-zero-day-patches-to-older-iphones/",
-      "fingerprint": "139faa22e3130123",
-      "rejected_at": "2026-10-28T07:05:39.876095+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/cisa-confirms-php2shell-vulnerabilities-now-exploited-in-attacks/",
-      "fingerprint": "5d29ccb3dc8edf66",
-      "rejected_at": "2026-10-28T07:05:39.876166+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/ai-generated-fake-login-pages-are.html",
-      "fingerprint": "5c34fb8a7887b595",
-      "rejected_at": "2026-10-28T07:05:39.876238+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/this-is-fine-what-netscaler-zero-days-tell-us-about-the-new-normal/",
-      "fingerprint": "4499ce3d970fc6ee",
-      "rejected_at": "2026-10-28T07:05:39.876313+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/energy-giant-engie-discloses-data-breach-affecting-customers/",
-      "fingerprint": "e316dd8404138819",
-      "rejected_at": "2026-10-28T07:05:39.876388+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/cyberstrikeai-uses-44-ai-agents-to.html",
-      "fingerprint": "59dcef2ce45c4188",
-      "rejected_at": "2026-10-28T07:05:39.876447+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://therecord.media/malaysian-national-indicted-after-scam-centers-raid-madagascar",
       "fingerprint": "1ebafdfdce0e1ada",
