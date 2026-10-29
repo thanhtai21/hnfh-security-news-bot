@@ -1,13 +1,14 @@
 {
   "version": 1,
-  "last_run": "2026-10-30T05:05:22.920115+07:00",
+  "last_run": "2026-10-30T06:58:41.761078+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
     "2026-10-27": 3,
     "2026-10-28": 3,
-    "2026-10-29": 3
+    "2026-10-29": 3,
+    "2026-10-30": 1
   },
   "daily_hot_posts": {},
   "posts": [
@@ -150,6 +151,16 @@
       "day": "2026-10-29",
       "posted_at": "2026-10-29T15:05:43.989827+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Hackers Steal 2.6 Million Records From Sony’s Japanese ISP So-net",
+      "link": "https://www.securityweek.com/hackers-steal-2-6-million-records-from-sonys-japanese-isp-so-net/",
+      "source": "SecurityWeek",
+      "score": 58,
+      "fingerprint": "b646df358b9aeaad",
+      "day": "2026-10-30",
+      "posted_at": "2026-10-30T06:58:41.760754+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -247,6 +258,30 @@
       "link": "https://www.securityweek.com/chrome-and-firefox-updates-patch-over-200-vulnerabilities/",
       "fingerprint": "4846a8d500c73493",
       "rejected_at": "2026-10-29T15:05:43.990114+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/hugging-face-malware-campaign-returns-to-hijack-gpus-for-crypto-mining/",
+      "fingerprint": "c224b30ce8c54e6f",
+      "rejected_at": "2026-10-30T06:58:41.760876+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html",
+      "fingerprint": "90e8afd652018827",
+      "rejected_at": "2026-10-30T06:58:41.760933+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/adobe-veeam-juniper-networks-patch-critical-vulnerabilities/",
+      "fingerprint": "1019335aec5d2706",
+      "rejected_at": "2026-10-30T06:58:41.760977+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/chrome-extensions-with-134-million-installs-caught-hijacking-searches/",
+      "fingerprint": "d0799ef5a82097d6",
+      "rejected_at": "2026-10-30T06:58:41.761016+07:00",
       "scope": "all"
     }
   ]
