@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-30T01:05:26.218196+07:00",
+  "last_run": "2026-10-30T05:05:22.920115+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -153,12 +153,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.securityweek.com/ios-macos-27-2-patch-286-bugs-fix-for-exploited-flaw-backported-to-ios-18/",
-      "fingerprint": "5af3a37f87cc5882",
-      "rejected_at": "2026-10-28T15:05:36.924978+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://www.bleepingcomputer.com/news/security/nefilim-and-hive-ransomware-affiliate-gets-70-months-in-prison/",
       "fingerprint": "8548d8bcc5761ab7",
