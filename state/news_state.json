@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "last_run": "2026-10-29T07:05:37.781635+07:00",
+  "last_run": "2026-10-29T11:05:38.503865+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
     "2026-10-27": 3,
     "2026-10-28": 3,
-    "2026-10-29": 1
+    "2026-10-29": 2
   },
   "daily_hot_posts": {},
   "posts": [
@@ -129,6 +129,16 @@
       "fingerprint": "880f61c37d250ff0",
       "day": "2026-10-29",
       "posted_at": "2026-10-29T07:05:37.781244+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "Volt Typhoon Used Covert Silent Train Network in Four Zero-Day Exploitation Campaigns",
+      "link": "https://thehackernews.com/2026/10/volt-typhoon-used-covert-silent-train.html",
+      "source": "The Hacker News",
+      "score": 75,
+      "fingerprint": "d2d10b6a30b2ff5e",
+      "day": "2026-10-29",
+      "posted_at": "2026-10-29T11:05:38.503124+07:00",
       "kind": "normal"
     }
   ],
@@ -257,6 +267,48 @@
       "link": "https://therecord.media/west-virginia-daniels-law-struck-down-appellate-court",
       "fingerprint": "c6d54c049f93d403",
       "rejected_at": "2026-10-29T07:05:37.781567+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/ukrainian-hive-and-nefilim-ransomware-affiliate-gets-70-months-in-us-prison/",
+      "fingerprint": "985fc64ae759ed26",
+      "rejected_at": "2026-10-29T11:05:38.503318+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://therecord.media/moldova-investigates-possible-foreign-involvement-cyberattacks",
+      "fingerprint": "cfe1ce3ceab24a86",
+      "rejected_at": "2026-10-29T11:05:38.503410+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-reminds-entra-id-admins-to-migrate-users-to-passkeys/",
+      "fingerprint": "465431edd844b9e4",
+      "rejected_at": "2026-10-29T11:05:38.503482+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/american-organizations-under-attack.html",
+      "fingerprint": "3be23a33922188d8",
+      "rejected_at": "2026-10-29T11:05:38.503549+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/china-linked-hackers-exploit-php2shell-to-root-firewalls/",
+      "fingerprint": "d8da24ee4169a0cf",
+      "rejected_at": "2026-10-29T11:05:38.503616+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/secrets-management-firm-infisical-valued-at-600-million-after-40-million-raise/",
+      "fingerprint": "fb1cd6337fa61753",
+      "rejected_at": "2026-10-29T11:05:38.503686+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html",
+      "fingerprint": "fbae9bd450f57770",
+      "rejected_at": "2026-10-29T11:05:38.503755+07:00",
       "scope": "all"
     }
   ]
