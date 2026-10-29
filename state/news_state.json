@@ -1,12 +1,13 @@
 {
   "version": 1,
-  "last_run": "2026-10-29T05:05:23.424565+07:00",
+  "last_run": "2026-10-29T07:05:37.781635+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
     "2026-10-27": 3,
-    "2026-10-28": 3
+    "2026-10-28": 3,
+    "2026-10-29": 1
   },
   "daily_hot_posts": {},
   "posts": [
@@ -119,6 +120,16 @@
       "day": "2026-10-28",
       "posted_at": "2026-10-28T15:05:36.924873+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Police seize Virtualine bulletproof service tied to ransowmare, cybercrime",
+      "link": "https://www.bleepingcomputer.com/news/security/police-seize-virtualine-bulletproof-service-tied-to-ransowmare-cybercrime/",
+      "source": "BleepingComputer",
+      "score": 85,
+      "fingerprint": "880f61c37d250ff0",
+      "day": "2026-10-29",
+      "posted_at": "2026-10-29T07:05:37.781244+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -215,8 +226,38 @@
     {
       "link": "https://www.bleepingcomputer.com/news/security/nefilim-and-hive-ransomware-affiliate-gets-70-months-in-prison/",
       "fingerprint": "8548d8bcc5761ab7",
-      "rejected_at": "2026-10-28T23:05:26.372408+07:00",
-      "scope": "hot_only"
+      "rejected_at": "2026-10-29T07:05:37.781364+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/php2shell-attack-roots-25-servers.html",
+      "fingerprint": "3806c5b0faab6516",
+      "rejected_at": "2026-10-29T07:05:37.781392+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/even-after-php2shell-blast-radius-matters-more-than-a-cvss-score/",
+      "fingerprint": "59287d6201013bc2",
+      "rejected_at": "2026-10-29T07:05:37.781444+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/fbi-seizes-virtualine-domain-over.html",
+      "fingerprint": "b83976270192a75e",
+      "rejected_at": "2026-10-29T07:05:37.781486+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://therecord.media/japan-airlines-warns-of-breach-country-grapples-with-incidents",
+      "fingerprint": "be23c6ec58192a44",
+      "rejected_at": "2026-10-29T07:05:37.781524+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://therecord.media/west-virginia-daniels-law-struck-down-appellate-court",
+      "fingerprint": "c6d54c049f93d403",
+      "rejected_at": "2026-10-29T07:05:37.781567+07:00",
+      "scope": "all"
     }
   ]
 }
