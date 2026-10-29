@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "last_run": "2026-10-29T11:05:38.503865+07:00",
+  "last_run": "2026-10-29T15:05:43.990204+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
     "2026-10-26": 2,
     "2026-10-27": 3,
     "2026-10-28": 3,
-    "2026-10-29": 2
+    "2026-10-29": 3
   },
   "daily_hot_posts": {},
   "posts": [
@@ -139,6 +139,16 @@
       "fingerprint": "d2d10b6a30b2ff5e",
       "day": "2026-10-29",
       "posted_at": "2026-10-29T11:05:38.503124+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "ShinyHunters-Exploited Oracle PeopleSoft Zero-Day Turns Out to Be Three Chained Flaws",
+      "link": "https://thehackernews.com/2026/10/shinyhunters-exploited-oracle.html",
+      "source": "The Hacker News",
+      "score": 57,
+      "fingerprint": "680520d14407b383",
+      "day": "2026-10-29",
+      "posted_at": "2026-10-29T15:05:43.989827+07:00",
       "kind": "normal"
     }
   ],
@@ -309,6 +319,24 @@
       "link": "https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html",
       "fingerprint": "fbae9bd450f57770",
       "rejected_at": "2026-10-29T11:05:38.503755+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/hackers-start-probing-fresh-oracle-ebs-vulnerability/",
+      "fingerprint": "91d5c35a8ee35a99",
+      "rejected_at": "2026-10-29T15:05:43.989974+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/tls-flaws-found-in-goahead-web-server-used-in-hundreds-of-millions-of-devices/",
+      "fingerprint": "1eab6d30b218ac4b",
+      "rejected_at": "2026-10-29T15:05:43.990053+07:00",
+      "scope": "all"
+    },
+    {
+      "link": "https://www.securityweek.com/chrome-and-firefox-updates-patch-over-200-vulnerabilities/",
+      "fingerprint": "4846a8d500c73493",
+      "rejected_at": "2026-10-29T15:05:43.990114+07:00",
       "scope": "all"
     }
   ]
