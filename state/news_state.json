@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-31T01:05:28.633943+07:00",
+  "last_run": "2026-10-31T05:05:28.487612+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -184,24 +184,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.securityweek.com/hackers-start-probing-fresh-oracle-ebs-vulnerability/",
-      "fingerprint": "91d5c35a8ee35a99",
-      "rejected_at": "2026-10-29T15:05:43.989974+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/tls-flaws-found-in-goahead-web-server-used-in-hundreds-of-millions-of-devices/",
-      "fingerprint": "1eab6d30b218ac4b",
-      "rejected_at": "2026-10-29T15:05:43.990053+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/chrome-and-firefox-updates-patch-over-200-vulnerabilities/",
-      "fingerprint": "4846a8d500c73493",
-      "rejected_at": "2026-10-29T15:05:43.990114+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://www.bleepingcomputer.com/news/security/hugging-face-malware-campaign-returns-to-hijack-gpus-for-crypto-mining/",
       "fingerprint": "c224b30ce8c54e6f",
