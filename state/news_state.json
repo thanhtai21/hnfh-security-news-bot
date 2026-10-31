@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-31T06:52:42.714902+07:00",
+  "last_run": "2026-10-31T11:05:39.590732+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -9,7 +9,7 @@
     "2026-10-28": 3,
     "2026-10-29": 3,
     "2026-10-30": 3,
-    "2026-10-31": 1
+    "2026-10-31": 2
   },
   "daily_hot_posts": {},
   "posts": [
@@ -191,6 +191,16 @@
       "fingerprint": "6d750989bbc195ca",
       "day": "2026-10-31",
       "posted_at": "2026-10-31T06:52:42.714540+07:00",
+      "kind": "normal"
+    },
+    {
+      "title": "$6 Billion Binance Hack Bears Hallmarks of North Korea’s TraderTraitor",
+      "link": "https://www.securityweek.com/6-billion-binance-hack-bears-hallmarks-of-north-koreas-tradertraitor/",
+      "source": "SecurityWeek",
+      "score": 90,
+      "fingerprint": "f07b73db178eb292",
+      "day": "2026-10-31",
+      "posted_at": "2026-10-31T11:05:39.590610+07:00",
       "kind": "normal"
     }
   ],
