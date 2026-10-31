@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-31T13:05:47.748175+07:00",
+  "last_run": "2026-10-31T15:06:09.430558+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -9,7 +9,7 @@
     "2026-10-28": 3,
     "2026-10-29": 3,
     "2026-10-30": 3,
-    "2026-10-31": 2
+    "2026-10-31": 3
   },
   "daily_hot_posts": {},
   "posts": [
@@ -202,6 +202,16 @@
       "day": "2026-10-31",
       "posted_at": "2026-10-31T11:05:39.590610+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Florida warns that 4.9 million people had Social Security numbers leaked in financial aid site breach",
+      "link": "https://therecord.media/florida-warns-5-million-affected-financial-aid-site-breach",
+      "source": "The Record",
+      "score": 80,
+      "fingerprint": "14b772833be33b6f",
+      "day": "2026-10-31",
+      "posted_at": "2026-10-31T15:06:09.429735+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -327,6 +337,55 @@
       "rejected_at": "2026-10-31T13:05:47.748049+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://www.theblock.co/news/regulation/2026-10-30-texas-brothers-sentenced-15-years-8-million-crypto-robbery-minnesota-432221",
+      "fingerprint": "139853dfbf3c41a3",
+      "rejected_at": "2026-10-31T15:06:09.429908+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/syrian-electronic-army-hacker-sentenced-three-years",
+      "fingerprint": "0de2eaf496b78be5",
+      "rejected_at": "2026-10-31T15:06:09.430010+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://vnexpress.net/thang-10-den-toi-cua-an-ninh-mang-5138824.html",
+      "fingerprint": "219c650d66cfc1cc",
+      "rejected_at": "2026-10-31T15:06:09.430093+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thanhnien.vn/canh-bao-giao-dich-tien-so-vi-sao-tai-khoan-ngan-hang-bi-khoa-185261031091954346.htm",
+      "fingerprint": "fc7829c0e3ae38d8",
+      "rejected_at": "2026-10-31T15:06:09.430170+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.wired.com/story/trojan-malware-targets-thousands-of-anthropic-claude-developer-systems/",
+      "fingerprint": "edea41ccfa12e331",
+      "rejected_at": "2026-10-31T15:06:09.430247+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.darkreading.com/physical-security/russia-cyber-war-belarus-steps-forward",
+      "fingerprint": "48e90a0e82c636b5",
+      "rejected_at": "2026-10-31T15:06:09.430352+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://vnexpress.net/mo-hinh-ai-trung-quoc-co-the-thuc-hien-tan-cong-mang-phuc-tap-5138529.html",
+      "fingerprint": "29027c0787b0b3d0",
+      "rejected_at": "2026-10-31T15:06:09.430442+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
