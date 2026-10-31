@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-31T19:05:41.496748+07:00",
+  "last_run": "2026-10-31T19:45:54.683410+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -294,27 +294,6 @@
       "scope": "all"
     },
     {
-      "link": "https://thehackernews.com/2026/10/cloudflare-reports-182-million-network.html",
-      "fingerprint": "9f70b9b3c40c5596",
-      "rejected_at": "2026-10-31T13:05:47.747827+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://therecord.media/florida-warns-5-million-affected-financial-aid-site-breach",
-      "fingerprint": "14b772833be33b6f",
-      "rejected_at": "2026-10-31T13:05:47.747930+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/syrian-hacker-behind-fake-tweet-that.html",
-      "fingerprint": "f53377add0755e5d",
-      "rejected_at": "2026-10-31T13:05:47.748049+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://www.theblock.co/news/regulation/2026-10-30-texas-brothers-sentenced-15-years-8-million-crypto-robbery-minnesota-432221",
       "fingerprint": "139853dfbf3c41a3",
       "rejected_at": "2026-10-31T15:06:09.429908+07:00",
@@ -362,6 +341,20 @@
       "rejected_at": "2026-10-31T15:06:09.430442+07:00",
       "scope": "all",
       "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/cloudflare-reports-182-million-network.html",
+      "fingerprint": "9f70b9b3c40c5596",
+      "rejected_at": "2026-10-31T19:45:54.683069+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/syrian-hacker-behind-fake-tweet-that.html",
+      "fingerprint": "f53377add0755e5d",
+      "rejected_at": "2026-10-31T19:45:54.683287+07:00",
+      "scope": "all",
+      "ttl_hours": 6
     }
   ]
 }
