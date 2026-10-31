@@ -225,6 +225,26 @@ POSITIVE_SIGNALS = [
     ("cybercrime", 10, "Tội phạm mạng"),
     ("dark web", 8, "Dark web"),
     ("extortion", 8, "Bắt nạt tống tiền"),
+    # Vụ trộm / tấn công sàn tiền mã hóa (ví dụ vụ Binance, Bybit).
+    # Chỉ cụm có NGỮ CẢNH tấn công mới được cộng điểm nhiều và tính là "đặc biệt";
+    # tin giá coin / tin thị trường bình thường KHÔNG match các cụm này.
+    ("crypto heist", 22, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("crypto theft", 16, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("cryptocurrency theft", 16, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("crypto hack", 16, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("exchange hack", 16, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("exchange hacked", 16, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("stolen crypto", 14, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("stolen cryptocurrency", 14, "Vụ trộm tiền mã hóa quy mô lớn"),
+    ("hot wallet", 10, "Ví nóng bị tấn công"),
+    ("north korea", 10, "Nhà nước bảo trợ"),
+    ("north korean", 10, "Nhà nước bảo trợ"),
+    ("tradertraitor", 12, "Nhóm Lazarus"),
+    ("biggest crypto", 16, "Quy mô kỷ lục"),
+    ("largest crypto", 16, "Quy mô kỷ lục"),
+    ("biggest hack", 16, "Quy mô kỷ lục"),
+    ("largest hack", 16, "Quy mô kỷ lục"),
+    ("in history", 8, "Quy mô kỷ lục"),
 ]
 
 # Tín hiệu "yếu tố đặc biệt" — bài 70-84 chỉ được đăng nếu có ít nhất 1 cái.
@@ -257,6 +277,8 @@ SPECIAL_SIGNALS = [
     "Điện tử gián điệp",
     "Tấn công chuỗi cung ứng",
     "Liên quan Việt Nam",
+    "Vụ trộm tiền mã hóa quy mô lớn",
+    "Quy mô kỷ lục",
 ]
 
 
