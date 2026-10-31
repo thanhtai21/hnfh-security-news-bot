@@ -37,6 +37,7 @@ from config import (
     POST_DELAY_SECONDS,
 )
 from textutils import excerpt, format_vn_time, normalize_ws
+from ping_roles import build_ping_roles, prepend_pings
 
 logger = logging.getLogger("poster")
 
@@ -256,8 +257,17 @@ def resolve_tags(forum_channel, tag_names):
 # TẠO FORUM POST
 # =====================================================================
 
+def _build_allowed_mentions(role_ids):
+    """Chỉ cho phép ping đúng các role trong role_ids (rỗng = không ping ai)."""
+    if role_ids:
+        return discord.AllowedMentions(
+            everyone=False, users=False, replied_user=False,
+            roles=[discord.Object(id=rid) for rid in role_ids])
+    return discord.AllowedMentions.none()
+
+
 async def post_to_forum(token, channel_id, title, content, tag_names,
-                        dry_run=False):
+                        dry_run=False, role_ids=None):
     """
     Tạo MỘT Forum Post trên channel với token cho sẵn.
 
@@ -272,7 +282,7 @@ async def post_to_forum(token, channel_id, title, content, tag_names,
     try:
         return await asyncio.wait_for(
             _post_to_forum_inner(token, channel_id, title, content,
-                                 tag_names, result, dry_run),
+                                 tag_names, result, dry_run, role_ids),
             timeout=90,
         )
     except asyncio.TimeoutError:
@@ -333,7 +343,7 @@ def _log_forbidden_diagnostics(client, channel_id):
 
 
 async def _post_to_forum_inner(token, channel_id, title, content, tag_names,
-                               result, dry_run):
+                               result, dry_run, role_ids=None):
     """Phần lõi (có client) của post_to_forum."""
 
     # Chế độ thử: không kết nối Discord, chỉ in nội dung ra log.
@@ -368,13 +378,13 @@ async def _post_to_forum_inner(token, channel_id, title, content, tag_names,
             applied = resolve_tags(channel, tag_names)
 
             # Tạo Forum Post.
-            # A2: allowed_mentions=none() -> nội dung từ RSS/AI KHÔNG được ping ai.
+            # A2: chỉ role trong ping_roles.py được ping; nội dung RSS/AI KHÔNG ping ai.
             logger.info("[DISCORD] Posting... %s", title)
             created = await channel.create_thread(
                 name=title,
                 content=content,
                 applied_tags=applied,
-                allowed_mentions=discord.AllowedMentions.none(),
+                allowed_mentions=_build_allowed_mentions(role_ids),
             )
 
             # A3: create_thread với Forum Channel trả về cặp (thread, message).
@@ -431,6 +441,9 @@ async def post_all(token, channel_id, scored_list, dry_run=False):
         title = build_post_title(scored)
         content = build_post_content(scored)
         tags = list(getattr(scored, "tags", []) or [])
+        content, ping_ids = prepend_pings(content, build_ping_roles(scored))
+        if ping_ids:
+            logger.info("[DISCORD] Ping %d role: %s", len(ping_ids), ping_ids)
 
         logger.info("[DISCORD] Đăng bài %d/%d: %s", index, total, title)
         outcome = await post_to_forum(
@@ -440,6 +453,7 @@ async def post_all(token, channel_id, scored_list, dry_run=False):
             content=content,
             tag_names=tags,
             dry_run=dry_run,
+            role_ids=ping_ids,
         )
         results.append(outcome)
 
