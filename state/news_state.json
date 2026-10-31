@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-31T11:05:39.590732+07:00",
+  "last_run": "2026-10-31T13:05:47.748175+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -306,6 +306,27 @@
       "fingerprint": "f11f543b1873dbef",
       "rejected_at": "2026-10-31T06:52:42.714846+07:00",
       "scope": "all"
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/cloudflare-reports-182-million-network.html",
+      "fingerprint": "9f70b9b3c40c5596",
+      "rejected_at": "2026-10-31T13:05:47.747827+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://therecord.media/florida-warns-5-million-affected-financial-aid-site-breach",
+      "fingerprint": "14b772833be33b6f",
+      "rejected_at": "2026-10-31T13:05:47.747930+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://thehackernews.com/2026/10/syrian-hacker-behind-fake-tweet-that.html",
+      "fingerprint": "f53377add0755e5d",
+      "rejected_at": "2026-10-31T13:05:47.748049+07:00",
+      "scope": "all",
+      "ttl_hours": 6
     }
   ]
 }
