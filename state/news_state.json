@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-31T19:45:54.683410+07:00",
+  "last_run": "2026-10-31T23:05:41.552115+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -215,42 +215,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/japan-airlines-suffers-third-party-data-breach-exposing-passenger-info/",
-      "fingerprint": "2695f891f1dd5847",
-      "rejected_at": "2026-10-30T11:05:38.808979+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/attackers-exploit-php2shell-flaws-in.html",
-      "fingerprint": "67c304c3a53dc6f3",
-      "rejected_at": "2026-10-30T11:05:38.809032+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-fragnesia-linux-flaw-chained-in-php2shell-attacks/",
-      "fingerprint": "26c93b7d2ad28e80",
-      "rejected_at": "2026-10-30T11:05:38.809065+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html",
-      "fingerprint": "6b971c04af26c070",
-      "rejected_at": "2026-10-30T11:05:38.809099+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/polymarket-halts-trading-after-crypto-draining-script-breach-25m-traced/",
-      "fingerprint": "294f908071bfbe15",
-      "rejected_at": "2026-10-30T11:05:38.809129+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://therecord.media/us-bankruptcy-courts-it-contractor-says-no-data-stolen-cyberattack",
-      "fingerprint": "7ae3c4d80911e63b",
-      "rejected_at": "2026-10-30T11:05:38.809161+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://www.bleepingcomputer.com/news/security/hackers-exploit-cisco-sd-wan-flaw-to-deploy-custom-keydrift-malware/",
       "fingerprint": "055530524eaf5d7e",
