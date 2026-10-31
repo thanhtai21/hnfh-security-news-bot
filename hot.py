@@ -12,9 +12,14 @@ NGUYÊN TẮC IMPORT (bắt buộc):
 
 CÁC HÀM CHÍNH:
 - annotate_corroboration(scored_list) : gắn scored.corroboration (B1)
-- is_hot_rule / hot_rule_explain      : xét nóng theo RULE (B2)
+- is_hot_rule / hot_rule_explain      : xét nóng theo RULE (B2) - HAI ĐƯỜNG:
+                                        đường classic (score>=95+special+nguồn)
+                                        HOẶC đường hard_signal (tuổi<=12h +
+                                        nguồn theo loại nguồn: security/vn >=1,
+                                        crypto/general >=2)
 - is_hot_ai                           : xét nóng theo quyết định AI (B3)
-- is_hot                              : kết hợp rule + AI (B4)
+- is_hot                              : kết hợp rule + AI (B4) + đường dự
+                                        phòng B5 (AI tắt, hard_signal >=2 nguồn)
 - allocate_slots                      : cấp slot hot/normal (B5)
 - select_hot_articles                 : kiểm tra lại bằng code (B6)
 
@@ -33,6 +38,7 @@ from config import (
     HOT_AI_MIN_SCORE,
     HOT_ALLOW_WITHOUT_AI,
     HOT_ENABLED,
+    HOT_HARD_MIN_SOURCES_KINDS,
     HOT_MAX_AGE_HOURS,
     HOT_MIN_SCORE,
     HOT_MIN_SOURCES_INTL,
@@ -40,6 +46,7 @@ from config import (
     HOT_MIN_SOURCES_WITHOUT_AI,
     MAX_HOT_POSTS_PER_DAY,
     MIN_SCORE_TO_POST,
+    SOURCE_KIND,
     SPECIAL_MIN_SCORE,
 )
 from textutils import (
@@ -84,10 +91,12 @@ def _meets_threshold(scored):
 
 def annotate_corroboration(scored_list):
     """
-    Với MỖI bài đạt meets_threshold, đếm số TÊN NGUỒN khác nhau (kể cả nguồn
-    của chính bài đó) trong TOÀN BỘ scored_list mà is_same_event(...) trả True
-    (title + summary, đúng chữ ký analyzer.is_duplicate_of_any đang dùng).
-    Gắn scored.corroboration (int). Bài không đạt threshold -> corroboration = 0.
+    Với MỖI bài đạt meets_threshold HOẶC CÓ hard_signal (B2 - bài hard_signal
+    cần corroboration để xét nóng dù điểm rule chưa đạt), đếm số TÊN NGUỒN
+    khác nhau (kể cả nguồn của chính bài đó) trong TOÀN BỘ scored_list mà
+    is_same_event(...) trả True (title + summary, đúng chữ ký
+    analyzer.is_duplicate_of_any đang dùng). Gắn scored.corroboration (int).
+    Bài không đạt threshold và không có hard_signal -> corroboration = 0.
 
     BẮT BUỘC chạy trên danh sách CHƯA bị dedup:
     - analyzer.analyze_articles KHÔNG dedup bên trong (nó chỉ chấm điểm + sort);
@@ -111,7 +120,8 @@ def annotate_corroboration(scored_list):
 
     for i, scored in enumerate(items):
         try:
-            if not _meets_threshold(scored):
+            if (not _meets_threshold(scored)
+                    and not getattr(scored, "hard_signal", False)):
                 scored.corroboration = 0
                 continue
 
@@ -153,9 +163,24 @@ def annotate_corroboration(scored_list):
 
 def hot_rule_explain(scored, now=None):
     """
-    Trả về (is_hot: bool, fails: list[str]).
-    - is_hot = True khi TẤT CẢ điều kiện đúng.
-    - fails  = danh sách lý do KHÔNG đạt (rỗng nếu đạt hết) -> dùng cho log.
+    Trả về (is_hot: bool, fails: list[str]) - điều kiện "nóng theo RULE" (B2):
+    là HAI ĐƯỜNG, đạt ĐƯỜNG NÀO cũng được:
+
+    - Đường CLASSIC: score >= HOT_MIN_SCORE VÀ is_special VÀ đủ nguồn
+      (>= HOT_MIN_SOURCES_INTL, riêng tin Việt Nam >= HOT_MIN_SOURCES_VN).
+    - Đường HARD SIGNAL: có hard_signal VÀ tuổi <= HOT_MAX_AGE_HOURS VÀ
+      corroboration đủ theo LOẠI NGUỒN:
+        + nguồn báo an ninh / báo VN uy tín (SOURCE_KIND security/vn)
+          -> cần >= 1 nguồn;
+        + nguồn crypto / tổng hợp (SOURCE_KIND crypto/general)
+          -> cần >= 2 nguồn.
+
+    Cả hai đường đều đòi hỏi tuổi <= HOT_MAX_AGE_HOURS (bài cũ không nóng).
+    - is_hot = True khi đạt ít nhất 1 đường.
+    - fails  = danh sách lý do KHÔNG đạt (rỗng khi đạt) -> dùng cho log;
+      select_hot_articles dùng CÙNG hàm này -> không mâu thuẫn code.
+
+    Hàm thuần, không I/O.
     """
     fails = []
 
@@ -163,10 +188,12 @@ def hot_rule_explain(scored, now=None):
         fails.append("HOT_ENABLED=0")
         return False, fails
 
-    # Tuổi bài.
+    # --- Tuổi bài (cả hai đường đều cần) ---
     article = getattr(scored, "article", None)
     age = getattr(article, "age_hours", None)
+    age_ok = True
     if age is None:
+        age_ok = False
         fails.append("age=? (không rõ thời gian)")
     else:
         try:
@@ -174,33 +201,58 @@ def hot_rule_explain(scored, now=None):
         except (TypeError, ValueError):
             age_val = None
         if age_val is None:
+            age_ok = False
             fails.append("age=? (không đọc được)")
         elif age_val > HOT_MAX_AGE_HOURS:
+            age_ok = False
             fails.append("age=%.1fh > %dh" % (age_val, HOT_MAX_AGE_HOURS))
 
-    # Điểm rule.
+    # --- Điểm rule / special / số nguồn ---
     try:
         score = int(getattr(scored, "score", 0) or 0)
     except (TypeError, ValueError):
         score = 0
-    if score < HOT_MIN_SCORE:
-        fails.append("score=%d < %d" % (score, HOT_MIN_SCORE))
-
-    # Yếu tố đặc biệt.
-    if not getattr(scored, "is_special", False):
-        fails.append("special=False")
-
-    # Số nguồn độc lập (ngưỡng riêng cho tin Việt Nam).
     try:
         sources = int(getattr(scored, "corroboration", 0) or 0)
     except (TypeError, ValueError):
         sources = 0
-    need = HOT_MIN_SOURCES_VN if getattr(scored, "is_vietnam", False) \
-        else HOT_MIN_SOURCES_INTL
-    if sources < need:
-        fails.append("sources=%d < %d" % (sources, need))
+    special = bool(getattr(scored, "is_special", False))
+    hard = bool(getattr(scored, "hard_signal", False))
 
-    return (not fails), fails
+    # Ngưỡng nguồn cho đường CLASSIC (nguồn riêng cho tin Việt Nam).
+    need_classic = HOT_MIN_SOURCES_VN if getattr(scored, "is_vietnam", False) \
+        else HOT_MIN_SOURCES_INTL
+    # Ngưỡng nguồn cho đường HARD SIGNAL - theo LOẠI NGUỒN (B2):
+    # báo an ninh uy tín cần >= 1; crypto/tổng hợp cần >= 2
+    # (HOT_HARD_MIN_SOURCES_KINDS trong config - tách riêng với
+    #  SOURCE_REQUIRES_HARD_SIGNAL vốn đã thêm "vn" cho cổng pipeline).
+    src_kind = SOURCE_KIND.get(getattr(scored, "source", "") or "", "security")
+    need_hard = 2 if src_kind in HOT_HARD_MIN_SOURCES_KINDS else 1
+
+    classic_fails = []
+    if score < HOT_MIN_SCORE:
+        classic_fails.append("score=%d < %d" % (score, HOT_MIN_SCORE))
+    if not special:
+        classic_fails.append("special=False")
+    if sources < need_classic:
+        classic_fails.append("sources=%d < %d" % (sources, need_classic))
+
+    hard_fails = []
+    if not hard:
+        hard_fails.append("hard_signal=False")
+    elif sources < need_hard:
+        hard_fails.append("hard: sources=%d < %d (nguồn %s)"
+                          % (sources, need_hard, src_kind))
+
+    classic_ok = age_ok and not classic_fails
+    hard_ok = age_ok and not hard_fails
+
+    if classic_ok or hard_ok:
+        return True, []
+
+    fails.extend(classic_fails)
+    fails.extend(hard_fails)
+    return False, fails
 
 
 def is_hot_rule(scored, now=None):
@@ -237,19 +289,35 @@ def is_hot(scored, decision=None, now=None, ai_used=False):
     Bài có phải TIN NÓNG không:
     - Đã qua RULE (is_hot_rule) trong MỌI trường hợp.
     - Có AI (ai_used=True)  -> phải thêm is_hot_ai(decision).
-    - Không có AI           -> chỉ được nóng khi HOT_ALLOW_WITHOUT_AI bật
-                              VÀ corroboration >= 3 nguồn độc lập.
+    - Không có AI (AI tắt/lỗi):
+        + B5 (đường dự phòng sự kiện cực lớn): bài hard_signal có
+          >= 2 nguồn độc lập -> VẪN là tin nóng, ĐẶC BIỆT kể cả khi
+          HOT_ALLOW_WITHOUT_AI=0. Có log rõ khi dùng đường này.
+        + Còn lại -> chỉ được nóng khi HOT_ALLOW_WITHOUT_AI bật
+          VÀ corroboration >= HOT_MIN_SOURCES_WITHOUT_AI.
     """
     if not is_hot_rule(scored, now):
         return False
     if ai_used:
         return is_hot_ai(decision)
-    if not HOT_ALLOW_WITHOUT_AI:
-        return False
+
     try:
         sources = int(getattr(scored, "corroboration", 0) or 0)
     except (TypeError, ValueError):
         sources = 0
+
+    # B5: đường dự phòng cho sự kiện cực lớn khi AI tắt/lỗi.
+    if getattr(scored, "hard_signal", False) and sources >= 2:
+        logger.info(
+            "[HOT] AI TẮT/LỖI: bài hard_signal có %d nguồn độc lập -> "
+            "xét như tin nóng (đường dự phòng B5, bất kể "
+            "HOT_ALLOW_WITHOUT_AI=%s): %s",
+            sources, HOT_ALLOW_WITHOUT_AI,
+            (getattr(scored, "title", "") or "")[:80])
+        return True
+
+    if not HOT_ALLOW_WITHOUT_AI:
+        return False
     return sources >= HOT_MIN_SOURCES_WITHOUT_AI
 
 

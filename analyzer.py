@@ -31,8 +31,14 @@ from config import (
     AI_RESCUE_MIN_SCORE,
     DEFAULT_TAG_NAMES,
     FORUM_TAG_NAMES,
+    HARD_SIGNAL_MIN_USERS,
+    HARD_SIGNAL_MIN_USD,
     MAX_POSTS_PER_DAY,
     MIN_SCORE_TO_POST,
+    ORGS_TIER1,
+    ORGS_TIER2,
+    SOURCE_KIND,
+    SOURCE_REQUIRES_HARD_SIGNAL,
     SOURCE_TRUST_SCORE,
     SPECIAL_MIN_SCORE,
 )
@@ -91,6 +97,17 @@ TOPIC_PHRASES = {
         "secret", "api key", "private key", "signing key", "credentials",
         "access token", "unauthorized access", "hijack", "compromise",
         "malicious", "steal", "stole", "supply chain",
+        # A1: từ khóa vụ trộm/sự cố (thiếu nhóm này -> tin Binance hack bị điểm 0)
+        "hack", "hacked", "hackers", "stolen", "theft", "heist",
+        "drain", "drained", "siphon", "siphoned",
+        "security incident", "unauthorized transactions", "exploited",
+        # D2: từ khóa tiếng Việt (nguồn VN - để classify_topic + detect_vietnam
+        # hoạt động đúng với bài tiếng Việt)
+        "tấn công mạng", "tấn công", "lộ lọt dữ liệu", "lộ dữ liệu",
+        "rò rỉ dữ liệu", "rò rỉ", "mã độc", "phần mềm độc hại",
+        "lỗ hổng", "khai thác lỗ hổng", "đánh cắp dữ liệu", "cửa hậu",
+        "an ninh mạng", "mối đe dọa", "tống tiền", "truy cập trái phép",
+        "mật khẩu", "thông tin cá nhân",
     ],
     "CYBERCRIME": [
         # Law enforcement
@@ -103,6 +120,9 @@ TOPIC_PHRASES = {
         # Vietnam-specific law enforcement (thêm dấu tiếng Việt)
         "công an", "bắt giữ", "khởi tố", "triệt phá", "tội phạm mạng",
         "cơ quan điều tra", "bộ công an", "điều tra",
+        # D2: từ khóa tội phạm mạng tiếng Việt (nguồn VN)
+        "lừa đảo", "lừa đảo trực tuyến", "lừa đảo mạng", "mạo danh",
+        "chiếm đoạt", "trộm cắp", "chuyển tiền bất hợp pháp",
         # Cybercrime activity
         "cybercrime", "cyber crime", "online fraud", "fraud", "scammer",
         "scammers", "extortion", "blackmail", "dark web", "darknet",
@@ -279,6 +299,9 @@ SPECIAL_SIGNALS = [
     "Liên quan Việt Nam",
     "Vụ trộm tiền mã hóa quy mô lớn",
     "Quy mô kỷ lục",
+    # A3(b): lý do của detect_hard_signals -> luôn làm is_special=True.
+    "Tổn thất lớn",
+    "Tổ chức trọng yếu",
 ]
 
 
@@ -301,6 +324,8 @@ for _phrase, _points, _reason in POSITIVE_SIGNALS:
         _reason, set()).update(_specials_in_text(_reason))
 
 # Tín hiệu tiêu cực — LOẠI hoặc trừ điểm mạnh.
+# A4: các từ MƠ HỒ (có thể xuất hiện vô hại trong tin an ninh, vd "raises
+# concerns") chỉ được so với TITLE - xem NEGATIVE_TITLE_ONLY bên dưới.
 NEGATIVE_SIGNALS = [
     ("sponsored", -50, "Quảng cáo/sponsored"),
     ("press release", -50, "Press release"),
@@ -319,15 +344,6 @@ NEGATIVE_SIGNALS = [
     ("coupon", -30, "Mã giảm giá"),
     ("giveaway", -25, "Giveaway"),
     ("product launch", -30, "Ra mắt sản phẩm"),
-    ("unveils", -18, "Ra mắt sản phẩm"),
-    ("introduces", -15, "Ra mắt sản phẩm"),
-    ("announces", -10, "Công bố (có thể PR)"),
-    ("partnership", -20, "Hợp tác thương mại"),
-    ("funding", -25, "Gọi vốn"),
-    ("raises", -20, "Gọi vốn"),
-    ("valuation", -25, "Định giá công ty"),
-    ("earnings", -30, "Kết quả kinh doanh"),
-    ("stock", -25, "Chứng khoán"),
     ("gaming", -40, "Tin game"),
     ("video game", -40, "Tin game"),
     ("esports", -40, "Esports"),
@@ -341,8 +357,6 @@ NEGATIVE_SIGNALS = [
     ("nba", -40, "Thể thao"),
     ("premier league", -40, "Thể thao"),
     ("olympics", -40, "Thể thao"),
-    ("election", -30, "Chính trị"),
-    ("president", -20, "Chính trị"),
     ("senator", -25, "Chính trị"),
     ("lifestyle", -35, "Đời sống"),
     ("recipe", -40, "Đời sống"),
@@ -351,6 +365,22 @@ NEGATIVE_SIGNALS = [
     ("smartphone launch", -30, "Ra mắt điện thoại"),
     ("hands-on", -25, "Bài trải nghiệm"),
     ("unboxing", -30, "Unboxing"),
+]
+
+# A4: từ MƠ HỒ - chỉ so với TITLE (không áp lên summary, vì summary hay có
+# các cụm vô hại như "raises concerns", "stock up on security patches"...).
+NEGATIVE_TITLE_ONLY = [
+    ("unveils", -18, "Ra mắt sản phẩm"),
+    ("introduces", -15, "Ra mắt sản phẩm"),
+    ("announces", -10, "Công bố (có thể PR)"),
+    ("partnership", -20, "Hợp tác thương mại"),
+    ("funding", -25, "Gọi vốn"),
+    ("raises", -20, "Gọi vốn"),
+    ("valuation", -25, "Định giá công ty"),
+    ("earnings", -30, "Kết quả kinh doanh"),
+    ("stock", -25, "Chứng khoán"),
+    ("election", -30, "Chính trị"),
+    ("president", -20, "Chính trị"),
 ]
 
 # Các cụm từ chỉ ra "tin đời sống / công nghệ thông thường, không security".
@@ -427,6 +457,280 @@ def count_matches_bounded(text, phrases):
 
 
 # =====================================================================
+# 3a. TÍN HIỆU CỨNG (HARD SIGNAL) - "tin quy mô lớn" (A3 / D1)
+# =====================================================================
+
+# Điểm cộng khi bài CÓ tín hiệu cứng (A3b).
+HARD_SIGNAL_POINTS = 25
+
+# Từ khóa tấn công/sự cố (A3.1 - ngữ cảnh bắt buộc khi tính số tiền,
+# và cổng lọc nguồn crypto/tổng hợp/VIỆT NAM D1/5).
+HARD_ATTACK_PHRASES = [
+    # Tiếng Anh
+    "hack", "stolen", "theft", "heist", "drain", "siphon",
+    "breach", "breached", "exploit", "exploited", "attack", "compromised",
+    "intrusion", "ransomware", "malware", "backdoor", "phishing", "botnet",
+    "apt", "lazarus", "tradertraitor", "security incident",
+    "data breach", "data leak", "unauthorized access",
+    "denial of service", "ddos", "zero-day",
+    # Tiếng Việt (dùng cho cổng nguồn "vn" + ngữ cảnh tính tiền)
+    "tấn công", "đánh cắp", "trộm", "rò rỉ", "lộ lọt", "mã độc",
+    "lừa đảo", "khai thác", "tống tiền", "phần mềm độc hại",
+    "lỗ hổng", "an ninh mạng", "sự cố bảo mật", "truy cập trái phép",
+]
+
+# Từ khóa SỰ CỐ NẠN NHÂN dùng để GHÉP với ORGS_TIER1 trong nhóm (4)
+# (chỉ xét khi TÊN ORG nằm trong TITLE).
+# CHỈ gồm ngữ cảnh nạn nhân: bị breach / bị hack / bị đánh cắp / mất dịch vụ.
+# LOẠI CÓ CHỦ ĐÍCH: "exploit"/"exploited" (tin vá lỗ hổng), "attack" trần,
+# "patch"/"fixes" (Patch Tuesday), "zero-day", "advisory"/"KEV" (CISA),
+# "arrest"/"charged" (tin bắt người) -> các tin thường ngày có tên
+# Microsoft/CISA/FBI/Cisco KHÔNG thành hard_signal.
+# Khớp theo ranh giới từ (match_phrase).
+ORG_INCIDENT_PHRASES = [
+    # Tiếng Anh - ngữ cảnh NẠN NHÂN
+    "breach", "breached", "hacked", "stolen", "theft", "heist",
+    "drain", "drained", "siphon",
+    "security incident", "unauthorized access", "unauthorized transactions",
+    "ransomware attack", "outage", "service disruption",
+    "suspend", "suspends", "freeze", "freezes", "froze",
+    # Tiếng Việt - ngữ cảnh NẠN NHÂN
+    "tấn công", "đánh cắp", "rò rỉ", "lộ lọt", "tống tiền",
+    "ngừng hoạt động", "sập",
+]
+
+# Regex số tiền: 2 nhánh -
+#   (a) có ký tự tiền tệ ($ € £) + số + hậu tố tùy chọn ($6.3 billion, $400M)
+#   (b) không ký tự tiền tệ nhưng có đơn vị rõ (6.36 billion, 400 triệu USD)
+_MONEY_RE = re.compile(
+    r"([$€£])\s*(\d[\d.,]*|\d)\s*(billion|trillion|million|bn|mn|b|m|k)?\b"
+    r"|(\d[\d.,]*|\d)\s*(billion|trillion|million|bn|mn|tỷ|tỉ|triệu)\b",
+    re.IGNORECASE,
+)
+
+_MONEY_MULTIPLIER = {
+    "trillion": 1e12, "tn": 1e12,
+    "billion": 1e9, "bn": 1e9, "b": 1e9,
+    "million": 1e6, "mn": 1e6, "m": 1e6,
+    "k": 1e3,
+    "tỷ": 1e9, "tỉ": 1e9, "triệu": 1e6,
+}
+
+# Regex quy mô người dùng/bản ghi: <số> <million/billion/triệu> [+ tối đa 3
+# từ] <users/accounts/records/installs/downloads/citizens/...>.
+# VD: "50 million Vietnamese citizens", "134 million installs",
+# "2 billion weekly downloads".
+_USER_SCALE_RE = re.compile(
+    r"(\d[\d.,]*|\d)\s*(million|billion|triệu|tỷ|tỉ)"
+    r"(?:\s+\w+){0,3}?\s+"
+    r"(users?|accounts?|records?|devices?|installs?|downloads?|citizens?"
+    r"|people|customers?|victims?|subscribers?|members?|households?"
+    r"|người\s?dùng|bản\s?ghi|tài\s?khoản|công\s?dân|khách\s?hàng"
+    r"|lượt\s?tải|lượt\s?cài|thiết\s?bị)",
+    re.IGNORECASE,
+)
+
+# Cụm kỷ lục: "largest/biggest ... (hack|heist|breach|theft|attack) ...
+# (in history|on record|ever)" (A3.3).
+_RECORD_RE = re.compile(
+    r"\b(?:largest|biggest|biggest-ever|largest-ever|record-breaking)\b"
+    r"[^.!?\n]{0,60}?"
+    r"\b(?:hack|hacking|hacked|heist|breach|theft|attack|scam|robbery)\b"
+    r"[^.!?\n]{0,60}?"
+    r"\b(?:in history|on record|ever)\b",
+    re.IGNORECASE,
+)
+
+
+def _parse_amount(raw):
+    """
+    Chuyển chuỗi số tiền/người ("6.3", "6,3", "1,462", "1.462.567") -> float.
+    Phân biệt dấu phân cách hàng nghìn (1,462 / 1.462.567) và dấu thập phân
+    (6,3 / 6.3). Không parse được -> None.
+    """
+    s = str(raw or "").strip().replace(" ", "")
+    if not s:
+        return None
+    if "," in s and "." in s:
+        # Dấu SAU CÙNG là dấu thập phân.
+        if s.rfind(",") > s.rfind("."):
+            s = s.replace(".", "").replace(",", ".")
+        else:
+            s = s.replace(",", "")
+    elif "," in s:
+        head, _, tail = s.partition(",")
+        if len(tail) == 3 and 1 <= len(head) <= 3:
+            s = head + tail          # hàng nghìn: 1,462
+        else:
+            s = head + "." + tail    # thập phân: 6,3
+    elif "." in s:
+        parts = s.split(".")
+        if len(parts) > 2:
+            s = "".join(parts)       # hàng nghìn: 1.462.567
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+# Từ chỉ người/bản ghi xuất hiện NGAY SAU một cụm số (dùng phân biệt
+# "134 million installs" (quy mô người) với "134 million USD" (tiền)).
+_FOLLOW_USER_RE = re.compile(
+    r"\s+(?:of\s+)?(?:\w+\s+){0,3}?"
+    r"(users?|accounts?|installs?|downloads?|records?|people|citizens?"
+    r"|customers?|victims?|subscribers?|members?|người|bản ghi|tài khoản|lượt)",
+    re.IGNORECASE,
+)
+
+
+def _max_money_value(blob):
+    """
+    Trả về (value_usd, matched_text) của số tiền LỚN NHẤT trong blob hợp lệ
+    với HARD_SIGNAL_MIN_USD (mọi số tiền được quy đổi về USD), hoặc (0, "").
+    - Số tiền CHỈ được tính khi blob có từ khóa tấn công (A3.1) - hàm này đã
+      kiểm tra ngữ cảnh trước khi gọi.
+    - Nhánh KHÔNG có ký tự tiền tệ ($ € £) bị loại khi tiếp theo là từ chỉ
+      người/bản ghi ("134 million installs" -> KHÔNG phải USD).
+    """
+    best_value = 0.0
+    best_text = ""
+    if not blob:
+        return best_value, best_text
+    for m in _MONEY_RE.finditer(blob):
+        currency, num_a, unit_a, num_b, unit_b = m.groups()
+        raw_num = num_a if num_a is not None else num_b
+        unit = (unit_a or unit_b or "").lower()
+        value = _parse_amount(raw_num)
+        if value is None:
+            continue
+        if currency is None:
+            # Nhánh (b): đơn vị bắt buộc phải rõ nghĩa (billion/million/...).
+            if unit not in _MONEY_MULTIPLIER:
+                continue
+            tail = blob[m.end():m.end() + 40]
+            if _FOLLOW_USER_RE.search(tail):
+                continue   # "134 million installs" -> không phải USD
+        multiplier = _MONEY_MULTIPLIER.get(unit, 1 if currency else 0)
+        if not multiplier:
+            continue
+        usd = value * multiplier
+        if usd > best_value:
+            best_value = usd
+            best_text = m.group(0).strip()
+    return best_value, best_text
+
+
+def detect_hard_signals(article):
+    """
+    A3: nhận diện "tin quy mô lớn" trên title + summary.
+
+    Trả về (has_hard_signal: bool, reasons: list[str]) - reasons là các lý do
+    tiếng Việt (mỗi lý do chứa một nhãn SPECIAL_SIGNALS nên khi thêm vào
+    scored.reasons sẽ làm is_special=True - A3b):
+
+    1. "Tổn thất lớn"    : số tiền >= HARD_SIGNAL_MIN_USD (50 triệu USD)
+                           ĐI CÙNG từ khóa hack/stolen/theft/drain/heist/
+                           breach/exploit/siphon trong cùng blob.
+    2. "Quy mô hàng triệu": quy mô người dùng/bản ghi >= HARD_SIGNAL_MIN_USERS.
+    3. "Quy mô kỷ lục"   : cụm largest/biggest ... hack/heist/... ... in
+                           history/on record/ever.
+    4. "Tổ chức trọng yếu" (2 TẦNG, tên org BẮT BUỘC ở trong TITLE):
+       - ORGS_TIER1 (tầng 1 - tự kích hoạt): org trong TITLE + từ khóa
+         SỰ CỐ NẠN NHÂN (ORG_INCIDENT_PHRASES) trong blob là đủ.
+       - ORGS_TIER2 (tường 2 - KHÔNG đủ một mình): org trong TITLE CHỈ tính
+         khi đi kèm tiền >= HARD_SIGNAL_MIN_USD, HOẶC quy mô người
+         >= HARD_SIGNAL_MIN_USERS, HOẶC cụm kỷ lục.
+         -> tin "Microsoft patch Tuesday", "CISA thêm KEV", "FBI bắt hacker",
+            "Google vá zero-day", "Cisco cảnh báo tấn công" KHÔNG phải
+            hard_signal (không có tiền / quy mô / kỷ lục nào đi kèm).
+
+    KHÔNG bao giờ raise (mọi lỗi -> (False, [])).
+    """
+    try:
+        title = getattr(article, "title", "") or ""
+        summary = getattr(article, "summary", "") or ""
+        blob = (title + " " + summary).lower()
+        title_l = title.lower()
+        if not blob.strip():
+            return False, []
+        reasons = []
+
+        has_attack_ctx = match_any(blob, HARD_ATTACK_PHRASES) is not None
+
+        # (1) Số tiền lớn + ngữ cảnh tấn công.
+        has_money = False
+        if has_attack_ctx:
+            money_value, money_text = _max_money_value(blob)
+            if money_value >= HARD_SIGNAL_MIN_USD:
+                has_money = True
+                reasons.append(
+                    "Tổn thất lớn: %s (>= %d USD, kèm từ khóa tấn công)"
+                    % (money_text or ("%.0f USD" % money_value),
+                       HARD_SIGNAL_MIN_USD))
+
+        # (2) Quy mô người dùng / bản ghi >= 1 triệu.
+        has_users = False
+        for m in _USER_SCALE_RE.finditer(blob):
+            value = _parse_amount(m.group(1))
+            if value is None:
+                continue
+            unit = (m.group(2) or "").lower()
+            multiplier = 1e9 if unit in ("billion", "tỷ", "tỉ") else 1e6
+            if value * multiplier >= HARD_SIGNAL_MIN_USERS:
+                has_users = True
+                reasons.append(
+                    "Quy mô hàng triệu: %s (%d người/bản ghi)"
+                    % (m.group(0).strip(), HARD_SIGNAL_MIN_USERS))
+                break
+
+        # (3) Cụm kỷ lục.
+        has_record = False
+        rec = _RECORD_RE.search(blob)
+        if rec:
+            has_record = True
+            reasons.append("Quy mô kỷ lục: %s" % rec.group(0).strip())
+
+        # (4) TỔ CHỨC TRỌNG YẾU - 2 TẦNG, org PHẢI Ở TRONG TITLE.
+        # (chỉ xét title -> "Microsoft" chỉ xuất hiện trong summary của một
+        #  bài khác không kích hoạt nhóm này).
+        tier1_org = None
+        for org in ORGS_TIER1:
+            if match_phrase(title_l, org):
+                tier1_org = org
+                break
+        if tier1_org is not None:
+            # Tầng 1: cần thêm từ khóa sự cố NẠN NHÂN (trong title+summary).
+            incident_hit = match_any(blob, ORG_INCIDENT_PHRASES)
+            if incident_hit:
+                reasons.append(
+                    "Tổ chức trọng yếu (tầng 1) liên quan sự cố: %s (%s)"
+                    % (tier1_org, incident_hit))
+        else:
+            # Tầng 2: org CHỈ tính khi đi kèm tiền / quy mô người / kỷ lục.
+            for org in ORGS_TIER2:
+                if match_phrase(title_l, org):
+                    if has_money:
+                        why = "tiền >= %d USD" % HARD_SIGNAL_MIN_USD
+                    elif has_users:
+                        why = "quy mô >= %d người" % HARD_SIGNAL_MIN_USERS
+                    elif has_record:
+                        why = "cụm kỷ lục"
+                    else:
+                        why = None
+                    if why:
+                        reasons.append(
+                            "Tổ chức trọng yếu (tầng 2) + %s: %s"
+                            % (why, org))
+                    break
+
+        return bool(reasons), reasons
+    except Exception as exc:
+        logger.warning("[HARD] Lỗi detect_hard_signals %r: %r",
+                       getattr(article, "title", "?"), exc)
+        return False, []
+
+
+# =====================================================================
 # DATA MODEL
 # =====================================================================
 
@@ -442,6 +746,9 @@ class ScoredArticle:
     reasons: List[str] = field(default_factory=list)   # vì sao được điểm đó
     penalties: List[str] = field(default_factory=list) # tín hiệu tiêu cực gặp phải
     fingerprint: str = ""                 # dùng dedup giữa các lần chạy
+    # --- TÍN HIỆM CỨNG (A3) - "tin quy mô lớn" do detect_hard_signals gán ---
+    hard_signal: bool = False             # bài CÓ tín hiệu cứng (mặc định False)
+    hard_signal_reasons: List[str] = field(default_factory=list)
     # --- TIN NÓNG (hot.py ghi vào; giá trị mặc định khi chưa annotate/cấp slot) ---
     corroboration: int = 0                # số nguồn RSS KHÁC NHAU cùng đưa sự kiện
     slot: str = "none"                    # "hot" | "normal" | "none" (chưa cấp)
@@ -466,7 +773,8 @@ class ScoredArticle:
 
 VIETNAM_PHRASES = [
     # Địa danh / cơ quan / công ty Việt Nam
-    "vietnam", "viet nam", "vietnamese", "viet-nam",
+    # (bản có DẤU và không dấu - bài tiếng Việt hay viết "Việt Nam")
+    "vietnam", "viet nam", "việt nam", "vietnamese", "viet-nam", "việt-nam",
     "công an", "bo cong an", "bocongan", "cơ quan điều tra",
     "khởi tố", "triệt phá", "tội phạm mạng", "an ninh mang", "an ninh mạng",
     "bộ quốc phòng", "bộ thông tin", "vncert", "vincert",
@@ -509,13 +817,18 @@ def detect_vietnam(article):
 # 3. PHÂN LOẠI CHỦ ĐỀ
 # =====================================================================
 
-def classify_topic(article):
+def classify_topic(article, has_hard_signal=False):
     """
     Phân loại article vào IT / CYBERSECURITY / CYBERCRIME / OTHER.
     Trả về: (topic: str, score_base: int, matched: List[str])
 
     E1: so khớp theo RANH GIỚI TỪ (match_phrase) thay vì `phrase in text`,
     tránh false positive kiểu "apt" match "adapting", "cve" match "cvein"...
+
+    A2: bài CHỈ có từ yếu (hacker/breach/leak...) nhưng CÓ "tín hiệu cứng"
+    (detect_hard_signals -> has_hard_signal=True) KHÔNG được trả về OTHER:
+    -> tin như "Telegram bot leaks personal data of 50 million citizens"
+       hay "Hackers breached the US Treasury" không chết trước khi AI thấy.
     """
     title = (article.title or "").lower()
     summary = (article.summary or "").lower()
@@ -545,20 +858,31 @@ def classify_topic(article):
     strong_topic = max(totals, key=lambda k: totals[k]) if totals else "OTHER"
     strong_score = totals.get(strong_topic, 0)
 
+    base_by_topic = {
+        "CYBERSECURITY": 30,
+        "CYBERCRIME": 30,
+        "IT": 15,
+    }
+
     if strong_score == 0:
+        if has_hard_signal:
+            # A2: không có hit từ khóa nào NHƯNG có tín hiệu cứng ->
+            # vẫn là bài cần xét (gán CYBERSECURITY, điểm cơ sở cao gần
+            # bằng bài có từ khóa mạnh - hard signal đã là bằng chứng lớn).
+            return "CYBERSECURITY", 25, []
         # Không có từ khóa đủ mạnh -> OTHER, điểm cơ sở thấp.
         return "OTHER", 0, []
 
     # Nếu CHỈ có weak phrases và tổng hit rất thấp -> coi như không đủ mạnh.
     matched = title_hits.get(strong_topic, []) + summary_hits.get(strong_topic, [])
     if strong_score < 6 and not [m for m in matched if m not in WEAK_PHRASES]:
+        if has_hard_signal:
+            # A2: chỉ có từ yếu nhưng CÓ tín hiệu cứng -> không loại OTHER,
+            # cho điểm cơ sở đầy đủ theo chủ đề (tín hiệu cứng cộng thêm
+            # ở scoring) -> vụ việc đủ lớn đạt ngưỡng đăng cả khi AI tắt.
+            return strong_topic, base_by_topic.get(strong_topic, 25), matched
         return "OTHER", 0, matched
 
-    base_by_topic = {
-        "CYBERSECURITY": 30,
-        "CYBERCRIME": 30,
-        "IT": 15,
-    }
     base = base_by_topic.get(strong_topic, 0)
 
     # Trộn chủ đề: nếu 2 chủ đề đều có hit đáng kể -> cộng thêm.
@@ -591,6 +915,11 @@ def score_article(article, now=None):
     ref = now or now_vn()
     scored = ScoredArticle(article=article)
 
+    # Loại nguồn (D1/5). Nguồn kind "vn" -> LUÔN coi là bài Việt Nam
+    # (gán TRƯỚC mọi nhánh return sớm -> bài bị cổng vẫn giữ cờ is_vietnam).
+    src_kind = SOURCE_KIND.get(article.source, "security")
+    scored.is_vietnam = (src_kind == "vn")
+
     title = (article.title or "").lower()
     summary = (article.summary or "").lower()
     blob = title + " " + summary
@@ -616,8 +945,28 @@ def score_article(article, now=None):
         scored.fingerprint = make_fingerprint(article)
         return scored
 
+    # --- 4.1b. TÍN HIỆN CỨNG (A3) - tính TRƯỚC khi phân loại ---
+    hard, hard_reasons = detect_hard_signals(article)
+    scored.hard_signal = hard
+    scored.hard_signal_reasons = list(hard_reasons)
+
+    # --- 4.1c. CỔNG NGUỒN CRYPTO/TỔNG HỢP/VIỆT NAM (D1 + item 5) ---
+    # Nguồn crypto / tổng hợp / báo VN CHỈ vào pipeline khi có hard_signal
+    # HOẶC có từ khóa tấn công/sự cố rõ ràng (không bị ngập tin giá coin,
+    # tin thị trường, tin đời sống/thương mại của báo VN).
+    if src_kind in SOURCE_REQUIRES_HARD_SIGNAL and not hard:
+        if match_any(blob, HARD_ATTACK_PHRASES) is None:
+            logger.info("[FILTER] Loại (nguồn %s, không có hard_signal/từ khóa "
+                        "tấn công): %s", src_kind, article.title[:80])
+            scored.score = 0
+            scored.penalties.append(
+                "Nguồn %s: không có hard_signal hay từ khóa tấn công"
+                % src_kind)
+            scored.fingerprint = make_fingerprint(article)
+            return scored
+
     # --- 4.2. Phân loại chủ đề ---
-    topic, base, matched = classify_topic(article)
+    topic, base, matched = classify_topic(article, has_hard_signal=hard)
     scored.topic = topic
 
     if topic == "OTHER":
@@ -642,6 +991,15 @@ def score_article(article, now=None):
             scored.reasons.append("%s (+%d)" % (reason, points))
             specials_hit |= SPECIALS_FROM_SIGNAL.get(reason, set())
 
+    # --- 4.3b. TÍN HIỆN CỨNG (A3b): +25 và luôn làm is_special=True ---
+    if scored.hard_signal:
+        scored.score += HARD_SIGNAL_POINTS
+        scored.reasons.append("Tín hiệu cứng (quy mô lớn) (+%d)"
+                              % HARD_SIGNAL_POINTS)
+        for reason in scored.hard_signal_reasons:
+            scored.reasons.append(reason)
+            specials_hit |= _specials_in_text(reason)
+
     # --- 4.4. Tin cậy nguồn ---
     trust = SOURCE_TRUST_SCORE.get(article.source, SOURCE_TRUST_SCORE.get("Unknown", 5))
     scored.score += trust
@@ -664,7 +1022,10 @@ def score_article(article, now=None):
             specials_hit |= _specials_in_text(fresh_reason)
 
     # --- 4.6. Ưu tiên Việt Nam ---
-    scored.is_vietnam = detect_vietnam(article)
+    # Nguồn kind "vn" đã gán is_vietnam=True từ đầu (item 5); detect_vietnam
+    # chỉ BỔ SUNG cho nguồn khác viết về Việt Nam (KHÔNG ghi đè về False).
+    if not scored.is_vietnam and detect_vietnam(article):
+        scored.is_vietnam = True
     if scored.is_vietnam:
         # Chỉ cộng điểm nếu bài ĐÃ có tín hiệu mạnh (score >= 40),
         # tránh đăng mọi tin Việt Nam chỉ vì nó ở Việt Nam.
@@ -678,26 +1039,34 @@ def score_article(article, now=None):
             scored.reasons.append(vn_reason)
             specials_hit |= _specials_in_text(vn_reason)
 
-    # --- 4.7. Tín hiệu tiêu cực ---
-    for phrase, points, reason in NEGATIVE_SIGNALS:
-        if match_phrase(blob, phrase):
-            scored.score += points  # points âm
-            scored.penalties.append("%s (%d)" % (reason, points))
+    # --- 4.7. Tín hiệu tiêu cực (A4) ---
+    # KHÔNG áp penalty nào lên bài có hard_signal (tin quy mô lớn không bị
+    # trừ oan do từ mơ hồ); từ mơ hồ (NEGATIVE_TITLE_ONLY) CHỈ so với TITLE.
+    if not scored.hard_signal:
+        for phrase, points, reason in NEGATIVE_SIGNALS:
+            if match_phrase(blob, phrase):
+                scored.score += points  # points âm
+                scored.penalties.append("%s (%d)" % (reason, points))
+        for phrase, points, reason in NEGATIVE_TITLE_ONLY:
+            if match_phrase(title, phrase):
+                scored.score += points  # points âm
+                scored.penalties.append("%s (%d) (title)" % (reason, points))
 
-    # Bài có chữ "hacker" nhưng KHÔNG có tín hiệu bảo mật nào khác -> trừ mạnh.
-    # (Không đăng bài chỉ vì có chữ "hacker".)
-    hacker_only = (
-        match_phrase(title, "hacker")
-        or match_phrase(title, "hackers")
-        or match_phrase(title, "hacking")
-        or match_phrase(title, "hacked")
-    )
-    has_security_signal = any(
-        match_phrase(blob, p) for p, _, _ in POSITIVE_SIGNALS
-    )
-    if hacker_only and not has_security_signal:
-        scored.score -= 25
-        scored.penalties.append("Chỉ có chữ 'hacker', không có tín hiệu security khác (-25)")
+        # Bài có chữ "hacker" nhưng KHÔNG có tín hiệu bảo mật nào khác -> trừ mạnh.
+        # (Không đăng bài chỉ vì có chữ "hacker".)
+        hacker_only = (
+            match_phrase(title, "hacker")
+            or match_phrase(title, "hackers")
+            or match_phrase(title, "hacking")
+            or match_phrase(title, "hacked")
+        )
+        has_security_signal = any(
+            match_phrase(blob, p) for p, _, _ in POSITIVE_SIGNALS
+        )
+        if hacker_only and not has_security_signal:
+            scored.score -= 25
+            scored.penalties.append(
+                "Chỉ có chữ 'hacker', không có tín hiệu security khác (-25)")
 
     # --- 4.8. Cắt về [0, 100] ---
     if scored.score < 0:
@@ -714,9 +1083,10 @@ def score_article(article, now=None):
     scored.tags = build_tags(article, scored.topic, scored.is_vietnam, blob)
     scored.fingerprint = make_fingerprint(article)
 
-    logger.info("[SCORE] %d | %s | %s | VN=%s | special=%s | %s",
+    logger.info("[SCORE] %d | %s | %s | VN=%s | special=%s | hard=%s | %s",
                 scored.score, scored.topic, article.source,
-                scored.is_vietnam, scored.is_special, article.title[:80])
+                scored.is_vietnam, scored.is_special, scored.hard_signal,
+                article.title[:80])
 
     return scored
 
@@ -933,8 +1303,10 @@ def _ai_rescue_ok(scored):
     """
     Bài CHƯA đạt ngưỡng rule có được "cứu" nhờ AI không. True khi TẤT CẢ:
     - Có .ai_decision thật (AI đã đánh giá; AI lỗi/tắt -> không có -> False).
-    - decision.publish == True và decision.score >= AI_RESCUE_MIN_SCORE (85).
+    - decision.publish == True và decision.score >= AI_RESCUE_MIN_SCORE (80).
     - điểm rule scored.score >= AI_CANDIDATE_MIN_SCORE (45) - dưới 45 không cứu.
+      (Ngoại lệ B3: bài hard_signal KHÔNG bị chặn bởi ngưỡng 45 - AI chấm
+       >= 80 là đủ để đăng ở slot thường khi slot nóng đã hết.)
     """
     decision = getattr(scored, "ai_decision", None)
     if decision is None:
@@ -943,7 +1315,8 @@ def _ai_rescue_ok(scored):
         return False
     if int(getattr(decision, "score", 0) or 0) < AI_RESCUE_MIN_SCORE:
         return False
-    if scored.score < AI_CANDIDATE_MIN_SCORE:
+    if scored.score < AI_CANDIDATE_MIN_SCORE and not getattr(
+            scored, "hard_signal", False):
         return False
     return True
 

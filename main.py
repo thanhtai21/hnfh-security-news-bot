@@ -11,7 +11,9 @@ Luồng:
 4. Chấm điểm (analyzer.analyze_articles) + tính corroboration
    (hot.annotate_corroboration) TRÊN DANH SÁCH CHƯA BỊ DEDUP.
 5. Lọc rule -> candidate. Ở chế độ hot-only (hết quota thường) chỉ giữ bài
-   is_hot_rule và bỏ bài is_ai_rejected(hot_only=True).
+   is_hot_rule HOẶC bài hard_signal, và bỏ bài is_ai_rejected(hot_only=True).
+   Bài hard_signal LUÔN vào candidate (cả hai nhánh), đứng đầu và KHÔNG bị
+   cắt bởi AI_MAX_CANDIDATES (B1).
 6. AI EDITOR (ai_editor.review_candidates): AI filter + AI viết tiếng Việt +
    CẤP SLOT hot/normal. AI lỗi/tắt -> fallback: main tự cấp slot (ai_used=False).
 7. KIỂM TRA LẠI BẰNG CODE:
@@ -41,6 +43,7 @@ from config import (
     DISCORD_BOT_TOKEN_ENV,
     DISCORD_CHANNEL_ID,
     DRY_RUN,
+    HARD_MAX_CANDIDATES,
     HOT_ENABLED,
     LOG_LEVEL,
     MAX_HOT_POSTS_PER_DAY,
@@ -205,14 +208,28 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
     """
     Lọc các bài đạt ngưỡng và chưa từng đăng, giữ thứ tự điểm giảm dần.
 
-    hot_only=True (KHÔNG ĐỔI - giữ nguyên hành vi cũ):
-    - meets_threshold: điểm >= 85, hoặc 70-84 kèm yếu tố đặc biệt.
+    B1 - BÀI CÓ hard_signal=True LUÔN được đưa vào candidate (CẢ HAI nhánh):
+    - không cần đạt AI_CANDIDATE_MIN_SCORE (45),
+    - không cần đạt meets_threshold,
+    - ở hot_only KHÔNG cần đạt is_hot_rule.
+    Candidate hard_signal đứng ĐẦU danh sách gửi AI và KHÔNG bị cắt bởi
+    AI_MAX_CANDIDATES (danh sách thường mới bị cắt).
+
+    HARD-MAX (item 4): số bài hard_signal gửi AI mỗi lần chạy bị giới hạn
+    HARD_MAX_CANDIDATES (= 8), sắp theo điểm rule GIẢM DẦN. Bài hard vượt
+    giới hạn KHÔNG bị ghi ai_rejected, KHÔNG bị đánh dấu gì -> lần chạy sau
+    vẫn xét lại từ đầu (không bao giờ "đánh mất" tin lớn vì hết suất AI).
+
+    hot_only=True:
+    - meets_threshold: điểm >= 85, hoặc 70-84 kèm yếu tố đặc biệt
+      (HOẶC hard_signal - xem trên).
     - BẮT BUỘC is_hot_rule (E3) - lọc TRƯỚC khi cắt AI_MAX_CANDIDATES
-      nên không bỏ lọt bài nóng vì hết suất gửi AI.
+      nên không bỏ lọt bài nóng vì hết suất gửi AI (ngoại lệ hard_signal).
 
     hot_only=False (MỞ RỘNG cho AI rescue):
-    - meets_threshold(s) HOẶC s.score >= AI_CANDIDATE_MIN_SCORE (45):
-      bài 45-84 (chưa đạt ngưỡng đăng) vẫn được GỬI AI xem xét.
+    - meets_threshold(s) HOẶC s.score >= AI_CANDIDATE_MIN_SCORE (45)
+      HOẶC hard_signal.
+      Bài 45-84 (chưa đạt ngưỡng đăng) vẫn được GỬI AI xem xét.
     - Sắp xếp trước khi cắt theo (meets_threshold giảm dần, score giảm dần)
       -> bài ĐẠT ngưỡng rule luôn chiếm suất gửi AI trước, bài 45-84 chỉ
       lấy suất còn trống.
@@ -224,16 +241,19 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
         + hot_only=True  (chỉ còn quota nóng) -> bỏ bài scope "all" VÀ "hot_only".
     - Không trùng sự kiện với bài đã chọn trước đó trong lần này.
 
-    Cắt danh sách còn AI_MAX_CANDIDATES để payload gửi AI không quá dài.
+    Cắt danh sách THƯỜNG còn AI_MAX_CANDIDATES để payload gửi AI không quá
+    dài; bài hard_signal cắt theo HARD_MAX_CANDIDATES (8) thay vì cái này.
     """
     limit = get_max_candidates()
-    picked = []
+    picked = []          # bài thường (bị cắt theo AI_MAX_CANDIDATES)
+    hard_picked = []     # bài hard_signal (cắt theo HARD_MAX_CANDIDATES)
     skipped_rejected = 0
     skipped_not_hot = 0
 
     if hot_only:
-        # Nhánh hot: GIỮ NGUYÊN - vẫn bắt buộc meets_threshold + is_hot_rule,
-        # không sort lại (scored đã sort điểm giảm dần từ analyze_articles).
+        # Nhánh hot: GIỮ NGUYÊN - vẫn bắt buộc meets_threshold + is_hot_rule
+        # (trừ hard_signal), không sort lại (scored đã sort điểm giảm dần
+        # từ analyze_articles).
         pool = scored
     else:
         # Nhánh thường: ưu tiên bài ĐẠT ngưỡng rule, rồi tới điểm giảm dần.
@@ -244,11 +264,13 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
         )
 
     for s in pool:
+        hard = bool(getattr(s, "hard_signal", False))
         if hot_only:
-            if not meets_threshold(s):
+            if not (meets_threshold(s) or hard):
                 continue
         else:
-            if not (meets_threshold(s) or s.score >= AI_CANDIDATE_MIN_SCORE):
+            if not (meets_threshold(s) or hard
+                    or s.score >= AI_CANDIDATE_MIN_SCORE):
                 continue
         if is_already_posted(s, state):
             continue
@@ -258,20 +280,34 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
                 continue
         except Exception as exc:
             logger.warning("[STATE] Lỗi kiểm tra bộ nhớ AI loại (%r).", exc)
-        if hot_only and not is_hot_rule(s, now):
+        if hot_only and not hard and not is_hot_rule(s, now):
             skipped_not_hot += 1
             continue
-        if is_duplicate_of_any(s, picked):
+        if is_duplicate_of_any(s, hard_picked + picked):
             continue
-        picked.append(s)
-        if len(picked) >= limit:
-            break
+        if hard:
+            hard_picked.append(s)
+        elif len(picked) < limit:
+            picked.append(s)
 
-    logger.info("[FILTER] Số bài đạt ngưỡng rule (trước AI, tối đa %d): %d "
-                "(bỏ %d bài từng bị AI loại%s)",
-                limit, len(picked), skipped_rejected,
+    # hard_signal đứng đầu, sắp theo điểm giảm dần (item 4).
+    hard_picked.sort(key=lambda s: s.score, reverse=True)
+    hard_total = len(hard_picked)
+    hard_sent = hard_picked[:HARD_MAX_CANDIDATES]
+    hard_cut = hard_total - len(hard_sent)
+    result = hard_sent + picked
+
+    # LOG MỖI LẦN CHẠY (item 8): số hard_signal, số gửi AI, số bị cắt.
+    logger.info("[HARD] Số bài hard_signal: %d | gửi AI: %d | bị cắt do "
+                "HARD_MAX_CANDIDATES=%d: %d (giữ xét lại lần chạy sau, "
+                "KHÔNG ghi ai_rejected)",
+                hard_total, len(hard_sent), HARD_MAX_CANDIDATES, hard_cut)
+    logger.info("[FILTER] Số bài đạt ngưỡng rule (trước AI, tối đa %d thường "
+                "+ %d/%d hard_signal): %d (bỏ %d bài từng bị AI loại%s)",
+                limit, len(hard_sent), HARD_MAX_CANDIDATES, len(result),
+                skipped_rejected,
                 ", %d bài không đạt hot_rule" % skipped_not_hot if hot_only else "")
-    return picked
+    return result
 
 
 # =====================================================================
@@ -331,13 +367,14 @@ def log_hot_table(candidates, now=None):
         try:
             logger.info(
                 "[HOT] %s | score=%d age=%sh special=%s sources=%d vn=%s "
-                "-> rule_hot=%s%s | %s -> slot=%s",
+                "hard=%s -> rule_hot=%s%s | %s -> slot=%s",
                 (getattr(s, "title", "") or "")[:60],
                 int(getattr(s, "score", 0) or 0),
                 age_s,
                 bool(getattr(s, "is_special", False)),
                 int(getattr(s, "corroboration", 0) or 0),
                 bool(getattr(s, "is_vietnam", False)),
+                bool(getattr(s, "hard_signal", False)),
                 ok, fail_s, ai_part,
                 getattr(s, "slot", "none"),
             )
@@ -374,7 +411,8 @@ def gather_and_select(state, now):
 
     hot_only = remaining_normal <= 0
     if hot_only:
-        logger.info("[GATE] Hết quota THƯỜNG -> chỉ xét bài đạt is_hot_rule.")
+        logger.info("[GATE] Hết quota THƯỜNG -> chỉ xét bài đạt is_hot_rule "
+                    "HOẶC bài có hard_signal.")
 
     logger.info("[RSS] Bắt đầu thu thập tin từ %d nguồn...", len(RSS_SOURCES))
     articles = collect_articles(now)
@@ -388,16 +426,26 @@ def gather_and_select(state, now):
     scored = analyze_articles(articles, now)
     logger.info("[SCORE] Hoàn tất. Số bài đạt điểm: %d",
                 sum(1 for s in scored if s.score >= MIN_SCORE_TO_POST))
+    # LOG MỖI LẦN CHẠY (item 8): số bài hard_signal.
+    logger.info("[HARD] Số bài hard_signal sau chấm điểm: %d/%d",
+                sum(1 for s in scored if getattr(s, "hard_signal", False)),
+                len(scored))
 
     # E2/B1: tính corroboration NGAY SAU khi chấm điểm - analyze_articles
     # KHÔNG dedup bên trong nên đây là danh sách CHƯA bị dedup.
     annotate_corroboration(scored)
 
-    # --- Lọc rule -> candidate (hot-only: chỉ bài is_hot_rule) ---
+    # --- Lọc rule -> candidate (hot-only: bài is_hot_rule HOẶC hard_signal) ---
     candidates = build_rule_candidates(scored, state, now, hot_only=hot_only)
     if not candidates:
         logger.info("[FILTER] Không còn candidate -> kết thúc, KHÔNG gọi AI.")
         return [], []
+
+    # LOG MỖI LẦN CHẠY (item 8): số bài gửi AI (phân rã hard/thường).
+    hard_in_cands = sum(1 for s in candidates
+                        if getattr(s, "hard_signal", False))
+    logger.info("[AI] Số bài gửi AI: %d (hard_signal %d, thường %d)",
+                len(candidates), hard_in_cands, len(candidates) - hard_in_cands)
 
     # --- AI FILTER + AI WRITER + CẤP SLOT (fallback graceful nếu AI lỗi/tắt) ---
     ai_selected = review_candidates(candidates, now,

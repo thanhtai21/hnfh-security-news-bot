@@ -1,12 +1,13 @@
 # Workflow chạy Discord Cybersecurity News Bot trên GitHub Actions (MIỄN PHÍ).
 #
-# - Chạy theo lịch: mỗi 3 GIỜ (cron của GitHub Actions là UTC!
-#   0 */3 * * * UTC = 07:00, 10:00, 13:00, 16:00, 19:00, 22:00, 01:00, 04:00 giờ VN).
-#   Muốn đổi tần suất -> sửa dòng cron dưới đây (ví dụ "0 */6 * * *" = 6 giờ/lần).
+# - Chạy theo lịch: MỖI GIỜ (cron của GitHub Actions là UTC!
+#   17 * * * * UTC = phút 17 mỗi giờ: 07:17, 08:17, ... 23:17, 00:17... giờ VN).
+#   Muốn đổi tần suất -> sửa dòng cron dưới đây (ví dụ "17 */2 * * *" = 2 giờ/lần).
 # - Tin THƯỜNG: mỗi khung giờ VN đăng tối đa 1 bài hot nhất (xem NORMAL_POST_SLOTS
-#   trong config.py): sáng 06-11h (chạy 07h, 10h), trưa 11-15h (13h),
-#   chiều 15-21h (16h, 19h) -> tối đa 3 bài/ngày. Các lần chạy 22h, 01h, 04h
-#   chỉ quét TIN NÓNG. KHÔNG nên giảm số lần chạy/ngày, kẻo trễ tin nóng.
+#   trong config.py): sáng 06-11h, trưa 11-15h, chiều 15-21h -> tối đa 3 bài/ngày;
+#   các lần chạy trong cùng khung không đăng thêm bài thường (quota chặn).
+#   Các lần chạy 22h-05h chỉ quét TIN NÓNG. Gate quota trong main.py thoát SỚM
+#   khi hết cả quota thường lẫn quota nóng -> không fetch RSS, không gọi AI.
 # - Chạy tay: tab Actions -> News Bot -> Run workflow (có input dry_run).
 # - Bot chạy MỘT LẦN rồi thoát (KHÔNG while True, KHÔNG server).
 # - State được commit/push lại vào repo sau mỗi lần chạy CHỈ KHI file đổi.
@@ -18,8 +19,8 @@ name: News Bot
 on:
   schedule:
     # Lưu ý: GitHub cron dùng UTC, không phải giờ Việt Nam.
-    # 0 */3 * * * = 00:00, 03:00, 06:00... UTC (07:00, 10:00, 13:00... giờ VN).
-    - cron: "17 */2 * * *"
+    # 17 * * * * = phút 17 mỗi giờ UTC (07:17, 08:17, 09:17... giờ VN).
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       dry_run:

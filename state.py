@@ -28,7 +28,8 @@ Schema (state/news_state.json):
       "link": "...",
       "fingerprint": "30ee19e8d8a5618f",
       "rejected_at": "2026-10-23T21:15:03+07:00",
-      "scope": "all"
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
@@ -38,6 +39,7 @@ TƯƠNG THÍCH NGƯỢC TUYỆT ĐỐI - file state cũ vẫn load được, kh�
 - Thiếu "daily_hot_posts"  -> {} (chưa từng đăng tin nóng).
 - Bài trong "posts" thiếu "kind"     -> coi là "normal".
 - Mục "ai_rejected" thiếu "scope"    -> coi là "all".
+- Mục "ai_rejected" thiếu "ttl_hours"-> TTL 36 giờ (bài thường).
 
 QUOTA HAI LOẠI (C1/C2):
 - daily_posts + posts.kind="normal": quota tin THƯỜNG (MAX_POSTS_PER_DAY = 3,
@@ -52,7 +54,10 @@ BỘ NHỚ "BÀI BỊ AI LOẠI" (ai_rejected, có scope - C3):
                     -> chặn ở MỌI chế độ.
 - scope "hot_only": AI DUYỆT nhưng bài KHÔNG nóng khi quota thường đã đầy
                     -> CHỈ chặn ở chế độ hot-only; sang tin thường vẫn xét lại.
-- TTL = config.MAX_ARTICLE_AGE_HOURS: quá hạn thì mục bị dọn.
+- TTL theo TỪNG mục (B4): bài hard_signal bị AI loại -> TTL6 giờ
+  (config.AI_REJECT_TTL_HOURS_HARD, lưu trong trường "ttl_hours");
+  bài thường -> TTL config.MAX_ARTICLE_AGE_HOURS (36 giờ). Quá hạn thì
+  mục bị dọn và không còn chặn.
 - KHÔNG ghi khi AI lỗi/tắt/fallback (không có quyết định thật).
 
 LƯU Ý (C4): save() coi thay đổi CHỈ gồm "last_run" là KHÔNG có thay đổi ->
@@ -86,6 +91,7 @@ import shutil
 from datetime import datetime, timedelta
 
 from config import (
+    AI_REJECT_TTL_HOURS_HARD,
     MAX_ARTICLE_AGE_HOURS,
     MAX_HOT_POSTS_PER_DAY,
     MAX_POSTS_PER_DAY,
@@ -122,6 +128,40 @@ def _parse_iso(value):
         return datetime.fromisoformat(value)
     except ValueError:
         return None
+
+
+def _entry_ttl_hours(item):
+    """
+    TTL (giờ) của một mục "bài bị AI loại" (B4):
+    - Mục có "ttl_hours" -> dùng giá trị đó. Bài hard_signal khi bị AI loại
+      được ghi TTL = AI_REJECT_TTL_HOURS_HARD (6 giờ) thay vì 36 giờ, để tin
+      đang diễn biến (số tiền cập nhật) được xét lại sớm.
+    - Mục cũ / thiếu trường -> MAX_ARTICLE_AGE_HOURS (36h - bài thường).
+    - Giá trị hỏng / <= 0 -> mặc định an toàn MAX_ARTICLE_AGE_HOURS.
+    """
+    try:
+        ttl = float((item or {}).get("ttl_hours"))
+        if ttl > 0:
+            return ttl
+    except (TypeError, ValueError, AttributeError):
+        pass
+    return float(MAX_ARTICLE_AGE_HOURS)
+
+
+def _is_expired(item, ref):
+    """
+    True nếu mục `item` đã quá TTL so với thời điểm `ref` (B4).
+    ref=None hoặc không đọc được rejected_at -> False (giữ mục, an toàn).
+    """
+    rejected_at = _parse_iso(item.get("rejected_at"))
+    if rejected_at is None or ref is None:
+        return False
+    try:
+        if rejected_at.tzinfo is None and ref.tzinfo is not None:
+            rejected_at = rejected_at.replace(tzinfo=ref.tzinfo)
+        return rejected_at < ref - timedelta(hours=_entry_ttl_hours(item))
+    except Exception:
+        return False
 
 
 def _backup_path(path):
@@ -388,7 +428,9 @@ class NewsState:
     def _prune_ai_rejected(self):
         """
         Dọn bộ nhớ bài bị AI loại:
-        - Bỏ mục quá TTL (MAX_ARTICLE_AGE_HOURS tính từ rejected_at).
+        - Bỏ mục quá TTL (B4: mỗi mục có TTL RIÊNG - bài hard_signal
+          AI_REJECT_TTL_HOURS_HARD=6 giờ, bài thường MAX_ARTICLE_AGE_HOURS
+          = 36 giờ - tính từ rejected_at).
         - Bỏ mục thiếu trường dữ liệu.
         - Cắt còn MAX_AI_REJECTED mục mới nhất.
         """
@@ -399,10 +441,6 @@ class NewsState:
             ref = now_vn()
         except Exception:
             ref = None
-
-        cutoff = None
-        if ref is not None:
-            cutoff = ref - timedelta(hours=MAX_ARTICLE_AGE_HOURS)
 
         kept = []
         dropped = 0
@@ -421,11 +459,12 @@ class NewsState:
                 # Không đọc được thời điểm -> giữ lại (an toàn, không mất dữ liệu).
                 kept.append(item)
                 continue
-            if cutoff is not None:
+            if ref is not None:
                 try:
                     # Ép cùng kiểu so sánh aware/naive nếu file cũ lưu thiếu tz.
-                    if rejected_at.tzinfo is None and cutoff.tzinfo is not None:
-                        rejected_at = rejected_at.replace(tzinfo=cutoff.tzinfo)
+                    if rejected_at.tzinfo is None and ref.tzinfo is not None:
+                        rejected_at = rejected_at.replace(tzinfo=ref.tzinfo)
+                    cutoff = ref - timedelta(hours=_entry_ttl_hours(item))
                     if rejected_at < cutoff:
                         dropped += 1
                         continue
@@ -551,6 +590,8 @@ class NewsState:
         - scope "hot_only": CHỈ True khi hot_only=True (đang xét chế độ tin
           nóng khi quota thường đã đầy); xét tin thường thì KHÔNG chặn.
         - Mục cũ không có scope -> coi là "all" (tương thích ngược).
+        - TTL theo TỪNG mục (B4): bài hard_signal bị loại chỉ chặn 6 giờ
+          (AI_REJECT_TTL_HOURS_HARD), bài thường 36 giờ; hết TTL -> hết chặn.
         `scored`: analyzer.ScoredArticle (dùng getattr để an toàn).
         """
         if not self.ai_rejected:
@@ -560,6 +601,11 @@ class NewsState:
         fingerprint = getattr(scored, "fingerprint", "") or ""
         if not link and not fingerprint:
             return False
+
+        try:
+            ref = now or now_vn()
+        except Exception:
+            ref = None
 
         for item in self.ai_rejected:
             if not isinstance(item, dict):
@@ -571,6 +617,8 @@ class NewsState:
                 match = True
             if not match:
                 continue
+            if _is_expired(item, ref):
+                continue   # hết TTL (B4) -> không chặn nữa
 
             scope = str(item.get("scope") or "all").lower()
             if scope == "all":
@@ -589,6 +637,8 @@ class NewsState:
         Chỉ ghi khi AI đã thật sự đánh giá (không ghi khi AI lỗi/fallback).
         Ghi đè thời điểm nếu bài đã có trong bộ nhớ và KHÔNG hạ cấp scope
         ("all" đã ghi thì "hot_only" không làm mất đi).
+        TTL (B4): bài có hard_signal -> AI_REJECT_TTL_HOURS_HARD (6 giờ),
+        bài thường -> MAX_ARTICLE_AGE_HOURS (36 giờ), lưu theo từng mục.
         `scored`: analyzer.ScoredArticle, `now`: thời điểm (mặc định now_vn()).
         """
         link = getattr(scored, "link", "") or ""
@@ -597,6 +647,9 @@ class NewsState:
             return
 
         scope = "hot_only" if str(scope or "all").lower() == "hot_only" else "all"
+        ttl_hours = (AI_REJECT_TTL_HOURS_HARD
+                     if getattr(scored, "hard_signal", False)
+                     else MAX_ARTICLE_AGE_HOURS)
 
         ref = now or now_vn()
         try:
@@ -604,7 +657,8 @@ class NewsState:
         except Exception:
             rejected_at = format_vn_time(ref)
 
-        # Cập nhật nếu đã tồn tại (gia hạn TTL), không thêm trùng.
+        # Cập nhật nếu đã tồn tại (gia hạn TTL + TTL mới theo loại bài),
+        # không thêm trùng.
         for item in self.ai_rejected:
             if not isinstance(item, dict):
                 continue
@@ -612,6 +666,7 @@ class NewsState:
             same_fp = fingerprint and item.get("fingerprint") == fingerprint
             if same_link or same_fp:
                 item["rejected_at"] = rejected_at
+                item["ttl_hours"] = ttl_hours
                 # Giữ scope rộng nhất: "all" không bao giờ bị hạ thành
                 # "hot_only"; "hot_only" thì nâng lên "all" được.
                 if scope == "all" or str(item.get("scope") or "all").lower() != "all":
@@ -623,6 +678,7 @@ class NewsState:
             "fingerprint": fingerprint,
             "rejected_at": rejected_at,
             "scope": scope,
+            "ttl_hours": ttl_hours,
         })
 
         # Cắt bớt nếu vượt giới hạn.

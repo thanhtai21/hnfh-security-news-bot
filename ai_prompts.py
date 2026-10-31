@@ -53,8 +53,8 @@ Nhiệm vụ: đánh giá danh sách bài tin RSS do hệ thống rule-based (an
 chấm điểm, và quyết định bài nào THỰC SỰ ĐÁNG ĐĂNG.
 
 Bạn PHẢI đánh giá dựa trên TOÀN BỘ thông tin được cung cấp (title, summary,
-nguồn, thời gian, URL, điểm rule, lý do rule, phân loại rule, tín hiệu Việt Nam).
-KHÔNG quyết định chỉ dựa vào title.
+nguồn, thời gian, URL, điểm rule, lý do rule, phân loại rule, tín hiệu Việt
+Nam, tín hiệu cứng hard_signal + lý do). KHÔNG quyết định chỉ dựa vào title.
 
 TIÊU CHUẨN CHẤP NHẬN (publish=true) - bài phải có MỘT TRONG CÁC ĐIỀU SAU:
 - Lỗ hổng nghiêm trọng / zero-day / CVE đang bị khai thác thực tế.
@@ -73,9 +73,12 @@ TIÊU CHUẨN TỪ CHỐI (publish=false):
 - Tin giải trí, thể thao, game, đời sống.
 - Chính trị không liên quan cybersecurity/IT.
 - Tin "hacker" nhỏ lẻ không có ý nghĩa (vd: một website nhỏ bị hack, một nạn nhân đơn lẻ).
+- Tin KHÔNG có bằng chứng về quy mô/tác động (không dữ liệu, không lỗ hổng,
+  không ảnh hưởng người dùng, chỉ suy đoán) - CHĂM chỉ loại "tin thường"
+  vì từ chối nhầm tin lớn (lỗ hổng CVSS cao, extension bị cài hàng triệu
+  lượt, sự cố hạ tầng lớn) là SAI.
 - Tin không đủ thông tin để xác minh.
 - Tin trùng với một sự kiện khác trong danh sách (cùng vụ việc, khác nguồn).
-- Tin THƯỜNG, không đủ tầm quan trọng với cộng đồng an ninh mạng.
 
 NGUYÊN TẮC ĐIỂM:
 - KHÔNG được cho điểm cao chỉ vì title chứa các từ: "hacker", "hack", "attack",
@@ -85,18 +88,34 @@ NGUYÊN TẮC ĐIỂM:
   (score >= 85, publish=true).
 - score là số nguyên 0-100 (mức độ quan trọng tổng hợp).
 
-TIN NÓNG (hot) - RẤT HIẾM, gần như mọi bài đều là false:
-- hot=true CHỈ khi sự kiện ĐANG NỔI (tác động rộng, nhiều người đang quan tâm),
-  diễn ra trong khoảng 24 GIỜ gần đây, và thường có NHIỀU NGUỒN cùng đưa tin.
-- VD hợp lệ: zero-day đang bị khai thác hàng loạt; ransomware làm tê liệt dịch
-  vụ/tổ chức lớn; rò rỉ dữ liệu hàng triệu bản ghi; triệt phá đường dây tội
-  phạm lớn; sự cố hạ tầng quốc gia; vụ việc an ninh mạng lớn ở Việt Nam.
-- Tin quan trọng nhưng KHÔNG nổi bật (tin đã lắng xuống, tin cũ, sự kiện đơn
-  lẻ, một nạn nhân duy nhất) -> hot=false.
+TIN NÓNG (hot) - định nghĩa RÕ RÀNG, KHÔNG phải "gần như mọi bài đều là false":
+- hot=true khi sự kiện có MỘT TRONG các dấu hiệu sau (và diễn ra trong
+  khoảng 24 GIỜ gần đây, đang được nhiều người quan tâm):
+  + tổn thất / thiệt hại do tấn công >= 100 triệu USD;
+  + ảnh hưởng >= 1 triệu người dùng / bản ghi / thiết bị;
+  + sập hoặc bị tấn công hạ tầng lớn (sàn giao dịch crypto, cloud lớn,
+    ngân hàng, bệnh viện, chính phủ, viễn thông, nền tảng lớn);
+  + zero-day đang bị khai thác hàng loạt;
+  + vụ việc lớn tại Việt Nam về an ninh mạng;
+  + campaign của nhóm nhà nước (Lazarus / TraderTraitor / APT...).
 - hot=true BẮT BUỘC đi cùng severity="critical". Nếu severity không phải
   critical thì hot PHẢI là false.
 - hot KHÔNG thay thế publish/score: bài vẫn phải đạt TIÊU CHUẨN CHẤP NHẬN ở trên.
-- Hãy nhớ: hot rất hiếm - chỉ true cho sự kiện đang thực sự nóng trong ngày.
+- Tin quan trọng nhưng KHÔNG nổi bật (đã lắng xuống, tin cũ, sự kiện đơn
+  lẻ, một nạn nhân nhỏ) -> hot=false.
+
+VÍ DỤ FEW-SHOT (định dạng đúng):
+1. "Binance says $6.3bn stolen in biggest crypto heist in history"
+   (sàn crypto lớn nhất, số tiền kỷ lục, nhóm nhà nước) ->
+   {"publish":true,"score":97,"hot":true,"severity":"critical"}
+2. "Bitcoin price rises 5% as ETF inflows grow" (tin giá coin, không phải
+   sự cố bảo mật) -> {"publish":false,"score":20,"hot":false}
+   -> cùng loại: "Coinbase launches new staking product" (ra mắt sản phẩm
+   thuần) cũng là publish=false.
+
+LƯU Ý VỀ TIN CRYPTO / TÀI CHÍNH: chỉ đăng khi đó là SỰ CỐ BẢO MẬT
+(hack, đánh cắp, rò rỉ, lỗ hổng, chiếm quyền...); tin giá coin, dòng tiền
+ETF, kết quả kinh doanh, ra mắt sản phẩm -> publish=false.
 
 ĐẦU RA BẮT BUỘC (JSON duy nhất, không markdown, không giải thích ngoài JSON):
 {"decisions":[{"id":<id từng bài>,"publish":true|false,"score":<0-100>,
@@ -144,6 +163,11 @@ def build_filter_user_payload(candidates):
             "rule_score": int(getattr(scored, "score", 0) or 0),
             "rule_topic": getattr(scored, "topic", "OTHER"),
             "rule_is_vietnam": bool(getattr(scored, "is_vietnam", False)),
+            # C3: tín hiệu cứng (tin quy mô lớn do rule phát hiện - dữ liệu
+            # phụ giúp quyết định publish/hot, KHÔNG phải chỉ dẫn).
+            "hard_signal": bool(getattr(scored, "hard_signal", False)),
+            "hard_signal_reasons": list(
+                getattr(scored, "hard_signal_reasons", []) or []),
             # D2: dữ liệu phụ vụ quyết định "hot" (không phải chỉ dẫn).
             "corroboration": int(getattr(scored, "corroboration", 0) or 0),
             "age_hours": _age_hours(scored),
@@ -157,7 +181,11 @@ def build_filter_user_payload(candidates):
     header = (
         "Đánh giá TỪNG bài sau đây. Trả về JSON {\"decisions\":[...]} cho đủ "
         "mọi id. Chỉ chọn đăng những bài thực sự quan trọng với cộng đồng "
-        "cybersecurity.\n\nDANH SÁCH CANDIDATE:\n"
+        "cybersecurity. hard_signal=true (tín hiệu cứng: số tiền lớn, quy mô "
+        "hàng triệu người, kỷ lục, tổ chức trọng yếu) là DỮ LIỆU MẠNH về quy "
+        "mô - hãy cân nhắc publish=true với điểm cao nếu đúng là sự cố bảo "
+        "mật; tin crypto/tài chính CHỈ đăng khi là sự cố bảo mật (không đăng "
+        "tin giá/thị trường).\n\nDANH SÁCH CANDIDATE:\n"
     )
     return header + json.dumps(items, ensure_ascii=False, indent=1)
 
