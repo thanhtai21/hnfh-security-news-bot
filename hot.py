@@ -33,8 +33,12 @@ NGUYÊN TẮC AN TOÀN:
 """
 
 import logging
+import re
+from datetime import datetime
 
 from config import (
+    EVENT_GUARD_ENABLED,
+    EVENT_GUARD_HOURS,
     HOT_AI_MIN_SCORE,
     HOT_ALLOW_WITHOUT_AI,
     HOT_ENABLED,
@@ -532,3 +536,142 @@ def select_hot_articles(hot_list, state, now=None, already_selected=None):
         logger.info("[HOT] Không có tin nóng nào qua được kiểm tra lại.")
 
     return accepted
+# =====================================================================
+# EVENT GUARD - chặn cùng một chuyện bị đăng lại bằng bài viết khác
+# =====================================================================
+# Lý do: is_same_event chỉ so TITLE và khá chặt, nên "Binance hack" được
+# 8 báo viết 8 tiêu đề khác nhau đều lọt qua kiểm tra "đã đăng". Hàm dưới
+# đây so LỎNG hơn: hai tiêu đề được coi là cùng một chuyện khi chúng có
+# chung (1) một TÊN RIÊNG đặc thù (viết hoa ở cả hai tiêu đề, không nằm
+# trong danh sách từ chung chung) VÀ (2) cả hai đều là tin sự cố (có từ như
+# hack, breach, theft, exploit...). Chỉ dùng để BỎ bài (không bao giờ để đăng thêm), nên sai
+# lệch nếu có chỉ là bỏ sót một bài, không gây đăng trùng.
+_LOOSE_EVENT_WORDS = frozenset((
+    "hack", "hacked", "breach", "breached", "attack", "attacks", "attacked",
+    "exploit", "exploits", "exploited", "exploitation", "theft", "stolen",
+    "heist", "ransomware", "leak", "leaked", "leaks", "outage", "drained",
+    "zero-day", "zeroday", "compromised", "compromise", "backdoor",
+    "malware", "vulnerability", "vulnerabilities", "flaw", "flaws",
+))
+
+_LOOSE_GENERIC = frozenset((
+    # từ chỉ sự cố / kỹ thuật chung
+    "hack", "hacks", "hacked", "hacker", "hackers", "breach", "breaches",
+    "attack", "attacks", "exploit", "exploits", "exploited", "critical",
+    "security", "cyber", "cybersecurity", "cyberattack", "data", "ransomware",
+    "malware", "vulnerability", "vulnerabilities", "flaw", "flaws", "patch",
+    "patches", "patched", "update", "updates", "zero-day", "remote", "code",
+    "execution", "actively", "attackers", "threat", "threats", "warns",
+    "warning", "researchers", "report", "reports", "new", "after", "about",
+    "million", "billion", "millions", "billions", "users", "people", "this",
+    "that", "with", "from", "into", "over", "their", "they", "have", "been",
+    "what", "when", "where", "which", "while", "could", "would", "inside",
+    "behind", "latest", "major", "largest", "biggest", "record", "history",
+    "crypto", "bitcoin", "ethereum", "tiền", "mã", "hóa",
+    # quốc gia / vùng - quá chung để làm "tên riêng của vụ việc"
+    "china", "chinese", "russia", "russian", "north", "korea", "korean",
+    "iran", "iranian", "india", "indian", "israel", "ukraine", "ukrainian",
+    "europe", "european", "america", "american", "china-linked", "state",
+    "government", "federal", "police", "court", "judge", "prison",
+    # từ viết hoa trong tiêu đề kiểu Title Case, không phải tên vụ việc
+    "supply", "chain", "malicious", "against", "severity", "max-severity",
+    "linux", "windows", "android", "server", "servers", "firewall",
+    "firewalls", "extension", "extensions", "package", "packages",
+    "network", "networks", "cloud", "online", "global", "worldwide",
+    "systems", "system", "device", "devices", "service", "services",
+    "software", "fresh", "nearly", "first", "third", "fourth", "before",
+    "during", "between", "through", "under", "using", "uses", "used",
+    "allow", "allows", "lets", "hits", "puts", "takes", "target",
+    "targets", "targeted", "steal", "steals", "joins", "attempts",
+    "actively", "highly", "online", "stores", "against", "organizations",
+    "customers", "employees", "passenger", "passengers", "technicians",
+))
+
+_TOKEN_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9\-]+")
+
+
+def _loose_tokens(title):
+    """Trả (set token lowercase, set token viết hoa chữ cái đầu)."""
+    lowered = set()
+    capitalized = set()
+    for raw in _TOKEN_RE.findall(title or ""):
+        low = raw.lower()
+        lowered.add(low)
+        if raw[0].isupper() and len(low) >= 5:
+            capitalized.add(low)
+    return lowered, capitalized
+
+
+def is_loose_same_story(title_a, title_b):
+    """
+    True nếu hai tiêu đề rất có thể nói về CÙNG một vụ việc: có chung một
+    tên riêng đặc thù (viết hoa ở cả hai) VÀ cả hai đều là tin sự cố.
+    """
+    if not title_a or not title_b:
+        return False
+    low_a, cap_a = _loose_tokens(title_a)
+    low_b, cap_b = _loose_tokens(title_b)
+    anchors = (cap_a & cap_b) - _LOOSE_GENERIC - _LOOSE_EVENT_WORDS
+    if not anchors:
+        return False
+    return bool(low_a & _LOOSE_EVENT_WORDS) and bool(low_b & _LOOSE_EVENT_WORDS)
+
+
+def _recent_post_titles(state, now, hours):
+    """
+    Danh sách title bài đã đăng trong `hours` giờ gần đây (từ state.posts).
+    FAIL-CLOSED: bản ghi không đọc được posted_at -> coi như vừa đăng.
+    """
+    titles = []
+    for item in list(getattr(state, "posts", None) or []):
+        title = (item.get("title") or "") if isinstance(item, dict) else ""
+        if not title:
+            continue
+        try:
+            when = datetime.fromisoformat(str(item.get("posted_at")))
+            if now is not None and when.tzinfo is None and now.tzinfo is not None:
+                when = when.replace(tzinfo=now.tzinfo)
+            age_h = (now - when).total_seconds() / 3600.0
+            if age_h > hours:
+                continue
+        except Exception:
+            pass  # không đọc được thời gian -> giữ lại (an toàn)
+        titles.append(title)
+    return titles
+
+
+def is_recent_story_duplicate(scored, state, now):
+    """
+    True nếu bài cùng chuyện với một bài ĐÃ ĐĂNG trong EVENT_GUARD_HOURS giờ
+    gần đây (so lỏng bằng is_loose_same_story). EVENT_GUARD_ENABLED=0 -> False.
+    Lỗi khi đọc state -> True (fail-closed: thà bỏ bài còn hơn đăng trùng).
+    """
+    if not EVENT_GUARD_ENABLED or state is None:
+        return False
+    title = getattr(scored, "title", "") or ""
+    try:
+        for posted in _recent_post_titles(state, now, EVENT_GUARD_HOURS):
+            if is_loose_same_story(title, posted):
+                logger.info("[EVENT] Bỏ (cùng chuyện với bài đã đăng): %s ~ %s",
+                            title[:60], posted[:60])
+                return True
+    except Exception as exc:
+        logger.warning("[EVENT] Lỗi kiểm tra (%r) -> coi như trùng (an toàn).", exc)
+        return True
+    return False
+
+
+def is_loose_duplicate_of_any(scored, accepted):
+    """
+    True nếu bài cùng chuyện với một bài ĐÃ ĐƯỢC CHỌN trước đó trong cùng lần
+    chạy -> chỉ giữ bài đứng trước (điểm cao hơn) làm đại diện của chuyện đó.
+    """
+    if not EVENT_GUARD_ENABLED:
+        return False
+    title = getattr(scored, "title", "") or ""
+    for prev in accepted:
+        if is_loose_same_story(title, getattr(prev, "title", "") or ""):
+            logger.info("[EVENT] Bỏ (cùng chuyện với bài đã chọn): %s ~ %s",
+                        title[:60], (getattr(prev, "title", "") or "")[:60])
+            return True
+    return False

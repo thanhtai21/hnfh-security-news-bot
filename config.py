@@ -103,6 +103,18 @@ HOT_AI_MIN_SCORE = 85
 HOT_ALLOW_WITHOUT_AI = os.environ.get(
     "HOT_ALLOW_WITHOUT_AI", "0").strip().lower() in ("1", "true", "yes", "on")
 
+# ---------------------------------------------------------------------
+# EVENT GUARD: không đăng lại / không gửi AI các bài CÙNG MỘT CHUYỆN với
+# bài đã đăng trong EVENT_GUARD_HOURS giờ gần đây, và chỉ giữ 1 bài đại
+# diện cho mỗi chuyện trong cùng một lần chạy. Đặt "0" để tắt hẳn.
+# ---------------------------------------------------------------------
+EVENT_GUARD_ENABLED = os.environ.get(
+    "EVENT_GUARD_ENABLED", "1").strip().lower() not in ("0", "false", "no", "off")
+try:
+    EVENT_GUARD_HOURS = max(1, int(os.environ.get("EVENT_GUARD_HOURS", "24")))
+except ValueError:
+    EVENT_GUARD_HOURS = 24
+
 # =====================================================================
 # 2c. TÍN HIỆU CỨNG (HARD SIGNAL) - "tin quy mô lớn" (A3 / D1)
 # =====================================================================

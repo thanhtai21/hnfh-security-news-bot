@@ -43,6 +43,7 @@ from config import (
     DISCORD_BOT_TOKEN_ENV,
     DISCORD_CHANNEL_ID,
     DRY_RUN,
+    EVENT_GUARD_ENABLED,
     HARD_MAX_CANDIDATES,
     HOT_ENABLED,
     LOG_LEVEL,
@@ -66,6 +67,8 @@ from hot import (
     annotate_corroboration,
     hot_rule_explain,
     is_hot_rule,
+    is_loose_duplicate_of_any,
+    is_recent_story_duplicate,
     select_hot_articles,
 )
 from state import NewsState
@@ -249,6 +252,7 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
     hard_picked = []     # bài hard_signal (cắt theo HARD_MAX_CANDIDATES)
     skipped_rejected = 0
     skipped_not_hot = 0
+    skipped_story = 0
 
     if hot_only:
         # Nhánh hot: GIỮ NGUYÊN - vẫn bắt buộc meets_threshold + is_hot_rule
@@ -273,6 +277,12 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
                     or s.score >= AI_CANDIDATE_MIN_SCORE):
                 continue
         if is_already_posted(s, state):
+            continue
+        # EVENT GUARD: cùng chuyện với bài đã đăng gần đây / bài đã chọn.
+        if EVENT_GUARD_ENABLED and (
+                is_recent_story_duplicate(s, state, now)
+                or is_loose_duplicate_of_any(s, hard_picked + picked)):
+            skipped_story += 1
             continue
         try:
             if state is not None and state.is_ai_rejected(s, now, hot_only=hot_only):
@@ -307,6 +317,9 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
                 limit, len(hard_sent), HARD_MAX_CANDIDATES, len(result),
                 skipped_rejected,
                 ", %d bài không đạt hot_rule" % skipped_not_hot if hot_only else "")
+    if skipped_story:
+        logger.info("[EVENT] Bỏ %d bài cùng chuyện với bài đã đăng/đã chọn (EVENT_GUARD_ENABLED=%s).",
+                    skipped_story, EVENT_GUARD_ENABLED)
     return result
 
 
