@@ -117,6 +117,7 @@ TOPIC_PHRASES = {
         "law enforcement", "police", "fbi", "doj", "europol", "interpol",
         "national crime agency", "nca", "prosecutor", "court",
         "criminal complaint", "extradited", "custody", "convicted",
+        "prison", "jail",
         # Vietnam-specific law enforcement (thêm dấu tiếng Việt)
         "công an", "bắt giữ", "khởi tố", "triệt phá", "tội phạm mạng",
         "cơ quan điều tra", "bộ công an", "điều tra",
@@ -382,6 +383,32 @@ NEGATIVE_TITLE_ONLY = [
     ("election", -30, "Chính trị"),
     ("president", -20, "Chính trị"),
 ]
+
+# Ngữ cảnh cho thấy bài có "hacker" KHÔNG phải tin vặt: có mục tiêu, nạn nhân,
+# quốc gia/nhóm đứng sau, hay hành vi tấn công cụ thể. Dùng để KHÔNG phạt oan
+# luật "chỉ có chữ hacker" (vd "Chinese Hackers Use AI-Powered ARTEX to Target
+# Over 200 Organizations", "Hackers Publish Work Details of 41,000 Employees").
+HACKER_CONTEXT_PHRASES = [
+    "target", "organizations", "organisations", "employees", "customers",
+    "stole", "steal", "stolen", "campaign", "espionage", "state-sponsored",
+    "china", "chinese", "russia", "russian", "north korea", "iran", "iranian",
+    "publish", "published", "leak", "compromise", "backdoor", "malicious",
+    "ai-powered", "payment card", "credentials", "extort", "sabotage",
+    "homeland security", "government", "ministry", "agency",
+]
+
+# Tín hiệu bảo mật mạnh: nếu có trong bài thì các từ "ngành đời sống" ở
+# NEGATIVE_SIGNALS (fashion, travel, movie...) KHÔNG được trừ điểm.
+# Vd "Fashion retailer Resolve says hackers stole payment card information".
+SECURITY_OVERRIDE_PHRASES = [
+    "breach", "stole", "stolen", "hackers", "hacked", "ransomware", "malware",
+    "vulnerability", "exploited", "data leak", "leaked", "cyberattack",
+    "cyber attack", "phishing", "payment card", "credentials", "data theft",
+]
+SOFT_NEGATIVE_REASONS = {
+    "Đời sống", "Giải trí", "Phim", "Thể thao", "Tin game", "Esports",
+    "Chính trị",
+}
 
 # Các cụm từ chỉ ra "tin đời sống / công nghệ thông thường, không security".
 IRRELEVANT_PHRASES = [
@@ -855,7 +882,13 @@ def classify_topic(article, has_hard_signal=False):
     # (Biến này không dùng để quyết định kết quả - dòng dưới giữ nguyên
     #  logic; đổi sang match_phrase chỉ để nhất quán kiểu khớp.)
     weak_in_title = [w for w in WEAK_PHRASES if match_phrase(title, w)]
-    strong_topic = max(totals, key=lambda k: totals[k]) if totals else "OTHER"
+    # Hòa điểm -> ưu tiên chủ đề có từ khóa KHÔNG yếu (vd CYBERCRIME "prison"
+    # thắng CYBERSECURITY chỉ có "hack"), tránh rơi nhầm vào OTHER.
+    def _topic_rank(k):
+        hits = title_hits.get(k, []) + summary_hits.get(k, [])
+        return (totals[k], 1 if any(m not in WEAK_PHRASES for m in hits) else 0)
+
+    strong_topic = max(totals, key=_topic_rank) if totals else "OTHER"
     strong_score = totals.get(strong_topic, 0)
 
     base_by_topic = {
@@ -1043,8 +1076,12 @@ def score_article(article, now=None):
     # KHÔNG áp penalty nào lên bài có hard_signal (tin quy mô lớn không bị
     # trừ oan do từ mơ hồ); từ mơ hồ (NEGATIVE_TITLE_ONLY) CHỈ so với TITLE.
     if not scored.hard_signal:
+        has_sec_override = any(
+            match_phrase(blob, p) for p in SECURITY_OVERRIDE_PHRASES)
         for phrase, points, reason in NEGATIVE_SIGNALS:
             if match_phrase(blob, phrase):
+                if has_sec_override and reason in SOFT_NEGATIVE_REASONS:
+                    continue  # bài có tín hiệu bảo mật mạnh -> không phạt oan
                 scored.score += points  # points âm
                 scored.penalties.append("%s (%d)" % (reason, points))
         for phrase, points, reason in NEGATIVE_TITLE_ONLY:
@@ -1062,7 +1099,7 @@ def score_article(article, now=None):
         )
         has_security_signal = any(
             match_phrase(blob, p) for p, _, _ in POSITIVE_SIGNALS
-        )
+        ) or any(match_phrase(blob, p) for p in HACKER_CONTEXT_PHRASES)
         if hacker_only and not has_security_signal:
             scored.score -= 25
             scored.penalties.append(

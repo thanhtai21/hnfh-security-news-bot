@@ -37,6 +37,7 @@ import re
 from datetime import datetime
 
 from config import (
+    B5_MIN_SOURCES,
     EVENT_GUARD_ENABLED,
     EVENT_GUARD_HOURS,
     HOT_AI_MIN_SCORE,
@@ -48,6 +49,7 @@ from config import (
     HOT_MIN_SOURCES_INTL,
     HOT_MIN_SOURCES_VN,
     HOT_MIN_SOURCES_WITHOUT_AI,
+    MARKET_COMMENTARY_TERMS,
     MAX_HOT_POSTS_PER_DAY,
     MIN_SCORE_TO_POST,
     SOURCE_KIND,
@@ -288,6 +290,18 @@ def is_hot_ai(decision):
     return ai_score >= HOT_AI_MIN_SCORE
 
 
+_MARKET_RE = re.compile(
+    r"(?<![a-z0-9])(?:" + "|".join(
+        re.escape(t) for t in MARKET_COMMENTARY_TERMS) + r")(?![a-z0-9])",
+    re.IGNORECASE)
+
+
+def is_market_commentary(scored):
+    """True nếu TIÊU ĐỀ là bình luận thị trường/đầu tư (không phải tin sự cố)."""
+    title = getattr(scored, "title", "") or ""
+    return bool(_MARKET_RE.search(title))
+
+
 def is_hot(scored, decision=None, now=None, ai_used=False):
     """
     Bài có phải TIN NÓNG không:
@@ -311,7 +325,18 @@ def is_hot(scored, decision=None, now=None, ai_used=False):
         sources = 0
 
     # B5: đường dự phòng cho sự kiện cực lớn khi AI tắt/lỗi.
+    # Siết chặt: >= B5_MIN_SOURCES nguồn, tuổi <= HOT_MAX_AGE_HOURS và KHÔNG
+    # phải bài bình luận thị trường (xem is_market_commentary).
     if getattr(scored, "hard_signal", False) and sources >= 2:
+        if sources < B5_MIN_SOURCES:
+            logger.info("[HOT] B5 bỏ: chỉ %d nguồn (< %d): %s", sources,
+                        B5_MIN_SOURCES,
+                        (getattr(scored, "title", "") or "")[:80])
+            return False
+        if is_market_commentary(scored):
+            logger.info("[HOT] B5 bỏ (bài bình luận thị trường/đầu tư): %s",
+                        (getattr(scored, "title", "") or "")[:80])
+            return False
         logger.info(
             "[HOT] AI TẮT/LỖI: bài hard_signal có %d nguồn độc lập -> "
             "xét như tin nóng (đường dự phòng B5, bất kể "
@@ -547,7 +572,8 @@ def select_hot_articles(hot_list, state, now=None, already_selected=None):
 # hack, breach, theft, exploit...). Chỉ dùng để BỎ bài (không bao giờ để đăng thêm), nên sai
 # lệch nếu có chỉ là bỏ sót một bài, không gây đăng trùng.
 _LOOSE_EVENT_WORDS = frozenset((
-    "hack", "hacked", "breach", "breached", "attack", "attacks", "attacked",
+    "hack", "hacked", "hacker", "hackers", "hacking",
+    "drain", "drains", "draining", "stole", "steal", "steals", "breach", "breached", "attack", "attacks", "attacked",
     "exploit", "exploits", "exploited", "exploitation", "theft", "stolen",
     "heist", "ransomware", "leak", "leaked", "leaks", "outage", "drained",
     "zero-day", "zeroday", "compromised", "compromise", "backdoor",
@@ -602,19 +628,50 @@ def _loose_tokens(title):
     return lowered, capitalized
 
 
-def is_loose_same_story(title_a, title_b):
+# Tên hãng lớn quá chung: xuất hiện trong summary của rất nhiều bài không liên
+# quan, không dùng làm "tên riêng của vụ việc" khi so với summary.
+_LOOSE_BIG_VENDORS = frozenset((
+    "microsoft", "google", "apple", "amazon", "cisco", "oracle", "adobe",
+    "github", "gitlab", "openai", "anthropic", "facebook", "samsung",
+    "cloudflare", "fortinet", "vmware", "mozilla", "chrome",
+))
+
+# Từ chỉ sự cố bằng tiếng Việt (regex token ASCII không bắt được dấu).
+_VN_EVENT_PHRASES = (
+    "tấn công", "bị hack", "đánh cắp", "bị trộm", "mất cắp", "xâm nhập",
+    "rò rỉ", "lộ dữ liệu", "mã độc", "lừa đảo",
+)
+
+
+def _has_event_word(title, summary=""):
+    low, _cap = _loose_tokens((title or "") + " " + (summary or ""))
+    if low & _LOOSE_EVENT_WORDS:
+        return True
+    text = ((title or "") + " " + (summary or "")).lower()
+    return any(p in text for p in _VN_EVENT_PHRASES)
+
+
+def is_loose_same_story(title_a, title_b, summary_a=""):
     """
-    True nếu hai tiêu đề rất có thể nói về CÙNG một vụ việc: có chung một
-    tên riêng đặc thù (viết hoa ở cả hai) VÀ cả hai đều là tin sự cố.
+    True nếu hai bài rất có thể nói về CÙNG một vụ việc: có chung một tên
+    riêng đặc thù (viết hoa) VÀ cả hai đều là tin sự cố.
+
+    Bài A (ứng viên) được xét theo title + summary_a: nhiều bài viết về một
+    vụ nhưng tiêu đề không nhắc tên (vd "Buy Bitcoin Proxies..." có "Binance"
+    chỉ trong summary). Bài B (đã đăng) chỉ có title.
+    summary_a chỉ đóng góp tên riêng KHÔNG nằm trong _LOOSE_BIG_VENDORS.
     """
     if not title_a or not title_b:
         return False
     low_a, cap_a = _loose_tokens(title_a)
     low_b, cap_b = _loose_tokens(title_b)
+    if summary_a:
+        _l, cap_sum = _loose_tokens(summary_a)
+        cap_a = cap_a | (cap_sum - _LOOSE_BIG_VENDORS)
     anchors = (cap_a & cap_b) - _LOOSE_GENERIC - _LOOSE_EVENT_WORDS
     if not anchors:
         return False
-    return bool(low_a & _LOOSE_EVENT_WORDS) and bool(low_b & _LOOSE_EVENT_WORDS)
+    return _has_event_word(title_a, summary_a) and _has_event_word(title_b)
 
 
 def _recent_post_titles(state, now, hours):
@@ -649,9 +706,10 @@ def is_recent_story_duplicate(scored, state, now):
     if not EVENT_GUARD_ENABLED or state is None:
         return False
     title = getattr(scored, "title", "") or ""
+    summary = getattr(getattr(scored, "article", None), "summary", "") or ""
     try:
         for posted in _recent_post_titles(state, now, EVENT_GUARD_HOURS):
-            if is_loose_same_story(title, posted):
+            if is_loose_same_story(title, posted, summary):
                 logger.info("[EVENT] Bỏ (cùng chuyện với bài đã đăng): %s ~ %s",
                             title[:60], posted[:60])
                 return True
@@ -669,8 +727,9 @@ def is_loose_duplicate_of_any(scored, accepted):
     if not EVENT_GUARD_ENABLED:
         return False
     title = getattr(scored, "title", "") or ""
+    summary = getattr(getattr(scored, "article", None), "summary", "") or ""
     for prev in accepted:
-        if is_loose_same_story(title, getattr(prev, "title", "") or ""):
+        if is_loose_same_story(title, getattr(prev, "title", "") or "", summary):
             logger.info("[EVENT] Bỏ (cùng chuyện với bài đã chọn): %s ~ %s",
                         title[:60], (getattr(prev, "title", "") or "")[:60])
             return True

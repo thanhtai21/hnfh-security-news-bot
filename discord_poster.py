@@ -135,6 +135,13 @@ def _truncate_keep_footer(content, limit=CONTENT_MAX):
     return (body + "\n" + footer)[:limit]
 
 
+# Các lý do chấm điểm chỉ dùng nội bộ -> không hiện trong bài đăng.
+_INTERNAL_REASON_PREFIXES = (
+    "Chủ đề", "Nguồn ", "Mới", "Rất mới", "Tín hiệu cứng",
+    "Việt Nam nhưng chưa đủ",
+)
+
+
 def build_post_content(scored):
     """
     Dựng nội dung Forum Post.
@@ -172,16 +179,21 @@ def build_post_content(scored):
     summary = normalize_ws(getattr(article, "summary", "") or "")
     if not summary:
         summary = normalize_ws(getattr(article, "title", "") or "")
-    parts.append("🚨 **Tóm tắt sự kiện**")
+    parts.append("🚨 **Tóm tắt sự kiện** _(bản gốc tiếng Anh, AI tạm thời không khả dụng)_")
     parts.append(excerpt(summary, 700) or "(nguồn không cung cấp tóm tắt)")
     parts.append("")
 
     # (2) Điểm đáng chú ý - liệt kê các tín hiệu THỰC SỰ match trong bài.
     highlights = []
-    for reason in getattr(scored, "reasons", [])[:6]:
+    for reason in getattr(scored, "reasons", [])[:8]:
         # Bỏ đoạn "(+14)" cho gọn, giữ phần mô tả.
         clean = reason.split(" (+")[0].strip()
-        if clean and not clean.startswith("Chủ đề"):
+        # Bỏ các dòng nội bộ của hệ thống chấm điểm, không có ý nghĩa với người đọc.
+        if (not clean or clean.startswith(_INTERNAL_REASON_PREFIXES)):
+            continue
+        # Bỏ chú thích kỹ thuật trong ngoặc, vd "(>= 50000000 USD, kèm từ khóa ...)".
+        clean = re.sub(r"\s*\(>=.*?\)\s*$", "", clean).strip()
+        if clean and clean not in highlights:
             highlights.append(clean)
 
     if highlights:

@@ -115,6 +115,21 @@ try:
 except ValueError:
     EVENT_GUARD_HOURS = 24
 
+# ---------------------------------------------------------------------
+# B5 (AI tắt/lỗi): đường dự phòng cho sự kiện cực lớn. Siết chặt để không
+# đăng nhầm bài bình luận thị trường làm tin nóng.
+# ---------------------------------------------------------------------
+# Cần tối thiểu bấy nhiêu nguồn độc lập cùng đưa sự kiện.
+B5_MIN_SOURCES = 3
+
+# Tiêu đề chứa từ này = bài bình luận/đầu tư/thị trường, KHÔNG được đi đường B5.
+MARKET_COMMENTARY_TERMS = (
+    "buy", "stock", "stocks", "proxies", "analysts", "analyst", "investors",
+    "selloff", "liquidations", "price", "prices", "rebound", "valuation",
+    "shares", "etf", "rally", "jumps", "plunges", "surges", "slides",
+    "overshadows", "trade blows",
+)
+
 # =====================================================================
 # 2c. TÍN HIỆU CỨNG (HARD SIGNAL) - "tin quy mô lớn" (A3 / D1)
 # =====================================================================

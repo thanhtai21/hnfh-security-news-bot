@@ -73,10 +73,21 @@ logger = logging.getLogger("ai_editor")
 AI_MIN_SCORE = 75
 
 # Số lần thử lại tối đa khi gặp HTTP 429 (xem _call_chat).
-MAX_429_RETRIES = 2
+MAX_429_RETRIES = 3
 
 # Nếu Retry-After > số giây này thì coi như HẾT QUOTA NGÀY, KHÔNG chờ.
 RETRY_AFTER_GIVEUP_SECONDS = 30
+
+# Mỗi lần chờ 429 tối đa bấy nhiêu giây (gói miễn phí hay giới hạn token/phút).
+MAX_429_WAIT_SECONDS = 20
+
+# Gửi AI theo lô nhỏ để không vượt giới hạn token/phút của gói miễn phí.
+FILTER_BATCH_SIZE = 4
+FILTER_BATCH_PAUSE_SECONDS = 2.0
+
+# Model suy luận (gpt-oss...) tính cả token suy luận vào max_tokens -> nếu để
+# quá nhỏ thì JSON bị cắt giữa chừng ("JSON sai format"). Cộng thêm khoảng đệm.
+REASONING_TOKEN_HEADROOM = 1500
 
 
 # =====================================================================
@@ -89,6 +100,7 @@ AI_MODEL_ENV = "AI_MODEL"
 AI_BASE_URL_ENV = "AI_BASE_URL"
 AI_TIMEOUT_ENV = "AI_TIMEOUT_SECONDS"
 AI_MAX_CANDIDATES_ENV = "AI_MAX_CANDIDATES"
+AI_FALLBACK_MODEL_ENV = "AI_FALLBACK_MODEL"
 
 # Endpoint OpenAI-compatible mặc định theo provider.
 DEFAULT_BASE_URLS = {
@@ -121,6 +133,8 @@ class AIConfig:
     base_url: str = ""
     timeout: int = DEFAULT_TIMEOUT_SECONDS
     max_candidates: int = DEFAULT_MAX_CANDIDATES
+    # Model dự phòng (tùy chọn): thử một lần khi model chính bị 429/JSON hỏng.
+    fallback_model: str = ""
 
     @property
     def enabled(self):
@@ -178,6 +192,7 @@ def load_config():
         base_url=base_url,
         timeout=timeout,
         max_candidates=max_candidates,
+        fallback_model=os.environ.get(AI_FALLBACK_MODEL_ENV, "").strip(),
     )
 
 
@@ -221,8 +236,14 @@ def _extract_content(response):
         return None
 
 
+def _is_reasoning_model(model):
+    """gpt-oss / o-series: có token suy luận, tính vào max_tokens."""
+    m = (model or "").lower()
+    return "gpt-oss" in m or "qwen3" in m
+
+
 def _call_chat(cfg, system_prompt, user_prompt,
-               max_tokens=2200, temperature=0.2):
+               max_tokens=2200, temperature=0.2, model=None):
     """
     Gọi POST {base_url}/chat/completions.
     Trả về nội dung text (str), hoặc None nếu lỗi.
@@ -240,8 +261,13 @@ def _call_chat(cfg, system_prompt, user_prompt,
     if cfg.api_key:
         headers["Authorization"] = "Bearer " + cfg.api_key
 
+    use_model = model or cfg.model
+    reasoning = _is_reasoning_model(use_model)
+    if reasoning:
+        max_tokens = max_tokens + REASONING_TOKEN_HEADROOM
+
     base_payload = {
-        "model": cfg.model,
+        "model": use_model,
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -252,12 +278,17 @@ def _call_chat(cfg, system_prompt, user_prompt,
 
     wants_json_format = cfg.provider in ("groq", "openai")
     json_format_dropped = False
+    # gpt-oss trên Groq: reasoning_effort=low để suy luận ngắn, đỡ tốn token.
+    wants_reasoning_effort = reasoning and cfg.provider == "groq"
+    reasoning_effort_dropped = False
     retries_429 = 0
 
     while True:
         payload = dict(base_payload)
         if wants_json_format and not json_format_dropped:
             payload["response_format"] = {"type": "json_object"}
+        if wants_reasoning_effort and not reasoning_effort_dropped:
+            payload["reasoning_effort"] = "low"
 
         try:
             response = requests.post(
@@ -297,7 +328,7 @@ def _call_chat(cfg, system_prompt, user_prompt,
             # Không có Retry-After -> đợi một khoảng ngắn an toàn.
             wait_seconds = retry_after if retry_after is not None else 3.0
             wait_seconds = max(0.5, min(wait_seconds,
-                                        float(RETRY_AFTER_GIVEUP_SECONDS)))
+                                        float(MAX_429_WAIT_SECONDS)))
             retries_429 += 1
             logger.info("[AI] HTTP 429, chờ %.1fs rồi thử lại (%d/%d)...",
                         wait_seconds, retries_429, MAX_429_RETRIES)
@@ -309,8 +340,17 @@ def _call_chat(cfg, system_prompt, user_prompt,
                 and not json_format_dropped):
             logger.warning(
                 "[AI] HTTP 400 từ %s (nghi do response_format) "
-                "-> thử lại MỘT lần không có response_format.", cfg.provider)
+                "-> thử lại MỘT lần không có response_format. Chi tiết: %s",
+                cfg.provider, response.text[:300])
             json_format_dropped = True
+            continue
+        if (response.status_code == 400 and wants_reasoning_effort
+                and not reasoning_effort_dropped):
+            logger.warning(
+                "[AI] HTTP 400 từ %s (nghi do reasoning_effort) "
+                "-> thử lại MỘT lần không có reasoning_effort. Chi tiết: %s",
+                cfg.provider, response.text[:300])
+            reasoning_effort_dropped = True
             continue
 
         if response.status_code != 200:
@@ -546,44 +586,91 @@ def map_tags(region, category, fallback_tags=None):
 # 6. NHIỆM VỤ 1: AI FILTER / SELECTOR
 # =====================================================================
 
-def ai_filter(candidates, cfg):
+def _filter_chunk_once(chunk, cfg, model=None):
     """
-    Gửi toàn bộ candidate cho AI đánh giá 1 lần.
-    Trả về: dict {index -> AIDecision}, hoặc None nếu AI lỗi/tắt.
+    Gửi MỘT lô candidate cho AI (một model). Trả dict {index trong lô ->
+    AIDecision} hoặc None nếu lỗi (429 hết lượt, JSON hỏng, id không khớp...).
     """
     import ai_prompts
 
     system_prompt = ai_prompts.FILTER_SYSTEM_PROMPT
-    user_prompt = ai_prompts.build_filter_user_payload(candidates)
+    user_prompt = ai_prompts.build_filter_user_payload(chunk)
 
     raw = _call_chat(cfg, system_prompt, user_prompt,
-                     max_tokens=max(1500, 260 * len(candidates)),
-                     temperature=0.1)
+                     max_tokens=max(1200, 260 * len(chunk)),
+                     temperature=0.1, model=model)
     if raw is None:
         return None
 
     data = extract_json(raw)
     if data is None:
-        logger.warning("[AI] Filter trả JSON sai format -> fallback rule-based.")
+        logger.warning("[AI] Filter trả JSON sai format (model=%s).",
+                       model or cfg.model)
         return None
 
     decisions = parse_decisions(data)
     if not decisions:
-        logger.warning("[AI] Filter không trả decision nào hợp lệ -> fallback.")
+        logger.warning("[AI] Filter không trả decision nào hợp lệ (model=%s).",
+                       model or cfg.model)
         return None
 
     by_id = {}
     for d in decisions:
-        if 0 <= d.id < len(candidates):
+        if 0 <= d.id < len(chunk):
             by_id[d.id] = d
-
     if not by_id:
-        logger.warning("[AI] Filter trả id không khớp candidate -> fallback.")
+        logger.warning("[AI] Filter trả id không khớp candidate (model=%s).",
+                       model or cfg.model)
+        return None
+    return by_id
+
+
+def _filter_chunk(chunk, cfg):
+    """Thử model chính, lỗi thì thử AI_FALLBACK_MODEL (nếu có) đúng một lần."""
+    result = _filter_chunk_once(chunk, cfg)
+    if result is not None:
+        return result
+    fb = (getattr(cfg, "fallback_model", "") or "").strip()
+    if fb and fb != cfg.model:
+        logger.info("[AI] Model chính lỗi -> thử model dự phòng %s.", fb)
+        return _filter_chunk_once(chunk, cfg, model=fb)
+    return None
+
+
+def ai_filter(candidates, cfg):
+    """
+    Gửi candidate cho AI đánh giá THEO LÔ NHỎ (FILTER_BATCH_SIZE bài/lần) để
+    không vượt giới hạn token/phút của gói miễn phí.
+    Trả về: dict {index -> AIDecision}, hoặc None nếu AI lỗi/tắt hoàn toàn
+    (không lô nào thành công). Lô lỗi một phần -> các bài của lô đó nhận
+    placeholder (from_ai=False): KHÔNG đăng và KHÔNG ghi bộ nhớ "AI loại".
+    """
+    total = len(candidates)
+    by_id = {}
+    ok_chunks = 0
+
+    for start in range(0, total, FILTER_BATCH_SIZE):
+        if start > 0:
+            time.sleep(FILTER_BATCH_PAUSE_SECONDS)
+        chunk = candidates[start:start + FILTER_BATCH_SIZE]
+        result = _filter_chunk(chunk, cfg)
+        if result is None:
+            logger.warning("[AI] Lô %d-%d/%d lỗi -> các bài trong lô không "
+                           "được AI đánh giá.", start + 1,
+                           start + len(chunk), total)
+            continue
+        ok_chunks += 1
+        for local_idx, decision in result.items():
+            decision.id = start + local_idx
+            by_id[start + local_idx] = decision
+
+    if ok_chunks == 0:
+        logger.warning("[AI] Không lô nào thành công -> fallback rule-based.")
         return None
 
     # Thiếu id -> placeholder (an toàn, không đăng nhầm).
     # Placeholder KHÔNG phải là quyết định thật của AI -> không ghi bộ nhớ.
-    for idx in range(len(candidates)):
+    for idx in range(total):
         if idx not in by_id:
             by_id[idx] = AIDecision(
                 id=idx, publish=False, score=0,
