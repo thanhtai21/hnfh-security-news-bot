@@ -20,8 +20,8 @@ không thể ping role/người khác.
 """
 import re
 
-ROLE_PING_NEWS_ID = 0
-ROLE_HOT_NEWS_ID = 0
+ROLE_PING_NEWS_ID = 1565968974326267934
+ROLE_HOT_NEWS_ID = 1565968516056883231
 
 # Khóa = đúng tên tag trong config.FORUM_TAG_NAMES (emoji/viết hoa không quan trọng).
 TOPIC_ROLE_IDS = {
