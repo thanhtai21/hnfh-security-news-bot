@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-10-31T15:06:09.430558+07:00",
+  "last_run": "2026-10-31T19:05:41.496748+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -215,30 +215,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/hugging-face-malware-campaign-returns-to-hijack-gpus-for-crypto-mining/",
-      "fingerprint": "c224b30ce8c54e6f",
-      "rejected_at": "2026-10-30T06:58:41.760876+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html",
-      "fingerprint": "90e8afd652018827",
-      "rejected_at": "2026-10-30T06:58:41.760933+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.securityweek.com/adobe-veeam-juniper-networks-patch-critical-vulnerabilities/",
-      "fingerprint": "1019335aec5d2706",
-      "rejected_at": "2026-10-30T06:58:41.760977+07:00",
-      "scope": "all"
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/chrome-extensions-with-134-million-installs-caught-hijacking-searches/",
-      "fingerprint": "d0799ef5a82097d6",
-      "rejected_at": "2026-10-30T06:58:41.761016+07:00",
-      "scope": "all"
-    },
     {
       "link": "https://www.bleepingcomputer.com/news/security/japan-airlines-suffers-third-party-data-breach-exposing-passenger-info/",
       "fingerprint": "2695f891f1dd5847",
