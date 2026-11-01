@@ -43,7 +43,7 @@ logger = logging.getLogger("poster")
 
 # Giới hạn của Discord.
 THREAD_NAME_MAX = 100      # tên thread/post tối đa 100 ký tự
-CONTENT_MAX = 1900         # nội dung tin nhắn tối đa 2000 ký tự
+CONTENT_MAX = 1950         # nội dung tối đa 2000 ký tự (còn chỗ cho dòng ping role)
 
 
 # =====================================================================

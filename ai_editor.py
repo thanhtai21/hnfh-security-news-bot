@@ -735,6 +735,7 @@ def source_number_groups(scored):
     blob = " ".join([
         getattr(scored, "title", "") or "",
         getattr(article, "summary", "") or "",
+        getattr(scored, "article_text", "") or "",
         getattr(scored, "link", "") or "",
         published_str,
     ])
@@ -751,12 +752,18 @@ def ai_write(scored, decision, cfg):
     nếu không -> bỏ bản viết, dùng nội dung rule.
     """
     import ai_prompts
+    from article_fetch import fetch_article_text
+
+    # Lấy nội dung bài gốc (best effort) để bài viết đầy đủ hơn summary RSS.
+    # Lỗi/paywall/403 -> "" và AI chỉ dùng summary như trước.
+    if not getattr(scored, "article_text", ""):
+        scored.article_text = fetch_article_text(getattr(scored, "link", "") or "")
 
     raw = _call_chat(
         cfg,
         ai_prompts.WRITER_SYSTEM_PROMPT,
         ai_prompts.build_writer_user_payload(scored, decision),
-        max_tokens=1800,
+        max_tokens=2200,
         temperature=0.4,
     )
     if raw is None:
