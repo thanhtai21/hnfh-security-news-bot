@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-03T00:13:11.274915+07:00",
+  "last_run": "2026-11-03T01:05:48.756589+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -358,13 +358,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://cointelegraph.com/news/trezor-wallet-passphrase-limit-128-characters-coldcard-attacks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "290f25b8b71594cd",
-      "rejected_at": "2026-11-02T19:05:40.479762+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://thehackernews.com/2026/11/new-volta-infostealer-uses-claude.html",
       "fingerprint": "2a1e8de844619d98",
       "rejected_at": "2026-11-02T21:05:52.237479+07:00",
@@ -375,6 +368,13 @@
       "link": "https://therecord.media/polymarket-returning-funds-to-customers-after-site-compromise",
       "fingerprint": "9a1341ded65482fc",
       "rejected_at": "2026-11-03T00:13:11.274833+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://www.coindesk.com/tech/2026/11/02/eu-entity-suspected-of-losing-usd106-million-from-crypto-exchange-accounts-zachxbt-says",
+      "fingerprint": "9d9f662ae579583c",
+      "rejected_at": "2026-11-03T01:05:48.756463+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     }
