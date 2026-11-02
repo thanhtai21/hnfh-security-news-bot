@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-03T01:05:48.756589+07:00",
+  "last_run": "2026-11-03T03:05:43.286786+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -302,20 +302,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://thehackernews.com/2026/11/netamloader-malware-targets-government.html",
-      "fingerprint": "27fe59b95bdcb3ae",
-      "rejected_at": "2026-11-01T15:05:36.306015+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/hackers-steal-about-27-million-from.html",
-      "fingerprint": "c250bf8b8e272b8d",
-      "rejected_at": "2026-11-01T15:05:36.306136+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://tuoitre.vn/chuyen-gia-giai-thich-vi-sao-nen-giu-kin-ngay-sinh-chi-meo-tranh-bi-lua-dao-100261101185613701.htm",
       "fingerprint": "b278491aaf6683d8",
       "rejected_at": "2026-11-02T06:41:10.080961+07:00",
@@ -375,6 +361,13 @@
       "link": "https://www.coindesk.com/tech/2026/11/02/eu-entity-suspected-of-losing-usd106-million-from-crypto-exchange-accounts-zachxbt-says",
       "fingerprint": "9d9f662ae579583c",
       "rejected_at": "2026-11-03T01:05:48.756463+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://cointelegraph.com/news/trezor-wallet-passphrase-limit-128-characters-coldcard-attacks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "fingerprint": "290f25b8b71594cd",
+      "rejected_at": "2026-11-03T03:05:43.286618+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     }
