@@ -130,9 +130,26 @@ def _truncate_keep_footer(content, limit=CONTENT_MAX):
         return footer[:limit - 1].rstrip() + "…"
 
     if len(body) > max_body:
-        body = body[:max_body].rstrip() + "…"
+        body = _cut_at_boundary(body, max_body)
 
     return (body + "\n" + footer)[:limit]
+
+
+def _cut_at_boundary(body, max_len):
+    """Cắt body về <= max_len ở ranh giới tự nhiên (hết dòng/hết câu) thay vì giữa câu."""
+    cut = body[:max_len - 2]  # chừa chỗ cho dấu "…"
+    floor = int(max_len * 0.6)  # không bỏ quá 40% nội dung chỉ để tìm ranh giới
+    nl = cut.rfind("\n")
+    if nl >= floor:
+        return cut[:nl].rstrip() + "\n…"
+    for sep in (". ", "。", "! ", "? "):
+        i = cut.rfind(sep)
+        if i >= floor:
+            return cut[:i + 1].rstrip() + " …"
+    sp = cut.rfind(" ")
+    if sp >= floor:
+        cut = cut[:sp]
+    return cut.rstrip() + "…"
 
 
 # Các lý do chấm điểm chỉ dùng nội bộ -> không hiện trong bài đăng.
