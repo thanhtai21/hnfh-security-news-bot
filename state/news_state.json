@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-03T09:05:44.930739+07:00",
+  "last_run": "2026-11-03T11:06:39.896979+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -12,12 +12,12 @@
     "2026-10-31": 3,
     "2026-11-01": 3,
     "2026-11-02": 1,
-    "2026-11-03": 1
+    "2026-11-03": 2
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
     "2026-11-02": 2,
-    "2026-11-03": 2
+    "2026-11-03": 3
   },
   "posts": [
     {
@@ -319,6 +319,26 @@
       "day": "2026-11-03",
       "posted_at": "2026-11-03T06:56:41.396160+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Polymarket pledges to give $3.9 million back to victims after site compromise",
+      "link": "https://therecord.media/polymarket-returning-funds-to-customers-after-site-compromise",
+      "source": "The Record",
+      "score": 71,
+      "fingerprint": "9a1341ded65482fc",
+      "day": "2026-11-03",
+      "posted_at": "2026-11-03T11:06:39.896475+07:00",
+      "kind": "hot"
+    },
+    {
+      "title": "Google shuts down global botnet running on certified Android devices",
+      "link": "https://cyberscoop.com/google-disrupts-xcpe-botnet-videostrong-android-devices/",
+      "source": "CyberScoop",
+      "score": 57,
+      "fingerprint": "ba65c1596fa47b8a",
+      "day": "2026-11-03",
+      "posted_at": "2026-11-03T11:06:39.896601+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -419,6 +439,48 @@
       "rejected_at": "2026-11-03T07:05:39.312677+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/over-1-000-gitlab-servers-vulnerable-to-code-execution-attacks/",
+      "fingerprint": "e2124c117ba61901",
+      "rejected_at": "2026-11-03T11:06:39.896689+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/darkblinders-compromises-israeli-target.html",
+      "fingerprint": "99bff58f19180125",
+      "rejected_at": "2026-11-03T11:06:39.896748+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thanhnien.vn/samsung-galaxy-s27-co-pin-lon-hon-nhung-chua-nang-cong-suat-sac-co-day-185261031161541286.htm",
+      "fingerprint": "82ab4c68e921d106",
+      "rejected_at": "2026-11-03T11:06:39.896791+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thanhnien.vn/hack-bang-quang-cao-ngoai-troi-de-chieu-noi-dung-khieu-dam-185261102075645008.htm",
+      "fingerprint": "f4997b59d42e0665",
+      "rejected_at": "2026-11-03T11:06:39.896835+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://tuoitre.vn/canh-bao-hat-nhan-gia-o-ukraine-ung-dung-khan-cap-cua-nga-cung-bi-tan-cong-mang-100261102093940163.htm",
+      "fingerprint": "5b9ee93b8b3b296b",
+      "rejected_at": "2026-11-03T11:06:39.896874+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/hackers-ukraine-belarus-russia",
+      "fingerprint": "b1c321be5be03bdb",
+      "rejected_at": "2026-11-03T11:06:39.896917+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
