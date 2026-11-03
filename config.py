@@ -28,7 +28,7 @@ DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 # =====================================================================
 
 # Điểm tối thiểu để một bài được đăng.
-MIN_SCORE_TO_POST = 80
+MIN_SCORE_TO_POST = 85
 
 # Bài trong khoảng [SPECIAL_MIN_SCORE, MIN_SCORE_TO_POST) chỉ được đăng
 # nếu có "yếu tố đặc biệt" (xem analyzer.py - SPECIAL_SIGNALS).
@@ -83,7 +83,7 @@ HOT_ENABLED = os.environ.get("HOT_ENABLED", "1").strip().lower() not in (
 HOT_MIN_SCORE = 95
 
 # Bài cũ hơn số giờ này KHÔNG được coi là tin nóng.
-HOT_MAX_AGE_HOURS = 12
+HOT_MAX_AGE_HOURS = 18
 
 # Số NGUỒN RSS KHÁC NHAU cùng đưa một sự kiện (tính cả nguồn của chính bài đó).
 HOT_MIN_SOURCES_INTL = 2   # sự kiện quốc tế cần >= 2 nguồn
@@ -96,7 +96,7 @@ HOT_MIN_SOURCES_WITHOUT_AI = 3
 
 # Điểm tối thiểu do AI chấm để một bài được coi là tin nóng
 # (đã hạ 90 -> 85 theo yêu cầu B3 - 90 quá khắt khe, chưa bài nào đạt).
-HOT_AI_MIN_SCORE = 85
+HOT_AI_MIN_SCORE = 92
 
 # AI tắt/lỗi thì KHÔNG đăng tin nóng (mặc định "0").
 # Đặt "1" -> khi không có AI, bài nóng phải có >= 3 nguồn độc lập mới đăng.
