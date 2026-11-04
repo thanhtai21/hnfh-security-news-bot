@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-04T11:06:01.202042+07:00",
+  "last_run": "2026-11-04T13:05:41.453707+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -19,7 +19,7 @@
     "2026-11-01": 1,
     "2026-11-02": 2,
     "2026-11-03": 3,
-    "2026-11-04": 2
+    "2026-11-04": 3
   },
   "posts": [
     {
@@ -391,6 +391,16 @@
       "day": "2026-11-04",
       "posted_at": "2026-11-04T11:06:01.201710+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "French bank Crédit Mutuel Arkéa exploited for over $133 million, ZachXBT says",
+      "link": "https://www.theblock.co/news/web3/2026-11-03-french-bank-credit-mutuel-arkea-exploited-zachxbt-432607",
+      "source": "The Block",
+      "score": 99,
+      "fingerprint": "a0849c6fa392392b",
+      "day": "2026-11-04",
+      "posted_at": "2026-11-04T13:05:41.453545+07:00",
+      "kind": "hot"
     }
   ],
   "ai_rejected": [
