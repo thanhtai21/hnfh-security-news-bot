@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-05T19:05:40.828477+07:00",
+  "last_run": "2026-11-05T21:05:44.010448+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -456,48 +456,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://decrypt.co/382411/uk-says-ai-powered-ransomware-attack-on-critical-infrastructure-highly-likely-by-2028",
-      "fingerprint": "6745953be3224fcd",
-      "rejected_at": "2026-11-04T07:06:05.977057+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
-      "fingerprint": "6c0f7915e00ab224",
-      "rejected_at": "2026-11-04T07:06:05.977150+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/google-warns-llmjacking-attacks-are.html",
-      "fingerprint": "ea3463e976a9139d",
-      "rejected_at": "2026-11-04T07:06:05.977228+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://cyberscoop.com/europol-investment-scam-takedown/",
-      "fingerprint": "eab5dc7582dc4fe3",
-      "rejected_at": "2026-11-04T07:06:05.977301+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/russia-aligned-gorbag-hackers-exploit.html",
-      "fingerprint": "b595d177004050ca",
-      "rejected_at": "2026-11-04T07:06:05.977372+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html",
-      "fingerprint": "de8590137e129555",
-      "rejected_at": "2026-11-04T07:06:05.977444+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://thanhnien.vn/iphone-18-co-the-tro-thanh-mau-iphone-tieu-chuan-dat-nhat-lich-su-185261104084158723.htm",
       "fingerprint": "c8529e6181f8e024",
