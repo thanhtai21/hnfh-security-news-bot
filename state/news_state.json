@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-06T23:05:42.718914+07:00",
+  "last_run": "2026-11-07T01:05:40.742421+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -499,55 +499,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
-      "fingerprint": "ae149d93a6afe8c4",
-      "rejected_at": "2026-11-05T11:06:20.920758+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://cointelegraph.com/news/india-warns-ai-powered-hackers-targeting-crypto-exchanges-at-machine-speed?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "f4fb7613cbb81aea",
-      "rejected_at": "2026-11-05T11:06:20.920847+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://therecord.media/canadian-nationals-accused-us-education-hacks-cryptomining",
-      "fingerprint": "d51f33bd4c1a97dd",
-      "rejected_at": "2026-11-05T11:06:20.920922+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/us-charges-two-canadians-accused-of-hacking-us-universities/",
-      "fingerprint": "797319db9967530b",
-      "rejected_at": "2026-11-05T11:06:20.920991+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://tuoitre.vn/nhung-loai-dien-thoai-may-tinh-nao-bi-cam-nhap-khau-tu-nam-2027-100261104120002911.htm",
-      "fingerprint": "ebe36f335419902e",
-      "rejected_at": "2026-11-05T11:06:20.921061+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/sonicwall-wont-patch-eol-gms-flaws-that.html",
-      "fingerprint": "ea5cd3423358e241",
-      "rejected_at": "2026-11-05T11:06:20.921129+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
-      "fingerprint": "6b2b11624cf87258",
-      "rejected_at": "2026-11-05T11:06:20.921200+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://cointelegraph.com/news/credit-mutuel-arkea-resumes-operations-133m-crypto-theft?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
       "fingerprint": "22f97590c66bc7b9",
       "rejected_at": "2026-11-05T15:06:10.880077+07:00",
@@ -700,6 +651,20 @@
       "rejected_at": "2026-11-06T15:06:09.881261+07:00",
       "scope": "all",
       "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/metamask-says-recent-attack-didnt-affect-wallet-infrastructure/",
+      "fingerprint": "b86e9ffd0859126b",
+      "rejected_at": "2026-11-07T01:05:40.742139+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://vnexpress.net/google-viet-nam-co-45-trieu-nguoi-dung-ai-tao-sinh-5141023.html",
+      "fingerprint": "94d22ede677ab381",
+      "rejected_at": "2026-11-07T01:05:40.742233+07:00",
+      "scope": "all",
+      "ttl_hours": 6
     }
   ]
 }
