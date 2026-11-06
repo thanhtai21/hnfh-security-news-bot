@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-06T17:05:39.657968+07:00",
+  "last_run": "2026-11-06T19:13:44.069079+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -498,48 +498,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.securityweek.com/canadian-extradited-to-us-over-cryptomining-hacks-on-university-supercomputers/",
-      "fingerprint": "8cc0d6b27ac4d05e",
-      "rejected_at": "2026-11-05T07:06:19.031855+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.darkreading.com/cybersecurity-operations/germany-crime-service-investment-fraud",
-      "fingerprint": "503dd50ae6d5d7f0",
-      "rejected_at": "2026-11-05T07:06:19.031956+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/dreamhost-confirms-data-breach-exposed-ftp-logins-and-webmail-sessions/",
-      "fingerprint": "1a1a47937216371d",
-      "rejected_at": "2026-11-05T07:06:19.032034+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/debian-and-ubuntu-apt-flaw-lets-mitm.html",
-      "fingerprint": "e7abd627e99a170f",
-      "rejected_at": "2026-11-05T07:06:19.032106+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/malicious-cpguard-updates-served-in-opsshield-supply-chain-attack/",
-      "fingerprint": "634605c0ad01066c",
-      "rejected_at": "2026-11-05T07:06:19.032203+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.darkreading.com/application-security/critical-rails-bug-derail-vulnerable-servers",
-      "fingerprint": "e5f4f1afaa546131",
-      "rejected_at": "2026-11-05T07:06:19.032286+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://www.bleepingcomputer.com/news/security/zyxel-fixes-zero-day-exploited-to-hack-nearly-1-000-network-switches/",
       "fingerprint": "ae149d93a6afe8c4",
