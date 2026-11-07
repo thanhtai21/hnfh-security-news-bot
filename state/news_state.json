@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-07T20:15:54.068642+07:00",
+  "last_run": "2026-11-08T01:05:42.381157+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -519,48 +519,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://vnexpress.net/ai-lay-du-lieu-tu-dien-thoai-dang-khoa-the-nao-5141195.html",
-      "fingerprint": "ccc44d67d8e14280",
-      "rejected_at": "2026-11-06T11:06:09.260028+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/",
-      "fingerprint": "938726b65c9094ef",
-      "rejected_at": "2026-11-06T11:06:09.260094+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://tuoitre.vn/he-lo-lo-hong-giup-tin-tac-tan-cong-tu-lanh-kho-mau-o-chau-au-100261105144503586.htm",
-      "fingerprint": "9c68d6baa366c7f9",
-      "rejected_at": "2026-11-06T11:06:09.260139+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/fbi-cisa-warn-of-cyberattacks-targeting-refrigeration-systems/",
-      "fingerprint": "dfe50a07f6d10424",
-      "rejected_at": "2026-11-06T11:06:09.260179+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/russia-linked-hackers-hit-ios-android-devices-with-exploit-chains-via-watering-holes/",
-      "fingerprint": "8a9867047153a38b",
-      "rejected_at": "2026-11-06T11:06:09.260217+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/5-active-cyber-threats-that-put-us.html",
-      "fingerprint": "6504eaab09dfcc78",
-      "rejected_at": "2026-11-06T11:06:09.260254+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://thanhnien.vn/viet-nam-thi-diem-he-thong-truy-vet-va-thu-hoi-dong-tien-lua-dao-185261106111035797.htm",
       "fingerprint": "97d26539044de04e",
