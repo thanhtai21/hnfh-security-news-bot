@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-07T13:05:41.445902+07:00",
+  "last_run": "2026-11-07T13:12:22.617911+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -702,13 +702,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://www.bleepingcomputer.com/news/security/metamask-says-recent-attack-didnt-affect-wallet-infrastructure/",
-      "fingerprint": "b86e9ffd0859126b",
-      "rejected_at": "2026-11-07T07:09:23.492830+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://decrypt.co/382695/former-fbi-agent-pleads-guilty-to-stealing-2-5m-in-crypto-from-35-investigations",
       "fingerprint": "d8a302f3da229b1d",
       "rejected_at": "2026-11-07T07:09:23.492897+07:00",
@@ -791,6 +784,13 @@
       "rejected_at": "2026-11-07T13:05:41.445817+07:00",
       "scope": "all",
       "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/metamask-says-recent-attack-didnt-affect-wallet-infrastructure/",
+      "fingerprint": "b86e9ffd0859126b",
+      "rejected_at": "2026-11-07T13:12:22.617786+07:00",
+      "scope": "all",
+      "ttl_hours": 6
     }
   ]
 }
