@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-07T19:05:37.529956+07:00",
+  "last_run": "2026-11-07T20:15:54.068642+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -520,55 +520,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://thehackernews.com/2026/11/backdoored-docker-image-for-artex-ai.html",
-      "fingerprint": "3d4556351d56c589",
-      "rejected_at": "2026-11-06T07:06:10.251480+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/bank-phishing-sites-show-fake-suspended-pages-to-evade-takedowns/",
-      "fingerprint": "c4ddf6dcc2e9dcf4",
-      "rejected_at": "2026-11-06T07:06:10.251573+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://therecord.media/cyberattacks-refrigeration-cisa-fbi",
-      "fingerprint": "953c6b3135e23877",
-      "rejected_at": "2026-11-06T07:06:10.251648+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/fake-openai-spacex-events-used-to-steal-microsoft-google-accounts/",
-      "fingerprint": "0b7176bb6dc293c3",
-      "rejected_at": "2026-11-06T07:06:10.251725+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-linux-servers-using-trojanized-cwp-web-server/",
-      "fingerprint": "d6e973e052f66530",
-      "rejected_at": "2026-11-06T07:06:10.251793+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.darkreading.com/cyber-risk/what-we-missed-knicks-phishing-test-out-of-bounds",
-      "fingerprint": "e5bcf4f28a26b851",
-      "rejected_at": "2026-11-06T07:06:10.251859+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/truffle-security-launches-program-to-revoke-14-million-live-secrets/",
-      "fingerprint": "f24a283c8be52a11",
-      "rejected_at": "2026-11-06T07:06:10.251928+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://vnexpress.net/ai-lay-du-lieu-tu-dien-thoai-dang-khoa-the-nao-5141195.html",
       "fingerprint": "ccc44d67d8e14280",
       "rejected_at": "2026-11-06T11:06:09.260028+07:00",
@@ -786,13 +737,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://www.bleepingcomputer.com/news/security/metamask-says-recent-attack-didnt-affect-wallet-infrastructure/",
-      "fingerprint": "b86e9ffd0859126b",
-      "rejected_at": "2026-11-07T13:12:22.617786+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html",
       "fingerprint": "03f8de52c2be58fd",
       "rejected_at": "2026-11-07T15:05:40.224367+07:00",
@@ -803,6 +747,20 @@
       "link": "https://www.securityweek.com/sonicwall-patches-exploited-sonicos-bug-that-weakens-vpn-logins/",
       "fingerprint": "1976531a117d8659",
       "rejected_at": "2026-11-07T19:05:37.529771+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/metamask-says-recent-attack-didnt-affect-wallet-infrastructure/",
+      "fingerprint": "b86e9ffd0859126b",
+      "rejected_at": "2026-11-07T20:15:54.068391+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://www.wired.com/story/kernel-panic-refrigeration-hacks-internet-of-things/",
+      "fingerprint": "18b8a48c3e1e3563",
+      "rejected_at": "2026-11-07T20:15:54.068496+07:00",
       "scope": "all",
       "ttl_hours": 36
     }
