@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-08T15:05:42.089841+07:00",
+  "last_run": "2026-11-08T21:05:37.257712+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -530,104 +530,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://therecord.media/fbi-agent-pleads-guilty-to-stealing-from-nation-state-hackers",
-      "fingerprint": "498ae5c34c606975",
-      "rejected_at": "2026-11-07T07:05:46.681206+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/in-other-news-trezor-implant-llmjacking-bills-hit-1m-sap-flaws-weaponized-within-days/",
-      "fingerprint": "6922613ec8ea4aa4",
-      "rejected_at": "2026-11-07T07:05:46.681320+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/d-link-warns-of-multiple-zero-days-in-dgs-3130-series-switches/",
-      "fingerprint": "ad13bfcc588bd9f2",
-      "rejected_at": "2026-11-07T07:05:46.681412+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://therecord.media/digicert-certificate-authority-reports-data-breach",
-      "fingerprint": "e2f83a99b4e07815",
-      "rejected_at": "2026-11-07T07:05:46.681486+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.theblock.co/news/defi/2026-11-06-gnosis-pay-data-breach-legacy-debit-card-system-435934",
-      "fingerprint": "b6d2e6c7e2baaef4",
-      "rejected_at": "2026-11-07T07:05:46.681558+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/fake-security-tools-on-github-push-backdoors-and-infostealers/",
-      "fingerprint": "9aaea9c01d193203",
-      "rejected_at": "2026-11-07T07:05:46.681631+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://tuoitre.vn/phat-hien-ma-doc-moi-tinh-vi-tan-cong-he-dieu-hanh-windows-100261105151024494.htm",
-      "fingerprint": "093c061c357debee",
-      "rejected_at": "2026-11-07T07:05:46.681719+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/openais-new-gpt-6-cyber-ai-finds-81-firefox-flaws-948-linux-bugs/",
-      "fingerprint": "2220ad8c31cbb991",
-      "rejected_at": "2026-11-07T07:05:46.681798+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://decrypt.co/382695/former-fbi-agent-pleads-guilty-to-stealing-2-5m-in-crypto-from-35-investigations",
-      "fingerprint": "d8a302f3da229b1d",
-      "rejected_at": "2026-11-07T07:09:23.492897+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/runaway-ai-hacking-agent-behind-workos-breach-after-escaping-sandbox/",
-      "fingerprint": "997981d6a2aba62a",
-      "rejected_at": "2026-11-07T07:09:23.492945+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/researchers-bypass-chatgpt-lockdown.html",
-      "fingerprint": "f41b42b837f6d3ad",
-      "rejected_at": "2026-11-07T07:09:23.492986+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.microsoft.com/en-us/security/blog/2026/11/05/email-threat-landscape-q3-2026-trends-and-insights/",
-      "fingerprint": "093b0a0f0a20a342",
-      "rejected_at": "2026-11-07T07:09:23.493025+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/threatsday-apache-ofbiz-rce-dreamhost.html",
-      "fingerprint": "ef5358fd2694aae7",
-      "rejected_at": "2026-11-07T07:09:23.493063+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html",
-      "fingerprint": "812ab77e12b8d9c6",
-      "rejected_at": "2026-11-07T07:09:23.493103+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://thehackernews.com/2026/11/installing-fix-for-exploited-wordpress.html",
       "fingerprint": "7c8b1776ff4f3029",
