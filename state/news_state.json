@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-09T23:05:43.408195+07:00",
+  "last_run": "2026-11-10T01:05:48.402174+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -26,7 +26,8 @@
     "2026-11-03": 3,
     "2026-11-04": 3,
     "2026-11-05": 1,
-    "2026-11-06": 1
+    "2026-11-06": 1,
+    "2026-11-10": 1
   },
   "posts": [
     {
@@ -548,6 +549,16 @@
       "day": "2026-11-09",
       "posted_at": "2026-11-09T15:05:42.691683+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Binance denies data breach after alleged ShinyHunters claims",
+      "link": "https://www.bleepingcomputer.com/news/security/binance-denies-data-breach-after-alleged-shinyhunters-claims/",
+      "source": "BleepingComputer",
+      "score": 100,
+      "fingerprint": "4c68d5e5f2af0768",
+      "day": "2026-11-10",
+      "posted_at": "2026-11-10T01:05:48.401956+07:00",
+      "kind": "hot"
     }
   ],
   "ai_rejected": [
@@ -583,6 +594,13 @@
       "link": "https://www.theblock.co/news/ecosystems/2026-11-09-binance-hack-launderers-mint-homemade-elon-musk-animal-memecoins-move-stolen-funds-elliptic-436440",
       "fingerprint": "bcf1dd6d698a084c",
       "rejected_at": "2026-11-09T23:05:43.408068+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/hackers-exploit-quboles-trusted-aws.html",
+      "fingerprint": "67cf0c826545556f",
+      "rejected_at": "2026-11-10T01:05:48.402083+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     }
