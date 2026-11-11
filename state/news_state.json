@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-11T15:06:11.024716+07:00",
+  "last_run": "2026-11-11T21:05:36.489288+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -636,62 +636,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://thehackernews.com/2026/11/bitter-hackers-deploy-new-paprat.html",
-      "fingerprint": "11fa7e1a9da17a1d",
-      "rejected_at": "2026-11-10T07:06:14.021610+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/vanderbilt-university-hit-in-byod-ransomware-attack-data-theft-claimed/",
-      "fingerprint": "d73203ecc0548713",
-      "rejected_at": "2026-11-10T07:06:14.021660+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/fbi-agent-stole-25-million-in-crypto-from-hackers-fraud-victims/",
-      "fingerprint": "54f0e79c0d5c6519",
-      "rejected_at": "2026-11-10T07:06:14.021705+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/weekly-recap-sshole-exploited-apt-root.html",
-      "fingerprint": "041217a8ee494673",
-      "rejected_at": "2026-11-10T07:06:14.021744+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.darkreading.com/application-security/microsoft-rce-bug-windows-paint-confusion",
-      "fingerprint": "a92407842a79520b",
-      "rejected_at": "2026-11-10T07:06:14.021782+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://therecord.media/amplifon-hearing-aid-company-data-breach",
-      "fingerprint": "f206851a02dc546a",
-      "rejected_at": "2026-11-10T07:06:14.021822+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/us-bans-mexc-crypto-exchange-over-sanctions-evasion-cybercrime-links/",
-      "fingerprint": "8b8b7011f4260bcc",
-      "rejected_at": "2026-11-10T07:06:14.021861+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thanhnien.vn/samsung-sap-thu-phi-galaxy-ai-tu-ban-one-ui-95-185261109170920866.htm",
-      "fingerprint": "60d7b7a0c485fd35",
-      "rejected_at": "2026-11-10T07:06:14.021897+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://www.securityweek.com/hackers-exploiting-sshole-authentication-bypass-in-openssh/",
       "fingerprint": "13752d04b871a312",
       "rejected_at": "2026-11-10T11:06:05.138899+07:00",
@@ -858,13 +802,6 @@
       "rejected_at": "2026-11-11T11:05:55.098378+07:00",
       "scope": "all",
       "ttl_hours": 36
-    },
-    {
-      "link": "https://www.theblock.co/news/business/2026-11-10-bitdeer-reports-record-q3-revenue-as-net-loss-widens-to-125-5-million-437217",
-      "fingerprint": "6ea2949a723494fc",
-      "rejected_at": "2026-11-11T13:05:41.718086+07:00",
-      "scope": "all",
-      "ttl_hours": 6
     },
     {
       "link": "https://thanhnien.vn/ro-ri-mo-hinh-iphone-air-2-va-iphone-18-he-lo-nhieu-thay-doi-thiet-ke-185261111135305354.htm",
