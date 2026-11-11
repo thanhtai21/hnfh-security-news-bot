@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-12T01:05:43.082334+07:00",
+  "last_run": "2026-11-12T05:05:34.412003+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -636,48 +636,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://www.bbc.co.uk/news/articles/cmp3g37l566po?at_medium=RSS&at_campaign=rss",
-      "fingerprint": "5f70d9b232063aa2",
-      "rejected_at": "2026-11-10T15:05:51.967078+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.wired.com/story/security-flaws-across-uk-government-sites-exposed-god-tier-information/",
-      "fingerprint": "16bc6c5b71af7d10",
-      "rejected_at": "2026-11-10T15:05:51.967159+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/plex2shell-exploited-against-qnap-nas-users/",
-      "fingerprint": "11b8ff64b7be6f57",
-      "rejected_at": "2026-11-10T15:05:51.967232+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/fireworks-ai-discloses-new-breach-after-cloud-provider-hack/",
-      "fingerprint": "1e57e6a0ea7856be",
-      "rejected_at": "2026-11-10T15:05:51.967317+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/france-blames-iran-for-a-cyberattack-that-heated-supermarket-refrigerators/",
-      "fingerprint": "81bdf1c2104c3c16",
-      "rejected_at": "2026-11-10T15:05:51.967388+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.darkreading.com/cybersecurity-operations/black-hat-india-2026-landmark-debut",
-      "fingerprint": "4b2ea44ce8f1ee10",
-      "rejected_at": "2026-11-10T15:05:51.967454+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://thehackernews.com/2026/11/sglang-rce-exploit-breaches-near-ai.html",
       "fingerprint": "882afe16b4b67f9c",
       "rejected_at": "2026-11-11T06:30:45.514637+07:00",
@@ -806,8 +764,15 @@
     {
       "link": "https://www.bleepingcomputer.com/news/security/hackers-use-antifox-ai-agents-in-aws-credential-theft-attacks/",
       "fingerprint": "909261ba9a601491",
-      "rejected_at": "2026-11-11T22:23:32.576956+07:00",
-      "scope": "hot_only",
+      "rejected_at": "2026-11-12T05:05:34.411901+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://decrypt.co/383094/stablecoin-drain-etf-outflows-bitcoin-running-empty",
+      "fingerprint": "9314f15a244a8369",
+      "rejected_at": "2026-11-12T05:05:34.411968+07:00",
+      "scope": "all",
       "ttl_hours": 6
     }
   ]
