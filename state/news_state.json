@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-12T23:05:38.752033+07:00",
+  "last_run": "2026-11-13T01:06:03.583587+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -667,55 +667,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://therecord.media/us-army-member-arrested-in-uk-spying-for-russia",
-      "fingerprint": "16b36f129a41ae00",
-      "rejected_at": "2026-11-11T11:05:55.097922+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/over-a-dozen-organizations-hit-in-qubole-supply-chain-attack/",
-      "fingerprint": "e2c7a4e7b59078cf",
-      "rejected_at": "2026-11-11T11:05:55.098020+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thanhnien.vn/tinh-nang-nen-bat-giup-dien-thoai-samsung-galaxy-an-toan-hon-185261110201419942.htm",
-      "fingerprint": "0516b19b650cc7f2",
-      "rejected_at": "2026-11-11T11:05:55.098096+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/",
-      "fingerprint": "8eb662df2c6e8330",
-      "rejected_at": "2026-11-11T11:05:55.098167+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.darkreading.com/cyber-risk/ai-coding-agents-leak-secrets-github",
-      "fingerprint": "4c8b6c5d58950bb7",
-      "rejected_at": "2026-11-11T11:05:55.098235+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/turla-hackers-use-new-ceral-malware-to-spy-on-govt-exchange-servers/",
-      "fingerprint": "13346767e715c599",
-      "rejected_at": "2026-11-11T11:05:55.098309+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/france-blames-iran-for-sabotage-attack.html",
-      "fingerprint": "303e8968819e77a7",
-      "rejected_at": "2026-11-11T11:05:55.098378+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://thanhnien.vn/ro-ri-mo-hinh-iphone-air-2-va-iphone-18-he-lo-nhieu-thay-doi-thiet-ke-185261111135305354.htm",
       "fingerprint": "54a1298f56787cc9",
       "rejected_at": "2026-11-11T15:06:11.024327+07:00",
@@ -940,13 +891,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "dcdb7ddcb28264aa",
-      "rejected_at": "2026-11-12T19:05:37.689147+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://decrypt.co/383094/stablecoin-drain-etf-outflows-bitcoin-running-empty",
       "fingerprint": "9314f15a244a8369",
       "rejected_at": "2026-11-12T19:54:12.896601+07:00",
@@ -964,6 +908,13 @@
       "link": "https://www.theblock.co/news/ecosystems/2026-11-12-sofiusd-goes-live-on-polygon-as-bank-issued-stablecoin-expands-reach-438542",
       "fingerprint": "bc82605cbf206303",
       "rejected_at": "2026-11-12T23:05:38.751926+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "fingerprint": "dcdb7ddcb28264aa",
+      "rejected_at": "2026-11-13T01:06:03.583480+07:00",
       "scope": "all",
       "ttl_hours": 6
     }
