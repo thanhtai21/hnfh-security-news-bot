@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-12T11:05:42.943308+07:00",
+  "last_run": "2026-11-12T13:06:06.992035+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -21,7 +21,7 @@
     "2026-11-09": 2,
     "2026-11-10": 3,
     "2026-11-11": 3,
-    "2026-11-12": 1
+    "2026-11-12": 2
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -643,6 +643,16 @@
       "day": "2026-11-12",
       "posted_at": "2026-11-12T07:06:13.231382+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Binance CSO unwittingly foreshadowed $6.3B hack tactic months before attack",
+      "link": "https://cointelegraph.com/news/binance-cso-foreshadowed-6b-hack-tactic-months-before-attack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph",
+      "score": 71,
+      "fingerprint": "a1204b5172b1f43f",
+      "day": "2026-11-12",
+      "posted_at": "2026-11-12T13:06:06.991627+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -895,6 +905,62 @@
       "link": "https://www.securityweek.com/today-ciso-forum-virtual-summit-2026-join-global-cybersecurity-leaders/",
       "fingerprint": "9af651ea0511d63c",
       "rejected_at": "2026-11-12T11:05:42.943259+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://decrypt.co/383094/stablecoin-drain-etf-outflows-bitcoin-running-empty",
+      "fingerprint": "9314f15a244a8369",
+      "rejected_at": "2026-11-12T13:06:06.991740+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://thanhnien.vn/ma-doc-van-doc-duoc-gmail-sau-khi-doi-mat-khau-185261112111250216.htm",
+      "fingerprint": "ed204fb0d80968f9",
+      "rejected_at": "2026-11-12T13:06:06.991791+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/cisco-broadworks-and-openwave-flaws.html",
+      "fingerprint": "1328edf7e1f23892",
+      "rejected_at": "2026-11-12T13:06:06.991825+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/critical-apache-http2-flaw-could-let.html",
+      "fingerprint": "33eb05284334a966",
+      "rejected_at": "2026-11-12T13:06:06.991858+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/microsoft-researchers-show-ai-agents.html",
+      "fingerprint": "80abc2f479a2367c",
+      "rejected_at": "2026-11-12T13:06:06.991890+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/screenconnect-attacks-target-at-least.html",
+      "fingerprint": "7be31150bdc24d3c",
+      "rejected_at": "2026-11-12T13:06:06.991921+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/iran-backed-network-directed-london-attacks-over-facetime",
+      "fingerprint": "8680cde0392979e2",
+      "rejected_at": "2026-11-12T13:06:06.991954+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/microsoft-patches-1259-flaws-including.html",
+      "fingerprint": "361670fe0b4a9e11",
+      "rejected_at": "2026-11-12T13:06:06.991985+07:00",
       "scope": "all",
       "ttl_hours": 36
     }
