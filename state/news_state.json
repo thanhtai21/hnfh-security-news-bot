@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-13T21:05:47.447647+07:00",
+  "last_run": "2026-11-13T23:05:58.441205+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -719,69 +719,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://decrypt.co/382984/prisoner-jailed-for-8-years-over-2-7m-crypto-theft-plot-run-from-his-cell",
-      "fingerprint": "e386aae3031ca779",
-      "rejected_at": "2026-11-12T11:05:42.942946+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/emudhra-revokes-8-more-cas-it.html",
-      "fingerprint": "a593981a4a780248",
-      "rejected_at": "2026-11-12T11:05:42.943040+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/threat-actors-exploit-openwave-cisco-broadworks-vulnerabilities/",
-      "fingerprint": "72cd831051dc69ca",
-      "rejected_at": "2026-11-12T11:05:42.943080+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://therecord.media/poland-shuts-down-government-services-platform-cyberattack",
-      "fingerprint": "81b3ca271acad65b",
-      "rejected_at": "2026-11-12T11:05:42.943111+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/fortinet-patches-nearly-100-vulnerabilities/",
-      "fingerprint": "b1178ae78d08953e",
-      "rejected_at": "2026-11-12T11:05:42.943141+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/active-screenconnect-attacks-breach-msps-impact-dozens-of-organizations/",
-      "fingerprint": "083612e34a67f05c",
-      "rejected_at": "2026-11-12T11:05:42.943170+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/notion-says-fireworks-breach-exposed-customer-ai-chat-transcripts/",
-      "fingerprint": "5972cf18922e96d6",
-      "rejected_at": "2026-11-12T11:05:42.943199+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://cointelegraph.com/news/bitget-wallet-crypto-phishing-risk-detections-surge?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "8e861aece9860040",
-      "rejected_at": "2026-11-12T11:05:42.943230+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/today-ciso-forum-virtual-summit-2026-join-global-cybersecurity-leaders/",
-      "fingerprint": "9af651ea0511d63c",
-      "rejected_at": "2026-11-12T11:05:42.943259+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://thanhnien.vn/ma-doc-van-doc-duoc-gmail-sau-khi-doi-mat-khau-185261112111250216.htm",
       "fingerprint": "ed204fb0d80968f9",
       "rejected_at": "2026-11-12T13:06:06.991791+07:00",
@@ -901,20 +838,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "dcdb7ddcb28264aa",
-      "rejected_at": "2026-11-13T15:06:52.973439+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://www.theblock.co/news/ecosystems/2026-11-12-sofiusd-goes-live-on-polygon-as-bank-issued-stablecoin-expands-reach-438542",
-      "fingerprint": "bc82605cbf206303",
-      "rejected_at": "2026-11-13T15:06:52.973530+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://www.theblock.co/news/defi/2026-11-13-trm-labs-beacon-concierge-439609",
       "fingerprint": "5c8cabd85d8a1b99",
       "rejected_at": "2026-11-13T15:06:52.973604+07:00",
@@ -955,6 +878,13 @@
       "rejected_at": "2026-11-13T19:05:51.991027+07:00",
       "scope": "hot_only",
       "ttl_hours": 36
+    },
+    {
+      "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "fingerprint": "dcdb7ddcb28264aa",
+      "rejected_at": "2026-11-13T23:05:58.441032+07:00",
+      "scope": "all",
+      "ttl_hours": 6
     }
   ]
 }
