@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-13T11:06:21.122607+07:00",
+  "last_run": "2026-11-13T15:06:52.973932+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -22,7 +22,7 @@
     "2026-11-10": 3,
     "2026-11-11": 3,
     "2026-11-12": 3,
-    "2026-11-13": 2
+    "2026-11-13": 3
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -32,7 +32,8 @@
     "2026-11-05": 1,
     "2026-11-06": 1,
     "2026-11-10": 1,
-    "2026-11-11": 1
+    "2026-11-11": 1,
+    "2026-11-13": 1
   },
   "posts": [
     {
@@ -684,6 +685,26 @@
       "day": "2026-11-13",
       "posted_at": "2026-11-13T11:06:21.121848+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Stolen webcam clips of 900+ victims feed North Korea’s $400 million fake Zoom scheme",
+      "link": "https://www.helpnetsecurity.com/2026/11/13/fbi-north-korean-fake-zoom-calls/",
+      "source": "Help Net Security",
+      "score": 100,
+      "fingerprint": "bfa9ba08d873e192",
+      "day": "2026-11-13",
+      "posted_at": "2026-11-13T15:06:52.973141+07:00",
+      "kind": "hot"
+    },
+    {
+      "title": "Attacker Used 4,837 Hijacked GitHub Accounts to Run a CI Secret Stealer in 1,806+ Repositories",
+      "link": "https://thehackernews.com/2026/11/4837-hijacked-github-accounts-ran-ci.html",
+      "source": "The Hacker News",
+      "score": 49,
+      "fingerprint": "96fc7ebc34164645",
+      "day": "2026-11-13",
+      "posted_at": "2026-11-13T15:06:52.973313+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -863,13 +884,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://www.theblock.co/news/ecosystems/2026-11-12-sofiusd-goes-live-on-polygon-as-bank-issued-stablecoin-expands-reach-438542",
-      "fingerprint": "bc82605cbf206303",
-      "rejected_at": "2026-11-13T07:06:22.998537+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://therecord.media/european-authorities-take-down-stealic-malware-second-time",
       "fingerprint": "7d4a4419cce25d94",
       "rejected_at": "2026-11-13T07:06:22.998658+07:00",
@@ -903,13 +917,6 @@
       "rejected_at": "2026-11-13T07:06:22.998932+07:00",
       "scope": "all",
       "ttl_hours": 36
-    },
-    {
-      "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "dcdb7ddcb28264aa",
-      "rejected_at": "2026-11-13T08:56:06.484519+07:00",
-      "scope": "all",
-      "ttl_hours": 6
     },
     {
       "link": "https://decrypt.co/383094/stablecoin-drain-etf-outflows-bitcoin-running-empty",
@@ -957,6 +964,48 @@
       "link": "https://www.darkreading.com/data-privacy/extortion-luna-moth-law-firms-second-time",
       "fingerprint": "aa587588bdb6e16e",
       "rejected_at": "2026-11-13T11:06:21.122503+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "fingerprint": "dcdb7ddcb28264aa",
+      "rejected_at": "2026-11-13T15:06:52.973439+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://www.theblock.co/news/ecosystems/2026-11-12-sofiusd-goes-live-on-polygon-as-bank-issued-stablecoin-expands-reach-438542",
+      "fingerprint": "bc82605cbf206303",
+      "rejected_at": "2026-11-13T15:06:52.973530+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://www.theblock.co/news/defi/2026-11-13-trm-labs-beacon-concierge-439609",
+      "fingerprint": "5c8cabd85d8a1b99",
+      "rejected_at": "2026-11-13T15:06:52.973604+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/shipping-giant-maersk-says-recent-incident-affected-legacy-system",
+      "fingerprint": "cd8b704d40472a1b",
+      "rejected_at": "2026-11-13T15:06:52.973674+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/apify-rotates-api-tokens-prompts-2fa-resets-after-breach/",
+      "fingerprint": "f80dd8890addc7b6",
+      "rejected_at": "2026-11-13T15:06:52.973741+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thecyberexpress.com/microsoft-365-outage-takes-down-outlook/",
+      "fingerprint": "35c837fab343b8aa",
+      "rejected_at": "2026-11-13T15:06:52.973807+07:00",
       "scope": "all",
       "ttl_hours": 36
     }
