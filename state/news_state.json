@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-14T03:05:42.472622+07:00",
+  "last_run": "2026-11-14T06:41:29.260926+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -22,7 +22,8 @@
     "2026-11-10": 3,
     "2026-11-11": 3,
     "2026-11-12": 3,
-    "2026-11-13": 3
+    "2026-11-13": 3,
+    "2026-11-14": 1
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -715,6 +716,16 @@
       "day": "2026-11-13",
       "posted_at": "2026-11-13T19:05:51.990841+07:00",
       "kind": "hot"
+    },
+    {
+      "title": "354 dark web vendors and buyers arrested in Operation TorNado",
+      "link": "https://www.helpnetsecurity.com/2026/11/13/europol-dark-web-arrests-cybercrime/",
+      "source": "Help Net Security",
+      "score": 89,
+      "fingerprint": "e64dd6e9602cd27f",
+      "day": "2026-11-14",
+      "posted_at": "2026-11-14T06:41:29.260236+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -824,18 +835,53 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://cointelegraph.com/news/tron-tether-chainalysis-cybercrime-task-force-laundering?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "dcdb7ddcb28264aa",
-      "rejected_at": "2026-11-13T23:05:58.441032+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://decrypt.co/383139/tron-tether-chainalysis-new-crypto-crime-task-force-replacing-trm",
       "fingerprint": "999a58442399c5db",
       "rejected_at": "2026-11-14T03:05:42.472392+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://www.darkreading.com/mobile-security/arcticrat-cybercrime-gang-profiles-victim-finances-ai",
+      "fingerprint": "537059a8ca0aa9ff",
+      "rejected_at": "2026-11-14T06:41:29.260406+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thecyberexpress.com/tce-weekly-roundup-ai-agent/",
+      "fingerprint": "f165e12aa2329d46",
+      "rejected_at": "2026-11-14T06:41:29.260500+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/university-of-texas-arlington-warns-data-breach",
+      "fingerprint": "58d16f5f94d701e1",
+      "rejected_at": "2026-11-14T06:41:29.260580+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.securityweek.com/in-other-news-new-cisa-director-nominee-connected-car-hacking-baker-tilly-data-breach/",
+      "fingerprint": "4ad08cbc2db7ec7e",
+      "rejected_at": "2026-11-14T06:41:29.260655+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/artex-ai-tool-fbi-flash-alert",
+      "fingerprint": "b93c1b25a99d704c",
+      "rejected_at": "2026-11-14T06:41:29.260729+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.infosecurity-magazine.com/news/hackers-ai-weaker-cyber-attacks/",
+      "fingerprint": "9cd34d0e42523ecc",
+      "rejected_at": "2026-11-14T06:41:29.260802+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
