@@ -28,7 +28,7 @@ DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 # =====================================================================
 
 # Điểm tối thiểu để một bài được đăng.
-MIN_SCORE_TO_POST = 85
+MIN_SCORE_TO_POST = 80
 
 # Bài trong khoảng [SPECIAL_MIN_SCORE, MIN_SCORE_TO_POST) chỉ được đăng
 # nếu có "yếu tố đặc biệt" (xem analyzer.py - SPECIAL_SIGNALS).
@@ -96,7 +96,7 @@ HOT_MIN_SOURCES_WITHOUT_AI = 3
 
 # Điểm tối thiểu do AI chấm để một bài được coi là tin nóng
 # (đã hạ 90 -> 85 theo yêu cầu B3 - 90 quá khắt khe, chưa bài nào đạt).
-HOT_AI_MIN_SCORE = 92
+HOT_AI_MIN_SCORE = 85
 
 # AI tắt/lỗi thì KHÔNG đăng tin nóng (mặc định "0").
 # Đặt "1" -> khi không có AI, bài nóng phải có >= 3 nguồn độc lập mới đăng.
@@ -111,9 +111,9 @@ HOT_ALLOW_WITHOUT_AI = os.environ.get(
 EVENT_GUARD_ENABLED = os.environ.get(
     "EVENT_GUARD_ENABLED", "1").strip().lower() not in ("0", "false", "no", "off")
 try:
-    EVENT_GUARD_HOURS = max(1, int(os.environ.get("EVENT_GUARD_HOURS", "24")))
+    EVENT_GUARD_HOURS = max(1, int(os.environ.get("EVENT_GUARD_HOURS", "48")))
 except ValueError:
-    EVENT_GUARD_HOURS = 24
+    EVENT_GUARD_HOURS = 48
 
 # ---------------------------------------------------------------------
 # B5 (AI tắt/lỗi): đường dự phòng cho sự kiện cực lớn. Siết chặt để không
@@ -265,6 +265,16 @@ RSS_SOURCES = {
     "Tuoi Tre Cong nghe": "https://tuoitre.vn/rss/cong-nghe.rss",
     "Thanh Nien Cong nghe": "https://thanhnien.vn/rss/cong-nghe.rss",
     "Vietnamnet Cong nghe": "https://vietnamnet.vn/rss/cong-nghe.rss",
+    # --- Nguồn bổ sung 13/11/2026 (CHƯA kiểm chứng từ môi trường dev: sandbox
+    # không truy cập được). Nếu URL lỗi thì collector chỉ ghi log và bỏ qua,
+    # bot không crash. Kiểm tra log "[RSS] Source OK: <tên> (N bài hợp lệ)";
+    # nguồn nào N=0 hoặc lỗi thì xóa khỏi danh sách.) ---
+    "The Cyber Express": "https://thecyberexpress.com/feed/",
+    "The Register Security": "https://www.theregister.com/security/headlines.atom",
+    "Infosecurity Magazine": "https://www.infosecurity-magazine.com/rss/news/",
+    "Help Net Security": "https://www.helpnetsecurity.com/feed/",
+    "Asia News Network": "https://asianews.network/feed/",
+    "The Diplomat": "https://thediplomat.com/feed/",
 }
 
 # Mức độ tin cậy của từng nguồn (dùng trong scoring).
@@ -289,6 +299,12 @@ SOURCE_TRUST_SCORE = {
     "Tuoi Tre Cong nghe": 12,
     "Thanh Nien Cong nghe": 11,
     "Vietnamnet Cong nghe": 11,
+    "The Cyber Express": 11,
+    "The Register Security": 12,
+    "Infosecurity Magazine": 11,
+    "Help Net Security": 11,
+    "Asia News Network": 10,
+    "The Diplomat": 10,
     "Unknown": 6,
 }
 
@@ -315,6 +331,12 @@ SOURCE_KIND = {
     "Tuoi Tre Cong nghe": "vn",
     "Thanh Nien Cong nghe": "vn",
     "Vietnamnet Cong nghe": "vn",
+    "The Cyber Express": "security",
+    "The Register Security": "security",
+    "Infosecurity Magazine": "security",
+    "Help Net Security": "security",
+    "Asia News Network": "general",
+    "The Diplomat": "general",
 }
 
 # Nguồn crypto / tổng hợp / tiếng Việt CHỈ được vào pipeline khi bài có
