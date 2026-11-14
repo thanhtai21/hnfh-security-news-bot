@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-14T13:41:26.641230+07:00",
+  "last_run": "2026-11-14T15:06:20.321710+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -23,7 +23,7 @@
     "2026-11-11": 3,
     "2026-11-12": 3,
     "2026-11-13": 3,
-    "2026-11-14": 2
+    "2026-11-14": 3
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -736,6 +736,16 @@
       "day": "2026-11-14",
       "posted_at": "2026-11-14T11:06:15.900598+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "US Disrupts North Korea’s FaceStealer Campaign, Targets $1.2 Billion in Stolen Crypto",
+      "link": "https://thecyberexpress.com/binance-data-breach-facestealer-doj/",
+      "source": "The Cyber Express",
+      "score": 100,
+      "fingerprint": "b7b1ebd3c2c02723",
+      "day": "2026-11-14",
+      "posted_at": "2026-11-14T15:06:20.320844+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -948,6 +958,55 @@
       "rejected_at": "2026-11-14T13:41:26.641137+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://www.darkreading.com/cybersecurity-operations/attackers-binance-breach-targeted-weakness-missing-controls",
+      "fingerprint": "c20bff58ec52b312",
+      "rejected_at": "2026-11-14T15:06:20.321016+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html",
+      "fingerprint": "a50d7048661a112b",
+      "rejected_at": "2026-11-14T15:06:20.321116+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html",
+      "fingerprint": "2e3d092793dec0d1",
+      "rejected_at": "2026-11-14T15:06:20.321193+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.theregister.com/security/2026/11/13/brit-police-watchdog-says-cops-use-of-facial-recog-risks-wrongful-arrests/5309379",
+      "fingerprint": "da5204b5d42c8067",
+      "rejected_at": "2026-11-14T15:06:20.321286+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/",
+      "fingerprint": "6072cc29386b0dad",
+      "rejected_at": "2026-11-14T15:06:20.321371+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/how-one-ai-agent-exposed-five-critical-enterprise-security-gaps/",
+      "fingerprint": "2e8dc93056ca98c8",
+      "rejected_at": "2026-11-14T15:06:20.321451+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.infosecurity-magazine.com/news/phishing-rises-faster-europe/",
+      "fingerprint": "e7ef7012d244e113",
+      "rejected_at": "2026-11-14T15:06:20.321556+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
