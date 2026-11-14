@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-14T09:05:45.338945+07:00",
+  "last_run": "2026-11-14T11:06:15.901376+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -23,7 +23,7 @@
     "2026-11-11": 3,
     "2026-11-12": 3,
     "2026-11-13": 3,
-    "2026-11-14": 1
+    "2026-11-14": 2
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -726,6 +726,16 @@
       "day": "2026-11-14",
       "posted_at": "2026-11-14T06:41:29.260236+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Police arrest 354 suspects in dark web cybercrime crackdown",
+      "link": "https://www.bleepingcomputer.com/news/security/police-arrest-354-vendors-buyers-in-global-cybercrime-crackdown/",
+      "source": "BleepingComputer",
+      "score": 83,
+      "fingerprint": "f94a17cc83ad1b6d",
+      "day": "2026-11-14",
+      "posted_at": "2026-11-14T11:06:15.900598+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -873,6 +883,55 @@
       "link": "https://www.infosecurity-magazine.com/news/hackers-ai-weaker-cyber-attacks/",
       "fingerprint": "9cd34d0e42523ecc",
       "rejected_at": "2026-11-14T06:41:29.260802+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://decrypt.co/383139/tron-tether-chainalysis-new-crypto-crime-task-force-replacing-trm",
+      "fingerprint": "999a58442399c5db",
+      "rejected_at": "2026-11-14T11:06:15.900777+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://thecyberexpress.com/signdrop-zero-day-exploit-clfs-authentication/",
+      "fingerprint": "300ee273d8d2b975",
+      "rejected_at": "2026-11-14T11:06:15.900889+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thanhnien.vn/dac-vu-fbi-danh-cap-247-trieu-usd-tien-ma-hoa-tu-vi-cua-toi-pham-185261113141906652.htm",
+      "fingerprint": "5dbe43c1d904f2a6",
+      "rejected_at": "2026-11-14T11:06:15.900967+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://vnexpress.net/chia-se-du-lieu-phat-hien-som-lua-dao-truc-tuyen-tai-viet-nam-5144321.html",
+      "fingerprint": "3a1f387061bd216a",
+      "rejected_at": "2026-11-14T11:06:15.901034+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html",
+      "fingerprint": "867444e79df36542",
+      "rejected_at": "2026-11-14T11:06:15.901129+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.infosecurity-magazine.com/news/ai-revolutionize-ransomware/",
+      "fingerprint": "e08db3896d458172",
+      "rejected_at": "2026-11-14T11:06:15.901195+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thanhnien.vn/ro-ri-hinh-nen-he-lo-loat-mau-sac-dong-galaxy-s27-185261113135653468.htm",
+      "fingerprint": "5059575ceca815bb",
+      "rejected_at": "2026-11-14T11:06:15.901268+07:00",
       "scope": "all",
       "ttl_hours": 36
     }
