@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-15T15:05:40.040111+07:00",
+  "last_run": "2026-11-15T17:05:45.339703+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -24,7 +24,7 @@
     "2026-11-12": 3,
     "2026-11-13": 3,
     "2026-11-14": 3,
-    "2026-11-15": 2
+    "2026-11-15": 3
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -778,6 +778,16 @@
       "day": "2026-11-15",
       "posted_at": "2026-11-15T13:05:53.253908+07:00",
       "kind": "normal"
+    },
+    {
+      "title": "Hơn 61.000 kho mã nguồn GitHub trở thành mục tiêu của tin tặc",
+      "link": "https://thanhnien.vn/hon-61000-kho-ma-nguon-github-tro-thanh-muc-tieu-cua-tin-tac-185261113225851632.htm",
+      "source": "Thanh Nien Cong nghe",
+      "score": 53,
+      "fingerprint": "45375636f0ec07b4",
+      "day": "2026-11-15",
+      "posted_at": "2026-11-15T17:05:45.339418+07:00",
+      "kind": "normal"
     }
   ],
   "ai_rejected": [
@@ -946,6 +956,20 @@
       "link": "https://vnexpress.net/hai-ngay-chao-dao-vi-cac-su-co-cong-nghe-5144815.html",
       "fingerprint": "33399c8a7db3cf7c",
       "rejected_at": "2026-11-15T15:05:40.040009+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://cointelegraph.com/news/coinone-data-breach-phishing-identity-theft-customer-information?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "fingerprint": "4b6ff486140ab624",
+      "rejected_at": "2026-11-15T17:05:45.339571+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/stolen-fireworks-ai-key-led-to-cursor.html",
+      "fingerprint": "ef98fa46b006fca3",
+      "rejected_at": "2026-11-15T17:05:45.339634+07:00",
       "scope": "all",
       "ttl_hours": 36
     }
