@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-15T06:11:29.045687+07:00",
+  "last_run": "2026-11-15T09:05:36.431267+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -771,13 +771,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.helpnetsecurity.com/2026/11/13/europol-dark-web-arrests-cybercrime/",
-      "fingerprint": "e64dd6e9602cd27f",
-      "rejected_at": "2026-11-13T19:05:51.991027+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 36
-    },
     {
       "link": "https://www.darkreading.com/mobile-security/arcticrat-cybercrime-gang-profiles-victim-finances-ai",
       "fingerprint": "537059a8ca0aa9ff",
