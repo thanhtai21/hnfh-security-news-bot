@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-16T03:05:47.967851+07:00",
+  "last_run": "2026-11-16T05:05:54.264759+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -792,48 +792,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html",
-      "fingerprint": "a50d7048661a112b",
-      "rejected_at": "2026-11-14T15:06:20.321116+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html",
-      "fingerprint": "2e3d092793dec0d1",
-      "rejected_at": "2026-11-14T15:06:20.321193+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.theregister.com/security/2026/11/13/brit-police-watchdog-says-cops-use-of-facial-recog-risks-wrongful-arrests/5309379",
-      "fingerprint": "da5204b5d42c8067",
-      "rejected_at": "2026-11-14T15:06:20.321286+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/",
-      "fingerprint": "6072cc29386b0dad",
-      "rejected_at": "2026-11-14T15:06:20.321371+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/how-one-ai-agent-exposed-five-critical-enterprise-security-gaps/",
-      "fingerprint": "2e8dc93056ca98c8",
-      "rejected_at": "2026-11-14T15:06:20.321451+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.infosecurity-magazine.com/news/phishing-rises-faster-europe/",
-      "fingerprint": "e7ef7012d244e113",
-      "rejected_at": "2026-11-14T15:06:20.321556+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://www.wired.com/story/beware-the-new-ai-fueled-ransomware-boom/",
       "fingerprint": "98967defab53984f",
       "rejected_at": "2026-11-15T06:11:29.045580+07:00",
@@ -893,6 +851,13 @@
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQZHlhVUo5Y3cwRjU3dktHNjBlX01uaHVyeVRObGFWTTRHWTVDVDBmMF9DZUt6eE1ORkZvX3NGMVFZRjRpWE1hckNNcDBrNE5MN0JPSm1lRlp6RFZRZGVKYjNkMXRmMmlOU1Z2OVhQUDcxZ3E5b3FUU2cySVRCcWVLWVRHWUp5U083UTRJUkxSdFMwbzZKWDNZbjQ0MEtwd0FQbTVSRlZYdk9VNzFsY204clJnN05QdUk?oc=5",
       "fingerprint": "b92c269ff1f20162",
       "rejected_at": "2026-11-16T03:05:47.967729+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZXRwUW9sRWdtTTNuc0ZSdGc0eVJiNlZRSUcwU2hmNnIwSWw3THk5V2ZxTkF3SG5hLWFFMGZrUlVSTzFFSWI4R2k3R01XZ2g0dlk2Nk45X3VlaENLUllQbFVQZ25pbG9BNTFFSmJLUnBUR2ZIUjZPOE5OeTRnWGxoS0RoNmVFcnlC?oc=5",
+      "fingerprint": "d4dcf0d68ec84fa5",
+      "rejected_at": "2026-11-16T05:05:54.264559+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     }
