@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-16T05:05:54.264759+07:00",
+  "last_run": "2026-11-16T05:57:29.687125+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -858,6 +858,13 @@
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZXRwUW9sRWdtTTNuc0ZSdGc0eVJiNlZRSUcwU2hmNnIwSWw3THk5V2ZxTkF3SG5hLWFFMGZrUlVSTzFFSWI4R2k3R01XZ2g0dlk2Nk45X3VlaENLUllQbFVQZ25pbG9BNTFFSmJLUnBUR2ZIUjZPOE5OeTRnWGxoS0RoNmVFcnlC?oc=5",
       "fingerprint": "d4dcf0d68ec84fa5",
       "rejected_at": "2026-11-16T05:05:54.264559+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPRi13NjJVRkR4UGxJMmRSdkxwaE1OeUVhNlAwWEZodng2ZjUxWks0ek1fT191eUJYY0dDZkxyUFQxWUNHV3pkdDR4MXpRU29fSU1jQmpBQmVsbDVBcm85UWtzSkk1eVF0WEJ6MGNNMWhlb0pBSkdfaVdjR0dhU1V2TzhfUWNCRjFJQ0dXRUdVUG5UZ1ZCVVRZSDI4czhxZ1VublIxdFQ1UQ?oc=5",
+      "fingerprint": "97ecfdc30aa7acfc",
+      "rejected_at": "2026-11-16T05:57:29.686998+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     }
