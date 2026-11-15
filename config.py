@@ -104,6 +104,14 @@ HOT_ALLOW_WITHOUT_AI = os.environ.get(
     "HOT_ALLOW_WITHOUT_AI", "0").strip().lower() in ("1", "true", "yes", "on")
 
 # ---------------------------------------------------------------------
+# Khi AI lỗi/hết hạn mức: KHÔNG đăng tin THƯỜNG bằng bản rule-based (tiêu đề
+# tiếng Anh, chưa dịch, chất lượng thấp). Bài giữ lại, giờ sau thử lại khi AI
+# chạy được. Đặt "1" nếu muốn quay lại hành vi cũ (đăng cả khi AI tắt).
+# ---------------------------------------------------------------------
+ALLOW_FALLBACK_NORMAL_POSTS = os.environ.get(
+    "ALLOW_FALLBACK_NORMAL_POSTS", "0").strip().lower() in ("1", "true", "yes", "on")
+
+# ---------------------------------------------------------------------
 # EVENT GUARD: không đăng lại / không gửi AI các bài CÙNG MỘT CHUYỆN với
 # bài đã đăng trong EVENT_GUARD_HOURS giờ gần đây, và chỉ giữ 1 bài đại
 # diện cho mỗi chuyện trong cùng một lần chạy. Đặt "0" để tắt hẳn.

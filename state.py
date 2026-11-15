@@ -711,6 +711,13 @@ class NewsState:
             "posted_at": now_vn().isoformat(),
             "kind": kind,
         }
+        try:  # khóa sự kiện để chặn bài cùng chuyện nhưng khác tiêu đề/ngôn ngữ
+            from hot import story_keys
+            entry["keys"] = story_keys(
+                entry["title"],
+                getattr(getattr(scored, "article", None), "summary", "") or "")
+        except Exception:
+            pass
         self.posts.append(entry)
 
         if kind == "hot":

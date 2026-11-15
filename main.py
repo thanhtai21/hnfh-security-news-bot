@@ -37,6 +37,7 @@ import sys
 import traceback
 
 from config import (
+    ALLOW_FALLBACK_NORMAL_POSTS,
     MAX_POSTS_PER_SLOT,
     NORMAL_POST_SLOTS,
     AI_CANDIDATE_MIN_SCORE,
@@ -344,8 +345,19 @@ def ensure_slots(scored_list, remaining_normal, remaining_hot, now):
         return items
 
     pairs = [(s, getattr(s, "ai_decision", None)) for s in items]
-    return allocate_slots(pairs, remaining_normal=remaining_normal,
-                          remaining_hot=remaining_hot, now=now, ai_used=False)
+    allocated = allocate_slots(pairs, remaining_normal=remaining_normal,
+                               remaining_hot=remaining_hot, now=now,
+                               ai_used=False)
+    if not ALLOW_FALLBACK_NORMAL_POSTS:
+        kept = [s for s in allocated if getattr(s, "slot", "none") == "hot"]
+        dropped = len(allocated) - len(kept)
+        if dropped:
+            logger.warning(
+                "[AI] AI không khả dụng: giữ lại %d bài thường, KHÔNG đăng bản "
+                "rule-based (đặt ALLOW_FALLBACK_NORMAL_POSTS=1 để cho phép).",
+                dropped)
+        return kept
+    return allocated
 
 
 # =====================================================================

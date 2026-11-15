@@ -674,6 +674,58 @@ def is_loose_same_story(title_a, title_b, summary_a=""):
     return _has_event_word(title_a, summary_a) and _has_event_word(title_b)
 
 
+_NUM_RE = re.compile(r"(?<![\w.,])\d{3,}(?![\w])")
+_YEARS = frozenset(str(y) for y in range(2015, 2031))
+
+
+def story_keys(title, summary=""):
+    """
+    Tập "khóa sự kiện" của một bài: tên riêng viết hoa (>=5 ký tự, không chung
+    chung, không phải hãng lớn) + số có >=3 chữ số (không phải năm), lấy từ
+    title và summary. Lưu vào state khi đăng để so với bài mới (kể cả khác ngôn
+    ngữ/khác cách đặt tiêu đề). Trả list đã sắp xếp, tối đa 16 phần tử.
+    """
+    text = "%s %s" % (title or "", summary or "")
+    _low, cap = _loose_tokens(text)
+    names = (cap - _LOOSE_GENERIC - _LOOSE_EVENT_WORDS - _LOOSE_BIG_VENDORS)
+    nums = {n for n in _NUM_RE.findall(text) if n not in _YEARS}
+    return sorted(names)[:12] + sorted("#" + n for n in nums)[:4]
+
+
+def keys_same_story(keys_a, keys_b):
+    """
+    Hai bài cùng chuyện nếu có >=2 khóa chung (tên riêng/số), trong đó phải có
+    ít nhất 1 tên riêng, hoặc có >=1 tên riêng chung kèm 1 số chung.
+    Chỉ dùng để BỎ bài trùng; sai lệch nếu có chỉ làm bỏ sót, không đăng trùng.
+    """
+    a, b = set(keys_a or ()), set(keys_b or ())
+    shared = a & b
+    if len(shared) < 2:
+        return False
+    return any(not k.startswith("#") for k in shared)
+
+
+def _recent_post_entries(state, now, hours):
+    """Như _recent_post_titles nhưng trả cả (title, keys)."""
+    entries = []
+    for item in list(getattr(state, "posts", None) or []):
+        if not isinstance(item, dict):
+            continue
+        title = item.get("title") or ""
+        if not title:
+            continue
+        try:
+            when = datetime.fromisoformat(str(item.get("posted_at")))
+            if now is not None and when.tzinfo is None and now.tzinfo is not None:
+                when = when.replace(tzinfo=now.tzinfo)
+            if (now - when).total_seconds() / 3600.0 > hours:
+                continue
+        except Exception:
+            pass  # fail-closed: giữ lại
+        entries.append((title, item.get("keys") or []))
+    return entries
+
+
 def _recent_post_titles(state, now, hours):
     """
     Danh sách title bài đã đăng trong `hours` giờ gần đây (từ state.posts).
@@ -708,9 +760,15 @@ def is_recent_story_duplicate(scored, state, now):
     title = getattr(scored, "title", "") or ""
     summary = getattr(getattr(scored, "article", None), "summary", "") or ""
     try:
-        for posted in _recent_post_titles(state, now, EVENT_GUARD_HOURS):
+        cand_keys = story_keys(title, summary)
+        for posted, posted_keys in _recent_post_entries(state, now, EVENT_GUARD_HOURS):
             if is_loose_same_story(title, posted, summary):
                 logger.info("[EVENT] Bỏ (cùng chuyện với bài đã đăng): %s ~ %s",
+                            title[:60], posted[:60])
+                return True
+            if keys_same_story(cand_keys, posted_keys):
+                logger.info("[EVENT] Bỏ (trùng khóa sự kiện %s): %s ~ %s",
+                            sorted(set(cand_keys) & set(posted_keys)),
                             title[:60], posted[:60])
                 return True
     except Exception as exc:
@@ -728,7 +786,14 @@ def is_loose_duplicate_of_any(scored, accepted):
         return False
     title = getattr(scored, "title", "") or ""
     summary = getattr(getattr(scored, "article", None), "summary", "") or ""
+    cand_keys = story_keys(title, summary)
     for prev in accepted:
+        prev_summary = getattr(getattr(prev, "article", None), "summary", "") or ""
+        prev_keys = story_keys(getattr(prev, "title", "") or "", prev_summary)
+        if keys_same_story(cand_keys, prev_keys):
+            logger.info("[EVENT] Bỏ (trùng khóa sự kiện với bài đã chọn): %s ~ %s",
+                        title[:60], (getattr(prev, "title", "") or "")[:60])
+            return True
         if is_loose_same_story(title, getattr(prev, "title", "") or "", summary):
             logger.info("[EVENT] Bỏ (cùng chuyện với bài đã chọn): %s ~ %s",
                         title[:60], (getattr(prev, "title", "") or "")[:60])
