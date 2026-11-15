@@ -36,7 +36,7 @@ from config import (
     MIN_SCORE_TO_POST,
     POST_DELAY_SECONDS,
 )
-from textutils import excerpt, format_vn_time, normalize_ws
+from textutils import display_source, excerpt, format_vn_time, normalize_ws
 from ping_roles import build_ping_roles, prepend_pings
 
 logger = logging.getLogger("poster")
@@ -224,7 +224,7 @@ def build_post_content(scored):
     parts.append("")
 
     # (4) Nguồn + thời gian.
-    parts.append("**Nguồn:** %s" % (scored.source or "không rõ"))
+    parts.append("**Nguồn:** %s" % (display_source(scored) or "không rõ"))
     published = getattr(article, "published", None)
     parts.append("🕐 Đăng lúc: %s" % format_vn_time(published))
     parts.append("")

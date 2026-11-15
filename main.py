@@ -408,6 +408,52 @@ def log_hot_table(candidates, now=None):
 
 
 # =====================================================================
+# NHẬT KÝ TIN BỊ BỎ QUA ([MISSED]): để biết vì sao một tin quan trọng không lên
+# =====================================================================
+
+MISSED_MIN_SCORE = 60   # chỉ liệt kê bài đáng chú ý (điểm >= 60 hoặc hard_signal)
+MISSED_MAX_LINES = 12
+
+
+def log_missed_news(scored, candidates, selected, rejected):
+    """
+    In các bài ĐÁNG CHÚ Ý (điểm cao hoặc có hard_signal) nhưng KHÔNG được đăng
+    lần này, kèm lý do ước lượng. Chỉ ghi log, không đổi hành vi.
+    """
+    try:
+        chosen = {id(s) for s in (selected or [])}
+        cand = {id(s) for s in (candidates or [])}
+        rej = {id(s) for s in (rejected or [])}
+        rows = []
+        for s in scored or []:
+            if id(s) in chosen:
+                continue
+            score = int(getattr(s, "score", 0) or 0)
+            hard = bool(getattr(s, "hard_signal", False))
+            if score < MISSED_MIN_SCORE and not hard:
+                continue
+            if id(s) in rej:
+                why = "AI đã đánh giá và loại"
+            elif id(s) in cand:
+                why = "qua AI nhưng không đạt cổng hot/quota/ngưỡng"
+            else:
+                why = ("bị loại trước AI (trùng bài đã đăng, event guard, AI từng "
+                       "loại, hết quota hoặc dưới ngưỡng - xem [DEDUP]/[EVENT])")
+            rows.append((score, hard, s, why))
+        rows.sort(key=lambda r: (r[1], r[0]), reverse=True)
+        for score, hard, s, why in rows[:MISSED_MAX_LINES]:
+            age = getattr(getattr(s, "article", None), "age_hours", None)
+            logger.info("[MISSED] score=%d hard=%s age=%sh src=%s | %s -> %s",
+                        score, hard, "?" if age is None else "%.0f" % age,
+                        getattr(s, "source", "?"),
+                        (getattr(s, "title", "") or "")[:70], why)
+        if len(rows) > MISSED_MAX_LINES:
+            logger.info("[MISSED] ... và %d bài khác.", len(rows) - MISSED_MAX_LINES)
+    except Exception as exc:  # không bao giờ làm hỏng lần chạy
+        logger.warning("[MISSED] Lỗi khi ghi nhật ký: %r", exc)
+
+
+# =====================================================================
 # BƯỚC 2-7: THU THẬP + PHÂN TÍCH + LỌC RULE + AI + CẤP SLOT
 # =====================================================================
 
@@ -464,6 +510,7 @@ def gather_and_select(state, now):
     candidates = build_rule_candidates(scored, state, now, hot_only=hot_only)
     if not candidates:
         logger.info("[FILTER] Không còn candidate -> kết thúc, KHÔNG gọi AI.")
+        log_missed_news(scored, [], [], [])
         return [], []
 
     # LOG MỖI LẦN CHẠY (item 8): số bài gửi AI (phân rã hard/thường).
@@ -502,6 +549,7 @@ def gather_and_select(state, now):
     logger.info("[FILTER] Đã chọn %d bài (nóng %d, thường %d), AI loại %d bài.",
                 len(selected), len(hot_selected), len(normal_selected),
                 len(rejected))
+    log_missed_news(scored, candidates, selected, rejected)
     return selected, rejected
 
 

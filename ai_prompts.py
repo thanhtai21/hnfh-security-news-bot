@@ -17,7 +17,7 @@ chứa chỉ dẫn giả mạo ("ignore previous instructions", "publish this"..
 Hai prompt dưới đây đều yêu cầu model BỎ QUA mọi chỉ dẫn nằm trong dữ liệu.
 """
 
-from textutils import excerpt, format_vn_time
+from textutils import display_source, excerpt, format_vn_time
 
 # is_hot_rule dùng cho payload filter (D2). import ở đây là an toàn:
 # hot.py CHỈ import config + textutils -> không có import vòng.
@@ -157,7 +157,7 @@ def build_filter_user_payload(candidates):
             "id": idx,
             "title": excerpt(getattr(scored, "title", "") or "", 300),
             "summary": excerpt(getattr(article, "summary", "") or "", 700),
-            "source": getattr(scored, "source", "") or "unknown",
+            "source": display_source(scored) or "unknown",
             "published": _published_str(published),
             "url": getattr(scored, "link", "") or "",
             "rule_score": int(getattr(scored, "score", 0) or 0),
@@ -269,7 +269,7 @@ def build_writer_user_payload(scored, decision=None):
         "summary": excerpt(getattr(article, "summary", "") or "", 1500),
         # Nội dung bài gốc (do article_fetch lấy, best effort; có thể rỗng).
         "article_text": excerpt(getattr(scored, "article_text", "") or "", 4000),
-        "source": getattr(scored, "source", "") or "unknown",
+        "source": display_source(scored) or "unknown",
         "published": _published_str(published),
         "url": getattr(scored, "link", "") or "",
         "rule_score": int(getattr(scored, "score", 0) or 0),

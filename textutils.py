@@ -505,3 +505,10 @@ def safe_str(value, default=""):
         return str(value)
     except Exception:
         return default
+
+
+def display_source(scored):
+    """Tên nguồn để HIỂN THỊ: tên báo gốc (nếu nguồn tổng hợp) hoặc tên feed."""
+    article = getattr(scored, "article", None)
+    publisher = (getattr(article, "publisher", "") or "").strip()
+    return publisher or (getattr(scored, "source", "") or "")

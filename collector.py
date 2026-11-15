@@ -57,10 +57,32 @@ class Article:
     # Các trường phụ, dùng cho dedup nội bộ collector.
     norm_title: str = ""
     tokens: set = field(default_factory=set)
+    # Tên báo gốc (chỉ có với nguồn tổng hợp như Google News); rỗng = dùng source.
+    publisher: str = ""
 
     def text_blob(self):
         """Title + summary đã lowercase, dùng cho scoring trong analyzer."""
         return ((self.title or "") + " " + (self.summary or "")).lower()
+
+
+def split_publisher(name, title, entry):
+    """
+    Nguồn tổng hợp Google News: tiêu đề có đuôi " - Tên báo". Tách ra để tiêu đề
+    sạch (dedup/chấm điểm) và hiển thị đúng tên báo gốc. Nguồn khác: giữ nguyên.
+    Trả (title, publisher).
+    """
+    if not str(name).startswith("GNews"):
+        return title, ""
+    publisher = ""
+    src = entry.get("source") if hasattr(entry, "get") else None
+    if isinstance(src, dict):
+        publisher = normalize_ws(safe_str(src.get("title")))
+    if " - " in title:
+        head, _sep, tail = title.rpartition(" - ")
+        if head and len(tail) <= 60:
+            publisher = publisher or tail.strip()
+            title = head.strip()
+    return title, publisher
 
 
 # =====================================================================
@@ -206,6 +228,9 @@ def _parse_feed(name, raw_bytes, now):
                              name, link)
                 continue
 
+            # Nguồn tổng hợp Google News: tách " - Tên báo" khỏi tiêu đề.
+            title, publisher = split_publisher(name, title, entry)
+
             published = _entry_published(entry)
 
             # Không đăng bài cũ: bỏ qua nếu quá cũ hoặc không rõ thời gian.
@@ -233,6 +258,7 @@ def _parse_feed(name, raw_bytes, now):
                 age_hours=age_hours,
                 norm_title=normalize_title(title),
                 tokens=token_set(title + " " + summary),
+                publisher=publisher,
             )
             articles.append(article)
         except Exception as exc:

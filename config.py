@@ -283,6 +283,24 @@ RSS_SOURCES = {
     "Help Net Security": "https://www.helpnetsecurity.com/feed/",
     "Asia News Network": "https://asianews.network/feed/",
     "The Diplomat": "https://thediplomat.com/feed/",
+    # --- Báo Việt Nam bổ sung 16/11/2026 (RSS lấy từ danh mục của từng báo;
+    # CHƯA kiểm chứng từ môi trường dev). Nguồn "vn" chỉ vào pipeline khi bài có
+    # tín hiệu bảo mật cứng, nên tin điện thoại/laptop/giải trí không lọt qua. ---
+    "Tuoi Tre Nhip song so": "https://tuoitre.vn/nhip-song-so.rss",
+    "Thanh Nien Tin tuc cong nghe": "https://thanhnien.vn/rss/cong-nghe/tin-tuc-cong-nghe.rss",
+    "Dan Tri Cong nghe": "https://dantri.com.vn/rss/cong-nghe.rss",
+    "VnExpress Khoa hoc cong nghe": "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss",
+    "Bnews Cong nghe": "https://bnews.vn/rss/cong-nghe-40.rss",
+    # --- CHỦ ĐỘNG TÌM KIẾM (Lớp 2): Google News RSS theo từ khóa, không phụ thuộc
+    # RSS riêng của từng báo. Gom cả báo Việt Nam lẫn quốc tế đang đưa tin về
+    # chủ đề đó trong 1 ngày gần đây. CHƯA kiểm chứng từ môi trường dev; lỗi
+    # thì collector chỉ ghi log. Link bài là link chuyển hướng của Google. ---
+    "GNews VN Tan cong mang": "https://news.google.com/rss/search?q=%22t%E1%BA%A5n+c%C3%B4ng+m%E1%BA%A1ng%22+when:1d&hl=vi&gl=VN&ceid=VN:vi",
+    "GNews VN Ro ri du lieu": "https://news.google.com/rss/search?q=%22r%C3%B2+r%E1%BB%89+d%E1%BB%AF+li%E1%BB%87u%22+OR+%22l%E1%BB%99+d%E1%BB%AF+li%E1%BB%87u%22+when:1d&hl=vi&gl=VN&ceid=VN:vi",
+    "GNews VN Ma doc Lua dao": "https://news.google.com/rss/search?q=%22m%C3%A3+%C4%91%E1%BB%99c%22+OR+ransomware+OR+%22l%E1%BB%97+h%E1%BB%95ng+b%E1%BA%A3o+m%E1%BA%ADt%22+when:1d&hl=vi&gl=VN&ceid=VN:vi",
+    "GNews EN Zero-day": "https://news.google.com/rss/search?q=%22zero-day%22+exploited+when:1d&hl=en-US&gl=US&ceid=US:en",
+    "GNews EN Breach": "https://news.google.com/rss/search?q=%22data+breach%22+OR+ransomware+OR+cyberattack+when:1d&hl=en-US&gl=US&ceid=US:en",
+    "GNews EN Microsoft": "https://news.google.com/rss/search?q=Microsoft+(Outlook+OR+Exchange+OR+Azure)+(vulnerability+OR+breach+OR+exploited)+when:1d&hl=en-US&gl=US&ceid=US:en",
 }
 
 # Mức độ tin cậy của từng nguồn (dùng trong scoring).
@@ -313,6 +331,17 @@ SOURCE_TRUST_SCORE = {
     "Help Net Security": 11,
     "Asia News Network": 10,
     "The Diplomat": 10,
+    "Tuoi Tre Nhip song so": 12,
+    "Thanh Nien Tin tuc cong nghe": 11,
+    "Dan Tri Cong nghe": 11,
+    "VnExpress Khoa hoc cong nghe": 12,
+    "Bnews Cong nghe": 10,
+    "GNews VN Tan cong mang": 10,
+    "GNews VN Ro ri du lieu": 10,
+    "GNews VN Ma doc Lua dao": 10,
+    "GNews EN Zero-day": 10,
+    "GNews EN Breach": 10,
+    "GNews EN Microsoft": 10,
     "Unknown": 6,
 }
 
@@ -345,6 +374,17 @@ SOURCE_KIND = {
     "Help Net Security": "security",
     "Asia News Network": "general",
     "The Diplomat": "general",
+    "Tuoi Tre Nhip song so": "vn",
+    "Thanh Nien Tin tuc cong nghe": "vn",
+    "Dan Tri Cong nghe": "vn",
+    "VnExpress Khoa hoc cong nghe": "vn",
+    "Bnews Cong nghe": "vn",
+    "GNews VN Tan cong mang": "vn",
+    "GNews VN Ro ri du lieu": "vn",
+    "GNews VN Ma doc Lua dao": "vn",
+    "GNews EN Zero-day": "general",
+    "GNews EN Breach": "general",
+    "GNews EN Microsoft": "general",
 }
 
 # Nguồn crypto / tổng hợp / tiếng Việt CHỈ được vào pipeline khi bài có
