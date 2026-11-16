@@ -73,6 +73,7 @@ from hot import (
     select_hot_articles,
 )
 from state import NewsState
+import admin_log
 from discord_poster import post_all
 from textutils import format_vn_time, now_vn, today_key
 
@@ -721,6 +722,8 @@ def log_quota_summary(state, day, dry_run=False):
 def run_once():
     """Chạy bot MỘT LẦN hoàn chỉnh. Trả về exit code (0 = OK)."""
     setup_logging()
+    capture = admin_log.install_capture()   # gom log để gửi về kênh log-botnews
+    selected, results, rejected = [], [], []
     now = now_vn()
     day = today_key(now)
 
@@ -775,6 +778,30 @@ def run_once():
         logger.error("LỖI NGHIÊM TRỌNG: %r", exc)
         logger.error(traceback.format_exc())
         exit_code = 1
+    finally:
+        try:
+            posted_ok = [s for s, r in zip(selected, results) if r.get("ok")]
+            admin_log.send_admin_log(
+                os.environ.get(DISCORD_BOT_TOKEN_ENV, "").strip(),
+                DISCORD_CHANNEL_ID,
+                list(capture.lines),
+                {
+                    "now": format_vn_time(now),
+                    "exit_code": exit_code,
+                    "selected": len(selected),
+                    "posted": len(posted_ok),
+                    "hot": sum(1 for s in posted_ok
+                               if getattr(s, "slot", "") == "hot"),
+                    "rejected": len(rejected),
+                    "posted_titles": [(getattr(s, "title", "") or "")
+                                      for s in posted_ok],
+                },
+                dry_run=DRY_RUN,
+            )
+        except Exception as exc:  # không bao giờ làm hỏng lần chạy
+            logger.warning("[ADMINLOG] Lỗi bất ngờ: %r", exc)
+        finally:
+            admin_log.remove_capture(capture)
 
     return exit_code
 
