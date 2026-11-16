@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-16T13:05:48.929124+07:00",
+  "last_run": "2026-11-16T15:01:20.846530+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -25,7 +25,7 @@
     "2026-11-13": 3,
     "2026-11-14": 3,
     "2026-11-15": 3,
-    "2026-11-16": 2
+    "2026-11-16": 3
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -817,6 +817,21 @@
         "france",
         "poste"
       ]
+    },
+    {
+      "title": "Lỗ hổng Windows zero-day SignDrop cho phép tin tặc chiếm quyền SYSTEM thông qua Microsoft Defender",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPWnFMYjNUN0t2SzlXdlQ2VlI5ZFlfVjUyc0hqTXZmVHFvLWdYRFFMeWd1SjhWVmRrNmp0RUVLT1FPUDVlMHh3bU1uOVBzVGNjRXJfaENEWkxneDB0ZlZQa2MtMU9CSHFDa01wcmFaelMydmJLQXZ6ejBMeTgtWUNKSzhKZ3BScFFzcC12ejFYRkhmOWY3dWtoYlg4SHREUVhEVkg3UTdYZG5XUWtOWUFPbDIwcm1Fc2xsZHUtNWV5ZjFwTTg5SHZ6Zk00NzXSAcsBQVVfeXFMUDYzVUZQWDNWZ0hNRjNyenNUVXBCdEdhOGMtNS1fWEg5VFpacHRtVThud3hJeU95VEttajBIS0s0Z1JQV3ZTNjFMRDgxYnVHZXZ4cWYtbVlIQ1lteTQzU1k0bXJpVENEQnktVUdCeERZY20yMVFwRUhKd0RFVWhZZ1UtLTBSY3lGdlh5djVSazl2SXVhRU1yOGFMb1UwZExLalczblUzNk1KbU5VX1Jpa0pUXzZyWG9sR09tRDBBWnc3VUJyR3FfRjVFbkk?oc=5",
+      "source": "GNews VN Ma doc Lua dao",
+      "score": 77,
+      "fingerprint": "e2edd2323856d737",
+      "day": "2026-11-16",
+      "posted_at": "2026-11-16T15:01:20.845745+07:00",
+      "kind": "normal",
+      "keys": [
+        "defender",
+        "signdrop",
+        "@microsoft"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1006,6 +1021,62 @@
       "link": "https://thanhnien.vn/can-trong-mat-sach-tai-khoan-tien-dien-tu-vi-tai-gta-6-ban-pc-185261115133725361.htm",
       "fingerprint": "792304aa655b3029",
       "rejected_at": "2026-11-16T11:06:49.562927+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/bo-team-exploits-log4shell-in-vmware.html",
+      "fingerprint": "cf9dd242508e9f0a",
+      "rejected_at": "2026-11-16T15:01:20.845995+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPalpHZ1RrZ1lITlBmaXJITkkwMTZoV3hpck45SDV3SXVjMlpOYlFJMzlsV2dyeGg2eVN0Y05NV2tQTGhfTFJSWmtHd2pXVEFnRk9XamQ1cXh5bXBnOHhmb3FXdVIzdzZtOXNhemc1eFJ5bU1fOGM4bnhvVEVfSU1pdkREN05jUEkzZ1FjYkR3?oc=5",
+      "fingerprint": "4ff195be6b7a7456",
+      "rejected_at": "2026-11-16T15:01:20.846106+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQcElyU19EUDhUdnE0cnV4OGk5eHZydWE5Y3BGNlh1eEk5YlFQUThubEtDMEY3NDdZVVdRdTMyTjZGY3hXak10anVodUk1YzZCMk1JZk40QVZLZ0dDN0pqRFJ0cmhtcEk1N0JDN1c3M20wM3BJWnZZNDBSVzZWejYzdUdTV3VMVW5QSTdJZXFyWnVONEYwNE9CQ3hZV1pMQS1NTXc?oc=5",
+      "fingerprint": "acdff8a15abbffba",
+      "rejected_at": "2026-11-16T15:01:20.846173+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOeFZ4UW1hQWtlZlVxRTRvWExReElxV3pRbHZLWlV1blR1STRKNk9LN2lYZXFEbE1HSFAtdGNkRC1kdmNTNHU1aFdUd3lzQ05RRm1wT3FGM2ZjYmJTc0VUQldNMjhRemdXTWRnbXZNUDI3SXFOd3FPNjZ6Sm9VdC1ILXVJdXl5ejAza3hVQkxBaUpveG8zekkzSjJCLUw?oc=5",
+      "fingerprint": "5129a50d75c76f1e",
+      "rejected_at": "2026-11-16T15:01:20.846253+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQbU9MSjdrYXlMUmJUYll6N0thVW90b2tMR1dUM3NpdU96NWZJbFNJWWp5eFk0c1dvdFhicE5HMHpXamtlX292TGRvOVJSdEppY1p6ZW1rT2g0RVh5YkRKX3I1c0lYb0dMTlQ1djlqOVI0emZoSWVZMVFNUlR3ZWQ0Ulc4cEx5YnRhenhyTXFsVmg3eC1UQ3lHRVlXQWI?oc=5",
+      "fingerprint": "7168353515cc4ed1",
+      "rejected_at": "2026-11-16T15:01:20.846309+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPOXVIZXgycnJQR1pJa1dCblZsMWxFWUNvZTV2cHVza0w0cFpaM1hlMlBYUUVBS25xc2xGNlZURndkU1l6Unl4TE9TMHhMdkd0aFhvNEt5TnBWellQVHFIc2dyMTNHblFJdS1ydXFrX3JjZ3pWYnUtTVl0SlhJeHdSb25NelR2em8zSzJ2RW5rdTZiRTNPcHJ6NEpvbV9EYjRoakctT3pMUjM?oc=5",
+      "fingerprint": "69e6777f12aefd45",
+      "rejected_at": "2026-11-16T15:01:20.846357+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNZUVsWnd5cHFnRTJBTzJSV0lncFdJeThGZUtrVjFXeUhxdTRUR0F2RzNIYU1mX2pkNE5hcGo0WG54NnlmVnpEczZtU2tFLVJlQUxLbWhVQjM5c0NtdWl2UWYwTjRFMnlRUTQxcWtOY0N6dk1QSE9GM1gtQ19MMVI4SjRLWTRlc2pVU2FHeU9GUHJtODhtd0VLT3RYUHdKRWJoOG9QYWxwUld3dDZfUVVoNGlDUFNPSEU?oc=5",
+      "fingerprint": "50211a4be414897a",
+      "rejected_at": "2026-11-16T15:01:20.846409+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQYlVLSHZ1OVFzV0RFV0lUUjh6bjdZd05SZnhtWEhuY2tINlFrLV9seDZJMnBPUFJUTzg1aVExWVAwcGhXUDVwY0JBSDlpdWtfaGZMSUVBS2hHRXREckV5X1o3U1pMelBDQjAycmZYcXpZcS1Xa3VqT2tZcjZBZmFzTTlIWXV4Ti14SHJYcURVVExOUThQakR0a1Z0MnFKeF9WSEE?oc=5",
+      "fingerprint": "dacaf1009d0b9fdf",
+      "rejected_at": "2026-11-16T15:01:20.846455+07:00",
       "scope": "all",
       "ttl_hours": 36
     }
