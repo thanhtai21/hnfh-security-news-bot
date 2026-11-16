@@ -159,7 +159,7 @@ _INTERNAL_REASON_PREFIXES = (
 )
 
 
-def build_post_content(scored):
+def _build_post_content_raw(scored):
     """
     Dựng nội dung Forum Post.
 
@@ -242,6 +242,25 @@ def build_post_content(scored):
 # =====================================================================
 # ĐỐI CHIẾU TAG VỚI FORUM CHANNEL
 # =====================================================================
+
+def _is_aggregator_link(link):
+    """Link chuyển hướng của Google News: trang đích chỉ có logo Google News."""
+    return "news.google.com/" in (link or "")
+
+
+def build_post_content(scored):
+    """
+    Nội dung Forum Post. Với link Google News (chuyển hướng), bọc link trong <...>
+    để Discord KHÔNG tạo khung xem trước (nếu không, ảnh bìa bài sẽ là logo
+    Google News thay vì ảnh bài báo).
+    """
+    content = _build_post_content_raw(scored)
+    link = getattr(scored, "link", "") or ""
+    if _is_aggregator_link(link) and link in content:
+        content = content.replace("<%s>" % link, link).replace(link, "<%s>" % link)
+        content = _truncate_keep_footer(content, CONTENT_MAX)
+    return content
+
 
 def resolve_tags(forum_channel, tag_names):
     """

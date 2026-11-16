@@ -42,6 +42,20 @@ class GNews(unittest.TestCase):
         self.assertEqual(collector.split_publisher("GNews EN Breach", t, {}), (t, ""))
 
 
+class CrossLang(unittest.TestCase):
+    def test_meta_fine_vn_vs_en(self):
+        import hot
+        vn = hot.story_keys("Meta bị phạt 805 triệu euro vì truy cập trái phép dữ liệu người dùng Android", "")
+        en = hot.story_keys("Italy fines Meta €805m over unauthorised access to Android users' data", "")
+        self.assertTrue(hot.keys_same_story(vn, en))
+
+    def test_same_brand_different_story(self):
+        import hot
+        a = hot.story_keys("Meta launches new AI glasses", "")
+        b = hot.story_keys("Meta bị phạt 805 triệu euro", "")
+        self.assertFalse(hot.keys_same_story(a, b))
+
+
 class Missed(unittest.TestCase):
     def _s(self, title, score, hard=False):
         return NS(title=title, score=score, hard_signal=hard, source="X",
@@ -66,3 +80,35 @@ class Missed(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=1)
+
+
+class Gate(unittest.TestCase):
+    def test_drop_unwritten_when_ai_configured(self):
+        w = NS(title="written", ai_content="Nội dung AI")
+        u = NS(title="unwritten", ai_content="")
+        main._ai_configured = lambda: True
+        main.ALLOW_FALLBACK_NORMAL_POSTS = False
+        self.assertEqual([x.title for x in main.drop_unwritten([w, u])], ["written"])
+        main.ALLOW_FALLBACK_NORMAL_POSTS = True
+        self.assertEqual(len(main.drop_unwritten([w, u])), 2)
+        main.ALLOW_FALLBACK_NORMAL_POSTS = False
+        main._ai_configured = lambda: False   # AI chưa cấu hình: giữ hành vi cũ
+        self.assertEqual(len(main.drop_unwritten([w, u])), 2)
+
+
+class Embed(unittest.TestCase):
+    def test_google_news_link_wrapped(self):
+        import discord_poster as dp
+        link = "https://news.google.com/rss/articles/CBM123?oc=5"
+        sc = NS(link=link, ai_content="Tin\n🔗 Nguồn: X\n" + link,
+                article=NS(summary="", title="t"))
+        out = dp.build_post_content(sc)
+        self.assertIn("<%s>" % link, out)
+        self.assertNotIn("<<", out)
+
+    def test_normal_link_untouched(self):
+        import discord_poster as dp
+        link = "https://example.com/a"
+        sc = NS(link=link, ai_content="Tin\n🔗 Nguồn: X\n" + link,
+                article=NS(summary="", title="t"))
+        self.assertNotIn("<" + link, dp.build_post_content(sc))

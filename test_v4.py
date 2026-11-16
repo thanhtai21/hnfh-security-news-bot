@@ -78,6 +78,7 @@ class FallbackGate(unittest.TestCase):
             NS(slot="normal", title="a"), NS(slot="hot", title="b")]
         try:
             main.ALLOW_FALLBACK_NORMAL_POSTS = False
+            main._ai_configured = lambda: True
             out = main.ensure_slots(items, 1, 1, None)
             self.assertEqual([s.slot for s in out], ["hot"])
             main.ALLOW_FALLBACK_NORMAL_POSTS = True

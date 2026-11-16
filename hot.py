@@ -674,7 +674,13 @@ def is_loose_same_story(title_a, title_b, summary_a=""):
     return _has_event_word(title_a, summary_a) and _has_event_word(title_b)
 
 
-_NUM_RE = re.compile(r"(?<![\w.,])\d{3,}(?![\w])")
+_KEY_BRANDS = _LOOSE_BIG_VENDORS | frozenset((
+    "meta", "tiktok", "telegram", "discord", "whatsapp", "instagram", "paypal",
+    "binance", "coinbase", "tesla", "uber", "twitter", "netflix", "spotify",
+    "nvidia", "intel", "amd",
+))
+
+_NUM_RE = re.compile(r"(?<![\w.,])(\d{3,})(?:[mMbBkK]n?)?(?!\w)")  # 805, 805m, 805bn
 _YEARS = frozenset(str(y) for y in range(2015, 2031))
 
 
@@ -686,10 +692,14 @@ def story_keys(title, summary=""):
     ngữ/khác cách đặt tiêu đề). Trả list đã sắp xếp, tối đa 16 phần tử.
     """
     text = "%s %s" % (title or "", summary or "")
-    _low, cap = _loose_tokens(text)
+    low, cap = _loose_tokens(text)
     names = (cap - _LOOSE_GENERIC - _LOOSE_EVENT_WORDS - _LOOSE_BIG_VENDORS)
     nums = {n for n in _NUM_RE.findall(text) if n not in _YEARS}
-    return sorted(names)[:12] + sorted("#" + n for n in nums)[:4]
+    # Tên hãng/thương hiệu (kể cả tên ngắn như Meta): chỉ dùng KẾT HỢP với số liệu
+    # chung, vì một mình thì quá chung (hãng nào cũng có nhiều tin).
+    brands = {w for w in low if w in _KEY_BRANDS}
+    return (sorted(names)[:12] + sorted("#" + n for n in nums)[:4]
+            + sorted("@" + b for b in brands)[:4])
 
 
 def keys_same_story(keys_a, keys_b):
@@ -700,9 +710,12 @@ def keys_same_story(keys_a, keys_b):
     """
     a, b = set(keys_a or ()), set(keys_b or ())
     shared = a & b
-    if len(shared) < 2:
-        return False
-    return any(not k.startswith("#") for k in shared)
+    names = {k for k in shared if k[:1] not in ("#", "@")}
+    nums = {k for k in shared if k.startswith("#")}
+    brands = {k for k in shared if k.startswith("@")}
+    if names and len(shared) >= 2:
+        return True          # tên riêng chung + (tên riêng khác hoặc số chung)
+    return bool(brands and nums)  # cùng hãng + cùng số liệu (vd Meta + 805)
 
 
 def _recent_post_entries(state, now, hours):

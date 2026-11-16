@@ -328,6 +328,34 @@ def build_rule_candidates(scored, state, now=None, hot_only=False):
 # HỖ TRỢ: ĐẢM BÀI ĐÃ CÓ SLOT (nhánh fallback của AI)
 # =====================================================================
 
+def _ai_configured():
+    """True khi AI được cấu hình (có key). Khi AI chưa cấu hình, bot vẫn đăng
+    bản rule-based như thiết kế gốc; khi ĐÃ cấu hình mà lỗi thì giữ bài lại."""
+    try:
+        from ai_editor import load_config
+        return bool(load_config().enabled)
+    except Exception:
+        return False
+
+
+def drop_unwritten(items):
+    """
+    AI đã cấu hình nhưng KHÔNG viết được bài này (writer lỗi/hết hạn mức/bịa số):
+    bỏ khỏi danh sách đăng để giờ sau thử lại, thay vì đăng bản rule-based tiếng
+    Anh chưa dịch. Chỉ bỏ khi ALLOW_FALLBACK_NORMAL_POSTS tắt.
+    """
+    if ALLOW_FALLBACK_NORMAL_POSTS or not _ai_configured():
+        return list(items)
+    kept = []
+    for s in items:
+        if (getattr(s, "ai_content", "") or "").strip():
+            kept.append(s)
+        else:
+            logger.warning("[AI] Chưa có bài do AI viết -> KHÔNG đăng bản rule-based, "
+                           "thử lại lần sau: %s", (getattr(s, "title", "") or "")[:70])
+    return kept
+
+
 def ensure_slots(scored_list, remaining_normal, remaining_hot, now):
     """
     Bài đã qua review_candidates:
@@ -348,7 +376,7 @@ def ensure_slots(scored_list, remaining_normal, remaining_hot, now):
     allocated = allocate_slots(pairs, remaining_normal=remaining_normal,
                                remaining_hot=remaining_hot, now=now,
                                ai_used=False)
-    if not ALLOW_FALLBACK_NORMAL_POSTS:
+    if not ALLOW_FALLBACK_NORMAL_POSTS and _ai_configured():
         kept = [s for s in allocated if getattr(s, "slot", "none") == "hot"]
         dropped = len(allocated) - len(kept)
         if dropped:
@@ -528,6 +556,7 @@ def gather_and_select(state, now):
     # Bài AI THỰC SỰ đánh giá rồi loại (gắn cờ .ai_rejected trong ai_editor).
     rejected = [s for s in candidates if getattr(s, "ai_rejected", False)]
 
+    to_post = drop_unwritten(to_post)
     normal_list = [s for s in to_post if getattr(s, "slot", "") == "normal"]
     hot_list = [s for s in to_post if getattr(s, "slot", "") == "hot"]
 
