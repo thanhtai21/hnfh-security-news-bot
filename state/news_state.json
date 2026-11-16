@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-16T09:51:14.335573+07:00",
+  "last_run": "2026-11-16T11:06:49.562975+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -25,7 +25,7 @@
     "2026-11-13": 3,
     "2026-11-14": 3,
     "2026-11-15": 3,
-    "2026-11-16": 1
+    "2026-11-16": 2
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -803,6 +803,20 @@
         "vietnam",
         "#805"
       ]
+    },
+    {
+      "title": "France: La Poste under cyber-attack – 22 million accounts compromised",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPTjljeVUwa1U5MnNueUlPOWZraUM2TzhfMnVLbnQxT3VVWWkxaWowU1RxRzlSRUd2MHgzYnlSUlJ0bEJld25WMHZfZ3BHUUdrUklfcV9HUDFrTHM0ejd0MzkxbERhSWNaeXlic2lWLVVPYzVMVUNXZ20xZjZwbzlPcjZaRC1kVDJsR1VNRnJpbTB6RUpMamlRSjEwNUtVNGZ4OUZn?oc=5",
+      "source": "GNews EN Breach",
+      "score": 79,
+      "fingerprint": "b7368babb25054d3",
+      "day": "2026-11-16",
+      "posted_at": "2026-11-16T11:06:49.562467+07:00",
+      "kind": "normal",
+      "keys": [
+        "france",
+        "poste"
+      ]
     }
   ],
   "ai_rejected": [
@@ -861,13 +875,6 @@
       "rejected_at": "2026-11-15T17:05:45.339634+07:00",
       "scope": "all",
       "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZXRwUW9sRWdtTTNuc0ZSdGc0eVJiNlZRSUcwU2hmNnIwSWw3THk5V2ZxTkF3SG5hLWFFMGZrUlVSTzFFSWI4R2k3R01XZ2g0dlk2Nk45X3VlaENLUllQbFVQZ25pbG9BNTFFSmJLUnBUR2ZIUjZPOE5OeTRnWGxoS0RoNmVFcnlC?oc=5",
-      "fingerprint": "d4dcf0d68ec84fa5",
-      "rejected_at": "2026-11-16T05:05:54.264559+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
     },
     {
       "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPRi13NjJVRkR4UGxJMmRSdkxwaE1OeUVhNlAwWEZodng2ZjUxWks0ek1fT191eUJYY0dDZkxyUFQxWUNHV3pkdDR4MXpRU29fSU1jQmpBQmVsbDVBcm85UWtzSkk1eVF0WEJ6MGNNMWhlb0pBSkdfaVdjR0dhU1V2TzhfUWNCRjFJQ0dXRUdVUG5UZ1ZCVVRZSDI4czhxZ1VublIxdFQ1UQ?oc=5",
@@ -942,9 +949,72 @@
     {
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQZHlhVUo5Y3cwRjU3dktHNjBlX01uaHVyeVRObGFWTTRHWTVDVDBmMF9DZUt6eE1ORkZvX3NGMVFZRjRpWE1hckNNcDBrNE5MN0JPSm1lRlp6RFZRZGVKYjNkMXRmMmlOU1Z2OVhQUDcxZ3E5b3FUU2cySVRCcWVLWVRHWUp5U083UTRJUkxSdFMwbzZKWDNZbjQ0MEtwd0FQbTVSRlZYdk9VNzFsY204clJnN05QdUk?oc=5",
       "fingerprint": "b92c269ff1f20162",
-      "rejected_at": "2026-11-16T09:51:14.335462+07:00",
-      "scope": "hot_only",
+      "rejected_at": "2026-11-16T11:06:49.562629+07:00",
+      "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQc0paSTRXaTZWamJ4NnFmNnNMbmw5cXlSdjhkdFhxOU8yUi1vdmN0ZEZBOUg4N1JmME5ldy15MWlQSHFLRnYyUXFzbVRkbXVIb3RCRTlGaWNIM1FsMzV2NnpYNGtTbHh6cmVXZUpGQThnY2Y0M3A4WF9mR2libkhLcmhoSGtVTDBMTlllaTJUTQ?oc=5",
+      "fingerprint": "c7043d0422d32598",
+      "rejected_at": "2026-11-16T11:06:49.562662+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5DX29UM2dOUHBiY2Jub0dDcWZxNnY4VGNvX3c3dXFwLU1DTVpFVmZ3WXpCTmVIR3RvU0x5NGNtSkFXNFo1Z2t0UGJvMkU5RFU2M0dxM2gzTWk?oc=5",
+      "fingerprint": "0ed8ee2968be8750",
+      "rejected_at": "2026-11-16T11:06:49.562701+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTG0xS2MwUFRzQXRGWE5mb0tRQjRwYXRxRFZlcGhxU2xCM0Z0YnMtcEZrWHZqWjY3Y0E2dkVOVXBrLTl6X0lfcWFMNTFLRWVzSW1IWGdqdVQ5Njh4R1A2aUVQZU94TkI4RkNFWjdBWm92bjNqNW1UU1cxcjExaUJvY1V6TzBKNUNHTG94WVhqdw?oc=5",
+      "fingerprint": "a3b6a66639efe29d",
+      "rejected_at": "2026-11-16T11:06:49.562739+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxORFB1Wlc3d2lZYmRRNjJGT01Gdm9OZTB5MDVtZ2IwY0hhTXRoUHBXXzVUeThDckl0NW1fRmk0Ym05VHZDRDg0ZDRJRlliV2s1RFhtdl9CZ3E4TVVhMUJTclk1TzBWdzR3ZzF0cTcyeEZlWUFkVXFVUHVYbDhDRWhxRlpEcFkyNDI0MnBYYnlabUpDb2RISGN0Q1hJRW4?oc=5",
+      "fingerprint": "1e7a3741b7fa642e",
+      "rejected_at": "2026-11-16T11:06:49.562769+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOenpFZGFQcElZb1VwTFdFYVRBTm5WRjA5U1p6bVNaeEZTR1cwZVdodUF1VE9FYTlNeFFoUGtvUGRYcnFMVlJRdzdTdUdMS2xaczJmd3ZXTjlHdTFVMjRNSTBham56VTUwX1h0T290dFBDc3VKQV9Qb1BIWFlOeWdIV2x1bmZKZFh6QWZxOXg5MnVwQTVCeERUV3FRSjY0UnFPU2Y1VzZoMVVNSVo4?oc=5",
+      "fingerprint": "f9aaebb6d5c5bec5",
+      "rejected_at": "2026-11-16T11:06:49.562797+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOc1pYdUw1QlkwN2Y4N1FHRTBrYm9YQ20xZXVHRi1kSkNKUGFUV0Z3MkZpblZZcXhENlBBVk80VU9jQTFac21Da283dThOTmZEdjVFWHhxX3hPa3RvOEtRZ3Y1OW5ZT0hxajNPV2hiM05hN3AwVUVvdFJxVWFsRGVCTUhRQ3lZNHE0WTRodmZjZ1hsczVCUEpKb1VCa0dsOF9rekdSQQ?oc=5",
+      "fingerprint": "ba2f1f9a4e14d60c",
+      "rejected_at": "2026-11-16T11:06:49.562826+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMHFybGRJNENrWi13ZjZDV2piWFp3X1d2ZjVzTWlwT01hXzk1bkloNzB3Ylh0VThjOEVYUk5faDNWZnRYdkh3LVI3bWY1Zjk4SXVCM3pEbkgwY25ETExNRnEyZmt1cGZHMThHWmx2U2dheldaT1dLSU1GYV9CeWNZcFJPSmV2ckc1?oc=5",
+      "fingerprint": "0af27b252ad4a510",
+      "rejected_at": "2026-11-16T11:06:49.562872+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5iTFNIMnNUaFVieXM0dU9TQXdtT1FsS2x5bGhDeWNockJRakVtZ2tBRzJoUlhzZldPQmtxcDFCc1RHOGZhcUZ0WGx1V2dtMGNybmZnLVdMbFRJTDBWald2aXVvYkFFTll5WnNCVTRYQTA?oc=5",
+      "fingerprint": "c8079caa09f39ee9",
+      "rejected_at": "2026-11-16T11:06:49.562900+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thanhnien.vn/can-trong-mat-sach-tai-khoan-tien-dien-tu-vi-tai-gta-6-ban-pc-185261115133725361.htm",
+      "fingerprint": "792304aa655b3029",
+      "rejected_at": "2026-11-16T11:06:49.562927+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
