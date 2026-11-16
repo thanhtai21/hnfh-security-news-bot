@@ -159,6 +159,71 @@ _INTERNAL_REASON_PREFIXES = (
 )
 
 
+_LEAK_RE = re.compile(
+    r"\b(severity|rule[_ ]?scores?|ai[_ ]?scores?|rule[_ ]?reasons?|"
+    r"hard[_ ]?signals?|corroboration|data[_ ]?level)\b", re.IGNORECASE)
+_LEAK_PAREN_RE = re.compile(
+    r"\s*\([^()]*\b(severity|rule[_ ]?scores?|ai[_ ]?scores?|rule[_ ]?reasons?|"
+    r"hard[_ ]?signals?|corroboration|data[_ ]?level)\b[^()]*\)", re.IGNORECASE)
+_FILLER_RE = re.compile(r"nguồn chưa cung cấp đủ", re.IGNORECASE)
+_SECTION_HEADS = ("🚨", "📌", "🔎", "🛡", "🔗")
+
+
+def _clean_ai_content(content):
+    """
+    Lưới an toàn sau khi AI viết bài (phòng khi AI không tuân prompt):
+    - bỏ dòng gạch đầu dòng lộ nhãn nội bộ (severity, rule_score, ...);
+    - bỏ phần trong ngoặc lộ nhãn nội bộ ở các dòng khác;
+    - bỏ mục 🛡️ chỉ chứa câu độn "Nguồn chưa cung cấp đủ dữ liệu...";
+    - bỏ tiêu đề mục 📌/🔎/🛡️ không còn nội dung.
+    Không bao giờ đụng tới phần 🔗 nguồn/URL.
+    """
+    try:
+        lines = []
+        for ln in (content or "").split("\n"):
+            s = ln.strip()
+            if s.startswith(("•", "-", "*")) and _LEAK_RE.search(s):
+                continue
+            lines.append(_LEAK_PAREN_RE.sub("", ln))
+
+        # Tách theo mục: mỗi mục bắt đầu bằng dòng có emoji tiêu đề.
+        sections = []   # [header_line or None, [body lines]]
+        for ln in lines:
+            if ln.strip().startswith(_SECTION_HEADS):
+                sections.append([ln, []])
+            elif sections:
+                sections[-1][1].append(ln)
+            else:
+                sections.append([None, [ln]])
+
+        out = []
+        for header, body in sections:
+            text = " ".join(b.strip() for b in body if b.strip())
+            if header is not None:
+                head = header.strip()
+                if head.startswith("🔗"):
+                    out.append(header)
+                    out.extend(body)
+                    continue
+                if head.startswith(("📌", "🔎", "🛡")):
+                    if not text or _FILLER_RE.search(text):
+                        continue
+            if header is not None:
+                out.append(header)
+            out.extend(body)
+
+        cleaned = "\n".join(out)
+        while "\n\n\n" in cleaned:
+            cleaned = cleaned.replace("\n\n\n", "\n\n")
+        cleaned = cleaned.strip()
+        # Nếu vì lý do gì đó làm mất link nguồn/nội dung -> giữ bản gốc.
+        if not cleaned or ("🔗" in (content or "") and "🔗" not in cleaned):
+            return content
+        return cleaned
+    except Exception:
+        return content
+
+
 def _build_post_content_raw(scored):
     """
     Dựng nội dung Forum Post.
@@ -179,6 +244,7 @@ def _build_post_content_raw(scored):
     ai_content = (getattr(scored, "ai_content", "") or "").strip()
     if ai_content:
         content = ai_content.replace("\r\n", "\n").replace("\r", "\n").strip()
+        content = _clean_ai_content(content)
         # AI quên chèn link gốc -> tự bổ sung để người đọc truy cập được nguồn.
         if link and link not in content:
             content += "\n\n🔗 [Đọc bài gốc](%s)" % link

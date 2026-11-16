@@ -88,6 +88,14 @@ NGUYÊN TẮC ĐIỂM:
   (score >= 85, publish=true).
 - score là số nguyên 0-100 (mức độ quan trọng tổng hợp).
 
+VÙNG (region) - CHỈ chọn "Việt Nam" khi SỰ KIỆN liên quan trực tiếp tới Việt Nam:
+  nạn nhân / tổ chức / người dùng / cơ quan chức năng / doanh nghiệp tại Việt Nam,
+  hoặc chính sách, luật của Việt Nam. Trường rule_vietnam_hint chỉ là GỢI Ý của
+  rule (bài đăng trên báo tiếng Việt hoặc có từ khóa Việt Nam), KHÔNG có nghĩa
+  sự kiện xảy ra ở Việt Nam. Báo tiếng Việt đưa tin về lỗ hổng Windows/Microsoft,
+  vụ hack sàn Binance, sự cố ở Mỹ/EU/Pháp/Trung Quốc... vẫn là region="Quốc tế".
+  Không chắc chắn -> "Quốc tế".
+
 TIN NÓNG (hot) - định nghĩa RÕ RÀNG, KHÔNG phải "gần như mọi bài đều là false":
 - hot=true khi sự kiện có MỘT TRONG các dấu hiệu sau (và diễn ra trong
   khoảng 24 GIỜ gần đây, đang được nhiều người quan tâm):
@@ -162,7 +170,7 @@ def build_filter_user_payload(candidates):
             "url": getattr(scored, "link", "") or "",
             "rule_score": int(getattr(scored, "score", 0) or 0),
             "rule_topic": getattr(scored, "topic", "OTHER"),
-            "rule_is_vietnam": bool(getattr(scored, "is_vietnam", False)),
+            "rule_vietnam_hint": bool(getattr(scored, "is_vietnam", False)),
             # C3: tín hiệu cứng (tin quy mô lớn do rule phát hiện - dữ liệu
             # phụ giúp quyết định publish/hot, KHÔNG phải chỉ dẫn).
             "hard_signal": bool(getattr(scored, "hard_signal", False)),
@@ -222,6 +230,18 @@ YÊU CẦU:
 6. Giữ nguyên sự thật về quy mô/seriousness; không thêm emoji thừa ngoài format.
 7. Mục Khuyến nghị CHỈ viết khi nguồn có nêu biện pháp (cập nhật bản vá, đổi mật
    khẩu...). Không có thì bỏ cả mục đó.
+8. TUYỆT ĐỐI KHÔNG đưa vào bài các chỉ số/nhãn nội bộ của hệ thống: severity,
+   rule_score, ai_score, rule_reasons, data_level, "tín hiệu cứng", "mới <=3h",
+   "điểm"... Các trường đó chỉ để bạn tham khảo, người đọc không được thấy.
+9. Trường data_level cho biết nguồn có bao nhiêu dữ liệu thật:
+   - "full": viết đầy đủ theo định dạng.
+   - "summary": chỉ viết phần Tóm tắt + mục 📌 (2-3 ý có thật trong summary);
+     BỎ mục 🔎 và 🛡️ nếu không có thông tin thật cho chúng.
+   - "title_only": nguồn chỉ có tiêu đề/đoạn trích ngắn. Chỉ viết Tóm tắt 1-2
+     câu bám sát tiêu đề (tối đa 350 ký tự); BỎ HẲN các mục 📌, 🔎, 🛡️.
+     KHÔNG suy diễn cơ chế, tác động hay khuyến nghị.
+10. Mục 🛡️ Tác động & khuyến nghị: nếu nguồn không có thông tin về tác động
+   hoặc biện pháp thì BỎ CẢ MỤC, KHÔNG viết câu thay thế kiểu "nguồn chưa cung cấp".
 
 ĐỊNH DẠNG NỘI DUNG BẮT BUỘC (thay <...> bằng nội dung thật, giữ nguyên emoji):
 🚨 <TIÊU ĐỀ tiếng Việt>
@@ -240,9 +260,8 @@ YÊU CẦU:
 • <điểm 3 (nếu có)>
 
 🛡️ Tác động & khuyến nghị:
-<2-4 câu về tác động với an ninh mạng và việc người đọc nên làm (nếu nguồn có
-nêu); nếu nguồn không đủ dữ liệu thì ghi "Nguồn chưa cung cấp đủ dữ liệu để
-đánh giá tác động.">
+<2-4 câu về tác động và việc người đọc nên làm - CHỈ khi nguồn có nêu; nếu
+không có thì BỎ CẢ MỤC 🛡️ này>
 
 🔗 Nguồn: <Tên nguồn>
 <URL>
@@ -278,6 +297,11 @@ def build_writer_user_payload(scored, decision=None):
             for r in (getattr(scored, "reasons", []) or [])[:8]
         ],
     }
+    # data_level: nguồn có bao nhiêu dữ liệu thật (Google News thường chỉ có tiêu đề).
+    _text_len = len(getattr(scored, "article_text", "") or "")
+    _sum_len = len(getattr(article, "summary", "") or "")
+    item["data_level"] = ("full" if _text_len >= 600
+                          else "summary" if _sum_len >= 250 else "title_only")
     if decision is not None:
         item["category"] = getattr(decision, "category", "") or "An ninh mạng"
         item["region"] = getattr(decision, "region", "") or "Quốc tế"
