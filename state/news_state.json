@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-17T10:28:27.606629+07:00",
+  "last_run": "2026-11-17T11:06:31.526966+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -26,7 +26,7 @@
     "2026-11-14": 3,
     "2026-11-15": 3,
     "2026-11-16": 3,
-    "2026-11-17": 1
+    "2026-11-17": 2
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -862,6 +862,22 @@
         "binance",
         "@binance"
       ]
+    },
+    {
+      "title": "Optimizely supply chain attack infects major brands' sites with malware",
+      "link": "https://www.bleepingcomputer.com/news/security/optimizely-supply-chain-attack-infects-major-brands-sites-with-malware/",
+      "source": "BleepingComputer",
+      "score": 61,
+      "fingerprint": "b539a6cfb8f04a5b",
+      "day": "2026-11-17",
+      "posted_at": "2026-11-17T11:06:31.526025+07:00",
+      "kind": "normal",
+      "keys": [
+        "javascript",
+        "optimizely",
+        "salesforce",
+        "@gitlab"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1095,6 +1111,55 @@
       "rejected_at": "2026-11-17T10:28:27.606417+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://thanhnien.vn/ro-ri-one-ui-95-he-lo-loat-tinh-nang-camera-moi-tren-galaxy-s27-ultra-185261117092051638.htm",
+      "fingerprint": "7bd86c63e266f40c",
+      "rejected_at": "2026-11-17T11:06:31.526276+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNQmJpX05URDVyelJGNE94bHhpdEwzNkl2R0E2b3N3NTVzSkxmd1N0b25aamw2alZjMGM2NHJ4UG5yYWExTjJlaFAzbkpnNTRKa1NsemJ1X1R1TjNybGJSWS05dzhXbVc0eDNib2NLclVxazNUM211bXNhT2tVb2pIZ3RHeHFFWTczYjRaWndjc2RIak1tRTZIM3Nva3BZMjR3TU55OGtEclpCRWlhVkJ4RmNkUjhWRXk0bExaWmpjNlo0ZGltWjY5Y1ln?oc=5",
+      "fingerprint": "4b09e4acffb41b86",
+      "rejected_at": "2026-11-17T11:06:31.526387+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNVGI0cFdESlQ4dUl6NW1nN3FCU2ZNZlNVSVFkRURmSjBNaFI4VmNXRlhVWWhzN0JxMndZbk81TDR5MjBXa3lKM0tyYks5aFRkOXNadTNkN3NBS1hfZGJrcTJPNDc4WFZHZmZvSXlPQWx6M2RvbXNTd21nWlF1eWRKbllBQTVaWnJhYVJ5Q092bXVaTHFXTVpMQUhabWUxV2FvYzU0cmlmNUJwUlNLb1hFa3Y1b2NyUjdadzRQaWtyM3FiNTNvbEVSWDNzc3VWcmJvX3d0Uw?oc=5",
+      "fingerprint": "b6ccf0cc2e208cb5",
+      "rejected_at": "2026-11-17T11:06:31.526474+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiQEFVX3lxTE55bHVmSXhYMWV2X29HeUdxc3pCM1ZTaTBEQ2liYmJUTldRd1NFV2hQb2xTb2lmVnVPVExVQzEzLWk?oc=5",
+      "fingerprint": "5b7c1ac45cfddbad",
+      "rejected_at": "2026-11-17T11:06:31.526558+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5vVkhVTUs2c0lmRDlLTVY2bXZ5SWFsOGNBckxEbkpJUlYxVGlRN3ZWcGJKbXBTY3JZVnoxazNTbmRkYUIyVm1ISTdJazZwWVNrWWdyaDU5YmZOLXotVXhlX0FRTGYwRk12dHpJ?oc=5",
+      "fingerprint": "356273a600a92f6e",
+      "rejected_at": "2026-11-17T11:06:31.526640+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxORG83X2ZOalVSTmo2YVdjU3BZcmN5WkdxN05wQXk2RkdXbzUtR0NBcmxQQUJacDdCUm5qMWFFX2c0YVFBaUtNVFpDVW9qWldaWW5DdklsUWxJU2ZmS3pLWGprQlFKYVlvV1RQRXhrSzFsVUI4YUxSTExpeWdXRHFMRUdfanRVVjZQcXdZaWFQNGpjdmtmc1Y0bDZrUFl5RnBNN2JQTTZ6UzhjWXVFYmVyajRodUFBWEo4SXc?oc=5",
+      "fingerprint": "0d4f8cfa9551e42b",
+      "rejected_at": "2026-11-17T11:06:31.526722+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQaTB3SXhCbWc5S2ZnelhyTGdMVF82VXdCTWJ6T1FDNVdqdEtMS1dXNk04bF9hMUFfY29UT2VCcHFHeHZ1ajBjMzM5OHRBN0RvdnNWYVp1dG13MjVMdjU3cjFCVTdDa0x6Wmc0YlZ5MldIb2F4STF6Q0owWEZCUW5xVGJDTW84Wmxia3RSV3lOSXhtQjZwaXJPUUxQTUJiSWtp?oc=5",
+      "fingerprint": "53025466363e7f2a",
+      "rejected_at": "2026-11-17T11:06:31.526830+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
