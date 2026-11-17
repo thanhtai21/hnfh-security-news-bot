@@ -281,7 +281,6 @@ RSS_SOURCES = {
     "The Register Security": "https://www.theregister.com/security/headlines.atom",
     "Infosecurity Magazine": "https://www.infosecurity-magazine.com/rss/news/",
     "Help Net Security": "https://www.helpnetsecurity.com/feed/",
-    "Asia News Network": "https://asianews.network/feed/",
     "The Diplomat": "https://thediplomat.com/feed/",
     # --- Báo Việt Nam bổ sung 16/11/2026 (RSS lấy từ danh mục của từng báo;
     # CHƯA kiểm chứng từ môi trường dev). Nguồn "vn" chỉ vào pipeline khi bài có
@@ -329,7 +328,6 @@ SOURCE_TRUST_SCORE = {
     "The Register Security": 12,
     "Infosecurity Magazine": 11,
     "Help Net Security": 11,
-    "Asia News Network": 10,
     "The Diplomat": 10,
     "Tuoi Tre Nhip song so": 12,
     "Thanh Nien Tin tuc cong nghe": 11,
@@ -372,7 +370,6 @@ SOURCE_KIND = {
     "The Register Security": "security",
     "Infosecurity Magazine": "security",
     "Help Net Security": "security",
-    "Asia News Network": "general",
     "The Diplomat": "general",
     "Tuoi Tre Nhip song so": "vn",
     "Thanh Nien Tin tuc cong nghe": "vn",
