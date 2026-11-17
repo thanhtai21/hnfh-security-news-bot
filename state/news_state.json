@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-17T07:07:22.496799+07:00",
+  "last_run": "2026-11-17T08:23:31.690005+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -38,7 +38,8 @@
     "2026-11-10": 1,
     "2026-11-11": 1,
     "2026-11-13": 2,
-    "2026-11-14": 1
+    "2026-11-14": 1,
+    "2026-11-17": 1
   },
   "posts": [
     {
@@ -846,6 +847,20 @@
       "keys": [
         "beinsure",
         "#177"
+      ]
+    },
+    {
+      "title": "Binance vượt cú sốc 6,3 tỷ USD, mở lại 87 mạng lưới",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNVk5mY1hCeDUtOE95aDlybVo3X3hKRWVjU0JTeWJ3NzRVNmNVN0RzaVFJZmRnNXZudTJpUHRmMjdpVWlyT0J5dlNBVGpDTnVWaEJJTzE0ZjBtVDBvRnJkZVItVE8zaVNWMVBNVk9pTHYtSHFNS0Y4UlNtbHhQbFlOb2UxRGc?oc=5",
+      "source": "GNews VN Tan cong mang",
+      "score": 77,
+      "fingerprint": "593ba268260f6e00",
+      "day": "2026-11-17",
+      "posted_at": "2026-11-17T08:23:31.689826+07:00",
+      "kind": "hot",
+      "keys": [
+        "binance",
+        "@binance"
       ]
     }
   ],
