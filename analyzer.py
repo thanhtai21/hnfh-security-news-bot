@@ -329,6 +329,9 @@ for _phrase, _points, _reason in POSITIVE_SIGNALS:
 # concerns") chỉ được so với TITLE - xem NEGATIVE_TITLE_ONLY bên dưới.
 NEGATIVE_SIGNALS = [
     ("sponsored", -50, "Quảng cáo/sponsored"),
+    ("settlement", -30, "Tin bồi thường/pháp lý"),
+    ("payouts", -30, "Tin bồi thường/pháp lý"),
+    ("class action", -25, "Tin kiện tập thể"),
     ("press release", -50, "Press release"),
     ("advertorial", -50, "Quảng cáo"),
     ("paid content", -50, "Nội dung trả phí"),
@@ -489,6 +492,16 @@ def count_matches_bounded(text, phrases):
 
 # Điểm cộng khi bài CÓ tín hiệu cứng (A3b).
 HARD_SIGNAL_POINTS = 25
+
+# [HARDFIX]
+_LEGAL_NOISE_TITLE = [
+    "settlement", "payout", "payouts", "who qualifies", "class action",
+    "claim form", "bồi thường",
+]
+_SCALE_EXTRA_CTX = [
+    "leak", "leaks", "leaked", "expose", "exposes", "exposed", "dump",
+    "dumped", "for sale", "hacker", "hackers", "tin tặc", "bị lộ",
+]
 
 # Từ khóa tấn công/sự cố (A3.1 - ngữ cảnh bắt buộc khi tính số tiền,
 # và cổng lọc nguồn crypto/tổng hợp/VIỆT NAM D1/5).
@@ -683,6 +696,12 @@ def detect_hard_signals(article):
         reasons = []
 
         has_attack_ctx = match_any(blob, HARD_ATTACK_PHRASES) is not None
+        # [HARDFIX] tin bồi thường/settlement không phải sự cố mới.
+        if match_any(title_l, _LEGAL_NOISE_TITLE) is not None:
+            return False, []
+        # Quy mô người dùng chỉ tính khi bài nói về sự cố/rò rỉ.
+        has_scale_ctx = has_attack_ctx or (
+            match_any(blob, _SCALE_EXTRA_CTX) is not None)
 
         # (1) Số tiền lớn + ngữ cảnh tấn công.
         has_money = False
@@ -697,7 +716,7 @@ def detect_hard_signals(article):
 
         # (2) Quy mô người dùng / bản ghi >= 1 triệu.
         has_users = False
-        for m in _USER_SCALE_RE.finditer(blob):
+        for m in (_USER_SCALE_RE.finditer(blob) if has_scale_ctx else []):
             value = _parse_amount(m.group(1))
             if value is None:
                 continue
