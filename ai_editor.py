@@ -806,7 +806,12 @@ def ai_write(scored, decision, cfg):
 
     # Chặn văn phong clickbait/cấm.
     lowered = content.lower() + " " + title.lower()
+    # [WRITERFIX] cụm có sẵn trong bài gốc (VD 'cú sốc') không phải do AI giật tít.
+    src_text = ((getattr(scored, "title", "") or "") + " "
+                + (getattr(scored.article, "summary", "") or "")).lower()
     for phrase in _FORBIDDEN_PHRASES:
+        if phrase in src_text:
+            continue
         if phrase in lowered:
             logger.warning("[AI] Writer dùng văn phong cấm (%r) -> dùng rule.",
                            phrase)

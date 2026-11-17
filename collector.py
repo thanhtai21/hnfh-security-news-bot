@@ -119,6 +119,9 @@ def _fetch_feed_bytes(name, url):
                 # Chặn bởi WAF/rate limit -> thử UA dự phòng một lần.
                 logger.warning("[RSS] Source HTTP %d, thử UA dự phòng: %s",
                                response.status_code, name)
+                if response.status_code == 429:
+                    import time as _t
+                    _t.sleep(5.0)
                 last_error = "HTTP %d" % response.status_code
                 continue
             response.raise_for_status()
@@ -299,7 +302,14 @@ def collect_articles(now=None):
 
     logger.info("[RSS] Fetching %d sources...", len(RSS_SOURCES))
 
+    _prev_gnews = False
     for name, url in RSS_SOURCES.items():
+        # [WRITERFIX] giãn cách các truy vấn Google News để khỏi bị 429.
+        _is_gnews = "news.google.com" in url
+        if _is_gnews and _prev_gnews:
+            import time as _t
+            _t.sleep(2.0)
+        _prev_gnews = _is_gnews
         logger.info("[RSS] Fetching source: %s (%s)", name, url)
         raw = _fetch_feed_bytes(name, url)
         if raw is None:
