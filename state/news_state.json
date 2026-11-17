@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-17T21:38:26.998286+07:00",
+  "last_run": "2026-11-18T01:06:03.353145+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -922,69 +922,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQc0paSTRXaTZWamJ4NnFmNnNMbmw5cXlSdjhkdFhxOU8yUi1vdmN0ZEZBOUg4N1JmME5ldy15MWlQSHFLRnYyUXFzbVRkbXVIb3RCRTlGaWNIM1FsMzV2NnpYNGtTbHh6cmVXZUpGQThnY2Y0M3A4WF9mR2libkhLcmhoSGtVTDBMTlllaTJUTQ?oc=5",
-      "fingerprint": "c7043d0422d32598",
-      "rejected_at": "2026-11-16T11:06:49.562662+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5DX29UM2dOUHBiY2Jub0dDcWZxNnY4VGNvX3c3dXFwLU1DTVpFVmZ3WXpCTmVIR3RvU0x5NGNtSkFXNFo1Z2t0UGJvMkU5RFU2M0dxM2gzTWk?oc=5",
-      "fingerprint": "0ed8ee2968be8750",
-      "rejected_at": "2026-11-16T11:06:49.562701+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTG0xS2MwUFRzQXRGWE5mb0tRQjRwYXRxRFZlcGhxU2xCM0Z0YnMtcEZrWHZqWjY3Y0E2dkVOVXBrLTl6X0lfcWFMNTFLRWVzSW1IWGdqdVQ5Njh4R1A2aUVQZU94TkI4RkNFWjdBWm92bjNqNW1UU1cxcjExaUJvY1V6TzBKNUNHTG94WVhqdw?oc=5",
-      "fingerprint": "a3b6a66639efe29d",
-      "rejected_at": "2026-11-16T11:06:49.562739+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxORFB1Wlc3d2lZYmRRNjJGT01Gdm9OZTB5MDVtZ2IwY0hhTXRoUHBXXzVUeThDckl0NW1fRmk0Ym05VHZDRDg0ZDRJRlliV2s1RFhtdl9CZ3E4TVVhMUJTclk1TzBWdzR3ZzF0cTcyeEZlWUFkVXFVUHVYbDhDRWhxRlpEcFkyNDI0MnBYYnlabUpDb2RISGN0Q1hJRW4?oc=5",
-      "fingerprint": "1e7a3741b7fa642e",
-      "rejected_at": "2026-11-16T11:06:49.562769+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOenpFZGFQcElZb1VwTFdFYVRBTm5WRjA5U1p6bVNaeEZTR1cwZVdodUF1VE9FYTlNeFFoUGtvUGRYcnFMVlJRdzdTdUdMS2xaczJmd3ZXTjlHdTFVMjRNSTBham56VTUwX1h0T290dFBDc3VKQV9Qb1BIWFlOeWdIV2x1bmZKZFh6QWZxOXg5MnVwQTVCeERUV3FRSjY0UnFPU2Y1VzZoMVVNSVo4?oc=5",
-      "fingerprint": "f9aaebb6d5c5bec5",
-      "rejected_at": "2026-11-16T11:06:49.562797+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOc1pYdUw1QlkwN2Y4N1FHRTBrYm9YQ20xZXVHRi1kSkNKUGFUV0Z3MkZpblZZcXhENlBBVk80VU9jQTFac21Da283dThOTmZEdjVFWHhxX3hPa3RvOEtRZ3Y1OW5ZT0hxajNPV2hiM05hN3AwVUVvdFJxVWFsRGVCTUhRQ3lZNHE0WTRodmZjZ1hsczVCUEpKb1VCa0dsOF9rekdSQQ?oc=5",
-      "fingerprint": "ba2f1f9a4e14d60c",
-      "rejected_at": "2026-11-16T11:06:49.562826+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMHFybGRJNENrWi13ZjZDV2piWFp3X1d2ZjVzTWlwT01hXzk1bkloNzB3Ylh0VThjOEVYUk5faDNWZnRYdkh3LVI3bWY1Zjk4SXVCM3pEbkgwY25ETExNRnEyZmt1cGZHMThHWmx2U2dheldaT1dLSU1GYV9CeWNZcFJPSmV2ckc1?oc=5",
-      "fingerprint": "0af27b252ad4a510",
-      "rejected_at": "2026-11-16T11:06:49.562872+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5iTFNIMnNUaFVieXM0dU9TQXdtT1FsS2x5bGhDeWNockJRakVtZ2tBRzJoUlhzZldPQmtxcDFCc1RHOGZhcUZ0WGx1V2dtMGNybmZnLVdMbFRJTDBWald2aXVvYkFFTll5WnNCVTRYQTA?oc=5",
-      "fingerprint": "c8079caa09f39ee9",
-      "rejected_at": "2026-11-16T11:06:49.562900+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://thanhnien.vn/can-trong-mat-sach-tai-khoan-tien-dien-tu-vi-tai-gta-6-ban-pc-185261115133725361.htm",
-      "fingerprint": "792304aa655b3029",
-      "rejected_at": "2026-11-16T11:06:49.562927+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://thehackernews.com/2026/11/bo-team-exploits-log4shell-in-vmware.html",
       "fingerprint": "cf9dd242508e9f0a",
       "rejected_at": "2026-11-16T15:01:20.845995+07:00",
@@ -1193,34 +1130,6 @@
       "rejected_at": "2026-11-17T15:07:25.873020+07:00",
       "scope": "all",
       "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQeldGYmxYbVc4eDZyVERjeVZfRE5LWXQya09jYV9yOXNqcVJzeHJ2ay1Da290bFJpa0NtcV9VTTN3LUZ4cW5NZHh3Q0x1ckJhOEU4SjVvWGZsU216SDVrdzJuQnBkdklkck1tZTNrMGJRTGV1TXF2SDgyS1pXaXJPZ2ZKYlZSTFVEMV9Sd2kxRXBtUTA5QXYzVGlUby1tYmJhS2RELXM2a0c0S0Z3UkM0eHFwa21RSXRzN2ZnWmJTMldha1ZR?oc=5",
-      "fingerprint": "98507abd5a9a3a33",
-      "rejected_at": "2026-11-17T17:06:05.479611+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOQUJ1YjM5SGU5WHJuMVY0aFpHZF9zcWN2VGVPNGJ0RllUZVpmSy16M2drVHI3YlJDcTI3ZHVKQlZvYTQ2WFd2Sm1oUVAxWFAzRkE4VVRjRWRneUw1RDduREp3UlNOaUxpdlRhRFVSXzJKd3JUaU1TTHVTcDZhbERFSThPX1dncWQzUmxFZHllMUh0NHJ2ODU1OThiWQ?oc=5",
-      "fingerprint": "511a98989a0e7164",
-      "rejected_at": "2026-11-17T17:06:05.479724+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1qMFB3UVJBNHhBTGhCZ04wNUtvdGJqMU5TbzJEZWFkdkoyOHM2X2NXdExIZXU4TXYtcGF0UDBZbUx5OEhxemJEZlYyOFFlaXk3eWxneGxiSmhOakpDQmhQaW5kZTZZS3JMaWtMZmNfdlFiNDhWSGNUX3g5SQ?oc=5",
-      "fingerprint": "56e71b9e78c61f09",
-      "rejected_at": "2026-11-17T19:06:00.038717+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBTaGlJU3VYdV9HUGFCa0NlSG1qdGhpSEJ6Rnc3UDVPZGh1LS02QkJ2ZnZpV2lPRDRkUzB1WmRjRXhBVlhiUHVqZlE0eGFHTVpMV2xPYkt6NnpXeHVzMjNwaTBMNlF3RmVQ?oc=5",
-      "fingerprint": "2fd8882ca1eb2152",
-      "rejected_at": "2026-11-17T19:06:00.038837+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
     },
     {
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPb0xLai1rc1B2SmNqVGlZcEM2YmtLeW5SMGdPQ21xRXNHTnJIR0U1QmtJbmVBV285amRRNnNiUl9DV2lRT05Ub1A0LVFhbDJKQ2RqbHQxMzVGNC1FY0MtRjZrTEc1NEVhZzNNNm91VkVwMmd4ZDZtRDl1VWRLbVV2eGd6RjZ2VVpSdzFUNkJmeGV0UGhRd21TTTFqX3dSZHBTRjFIODlPWmxMc1kyYlNZTUhaTmlZNVliNl9vNFF5V3E?oc=5",
