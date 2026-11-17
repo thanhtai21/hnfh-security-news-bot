@@ -194,12 +194,17 @@ def _entry_summary(entry):
     return ""
 
 
+_LAST_STATS = {}   # name -> thống kê lần parse gần nhất (chỉ để log chẩn đoán)
+
+
 def _parse_feed(name, raw_bytes, now):
     """
     Parse bytes của một feed thành danh sách Article.
     Không bao giờ raise: mọi lỗi đều được nuốt và log.
     """
     articles = []
+    stats = {"raw": 0, "old": 0, "nolink": 0, "bozo": False}
+    _LAST_STATS[name] = stats
     try:
         parsed = feedparser.parse(raw_bytes)
     except Exception as exc:
@@ -210,9 +215,11 @@ def _parse_feed(name, raw_bytes, now):
     if not entries:
         # Feedparser có thể vẫn báo "bozo" nhưng vẫn parse được entries.
         bozo = parsed.get("bozo")
+        stats["bozo"] = bool(bozo)
         logger.warning("[RSS] Source NO ENTRIES: %s (bozo=%s)", name, bozo)
         return articles
 
+    stats["raw"] = len(entries)
     for entry in entries[:MAX_ARTICLES_PER_SOURCE]:
         try:
             title = normalize_ws(strip_html(safe_str(entry.get("title"))))
@@ -220,6 +227,7 @@ def _parse_feed(name, raw_bytes, now):
 
             # Bắt buộc phải có title và link.
             if not title or not link:
+                stats["nolink"] += 1
                 logger.debug("[RSS] SKIP (thiếu title/link) from %s: %r",
                              name, title[:80])
                 continue
@@ -235,6 +243,7 @@ def _parse_feed(name, raw_bytes, now):
 
             # Không đăng bài cũ: bỏ qua nếu quá cũ hoặc không rõ thời gian.
             if is_too_old(published, MAX_ARTICLE_AGE_HOURS, now):
+                stats["old"] += 1
                 logger.debug("[RSS] SKIP (quá cũ/không rõ TG) from %s: %s",
                              name, title[:80])
                 continue
@@ -302,11 +311,14 @@ def collect_articles(now=None):
 
         # Dedup trong phạm vi feed + giữa các feed (cùng URL hoặc title gần giống).
         new_count = 0
+        dup_count = 0
         for article in articles:
             if article.link in seen_links:
+                dup_count += 1
                 logger.debug("[DEDUP] Bỏ trùng URL: %s", article.link)
                 continue
             if article.norm_title and article.norm_title in seen_titles:
+                dup_count += 1
                 logger.debug("[DEDUP] Bỏ trùng title: %s", article.title[:80])
                 continue
             seen_links.add(article.link)
@@ -316,7 +328,11 @@ def collect_articles(now=None):
             new_count += 1
 
         ok_sources += 1
-        logger.info("[RSS] Source OK: %s (%d bài hợp lệ)", name, new_count)
+        st = _LAST_STATS.get(name) or {}
+        logger.info("[RSS] Source OK: %s (%d bài hợp lệ) | thô=%s, quá cũ/không rõ TG=%s, "
+                    "thiếu link=%s, trùng nguồn khác=%d, bozo=%s",
+                    name, new_count, st.get("raw", "?"), st.get("old", "?"),
+                    st.get("nolink", "?"), dup_count, st.get("bozo", "?"))
 
     # Sắp xếp mới nhất trước.
     def _sort_key(article):
