@@ -123,7 +123,8 @@ def build_summary(lines, info):
     warns = [ln for ln in lines if "[WARNING" in ln]
     ai_fail = [ln for ln in lines if "[AI]" in ln and
                ("không khả dụng" in ln or "Chưa có bài do AI viết" in ln
-                or "429" in ln or "lỗi" in ln.lower())]
+                or "429" in ln or "lỗi" in ln.lower()
+                or "Writer" in ln or "writer" in ln)]  # [AILOG]
     def _rss_is_bad(ln):
         if "ERROR" in ln or "thất bại" in ln.lower() or "FAILED" in ln or "NO ENTRIES" in ln:
             return True
@@ -145,7 +146,7 @@ def build_summary(lines, info):
         out += ["- " + _clip(ln) for ln in errs[:3]]
     if ai_fail:
         out.append("**AI:**")
-        out += ["- " + _clip(ln) for ln in ai_fail[:3]]
+        out += ["- " + _clip(ln, 200) for ln in ai_fail[:5]]
     if rss_bad:
         out.append("**Nguồn:**")
         out += ["- " + _clip(ln, 120) for ln in rss_bad[:4]]
