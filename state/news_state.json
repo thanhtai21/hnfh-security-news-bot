@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-17T11:06:31.526966+07:00",
+  "last_run": "2026-11-17T15:07:25.873121+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -26,7 +26,7 @@
     "2026-11-14": 3,
     "2026-11-15": 3,
     "2026-11-16": 3,
-    "2026-11-17": 2
+    "2026-11-17": 3
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -39,7 +39,7 @@
     "2026-11-11": 1,
     "2026-11-13": 2,
     "2026-11-14": 1,
-    "2026-11-17": 1
+    "2026-11-17": 2
   },
   "posts": [
     {
@@ -878,6 +878,46 @@
         "salesforce",
         "@gitlab"
       ]
+    },
+    {
+      "title": "Alleged Member of Ransomware Gang That Claimed 70 Million Health Records Extradited to US",
+      "link": "https://thecyberexpress.com/8-digits-team-ransomware/",
+      "source": "The Cyber Express",
+      "score": 100,
+      "fingerprint": "ca49a11100c73e9f",
+      "day": "2026-11-17",
+      "posted_at": "2026-11-17T15:07:25.872191+07:00",
+      "kind": "hot",
+      "keys": [
+        "according",
+        "alleged",
+        "claimed",
+        "department",
+        "extradited",
+        "group",
+        "health",
+        "italy",
+        "justice",
+        "kazakh",
+        "khlynovskiy",
+        "knoxville",
+        "#500"
+      ]
+    },
+    {
+      "title": "Vụ rò rỉ dữ liệu Uber: Thông tin gần 150.000 bằng lái xe của tài xế bị đánh cắp",
+      "link": "https://cafef.vn/vu-ro-ri-du-lieu-uber-thong-tin-gan-150000-bang-lai-xe-cua-tai-xe-bi-danh-cap-18826111714154597.chn",
+      "source": "GNews VN Ro ri du lieu",
+      "score": 58,
+      "fingerprint": "856d06d3c4e19c24",
+      "day": "2026-11-17",
+      "posted_at": "2026-11-17T15:07:25.872466+07:00",
+      "kind": "normal",
+      "keys": [
+        "cafef",
+        "#150",
+        "@uber"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1050,13 +1090,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://dantri.com.vn/cong-nghe/xu-huong-tren-thi-truong-dien-thoai-gap-toan-cau-20261115215427833.htm",
-      "fingerprint": "cc3d1186d8616fcc",
-      "rejected_at": "2026-11-17T07:07:22.496324+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://www.darkreading.com/threat-intelligence/ransomware-attacks-increase-ai-payments-decline",
       "fingerprint": "5e8211f38fcbef53",
       "rejected_at": "2026-11-17T07:07:22.496399+07:00",
@@ -1158,6 +1191,62 @@
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQaTB3SXhCbWc5S2ZnelhyTGdMVF82VXdCTWJ6T1FDNVdqdEtMS1dXNk04bF9hMUFfY29UT2VCcHFHeHZ1ajBjMzM5OHRBN0RvdnNWYVp1dG13MjVMdjU3cjFCVTdDa0x6Wmc0YlZ5MldIb2F4STF6Q0owWEZCUW5xVGJDTW84Wmxia3RSV3lOSXhtQjZwaXJPUUxQTUJiSWtp?oc=5",
       "fingerprint": "53025466363e7f2a",
       "rejected_at": "2026-11-17T11:06:31.526830+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPMS1Ed18tZDQ0U1dhVjY2dzNkSVdUWGNScUJqR0xVZDB0SmJjTWgyanlHY0xRTDlJVExIdXZGcTZjMzV2WEFEbWd5bWZ6WnF2R2RUVS1OZG5maHdWdlRnWXZIdkRIODc3WVZQeVExZGsxWFEydGV6ak9wam0tdTF2YkNIVXFuVkxBazV1RnREYndJdk4yOTR5cG1Td2dEeFVwdUxIcWhNZ1FXUVdQbmpKbzNPTk5hNHVTZy1sdnJFSGl1OHVkZmEwaTQyejQ4azRJNjExcEhiM0ZjdmhqNFV1YmV4cm51M2pLcDc1Y1BoTXVYb2s?oc=5",
+      "fingerprint": "f3b004418cc7f535",
+      "rejected_at": "2026-11-17T15:07:25.872612+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thecyberexpress.com/ai-threat-tracker-threat-actors/",
+      "fingerprint": "6c64bd58dcabddc7",
+      "rejected_at": "2026-11-17T15:07:25.872691+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNUmg1OWFDQkx5cmUtVVJmdmo0WGo4U2FzU1dBcFJ5MS1uUjlDc0o4OERuN21kZm8zN3Z2eWE4c2ExVE5UNXFjc2ZmVWVIR2R3ZWpHeVVPd0daTXQyNk42Y2pJWV82dmdtTjVrSUYxeXJXZVFfUzNmcDU4YS1MNjFDUDlPWXcwWjJhb09UUmUxLU1SU19sWlNocmFidEcxSjEtRTlxV01OT3lJdnhrUzFkOWwwWnlwVkRTNlNjTlBwUG5YRUU?oc=5",
+      "fingerprint": "4a23762b2fb7f7c7",
+      "rejected_at": "2026-11-17T15:07:25.872748+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPWGpwUGJBRW5GQ0h6X1dZUnRrQlA1TzVlc3JkLVM0d0ZWbEFKMXZtX2p2UkZUWF9WQ0k1SU03cHRYSFhZR3dJelZlazZpUXM3T1BzSUFDb3R2eTBSd2NPZHlETlljcjFOdjZuMENTVnJVUmdxUWhvbzJ0QTNEU3JfMGVzZzBxakcwM1B1RUNqbWZfbVc3N2VCRGk1ci0zaGIxNlFlRkdEODdvakoza08teWRiYl9fajBrX3VzNW9jdw?oc=5",
+      "fingerprint": "5eef9367370eef69",
+      "rejected_at": "2026-11-17T15:07:25.872803+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE03VENZZncwZ3pfZnBMRU9oaldmcUJDWXFzUzJYWUx5MmZtNHJkM1p1dW5sNnV4a3NLeXo4M1lDMFdfY1RTd2UwRFdzbl91Sk94U29R?oc=5",
+      "fingerprint": "e0a35e74cf9a9423",
+      "rejected_at": "2026-11-17T15:07:25.872857+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thanhnien.vn/go-sai-dia-chi-chatgpt-co-the-khien-nguoi-dung-nhiem-ma-doc-185261117115625188.htm",
+      "fingerprint": "0b1c99287da7df01",
+      "rejected_at": "2026-11-17T15:07:25.872913+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://dantri.com.vn/cong-nghe/rui-ro-an-ninh-mang-tu-su-co-dich-vu-microsoft-20261116162639254.htm",
+      "fingerprint": "23063c6e277c5916",
+      "rejected_at": "2026-11-17T15:07:25.872967+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/fandango-says-hackers-stole-payment-card-details-from-checkout-pages/",
+      "fingerprint": "02cc0bbfebcb2524",
+      "rejected_at": "2026-11-17T15:07:25.873020+07:00",
       "scope": "all",
       "ttl_hours": 36
     }
