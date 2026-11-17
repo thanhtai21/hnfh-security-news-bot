@@ -19,7 +19,9 @@ import logging
 import os
 import re
 import socket
-from urllib.parse import urlparse
+import base64
+import json
+from urllib.parse import quote, urlparse
 
 import requests
 
@@ -128,3 +130,153 @@ def fetch_article_text(url):
     except Exception as exc:
         logger.info("[FETCH] Không lấy được bài gốc (%r): %s", exc, (url or "")[:80])
         return ""
+
+
+# =====================================================================
+# [GNEWS] GIẢI MÃ LINK GOOGLE NEWS -> LINK BÁO GỐC
+# =====================================================================
+
+def _is_valid_resolved_url(url):
+    """Kiểm tra URL sau giải mã có hợp lệ không (chống SSRF / URL rác)."""
+    if not url or not isinstance(url, str):
+        return False
+    try:
+        p = urlparse(url)
+        if p.scheme not in ("http", "https") or not p.hostname:
+            return False
+        host = p.hostname.lower()
+        if host in ("localhost", "127.0.0.1", "::1") or host.endswith(".local"):
+            return False
+        return "." in host
+    except Exception:
+        return False
+
+
+def _decode_gnews_token_offline(token):
+    """
+    Giải link Google News dạng cũ (base64 chứa URL trực tiếp).
+    Hoàn toàn offline, không gọi mạng.
+    """
+    try:
+        padding = (4 - len(token) % 4) % 4
+        decoded = base64.urlsafe_b64decode((token + "=" * padding).encode("ascii", "ignore"))
+        m = re.search(rb"https?://[^\s\x00-\x1f\x7f-\xff<\"'()]+", decoded)
+        if m:
+            candidate = m.group(0).decode("utf-8", "ignore").rstrip(",.;\"'\)")
+            if _is_valid_resolved_url(candidate):
+                return candidate
+    except Exception:
+        pass
+    return None
+
+
+def _resolve_gnews_online(token, original_url=None):
+    """
+    Giải link Google News dạng mới qua Google batchexecute RPC (Fbv4je).
+    Best effort: timeout hoặc lỗi -> trả None.
+    """
+    try:
+        headers = {
+            "User-Agent": _UA,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        }
+        url = "https://news.google.com/articles/%s" % token
+        resp = requests.get(url, headers=headers, timeout=TIMEOUT_SECONDS, allow_redirects=True)
+
+        # 1. Nếu Google redirect trực tiếp ra ngoài domain google.
+        final_url = resp.url
+        final_host = urlparse(final_url).hostname or ""
+        if "google.com" not in final_host and _is_valid_resolved_url(final_url):
+            return final_url
+
+        # 2. Tìm signature và timestamp từ HTML
+        text = resp.text
+        sg_m = re.search(r'data-n-a-sg=["\']([^"\']+)["\']', text)
+        ts_m = re.search(r'data-n-a-ts=["\']([^"\']+)["\']', text)
+        if not sg_m or not ts_m:
+            return None
+
+        sg = sg_m.group(1)
+        ts = ts_m.group(1)
+
+        # 3. Gửi payload batchexecute RPC (Fbv4je)
+        articles_req = [
+            "Fbv4je",
+            '["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,null,null,null,null,null,0,1],'            '"X","X",1,[1,1,1],1,1,null,0,0,null,0],"%s",%s,"%s"]' % (token, ts, sg),
+        ]
+        payload = "f.req=%s" % quote(json.dumps([[articles_req]]))
+        post_headers = {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            "User-Agent": _UA,
+        }
+        rpc_resp = requests.post(
+            "https://news.google.com/_/DotsSplashUi/data/batchexecute",
+            headers=post_headers,
+            data=payload,
+            timeout=TIMEOUT_SECONDS,
+        )
+        if rpc_resp.status_code != 200:
+            return None
+
+        raw = rpc_resp.text
+        m = re.search(r'\["garturlres"\s*,\s*"([^"]+)"', raw)
+        if m:
+            candidate = m.group(1).replace(r"\/", "/")
+            if _is_valid_resolved_url(candidate):
+                return candidate
+
+        for line in raw.splitlines():
+            line = line.strip()
+            if not line or line.isdigit():
+                continue
+            try:
+                outer = json.loads(line)
+                if isinstance(outer, list):
+                    for item in outer:
+                        if isinstance(item, list) and len(item) >= 3 and item[1] == "Fbv4je":
+                            inner = json.loads(item[2])
+                            if isinstance(inner, list) and len(inner) >= 2 and inner[0] == "garturlres":
+                                candidate = inner[1]
+                                if _is_valid_resolved_url(candidate):
+                                    return candidate
+            except Exception:
+                continue
+    except Exception as exc:
+        logger.debug("[GNEWS] batchexecute thất bại (%r): %s", exc, token)
+
+    return None
+
+
+def resolve_gnews_url(url):
+    """
+    Đổi link Google News thành link báo gốc (best effort).
+    - Dạng cũ (base64 chứa URL): giải offline ngay.
+    - Dạng mới: gọi batchexecute lên Google News.
+    - Lỗi / không giải được -> trả về url ban đầu (không crash).
+    """
+    if not url or "news.google.com" not in url:
+        return url
+
+    token_m = re.search(r"/(?:articles|read)/([A-Za-z0-9\-_]+)", url)
+    if not token_m:
+        return url
+
+    token = token_m.group(1)
+
+    try:
+        decoded = _decode_gnews_token_offline(token)
+        if decoded:
+            logger.info("[GNEWS] Giải link gốc: %s", decoded)
+            return decoded
+    except Exception as exc:
+        logger.debug("[GNEWS] Giải offline thất bại (%r): %s", exc, url[:80])
+
+    try:
+        resolved = _resolve_gnews_online(token, url)
+        if resolved:
+            logger.info("[GNEWS] Giải link gốc: %s", resolved)
+            return resolved
+    except Exception as exc:
+        logger.debug("[GNEWS] Giải online thất bại (%r): %s", exc, url[:80])
+
+    return url

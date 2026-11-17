@@ -752,7 +752,19 @@ def ai_write(scored, decision, cfg):
     nếu không -> bỏ bản viết, dùng nội dung rule.
     """
     import ai_prompts
-    from article_fetch import fetch_article_text
+    from article_fetch import fetch_article_text, resolve_gnews_url
+
+    # [GNEWS] đổi link Google News thành link báo gốc trước khi lấy nội dung & viết.
+    _raw_link = getattr(scored, "link", "") or ""
+    if "news.google.com" in _raw_link:
+        _resolved = resolve_gnews_url(_raw_link)
+        if _resolved and _resolved != _raw_link:
+            if hasattr(scored, "article") and hasattr(scored.article, "link"):
+                scored.article.link = _resolved
+            try:
+                scored.link = _resolved
+            except (AttributeError, Exception):
+                pass
 
     # Lấy nội dung bài gốc (best effort) để bài viết đầy đủ hơn summary RSS.
     # Lỗi/paywall/403 -> "" và AI chỉ dùng summary như trước.
