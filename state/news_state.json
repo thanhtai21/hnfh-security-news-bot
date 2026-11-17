@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-17T19:06:00.038903+07:00",
+  "last_run": "2026-11-17T21:06:11.890377+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -922,55 +922,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://www.bleepingcomputer.com/news/security/tsmc-employee-data-breach-linked-to-cloud-provider/",
-      "fingerprint": "2e66c56fa613e7f0",
-      "rejected_at": "2026-11-16T07:06:33.568606+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQdkRZclZmOGUwYmU2SmVOYlE3S1hXQVgtdEIwOGxDelhDMGdNejhTbWU2TUxhWFBfYnNCS3poZUh6ZU5CSUl4bUM2TXotbWhhT2djQnFGTUpVejdNcG9jZWFFZ3hRYWRfaWtmRmtKYnlVUW1nMGc0T2YyRG5wOUxhSnI1MWVCTHVaelByb0Q0aHdxN1VYTUtXNW55eHA5cm1fTVh3OGxDbHRsMFZJeFhwcQ?oc=5",
-      "fingerprint": "fec72f30dc17cc3b",
-      "rejected_at": "2026-11-16T07:06:33.568665+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9PZ25yUjRzenJLb1o0bXM2MXYzemNlSE5KMVItWG5JdFFhZkR0aS1XVmVDM0RQSm96ZXFLV2Z5NnNYaFk1LWJsRF82a2lBd28xWWxJbWZEOTdwUQ?oc=5",
-      "fingerprint": "96700e46ac02d355",
-      "rejected_at": "2026-11-16T07:06:33.568722+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOYTFZenl6SEoxejI1ZldLeGppc0VPMm5aQ3M4UGJfSGx0V1JCNkNmN1Q2ay10WmhBYWtWdUY4eTJTWWdxVWtZamhmc2s4R0d0ZEFrN3hBREsxMUc0LVY1c1hybDBCYjl6eURGWlM1VnY3RzVtS1BfcVZhYWY1TnVjWGNkOTZKQjZOYzFWZmZ3?oc=5",
-      "fingerprint": "4ed98eda612b8bee",
-      "rejected_at": "2026-11-16T07:06:33.568761+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNamNEcHhzcE43OGtMQUhpR3VNMHdINEgxM1VVM3V0VWljZEdBV0xQcE5vN2t6UTV1Y01JRzJLM1NMOW9YRXdyXzFoUU1JN3VDZ2ljWExYNWl3WDM3Nnh4WWlXYUVGVWNSV2ZuLU9jNTZNSHpDbTBzcjd3QVhxN293UHctVnJWUFdXZUpfRm1qcEQ4eFl2QUNTOS1HQ18wNTZfSnRKTWlSSFU1dUhiLUxZbmdIWFI4Q0xBdkNzTUV2bEFRX28?oc=5",
-      "fingerprint": "e3f783b019d62dc4",
-      "rejected_at": "2026-11-16T07:06:33.568797+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNQkl6eGh1LUY5M0lja1FUbEhwbElhM2VCY2k4c3dfb1JkbXktOUhwd1dWSUJTUEtfbHoyRm01d0x3WTFVUUYtY2dxWHV4Y3VoMktKREs1cktTVXZrTEpLeWVidWFrY1JEUWRVVFBKUXU1N3BWd2JBd1F1YktrRzY5eUc3ZElzd29LZHBLME5RS3VEODlNc2RJSkRhbEdieGx5WmpJZE5tVTQ3dWdIUGJON0pGSG90R04ta3lHbjlaOTBueU82a0J4SUt0c1pRMEVEU0VjaG4wX1FMQWFfcXc?oc=5",
-      "fingerprint": "3aa4c247ee9fbb5b",
-      "rejected_at": "2026-11-16T07:06:33.568832+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNUzh4eGhtbVBOa0hGYW44TlRxOVhtMVBpYmpSNjF5U2tURnFfaTNLUnpvYzNFazdNM3BZVXpfVXRqMU8wRFNnZ1haWlJPZVpIRFo3d0ZveEJDTGRXMndDTVhiMXhEU0I3eFp4bTh5Y0hReHlUOFlQY29USktGSlRlMWI0QS1MMUU3?oc=5",
-      "fingerprint": "3aa52110cd3572db",
-      "rejected_at": "2026-11-16T07:06:33.568869+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQc0paSTRXaTZWamJ4NnFmNnNMbmw5cXlSdjhkdFhxOU8yUi1vdmN0ZEZBOUg4N1JmME5ldy15MWlQSHFLRnYyUXFzbVRkbXVIb3RCRTlGaWNIM1FsMzV2NnpYNGtTbHh6cmVXZUpGQThnY2Y0M3A4WF9mR2libkhLcmhoSGtVTDBMTlllaTJUTQ?oc=5",
       "fingerprint": "c7043d0422d32598",
       "rejected_at": "2026-11-16T11:06:49.562662+07:00",
@@ -1268,6 +1219,13 @@
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBTaGlJU3VYdV9HUGFCa0NlSG1qdGhpSEJ6Rnc3UDVPZGh1LS02QkJ2ZnZpV2lPRDRkUzB1WmRjRXhBVlhiUHVqZlE0eGFHTVpMV2xPYkt6NnpXeHVzMjNwaTBMNlF3RmVQ?oc=5",
       "fingerprint": "2fd8882ca1eb2152",
       "rejected_at": "2026-11-17T19:06:00.038837+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPb0xLai1rc1B2SmNqVGlZcEM2YmtLeW5SMGdPQ21xRXNHTnJIR0U1QmtJbmVBV285amRRNnNiUl9DV2lRT05Ub1A0LVFhbDJKQ2RqbHQxMzVGNC1FY0MtRjZrTEc1NEVhZzNNNm91VkVwMmd4ZDZtRDl1VWRLbVV2eGd6RjZ2VVpSdzFUNkJmeGV0UGhRd21TTTFqX3dSZHBTRjFIODlPWmxMc1kyYlNZTUhaTmlZNVliNl9vNFF5V3E?oc=5",
+      "fingerprint": "749e924bab15b511",
+      "rejected_at": "2026-11-17T21:06:11.890188+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     }
