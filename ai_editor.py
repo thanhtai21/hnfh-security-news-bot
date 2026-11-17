@@ -788,9 +788,13 @@ def ai_write(scored, decision, cfg):
 
     # B3: nội dung quá ngắn -> bỏ (nguồn ngắn thì bài ngắn, không độn chữ).
     word_count = len(content.split())
-    if word_count < AI_MIN_WORDS:
+    # [MINWORDS] nguồn mỏng (chỉ tiêu đề/tóm tắt ngắn) -> hạ ngưỡng còn 20 từ.
+    _src_words = len(((getattr(scored.article, "summary", "") or "") + " "
+                      + (getattr(scored, "article_text", "") or "")).split())
+    min_words = AI_MIN_WORDS if _src_words >= 40 else 20
+    if word_count < min_words:
         logger.warning("[AI] Writer trả nội dung quá ngắn (%d từ, cần >= %d) "
-                       "-> dùng rule.", word_count, AI_MIN_WORDS)
+                       "-> dùng rule.", word_count, min_words)
         return None
 
     # B3: guard chống bịa số liệu.

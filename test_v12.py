@@ -30,5 +30,12 @@ class WriterForbidden(unittest.TestCase):
         self.assertIsNone(run("Binance mở lại 87 mạng lưới", "", raw))
 
 
+class ThinSource(unittest.TestCase):
+    def test_short_body_ok_when_source_thin(self):
+        short = " ".join(["Binance mở lại 87 mạng lưới sau rút vốn."] * 3)  # ~27 từ
+        raw = '{"title":"Binance mở lại mạng lưới","content":"%s"}' % short
+        self.assertIsNotNone(run("Binance mở lại 87 mạng lưới", "", raw))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)
