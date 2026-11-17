@@ -124,8 +124,16 @@ def build_summary(lines, info):
     ai_fail = [ln for ln in lines if "[AI]" in ln and
                ("không khả dụng" in ln or "Chưa có bài do AI viết" in ln
                 or "429" in ln or "lỗi" in ln.lower())]
-    rss_bad = [ln for ln in lines if "[RSS]" in ln and
-               ("ERROR" in ln or "0 bài hợp lệ" in ln or "thất bại" in ln.lower())]
+    def _rss_is_bad(ln):
+        if "ERROR" in ln or "thất bại" in ln.lower() or "FAILED" in ln or "NO ENTRIES" in ln:
+            return True
+        if "0 bài hợp lệ" in ln:
+            # Có thống kê "thô=N": feed có bài nhưng đều cũ là bình thường.
+            if "thô=" in ln:
+                return bool(re.search(r"thô=0\b", ln)) or "bozo=True" in ln
+            return True
+        return False
+    rss_bad = [ln for ln in lines if "[RSS]" in ln and _rss_is_bad(ln)]
     events, n_events = _pick(lines, "[EVENT] Bỏ", 3)
     missed, n_missed = _pick(lines, "[MISSED] score=", 8)
 
