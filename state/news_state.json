@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-18T13:06:04.617385+07:00",
+  "last_run": "2026-11-18T15:06:58.826151+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -27,7 +27,7 @@
     "2026-11-15": 3,
     "2026-11-16": 3,
     "2026-11-17": 3,
-    "2026-11-18": 2
+    "2026-11-18": 3
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -41,7 +41,7 @@
     "2026-11-13": 2,
     "2026-11-14": 1,
     "2026-11-17": 2,
-    "2026-11-18": 2
+    "2026-11-18": 3
   },
   "posts": [
     {
@@ -981,6 +981,39 @@
         "keycloak",
         "openjdk"
       ]
+    },
+    {
+      "title": "Rakuten Securities cảnh báo rò rỉ dữ liệu của 4,47 triệu tài khoản",
+      "link": "https://www3.nhk.or.jp/nhkworld/vi/news/20261117de77429/",
+      "source": "GNews VN Ro ri du lieu",
+      "score": 83,
+      "fingerprint": "4b92250287e165d6",
+      "day": "2026-11-18",
+      "posted_at": "2026-11-18T15:06:58.825558+07:00",
+      "kind": "hot",
+      "keys": [
+        "rakuten",
+        "securities"
+      ]
+    },
+    {
+      "title": "Microsoft's Agent Framework PyPI Package Hacked to Steal Azure and GitHub Credentials",
+      "link": "https://cybersecuritynews.com/microsofts-agent-framework-pypi-package/amp/",
+      "source": "GNews EN Microsoft",
+      "score": 73,
+      "fingerprint": "683a8893653c09a4",
+      "day": "2026-11-18",
+      "posted_at": "2026-11-18T15:06:58.825733+07:00",
+      "kind": "normal",
+      "keys": [
+        "agent",
+        "azure",
+        "credentials",
+        "cybersecuritynews",
+        "framework",
+        "@github",
+        "@microsoft"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1249,6 +1282,62 @@
       "rejected_at": "2026-11-18T13:06:04.617203+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://thanhnien.vn/5-dau-hieu-canh-bao-dien-thoai-bi-tan-cong-185261118111510861.htm",
+      "fingerprint": "7aadcda862cc88e3",
+      "rejected_at": "2026-11-18T15:06:58.825834+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/russian-cold-relic-hackers-use-stolen.html",
+      "fingerprint": "42d51a27de5e66a5",
+      "rejected_at": "2026-11-18T15:06:58.825891+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOV3BnZXhTVVdVSmFpS2FOTFBZY19ZclczREc1LWxOQm91MmR4eVNxNFpZOWV4OXhYVFV4NlppUUtVYjd2b2wza2xnR0ozMy1PM0YxcUlwYkxZUVRBbFhlU1IzNktfa1NhVUNLM1V0b1JQWjk4eVhVeGpIczJGZkhfYg?oc=5",
+      "fingerprint": "f494b971b17632a9",
+      "rejected_at": "2026-11-18T15:06:58.825927+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.helpnetsecurity.com/2026/11/18/christian-schwalbe-deutsche-telekom-iot-security/",
+      "fingerprint": "f488f38538a035ef",
+      "rejected_at": "2026-11-18T15:06:58.825962+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5UTEFaRnJ5VFphRk1pU0w4QmhKNW9RYmlBUHktQnNLcUg0eVMxTW9Ta3A2d1Q1aUdUZms4bGxQRkNfdHVOWXd4YVdoNER1ZlB4YmljYkFMZXNTMFl1MnV6ajkzMXZkZ2NrMWR1ZUg1Yjh4Mjk2TGVjVjFFTGU?oc=5",
+      "fingerprint": "96d72ffe7cd6c4e0",
+      "rejected_at": "2026-11-18T15:06:58.825995+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE90eTVmSzk1UFQxSTVHNUVmM1dnRmp5amNQTTl2SVp4RlJjTlEtLWFPTkRaZFBwbjZwRktkWnZYbzVVcHVRc3hGc2gtZTVzY0hfbktwT2MxSQ?oc=5",
+      "fingerprint": "cdcc2f78aa728820",
+      "rejected_at": "2026-11-18T15:06:58.826030+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPX3M0enhlR1pzdi1VWHlHWUIxbGtvQjNaN1VocG1EUzZodGcwTEhjWGNiRFFySWltV2IxR1hrNXo3N0FOZGRVSE5idEEzaXN3S2FVbHRJcWllUzJOY3J0T3dFcTVyVjBLS1kzVktKWUdKMmt4MGZvQURpR0dSYzFNdzlnanVycVBDRDdxWHNUaTNvdFNRekZ0RnJERTFlaGxWRHFMcDZQODhWLVdE?oc=5",
+      "fingerprint": "afd594db2b70b379",
+      "rejected_at": "2026-11-18T15:06:58.826063+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/oracle-to-patch-11-java-flaws-today-as.html",
+      "fingerprint": "fb906ffd0130e3ff",
+      "rejected_at": "2026-11-18T15:06:58.826095+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
