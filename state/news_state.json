@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-19T21:05:29.516240+07:00",
+  "last_run": "2026-11-20T01:06:02.803026+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -1129,55 +1129,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://vnexpress.net/ai-dang-noi-rong-khoang-cach-giua-tan-cong-va-phong-thu-mang-5142220.html",
-      "fingerprint": "00a55071c3e8e177",
-      "rejected_at": "2026-11-18T11:06:54.507125+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxNUllSZGZ4MEo5cm5IODFIYUxrTFNKUU5EcFlMZ09TcVNxMHk3R3JkcHNTQ3R3cVVwaWhYWTFuQVczVWRYVHp1ZmFIbDllRDROTUQtUnp4SThiZkVsZk9QaldUcnhlV2lsdWtlWG00TTR1dW5hdkphQ3ZhaDN0RUJnX1IwVXRxVzR1YnBlSE5VSERUU2Rua1c3dkl0NXI2MDhFQWtKYmdjYmxqdW44bzNVTHJXVldmYUdCLXpVU2U0aTNpZVZiTF9ULTlRTDRlVUI3SFB4em41UXZiR200QnRia1hjckVfYjE0djRUOHJPaTdEQXdWNEFqM3lHQ0RqNGVCdm4wZGF0ZGU?oc=5",
-      "fingerprint": "296b3a9471c929bc",
-      "rejected_at": "2026-11-18T11:06:54.507166+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNa1RkX1ZEckJYSWxmeGt2UlF6dnF2X01sSXluVWNVNlRNcEJ2UE1MejI2NWV3NTl2cVBhbV9mbS1Ieng4QVZEOGdCb2tEbnhlUW10X0dQTkt0Yy0zTHJEbDZJNVYzVzBJUnEyUnBPa0hOOVJMeVctNGMyc3BETkFBeVZpNi1xMVgwLURYX3c2bDNyaFVZRnFKM1U3MnFTUXU0Sm9RcHdrd3pCa1pEal9ZS2hZak4tejJCRWdhWE94MWxFOTg?oc=5",
-      "fingerprint": "fa3c231e18bd4866",
-      "rejected_at": "2026-11-18T11:06:54.507206+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBDVjZ1dkFlYVp2WE5lSWZYMkx2cUw1UWxnR2gxYWNaWEVWYlRoVVZNenppLWc1d1ZGQkVxRHFNdHlyeUZsajFJbE1pN1BGN2hIb3ozWGpsVjdWOGJlTkc1bE9mdm96SG45YmNWX2lyenJmVmtMUG55bFBIdFlOZTA?oc=5",
-      "fingerprint": "6c31adb4a819e2a9",
-      "rejected_at": "2026-11-18T11:06:54.507248+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNWUVMaWFkdktxOUdSa0RRUzIweE44UnF5cVlaa1JWenNNc2U2ZWtBaW5TQUlGaWc4YlRQem5ZLXZ0b24tUHlWQlJGWmlKYXdaNklvZ29oSmZjeE5KNGRlWk1kYjdzQmZZVjNuV2Z2dzlZeG5FZElHUEdWLWliejNDU3ZjM0hSbVI2ZUVMQUVuZ1I?oc=5",
-      "fingerprint": "ad6712b4f70640a1",
-      "rejected_at": "2026-11-18T11:06:54.507290+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNdm9CcWtYeG82b2xzM2ZaSmE0MHI1cERvSGV6SmVWUlpTdjc0T1Jsc2Nic01MU19EOXB5M1BmYmVSWW1zQzNFMkRYNHdVOWNsamszRGVxVTNRR2lIdVFvUlQ1bmZob0FMTEZINFNkYmQ0bm5Ld25MTmFKM3ZqRXR3S3VsckdsY0swVWxjaw?oc=5",
-      "fingerprint": "57e0b15f0fde41d9",
-      "rejected_at": "2026-11-18T11:06:54.507326+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://tuoitre.vn/he-thong-mang-toi-mat-cua-co-quan-an-ninh-quoc-gia-my-bat-ngo-te-liet-100261117230755612.htm",
-      "fingerprint": "f24844742ba50e1c",
-      "rejected_at": "2026-11-18T11:06:54.507365+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://thanhnien.vn/5-dau-hieu-canh-bao-dien-thoai-bi-tan-cong-185261118111510861.htm",
       "fingerprint": "7aadcda862cc88e3",
