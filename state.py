@@ -518,6 +518,20 @@ class NewsState:
                 total += 1
         return total
 
+    def last_post_time(self):
+        """
+        Thời điểm đăng bài GẦN NHẤT (mọi loại, datetime có timezone) hoặc None
+        nếu chưa có bài / không đọc được. Dùng cho MIN_GAP_HOURS_BETWEEN_POSTS.
+        """
+        latest = None
+        for item in self.posts:
+            if not isinstance(item, dict):
+                continue
+            dt = _parse_iso(item.get("posted_at"))
+            if dt is not None and (latest is None or dt > latest):
+                latest = dt
+        return latest
+
     def hot_posts_today(self, day):
         """
         Số bài NÓNG đã đăng trong ngày `day` ("YYYY-MM-DD" theo giờ VN).

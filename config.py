@@ -10,6 +10,14 @@ QUAN TRỌNG:
 
 import os
 
+
+def _env_int(name, default, minimum=0):
+    """Đọc số nguyên từ env (GitHub Variables); rỗng/sai -> default."""
+    try:
+        return max(minimum, int(os.environ.get(name, "").strip() or default))
+    except ValueError:
+        return default
+
 # =====================================================================
 # 1. DISCORD
 # =====================================================================
@@ -44,7 +52,7 @@ AI_RESCUE_MIN_SCORE = 80
 
 # Tối đa số bài TIN THƯỜNG mỗi ngày (theo múi giờ Việt Nam).
 # = số khung giờ (sáng / trưa / chiều) x MAX_POSTS_PER_SLOT.
-MAX_POSTS_PER_DAY = 3
+MAX_POSTS_PER_DAY = _env_int("MAX_POSTS_PER_DAY", 2)
 
 # Tối đa số bài TIN THƯỜNG trong MỖI khung giờ: mỗi khung chỉ đăng bài hot
 # nhất (điểm cao nhất) 1 bài. Khung nào chưa có bài đạt ngưỡng thì bỏ qua,
@@ -60,10 +68,10 @@ MAX_POSTS_PER_SLOT = 1
 # 08:17... 23:17, 00:17... giờ VN) -> sáng: 07:17+08:17+09:17+10:17 (bài hot
 # nhất của khung), trưa 11-14h, chiều 15-20h tương tự. Các lần chạy 22h-05h
 # chỉ xét tin nóng (ngoài khung).
+# (Đã giảm từ 3 khung -> 2 khung/ngày để bớt đăng dày.)
 NORMAL_POST_SLOTS = (
-    ("sáng", 6, 11),
-    ("trưa", 11, 15),
-    ("chiều", 15, 21),
+    ("sáng", 6, 13),
+    ("chiều", 13, 21),
 )
 
 # =====================================================================
@@ -72,7 +80,19 @@ NORMAL_POST_SLOTS = (
 
 # Tối đa bài TIN NÓNG mỗi ngày (tổng tối đa = 3 thường + 3 nóng).
 # (Đã tăng từ 2 -> 3 theo yêu cầu D3 để sự kiện cực lớn không bị kẹt slot.)
-MAX_HOT_POSTS_PER_DAY = 3
+MAX_HOT_POSTS_PER_DAY = _env_int("MAX_HOT_POSTS_PER_DAY", 2)
+
+# ---------------------------------------------------------------------
+# GIÃN CÁCH ĐĂNG (chống đăng dồn dập)
+# ---------------------------------------------------------------------
+# Khoảng cách tối thiểu (giờ) giữa 2 bài BẤT KỲ (thường hoặc nóng). Chưa đủ
+# khoảng cách -> lần chạy đó không đăng gì (bài tốt vẫn giữ lại cho lần sau).
+# Đặt 0 để tắt.
+MIN_GAP_HOURS_BETWEEN_POSTS = _env_int("MIN_GAP_HOURS_BETWEEN_POSTS", 3)
+
+# Số bài tối đa trong MỘT lần chạy (thường + nóng cộng lại). Bản cũ cho phép
+# 1 thường + 1 nóng cùng lúc -> 2 bài cách nhau vài giây. Bài nóng được ưu tiên.
+MAX_POSTS_PER_RUN = _env_int("MAX_POSTS_PER_RUN", 1, minimum=1)
 
 # Bật/tắt hẳn tính năng tin nóng. "0" / "false" / "off" / "no" = tắt.
 # Chuỗi rỗng (secret chưa set trên GitHub Actions) -> vẫn BẬT (mặc định "1").

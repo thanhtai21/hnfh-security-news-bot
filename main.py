@@ -38,7 +38,9 @@ import traceback
 
 from config import (
     ALLOW_FALLBACK_NORMAL_POSTS,
+    MAX_POSTS_PER_RUN,
     MAX_POSTS_PER_SLOT,
+    MIN_GAP_HOURS_BETWEEN_POSTS,
     NORMAL_POST_SLOTS,
     AI_CANDIDATE_MIN_SCORE,
     DISCORD_BOT_TOKEN_ENV,
@@ -192,6 +194,7 @@ def compute_quota(state, now):
                     posted_day, MAX_POSTS_PER_DAY, remaining_normal)
 
     if not HOT_ENABLED:
+        remaining_normal = _apply_min_gap(state, now, remaining_normal)
         return remaining_normal, 0
 
     try:
@@ -202,7 +205,36 @@ def compute_quota(state, now):
         posted_hot = MAX_HOT_POSTS_PER_DAY
     remaining_hot = max(0, MAX_HOT_POSTS_PER_DAY - posted_hot)
 
+    # Giãn cách: chưa đủ MIN_GAP giờ kể từ bài trước -> không đăng gì lần này.
+    if _gap_blocked(state, now):
+        return 0, 0
     return remaining_normal, remaining_hot
+
+
+def _gap_blocked(state, now):
+    """True nếu bài gần nhất mới đăng cách đây < MIN_GAP_HOURS_BETWEEN_POSTS."""
+    if MIN_GAP_HOURS_BETWEEN_POSTS <= 0 or state is None:
+        return False
+    try:
+        last = state.last_post_time()
+    except Exception as exc:
+        logger.warning("[GAP] Lỗi đọc giờ đăng gần nhất (%r) -> chặn (an toàn).", exc)
+        return True
+    if last is None:
+        return False
+    try:
+        elapsed_h = (now - last).total_seconds() / 3600.0
+    except TypeError:  # lệch naive/aware -> an toàn: chặn
+        return True
+    if elapsed_h < MIN_GAP_HOURS_BETWEEN_POSTS:
+        logger.info("[GAP] Bài trước đăng cách đây %.1f giờ < %d giờ -> "
+                    "không đăng lần này.", elapsed_h, MIN_GAP_HOURS_BETWEEN_POSTS)
+        return True
+    return False
+
+
+def _apply_min_gap(state, now, remaining_normal):
+    return 0 if _gap_blocked(state, now) else remaining_normal
 
 
 # =====================================================================
@@ -572,6 +604,14 @@ def gather_and_select(state, now):
 
     # E4: đăng bài NÓNG trước, bài THƯỜNG sau.
     selected = list(hot_selected) + list(normal_selected)
+    # Giới hạn số bài mỗi lần chạy (nóng được ưu tiên, vì đứng trước).
+    if len(selected) > MAX_POSTS_PER_RUN:
+        logger.info("[RUN-CAP] Chọn %d bài > MAX_POSTS_PER_RUN=%d -> chỉ đăng "
+                    "%d bài đầu (nóng ưu tiên), phần còn lại để lần sau.",
+                    len(selected), MAX_POSTS_PER_RUN, MAX_POSTS_PER_RUN)
+        selected = selected[:MAX_POSTS_PER_RUN]
+        hot_selected = [s for s in selected if getattr(s, "slot", "") == "hot"]
+        normal_selected = [s for s in selected if getattr(s, "slot", "") != "hot"]
 
     # E6: mỗi candidate một dòng để chỉnh ngưỡng bằng dữ liệu thật.
     log_hot_table(candidates, now)

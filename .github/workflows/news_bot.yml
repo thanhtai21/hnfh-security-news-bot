@@ -4,7 +4,7 @@
 #   17 * * * * UTC = phút 17 mỗi giờ: 07:17, 08:17, ... 23:17, 00:17... giờ VN).
 #   Muốn đổi tần suất -> sửa dòng cron dưới đây (ví dụ "17 */2 * * *" = 2 giờ/lần).
 # - Tin THƯỜNG: mỗi khung giờ VN đăng tối đa 1 bài hot nhất (xem NORMAL_POST_SLOTS
-#   trong config.py): sáng 06-11h, trưa 11-15h, chiều 15-21h -> tối đa 3 bài/ngày;
+#   trong config.py): sáng 06-13h, chiều 13-21h -> tối đa 2 bài thường/ngày (+ tối đa 2 tin nóng; cách nhau >= 3 giờ, tối đa 1 bài/lần chạy);
 #   các lần chạy trong cùng khung không đăng thêm bài thường (quota chặn).
 #   Các lần chạy 22h-05h chỉ quét TIN NÓNG. Gate quota trong main.py thoát SỚM
 #   khi hết cả quota thường lẫn quota nóng -> không fetch RSS, không gọi AI.
@@ -19,8 +19,8 @@ name: News Bot
 on:
   schedule:
     # Lưu ý: GitHub cron dùng UTC, không phải giờ Việt Nam.
-    # 17 * * * * = phút 17 mỗi giờ UTC (07:17, 08:17, 09:17... giờ VN).
-    - cron: "17 * * * *"
+    # 17 */2 * * * = phút 17, cách 2 giờ một lần (giảm tần suất quét/đăng).
+    - cron: "17 */2 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -68,6 +68,7 @@ jobs:
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
           AI_TIMEOUT_SECONDS: ${{ secrets.AI_TIMEOUT_SECONDS }}
           AI_MAX_CANDIDATES: ${{ secrets.AI_MAX_CANDIDATES }}
+          AI_FALLBACK_MODEL: ${{ secrets.AI_FALLBACK_MODEL }}
           # TIN NÓNG (tùy chọn) - KHÔNG phải bí mật -> đọc từ GitHub Variables
           # (Settings > Secrets and variables > Actions > Variables).
           # Biến chưa set / để rỗng -> env rỗng -> config giữ mặc định
