@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-19T13:05:59.734959+07:00",
+  "last_run": "2026-11-19T15:07:31.341078+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -28,7 +28,7 @@
     "2026-11-16": 3,
     "2026-11-17": 3,
     "2026-11-18": 3,
-    "2026-11-19": 2
+    "2026-11-19": 3
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -43,7 +43,7 @@
     "2026-11-14": 1,
     "2026-11-17": 2,
     "2026-11-18": 3,
-    "2026-11-19": 2
+    "2026-11-19": 3
   },
   "posts": [
     {
@@ -1087,6 +1087,45 @@
       "posted_at": "2026-11-19T11:06:40.751150+07:00",
       "kind": "normal",
       "keys": []
+    },
+    {
+      "title": "Visa xác nhận sự cố an ninh mạng, tin tặc tuyên bố tấn công cả JPMorgan",
+      "link": "https://www.baocalitoday.com/breaking-news/visa-xac-nhan-su-co-an-ninh-mang-tin-tac-tuyen-bo-tan-cong-ca-jpmorgan.html",
+      "source": "GNews VN Tan cong mang",
+      "score": 80,
+      "fingerprint": "3ad30b76fd980f03",
+      "day": "2026-11-19",
+      "posted_at": "2026-11-19T15:07:31.340537+07:00",
+      "kind": "hot",
+      "keys": [
+        "calitoday",
+        "jpmorgan"
+      ]
+    },
+    {
+      "title": "Optimizely Cyberattack: Malicious Project JavaScript Hits 178 Major Websites",
+      "link": "https://thecyberexpress.com/optimizely-cyberattack-project-javascript/",
+      "source": "The Cyber Express",
+      "score": 66,
+      "fingerprint": "2a2c94cde3b225de",
+      "day": "2026-11-19",
+      "posted_at": "2026-11-19T15:07:31.340691+07:00",
+      "kind": "normal",
+      "keys": [
+        "equifax",
+        "founder",
+        "helme",
+        "javascript",
+        "monday",
+        "optimizely",
+        "project",
+        "salesforce",
+        "scott",
+        "websites",
+        "#150",
+        "#178",
+        "#188"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1238,13 +1277,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNMEpjYWd3WXZ1R0NVMWFET3ZUUTYwTW5LRmh0NzMybV9EYWE4SGFYWW51WHJNVDk2MFdWeUdzeDdtTzJ0Z2tJV1NJTUhWN0FhNzMyOUFMOHRBRUpVM2J2Z0psZHZ6dHU3bEtUNFdkNU14ckF6dS1xV2dYMG5DekNHRndrT0JnRGxGeVNUNU01bzlfNW5veEc5ZzlSRlFGSEpoUWo2bzFJUUU4X2pheEZnakF3?oc=5",
-      "fingerprint": "5d5234d01f60a448",
-      "rejected_at": "2026-11-19T07:07:21.172295+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPM3hlSFBrU3FSUVl0RDNscldFZVhlWGNVOXNHdGpMWUtvMFlscUZOYjdTZmFhQWdRaDY3SjZ4UHJYMEItdmNsZWZYeWdGMW5oRDdDYUFFVmVlT25pVkZnTFdYM3RQVkR5QVF3UEV2LXQ2Zk9JSVQxNmIzRVowUWdobElZRHR1Y21XS0hIVV9zbVUwTG15cC1ZQ0FQMjJLajJFR1IxcGI4YjNxd0dGc3BYODdFY3Y?oc=5",
       "fingerprint": "4fc92d4f4a7cc7fd",
       "rejected_at": "2026-11-19T07:07:21.172338+07:00",
@@ -1285,20 +1317,6 @@
       "rejected_at": "2026-11-19T07:07:21.172457+07:00",
       "scope": "all",
       "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQeU9fMzRqOGJ6YmVJenhMYlpBZ3VwWE5EOHpRNUNOZ3ZXVllwZUlUSXJjN09jQno0Z3o0U3VFenFMMlU5MjNuckRqNzI0VzBDX1BLZkRxWXlxQ2ZadjlKbE1wcENKMGExSS1PckdCOFcyX0k2YjV6NzFLTFhMU0NVYmpsRzdqSU9Ybm5UTFR1dnNwczdlZmFVMm9WMnJDTzNVYUhZQ3o1QWxXaTBkMTBTcUs5akotekpQSk1sS3dwX0pOUQ?oc=5",
-      "fingerprint": "102635fa697c1fa4",
-      "rejected_at": "2026-11-19T09:06:10.440127+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQOVZJUWRfMWRQZktSajFvMk9xaEVBbE80OS1UYzdFenRlRlc0dXB1UWtYbTE5YjBBTFdfQ2s3aXNLLWJkY2FYQ3hEUjY1MXB6ZHJPMW1LOFNSdEhBOVdzWmhYMkliZ2tmcmNKSXhUaElxaXNsLWtURWNrd0w0LWZtYzJ6YXhfWWhSTmxfWGt3UEpzNkhDVlNiT1otTThCa1BqNEQ5bDF6RFBnT1Y2LWhLdzRiZWgteXF4aDZCUUtwVFZWaEVmbWtQRUZoNA?oc=5",
-      "fingerprint": "5fd84f748231270e",
-      "rejected_at": "2026-11-19T09:06:10.440185+07:00",
-      "scope": "all",
-      "ttl_hours": 6
     },
     {
       "link": "https://therecord.media/ai-cyber-white-house",
@@ -1355,6 +1373,48 @@
       "rejected_at": "2026-11-19T13:05:59.734759+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPS25fQjc5RmFhZzA4WTNUMjhNRnNsWml5Q0V2VEM4N1JMVG5mdk1SQU9BdVBBSlJiVkNVOHE4Y0xDTXl6MHZ0U0hlZkdrY3dhejIyRmFiMXQzWnNPUVJNS1FrNEJMMDlaS3YzbnQ1R296WFdEeTFFVEU1M01QUzVUZEd2Q0ZZeVNZR1FsNUhPaVUzVnl1ZUhqM0VTV2YxT0VjVWhNc3F1RzZ3S2UxVUNSVkRPamZ5MmZ1R1dvdk9oeFk0aHlwMFpQYWpjU0xmaFU?oc=5",
+      "fingerprint": "f97b0597c2fe0bad",
+      "rejected_at": "2026-11-19T15:07:31.340849+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.securityweek.com/last-of-five-defendants-sentenced-in-us-scattered-spider-hacking-case/",
+      "fingerprint": "d0d0b17b73b1d2f0",
+      "rejected_at": "2026-11-19T15:07:31.340904+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.securityweek.com/php-readies-critical-security-updates-to-patch-another-rce-flaw/",
+      "fingerprint": "1380f07832d724d7",
+      "rejected_at": "2026-11-19T15:07:31.340941+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://dantri.com.vn/cong-nghe/lo-thoi-diem-ra-mat-bo-doi-iphone-air-2-va-iphone-18-20261119110350870.htm",
+      "fingerprint": "e5ca8ffbbb4f4a83",
+      "rejected_at": "2026-11-19T15:07:31.340974+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPSlZaQTNaTTI0UnpjQ3VLaGtTUUduaWJxQUNZRzc3cmlOU0ZzU1FZaWxaR1BKZkZ4VlF1VmNiQTNPcThUdThwSXNTQXlnM1J5cWl5Tk5OZlBpNk9IRnZQdTdacGVOb1AwbVNWWGtueE9PQy1wRGpNUzkyQzY3bWZLQ3hZLXVvSmptSG9wajRlb21ablhqdDlDVzQ4bU9qTHZqUWx2eTVtZGItamNNOHRN?oc=5",
+      "fingerprint": "d2ff04d2c8ee54ff",
+      "rejected_at": "2026-11-19T15:07:31.341005+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOdVJnSUVNTWhid3FEVEJNTjRxR1IzdklaYUF1NjF0X1ZyM3B6bkg4WW9qdHlTdXZ6ekxGdDJpc0s2alprNHVmREFLejl0N09VLXlVMHd3Y1hrWXNZWVV0VDdpa3U2ZXBBOWJicUlISkdDTFZzV2prTUR1UV9IaUhoMThUS3V1RXJ2UjNVWUxTODhVUm9xLVJOQk9hYTJmOWFzWG1wZDlQSk9KaWhQR1htbURn?oc=5",
+      "fingerprint": "b2f694b2c8f290ab",
+      "rejected_at": "2026-11-19T15:07:31.341039+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
