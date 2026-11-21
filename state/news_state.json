@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-21T05:06:07.450168+07:00",
+  "last_run": "2026-11-21T07:07:17.185505+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -29,7 +29,8 @@
     "2026-11-17": 3,
     "2026-11-18": 3,
     "2026-11-19": 3,
-    "2026-11-20": 2
+    "2026-11-20": 2,
+    "2026-11-21": 1
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -1199,6 +1200,21 @@
         "medical",
         "securities"
       ]
+    },
+    {
+      "title": "JPMorgan, Visa and Mastercard disclose third-party data breaches",
+      "link": "https://www.storyboard18.com/brand-marketing/jpmorgan-chase-visa-and-mastercard-data-breach-hackers-target-third-party-vendors-ws-kl-115128.htm",
+      "source": "GNews EN Microsoft",
+      "score": 77,
+      "fingerprint": "f69a22f68b9bf0eb",
+      "day": "2026-11-21",
+      "posted_at": "2026-11-21T07:07:17.185016+07:00",
+      "kind": "normal",
+      "keys": [
+        "jpmorgan",
+        "mastercard",
+        "storyboard18"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1364,18 +1380,81 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://www.bbc.co.uk/news/articles/cwz0k3nn5p5mo?at_medium=RSS&at_campaign=rss",
-      "fingerprint": "2cdc5e1853c10a97",
-      "rejected_at": "2026-11-20T23:06:52.846454+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://www.securityweek.com/european-commission-confirms-ai-assisted-cyberattack-disrupted-services/",
       "fingerprint": "7a7dbb091d3fa558",
       "rejected_at": "2026-11-21T05:06:07.449984+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://www.bbc.co.uk/news/articles/cwz0k3nn5p5mo?at_medium=RSS&at_campaign=rss",
+      "fingerprint": "2cdc5e1853c10a97",
+      "rejected_at": "2026-11-21T07:07:17.185179+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5SV3VDal9uemVJc3p4eWlFTlNuWGxuUk95Y0k1M3BWSGdIbHlwQlhTX2V3eXc0M2gyZVF6QnpNb29sYnN0YmRfYWN2Q1hCdFF3NDc4UEtxbnBrUGh0ejZURm5zVDZCT2IxWS05bXRFckJWWVEt?oc=5",
+      "fingerprint": "f261ed16c2acde6d",
+      "rejected_at": "2026-11-21T07:07:17.185243+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/php-fixes-7-critical-flaws-including.html",
+      "fingerprint": "807c35112bed13d2",
+      "rejected_at": "2026-11-21T07:07:17.185274+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUHEwWExyMk52UHNjWjk2WVZROWx3UUhWaGRoemY2V25qQ2dkMF9BZ29WcEk4R0ozN0ZpWi0ySExRNl93NGtaWHBIRXlVNkZ5cElBbnlRRl85MkhBRjdPMUVySTVRWVk0TERQaEEtclUtZGNLOEVjYWZ3bnVwbmdxMWxfRXVvNmg3a3NZWHhyU1BFQldCS1lHTDZmaHRkTlRNMW9qcVlLRlJmTVNvWXR1cExSc1FnNThPQmRiMll3RlZld1JyTXVtTw?oc=5",
+      "fingerprint": "64752fa94bcf1583",
+      "rejected_at": "2026-11-21T07:07:17.185302+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thecyberexpress.com/weekly-roundup-openai-lawsuit-java4shell-flaw/",
+      "fingerprint": "699b8a214486aa15",
+      "rejected_at": "2026-11-21T07:07:17.185328+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.theregister.com/security/2026/11/20/spy-court-blasts-uk-secrecy-forces-government-to-admit-apple-backdoor-demand/5311292",
+      "fingerprint": "e325228a8a8f6106",
+      "rejected_at": "2026-11-21T07:07:17.185353+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382",
+      "fingerprint": "b302bb005646f9e7",
+      "rejected_at": "2026-11-21T07:07:17.185381+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQY1BhX0M4aE5JR0YzcWFBYzZtc24tNHFxMWRzVmxPeEprXzRTWXcwVU4tcXlqV1RYa0IwMXlOUHBhd0lXT2wxNXV4NmhKZEJpcE90U2hPSWNHX0V4Q3ZWMXVqd2U0SzVmaG5CZnlmNjZ2VExuWVgyNGctVFZRMGNJYWZQVzJaQmd0OHJtRk1Sd0E?oc=5",
+      "fingerprint": "de6f03543e968954",
+      "rejected_at": "2026-11-21T07:07:17.185407+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQUDhkc2tSUGZKX0tubDRnVkxGTWNwenRSNGpoNUdBei1ZVjV6TTk1WWdsMlZSZTJLVXJjMkZFc3J6Z1A0TWZ3OU1SZEgySW9SYUdETFcwemdkdzRHODQxNnVmWlNzS0hwaHd3a1ZJQlNHX2FOOEc3dFRoR1gzOEVQbnlPRmQ3YmtJVGp1VHI5RnJVcG5XNlk3WVhEMNIBoAFBVV95cUxPNnpRUXgtdmlqVTBVX3FrLTM4WHhDSWZxSEhHOEFTMW9LRnphUFBES0owdXpBZV9Sak5DZl9xSnM5eGZseGppM1hCVXE3SVJtSzB2dmxjM3JHdmRsZXY0UEdSSk5PdTNiWENMN0ZCY05yT2VWOVpzb1JYNU1ockEtenNHZmVwMkdCOGxQa2N3UEE2elJwTmtfWUg0V0pqQW1M?oc=5",
+      "fingerprint": "61b2a57bb69a4951",
+      "rejected_at": "2026-11-21T07:07:17.185434+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOZGpVcEdvV1lSYXZ1TUNxV2gtNHJDVUpEa0t3THlQSDRlX3BoSDJSakh4bGdsQnE0czdtOGxERUZ5UndTaDFoUnRLTjhHcVdISWxtLWcyWXFQbnd3REhVQlRDbTNPTEU0NHhNdXNEcWtkcjNNVmJ1X1lINzRScjZTcThnZkhNNVJueWZ4RktkY0w?oc=5",
+      "fingerprint": "392204d572fae48f",
+      "rejected_at": "2026-11-21T07:07:17.185460+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
