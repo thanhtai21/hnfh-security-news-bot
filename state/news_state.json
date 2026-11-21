@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-21T21:05:56.588386+07:00",
+  "last_run": "2026-11-21T23:06:19.185082+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -46,7 +46,8 @@
     "2026-11-17": 2,
     "2026-11-18": 3,
     "2026-11-19": 3,
-    "2026-11-20": 2
+    "2026-11-20": 2,
+    "2026-11-21": 1
   },
   "posts": [
     {
@@ -1232,6 +1233,19 @@
         "october",
         "@binance"
       ]
+    },
+    {
+      "title": "BADBOX 3.0 botnet returns with record-breaking 40 billion daily ad requests",
+      "link": "https://www.bleepingcomputer.com/news/security/badbox-30-botnet-returns-with-record-breaking-40-billion-daily-ad-requests/",
+      "source": "BleepingComputer",
+      "score": 92,
+      "fingerprint": "e669927f9720cc2a",
+      "day": "2026-11-21",
+      "posted_at": "2026-11-21T23:06:19.184595+07:00",
+      "kind": "hot",
+      "keys": [
+        "badbox"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1455,22 +1469,15 @@
     {
       "link": "https://www.securityweek.com/european-commission-confirms-ai-assisted-cyberattack-disrupted-services/",
       "fingerprint": "7a7dbb091d3fa558",
-      "rejected_at": "2026-11-21T16:46:09.864945+07:00",
+      "rejected_at": "2026-11-21T23:06:19.184829+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     },
     {
       "link": "https://www.bbc.co.uk/news/articles/cwz0k3nn5p5mo?at_medium=RSS&at_campaign=rss",
       "fingerprint": "2cdc5e1853c10a97",
-      "rejected_at": "2026-11-21T16:46:09.865122+07:00",
+      "rejected_at": "2026-11-21T23:06:19.184943+07:00",
       "scope": "all",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFAtaGY4OURqMFpJazMxZW16eEptaFBaMDBwRVB6eFJKdHRxTWU2bl9kOHoycWdxT1RweUhmMFh2SFRyRWtvN3hIbUw0TXBWLWFONHMyLV9R0gFWQVVfeXFMUC1oZjg5RGowWklrMzFlbXp4Sm1oUFowMHBFUHp4Ukp0dHFNZTZuX2Q4ejJxZ3FPVHB5SGYwWHZIVHJFa283eEhtTDRNcFYtYU40czItX1E?oc=5",
-      "fingerprint": "9c79aa9c592a89a9",
-      "rejected_at": "2026-11-21T17:05:59.596046+07:00",
-      "scope": "hot_only",
       "ttl_hours": 6
     }
   ]
