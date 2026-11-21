@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-21T19:06:25.870495+07:00",
+  "last_run": "2026-11-21T21:05:56.588386+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -1235,69 +1235,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.theregister.com/security/2026/11/19/nvidia-adds-possible-hack-to-list-of-very-bad-things-under-investigation/5311153",
-      "fingerprint": "98d0ff5524a9ca7b",
-      "rejected_at": "2026-11-20T07:06:53.389896+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/five-warning-signs-of-ransomware-breach-before-encryption-or-data-theft/",
-      "fingerprint": "1b9859e4e8af79b4",
-      "rejected_at": "2026-11-20T07:06:53.390031+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5TLUtWdnF3d1ZBVGMxeVZIR29xVnRVRUVrYTBwa1F4eGVUbVh4a2pnNmtRTnUwdjlTLW1Wb0RUVUxydl9GbUdQZ2FRSkd5dnFScml3WEVETTJCOFNZN2ptdlVMWTg2NXdiR3c5dlpsV0Y?oc=5",
-      "fingerprint": "5e70ca4d633bf746",
-      "rejected_at": "2026-11-20T07:06:53.390089+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOVGw4QzhtZkY2d1ota0hwaGFhWTd2bTFYaVhMakRTTUU2RDBrWnBoR2wzbEkxMDFIZ1lWMWR2cDRaOWk2M2FiT2F5Z2VQUVB4c043VE82Slhac2FZTk1Xd1BhX3VySW1xazQwOTUzR2YwNmhmWGxyWENjal9hTzRmdXFaaGhQS0QxSlAxWFV0RnhvTGF2c3dFNWNJWko5U1BQckx3QzZlUWVhUF9wLTJqaU5Bdw?oc=5",
-      "fingerprint": "cf01c496ad62c278",
-      "rejected_at": "2026-11-20T07:06:53.390137+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://therecord.media/doj-dhs-partner-on-new-unit-tackling-scams-cybercrime",
-      "fingerprint": "c8ce3a83ece37c26",
-      "rejected_at": "2026-11-20T07:06:53.390185+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.helpnetsecurity.com/2026/11/19/nginx2root-nginx-vulnerabilities/",
-      "fingerprint": "a05cc016390bb161",
-      "rejected_at": "2026-11-20T08:48:18.110652+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5UNEk5UWZZanlqU0xTVjdNbERyYlg1a3RwYXQ2bnBnU3E1S1ZsX1lfOWFKN0JoRzFmeXZFR2JMVUFSY2dHOTFoT0QtOUlLajJ4NU9hVzRBVThPRHhXTnBOWUsyRElDVFhmaGVma3Z3N2ZnMEE?oc=5",
-      "fingerprint": "77a9ae9e2083290b",
-      "rejected_at": "2026-11-20T08:48:18.110744+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/nvidia-responds-to-gentlemen-ransomware-claim/",
-      "fingerprint": "7023c4fb4603d6ac",
-      "rejected_at": "2026-11-20T08:48:18.110812+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/php-security-updates-fix-18-flaws-including-critical-rce-bugs/",
-      "fingerprint": "86ecfe5d6f28e69f",
-      "rejected_at": "2026-11-20T08:48:18.110878+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://thehackernews.com/2026/11/new-unpatched-windows-0-day-fastunlock.html",
       "fingerprint": "2af05d16ac3a56cf",
