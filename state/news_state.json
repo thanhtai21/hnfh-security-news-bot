@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-23T01:06:00.121310+07:00",
+  "last_run": "2026-11-23T03:06:01.084666+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -1318,62 +1318,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
-      "fingerprint": "7f8f67b84f0bb619",
-      "rejected_at": "2026-11-21T13:07:03.875651+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOdEdGbHFTb0ZLeEFFRWlzalpHU2VseFR1cG5ya3BIb3g1R0hyX2VYYkhUbDExNXVrX1pkTmR4LXF1UURyQnl3NExnTzU5aWlhZEVYM2llVGJONHJWelZXTzVzTXdqeGxyMnVYWmJDOFlGekV0RGNobmxSYVJVaW9FTS14cFZsRG9PelJ3MFdoX3JtdGVSd2JveHJhZGdHY3pUVklTaDRqcUxXdG5lNDY2UGFPd1FsWW56U1kzcV8wSWNKNUtu?oc=5",
-      "fingerprint": "c42e9091633aa023",
-      "rejected_at": "2026-11-21T13:07:03.875775+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNQ2pTY3FZSFpWU3p6WXpDQjJMMlZqNVBfNnV2RVA5UUNKVGc1WHpZWXBlY3loMUhFM1o1dzA1blJFYndTcXdXc3RqSVhnMktHTi1FdWhGZGZNeFJEOGRIZXUwQ0x6aGJxdW56VWFoNW5TQ292M0hKX18wSmE5Q1lob1kydlNaVnd5OHIyRE5sMWZ4VE5GQi1tOG9B?oc=5",
-      "fingerprint": "d3e8f7b5a6d6ce65",
-      "rejected_at": "2026-11-21T13:07:03.875856+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVmQtRTE2bHRhSjNCRy1yQVVCdm51YjYxM2pSWDYzc2dpclc0dzFZUTB0eGtmZGxxX2tqam1VaDVxLVBLTm1fN3pCSWZ3Z04xdkZXSzJTVGtNa3NlMXhJNnRDX1FqZzBic1BsMjNxOTR1Z3NZemtDNzFQX0JVczAtd3VKUzFIdXVYdk5QV0dsY3gzM0lKbXhxZG14eXM5X3lk?oc=5",
-      "fingerprint": "712f1941ff1716eb",
-      "rejected_at": "2026-11-21T13:07:03.875944+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOQ21pLUszT3ZTbkZidHBYT1lBdTlmMWJULW16NVhmTFZpampucTlmaTJXTy1qM3FVdFc0ZjBVTUZYaFVRNjlUWWNOOEpNSVR1Y2ZHM1hydnRFS3AxazJmR052a0oyT1pybmZmT2pXdk0yS1lpczJldHJsbTVPNkFWZHdoSXhrVWtMZUcwcUNKZ3hUOTdJb1ZDLUtkTEJBdw?oc=5",
-      "fingerprint": "b7106ad3dbecba04",
-      "rejected_at": "2026-11-21T13:07:03.876021+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQWkZuekh4VHNqU3Q2Vzh6TDNTUFlkRzQxb0xGX3ZpU2NzeU5RbDRtN2F2bFlxWnlqSndjWjdSTE8zV2RJZEJlN0pnOGU3ZlFuSUptUVpSbktmazB4aUZEdkZhYUM1dnhhRE9KdXhZOTZ1YXAyMFQ2TUdwdmVZLUlhN3plSzhwWUNMLVg0TkRtZ0JkbDgwaWtXb0tCNUlQR0lRSDJGYkc5TFA3UV9JWHJLXzI1TkVfTTA3bnp5S0s0dXM3a2tyQk1hQU9uZzZMZw?oc=5",
-      "fingerprint": "3b294d6019119068",
-      "rejected_at": "2026-11-21T13:07:03.876099+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQbDlEeGZ5MXR1ZlpmdUVDUUVPMUlJNGUzM2lHVmRnbkpGb1ZyS3U4UnFUVWlkSGFJWDRnYmMxZHVsSDZLZUFWY3JFbTJjTFF6a25pRUlELXRkN01WaFF2V2g4M1ZLVHhHajQ2MTRzZG9CNXREQzhvNWphSHJJTmJOblFWSkd3dDBhMEI4eHhOeEpYazNqWWlHa2xnUQ?oc=5",
-      "fingerprint": "2103f01eef47c5bb",
-      "rejected_at": "2026-11-21T13:07:03.876177+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQZU5EYWJVR0xnd19zQy1sZGYtLWZqLWZDNzJuRk1wTEhGRXlabkNoNUFDOTU1aVhNY2FFR0ZTcGRweHlMUTRINUpvWWJCeE4xU1h5NW9rRDBVa0VWWnNwTWZuNEI4RHRfTVRqVUhHczdQZGkyR1BnQ0dvd1dHYjhZVk1yQ0lGUDAxWkFYeUFyYVRYYXZucHZHcmM4elZocUJuQXc2ZjROTnVLWFZFVG85dUpIeWVGQk5oTlJpRjhiY2cxVzlHemU0RURLNFBGRFB2?oc=5",
-      "fingerprint": "ce19074605f0c335",
-      "rejected_at": "2026-11-21T13:07:03.876253+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPUG1UNXMtQ2ZBNm9PSWV1YTZYajVzRnlac1R2VWRsbjNkaUdGLTYyalk3X2dtdTJHS0xxV3NTdXhvOFhkaVFHWm5kOW5vSXRuOXhXUHVGM0kzYzBZTjNYVWdTSDJrTVhFNy1yeFhVUDNxS0lFU096djdsMFVNR3kzUXBobm5EenFyZTR4YjNaS3pscjNVTWh3NQ?oc=5",
       "fingerprint": "b38353a083261c83",
       "rejected_at": "2026-11-22T06:13:18.377563+07:00",
@@ -1512,13 +1456,6 @@
       "rejected_at": "2026-11-22T17:06:46.195837+07:00",
       "scope": "all",
       "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNUEl2LWVfRWlnX2tidldTMklFQXg1RzB1VEdfUDNXVXpVdVE5NTZ6TVNPanBGWExzTkZneGdmbFowVU56YmVmaTFURjBJbkhIa3Fidnpwdm9sU2JsUm5pR01uZlZ2MDdEdjJPcUpldVV5cGNzcWF0cWlXcUtyNFQ1X1BFcDEwZ2RLbWk3TU14eGROOG9K?oc=5",
-      "fingerprint": "ef24d0c69105d359",
-      "rejected_at": "2026-11-22T21:06:00.867412+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
     },
     {
       "link": "https://cointelegraph.com/news/bitcoin-17k-kraken-canadian-dollar-market-trades-stand?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
