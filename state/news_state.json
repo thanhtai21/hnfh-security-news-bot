@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-22T06:13:18.377814+07:00",
+  "last_run": "2026-11-22T11:05:59.390825+07:00",
   "daily_posts": {
     "2026-10-24": 2,
     "2026-10-25": 1,
@@ -1433,6 +1433,20 @@
       "rejected_at": "2026-11-22T06:13:18.377754+07:00",
       "scope": "all",
       "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNUEl2LWVfRWlnX2tidldTMklFQXg1RzB1VEdfUDNXVXpVdVE5NTZ6TVNPanBGWExzTkZneGdmbFowVU56YmVmaTFURjBJbkhIa3Fidnpwdm9sU2JsUm5pR01uZlZ2MDdEdjJPcUpldVV5cGNzcWF0cWlXcUtyNFQ1X1BFcDEwZ2RLbWk3TU14eGROOG9K?oc=5",
+      "fingerprint": "ef24d0c69105d359",
+      "rejected_at": "2026-11-22T11:05:59.390665+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOdmxZaFpqd2YwXzBkZE5aeDU0VmNkZ3M3d2wxMGU2WGtuQ3lJN3VXVmFXdS1RdnVqM1lLNklvdGJFdXBEMzRxTExKUFhZWEJFUzBYcWx6UVpFaHJhdHhtUWlicnV4eXJRTm51UTFPZy13bVkzb283MEhrZHVWX0RaRnBVOUpiVkxhZVE?oc=5",
+      "fingerprint": "1d70347d62389ad1",
+      "rejected_at": "2026-11-22T11:05:59.390760+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
     }
   ]
 }
