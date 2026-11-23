@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-24T01:06:01.778603+07:00",
+  "last_run": "2026-11-24T03:06:02.383463+07:00",
   "daily_posts": {
     "2026-10-25": 1,
     "2026-10-26": 2,
@@ -1347,48 +1347,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNTXNWcmxva1gta0FwTm9XZEdmcUxUQUhMbktiaG9DOXhUV05kMEZSTmdJZ3NjSWxvU1hTMHk5RzFlclNzTjhRdWtBd2dtdjV5YnVQNEk0aEY4ZEZRTUtEZERZQUFmYmt5SE5kSG1KeDZhcUVzazJOeEJpX3dYX29nN2xnZ2w5SGEtRFdCME0xdmtTdUJJZ3VvLW9QTjJQbnozX3ZlTHBoeU9Nanp6THpPS2haYw?oc=5",
-      "fingerprint": "24655be49c68697c",
-      "rejected_at": "2026-11-22T13:07:26.473097+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSGZudHFCNUE4M3dZendmYm5CVjdoLXRIcWp2TzVVVnlRUS1IQmtyT2dKM0NFVlpVMWtIY2NvVEQwbnVOWEY5bVE4R3lvODZDYXpPYnlaUEkxelU2b290N3FkQThhbXNtM0FIT0lHdjJ2RTRZMTg4MXd5c2lMMUVra3pLTdIBiAFBVV95cUxQOFFUbUJ0R09LcnFKZHhmNTYtNnZxaWw5OWlZTEhWZER4QWFHRkt0a3gwUFZ4LV9SY0dqb3A5d3RnT1dFVmo4WTY3alhHUWU3V2RjODBMbDRGS3NndFlKY0ptNENIREhMQkNENU5fRnV6Q1YxMWpZc1I0RFhyWnpYdnlOY1h0am85?oc=5",
-      "fingerprint": "7b729a0fd1456117",
-      "rejected_at": "2026-11-22T13:07:26.473138+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPaU5NRGg5OVhuUWJRZ2tTU0loWnRkaXFib0VyLXd6eGQtY2FqYm5kb29yRWZSbjJhYk8zWEhPRnNkMEEtbWhkZF9aMDZBMTNHWk5wNzlRaENScUZjckdJeWFDMkxpb3N4X2lpMmQwTmZHYjdvWTRJS0FtY2huS3I4NVdVSGlWMW1qbmREOGJLTGwyTFY3VmZHTmJ4YzcySGRBWURfY2loM0RBTDBNYlZhZ0VpWURLRm5Yc0Zqd2g0aE9yXzNvUTNTNTRoZEVhZ0F3Nl9Cd01KaklfZXNURV9DOE16S00tRWlhVE1yTkhubXowcGNqeUtfeU1HTDExbjQ?oc=5",
-      "fingerprint": "307bc0d5d3e162f3",
-      "rejected_at": "2026-11-22T13:07:26.473177+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQdHNrRUl3bHdCQ1JJeG5iY3V3cVJWcGNfVTlNZ3lsdzBYSGp0OGpZSW40em0wU1Z2aHI0cEE4UmxramhjT2JRSnhodVJiY1pBVGJub25QRVRSUUZTeG5IZUxKOUV2U25pUDl5ZHRqUk5RMUVDWUpTcF9RN2ZqM0MzZ05Ec3B2X0V2cjhoYmxKTG44RWFKV0xieWpiWkVQd2dZY1hPeFN1TlfSAa4BQVVfeXFMT0lqZ2FUam1sRjEzdkRqdTN1VWd3OW8yd05QY3dVSjZabVJsd3pSMG03X2tDUWF3Q3htRmtmUnFLaVBHdTVLZkk3TVpwUFBVSjktMzFOTk5ZeHptQS14M19FeDA4U0FFVjF1bjA4X2Q0eW04ajQ4cm11MmVvXzVrTUhZRnpnb1N1SkZmWmJGUDhrSWFUS0E0OXppTndjX2wzaldvdWZTYTI1TlJyR2Jn?oc=5",
-      "fingerprint": "a2b15adc0a282e39",
-      "rejected_at": "2026-11-22T13:07:26.473213+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOUFF3bFhjU1NxdHBabUlwOHhJTS1SeVMyb1dDb2trWE5teWhNOFB2Q0RGcXV1dnVtdGV0LVJoWUdLMW40UkZVZndnSGlJeWNfV2tIdEUtZ2JFZzk1ZFBGV19qc3Y3TXJDS0ZwSXljTFpheVd0SDVSSVAyZjhxVWJNRmhnYXRhWWF1c25WWEF1YzR0aXB5NFlXOGFqVHFRZDNNODFOT3RBOHYydTQ?oc=5",
-      "fingerprint": "d70764c61d685d34",
-      "rejected_at": "2026-11-22T13:07:26.473248+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNelg4dlBQbnpUaFZYb0oza3dOV0kzMFhyZVZBelZXNUJEb3ZNNnpzU0NCc0xvRTB5U0JBMnF2X1AwWGZweXVKanlHamhFV2wwRFZKY09fcm9XVVlWLUppN2lxaFRlZl8wd1ZjN3lTSXFQTnZHaDlMSFdPeUdhX2pFSXhXb0Z6V1ZTQWdraUlreno4Y3U1NE9hX3hOUHNDSndwVEY2Y1N3VjhzYkYx?oc=5",
-      "fingerprint": "84d2c70015a284e5",
-      "rejected_at": "2026-11-22T13:07:26.473287+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaXRodUR2SVN4SWVmNGN4all6Y3RzWUpNR3AyMjZxNGFIRjRuV2J0dDliTzR2U0pSQW5IMDJUdnVEXzJXVHJ3d1ZWb05Lb05CajJ1WkhKYUNNMVExR1U5M3lqdjZEeWhmb2dSSGtDOEFlbThFbktDX3lnOHVMU05XSzhBcnZjZ2RtQnRXbVZB?oc=5",
       "fingerprint": "2f0f8a5dad783819",
       "rejected_at": "2026-11-22T17:06:46.195628+07:00",
@@ -1536,20 +1494,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://cointelegraph.com/news/bitcoin-17k-kraken-canadian-dollar-market-trades-stand?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "fingerprint": "1545e57d92e6bc2d",
-      "rejected_at": "2026-11-23T19:06:01.899767+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://www.coindesk.com/markets/2026/11/23/ethereum-wallets-holding-usd72-billion-eth-are-under-threat-of-a-future-quantum-attack",
-      "fingerprint": "777b4d24f71e08c3",
-      "rejected_at": "2026-11-23T21:06:01.796577+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://www.coindesk.com/business/2026/11/23/binance-hackers-push-usd247-million-through-transactions-designed-to-cloud-the-source",
       "fingerprint": "3ebd13404c103e6c",
       "rejected_at": "2026-11-23T23:06:03.228374+07:00",
@@ -1560,6 +1504,20 @@
       "link": "https://news.google.com/rss/articles/CBMiQEFVX3lxTE5YM2FkbTJWcHRzcXp1YTRuME1iaDl1blZlam9obFV4Rk4yVkFPNXhVRHk3eko3ZzIzZXB5N3p6U00?oc=5",
       "fingerprint": "9829cc252e093a27",
       "rejected_at": "2026-11-24T01:06:01.778424+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://www.theblock.co/news/regulation/2026-11-23-doj-1-17-billion-usdc-binance-hack-circle-replacement-tokens-445398",
+      "fingerprint": "65ed6f24533f46e5",
+      "rejected_at": "2026-11-24T03:06:02.383175+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://cointelegraph.com/news/bitcoin-17k-kraken-canadian-dollar-market-trades-stand?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "fingerprint": "1545e57d92e6bc2d",
+      "rejected_at": "2026-11-24T03:06:02.383305+07:00",
       "scope": "all",
       "ttl_hours": 6
     }
