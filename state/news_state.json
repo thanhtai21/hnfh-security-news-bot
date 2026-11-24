@@ -1,8 +1,7 @@
 {
   "version": 1,
-  "last_run": "2026-11-24T05:06:12.458148+07:00",
+  "last_run": "2026-11-24T07:06:49.734798+07:00",
   "daily_posts": {
-    "2026-10-25": 1,
     "2026-10-26": 2,
     "2026-10-27": 3,
     "2026-10-28": 3,
@@ -31,7 +30,8 @@
     "2026-11-20": 2,
     "2026-11-21": 2,
     "2026-11-22": 2,
-    "2026-11-23": 2
+    "2026-11-23": 2,
+    "2026-11-24": 1
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -1343,65 +1343,26 @@
         "carolinians",
         "south"
       ]
+    },
+    {
+      "title": "DOJ seeks $1.17 billion in USDC tied to Binance hack; Circle could issue replacement tokens",
+      "link": "https://www.theblock.co/news/regulation/2026-11-23-doj-1-17-billion-usdc-binance-hack-circle-replacement-tokens-445398",
+      "source": "The Block",
+      "score": 77,
+      "fingerprint": "65ed6f24533f46e5",
+      "day": "2026-11-24",
+      "posted_at": "2026-11-24T07:06:49.734091+07:00",
+      "kind": "normal",
+      "keys": [
+        "binance",
+        "circle",
+        "department",
+        "justice",
+        "@binance"
+      ]
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaXRodUR2SVN4SWVmNGN4all6Y3RzWUpNR3AyMjZxNGFIRjRuV2J0dDliTzR2U0pSQW5IMDJUdnVEXzJXVHJ3d1ZWb05Lb05CajJ1WkhKYUNNMVExR1U5M3lqdjZEeWhmb2dSSGtDOEFlbThFbktDX3lnOHVMU05XSzhBcnZjZ2RtQnRXbVZB?oc=5",
-      "fingerprint": "2f0f8a5dad783819",
-      "rejected_at": "2026-11-22T17:06:46.195628+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.securityweek.com/fbi-investigating-apparent-hack-of-its-key-national-criminal-justice-database-ap-source-says/",
-      "fingerprint": "934569d158d54f9a",
-      "rejected_at": "2026-11-22T17:06:46.195665+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOR29XVFlOTUR6ZUdCa2tZc3ZWdm90NVBzR3Q5eWQ1TkpBV3NnWXp4U3pvbi1EeWZVVk5YZUVoRE14OGFoRDNNRm5fSVZxbTNpc1dfV2xEaUxsNlVUUGNxQjlybTFlaE5xNHhLRHR3YTZDNjBEa2x3dUljbWx0NlhXZTZpX3BBTTNUd2JNUHF1NDFBQVFnNHpNT3ZEeXIxdFFXcnJjbndNT1I4cVk4LUhpMDBVejF5QQ?oc=5",
-      "fingerprint": "b87b633b18f38448",
-      "rejected_at": "2026-11-22T17:06:46.195694+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZGdKaHJtNkRfS0MxdWFLejhxYlBpbGhLNnBQakxxeTZNelN2WTB6cktQSG43TlFTanlIMVZKOE4xRVMwbWZLSFdVMnp6bE1PZHlEc3RGdldqcTczZHQ3Rk5qcEI0R0hjaEp5LWR2SWVseW12d2JvQ1FBT2tJOGV4ZnJSd2w2OFpxTUZZOXNn?oc=5",
-      "fingerprint": "163147c9c6fe634b",
-      "rejected_at": "2026-11-22T17:06:46.195722+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNZW5DLUJtbjJWRDFfcVFWQXp6dEgtbF84dXJjRkpwNTkwRGNWaEpfa0hTRE9CZkdpS2RlemtnY2ljSWl6eHpPaE1fekl6T1g2dmdKR2lzRTBlTmo1SVZGWDdxeC1wLVhqNHRUQkZ5bk5hOVlVVm1QQUNiUFJHRjYwRWhVT0VTUQ?oc=5",
-      "fingerprint": "70a673f32412588d",
-      "rejected_at": "2026-11-22T17:06:46.195750+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQY2w1cGQydHVacW9tby1udHVaWXFjTm1RUFNkSFlzdnNNa2dCajhFY2U2andiNE94Z0M0Nm0tbmtEa1g4cVhmdVlyNHNlMGJack91bHlWekZMeWZWVFUyZDdJbW1lZU14dzU1eWYycUJpLWJSLW1WdHJOeG8zbXZmeW94TGdqQUZScjRrVXNJN2RITDFnT05DV0t5d0lNQXBJbWRqVWg2WjcwX3hJdzJfbDkxUW9ua1E?oc=5",
-      "fingerprint": "3d89e47497996d74",
-      "rejected_at": "2026-11-22T17:06:46.195781+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOWGdJS0gxV3hSblQxcE9LeTh0Tmg3amdMcWVmWi11Z3BGUS1LeVRacVlranpSVlR5MHkyTnFQdV9EQ3Z0M2xNOWFTT2NlNExmazduZGJqOTc1S2stY2JVckFNOXZPd051bU1yX3NrUGVjajZzRlVQdXFZSThKWjVwZ2V6LUo1RG1lMEJVM3FPVWsxaGIzQktwSkxXemYwSm83S3J3?oc=5",
-      "fingerprint": "9c950923ea149a5a",
-      "rejected_at": "2026-11-22T17:06:46.195810+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPWWtvUTIwT2hNN1BSRVBMTTVOOFppMXJYUEVWa000OEMxR3FBLXdaNENId293LTJ5SkMxUy13QUpzYTVLSTkxUGhNeHh5SU9FUWN0YUZUSGhtYmtGYVM1c0dmVUNDWi0zYmQxaDhlcGUtRWtxOU40OXN1bGJnbS1IbG9ydVVHUHBia2NyV3lEdGlGMFl6WGVtZEVIVFk0Tjk5?oc=5",
-      "fingerprint": "1d87810afd374555",
-      "rejected_at": "2026-11-22T17:06:46.195837+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQeGFjelVYcWRsbzVCVEZRSVlKMVRzdHpzNVBSdUt2UmhnZTd1Ujl0XzZXb2ZuYkREMjBLaWRPc3dHVlVjY2s5QXhBYUo3UUo4Z3VwdnNJbWxPV2hzLTU3dlFzQTJ5a1RNLXRsSlpxMWxVN0ZiSXY4enBPczA5eXZmekZ6N3FiclZKV2l0WFJKUlJ6ME5TOUpsSW9fQW0xalVGY21QUXN3UWdyaEpCVmdV?oc=5",
       "fingerprint": "aa1ee624dd80d1f7",
@@ -1494,13 +1455,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://news.google.com/rss/articles/CBMiQEFVX3lxTE5YM2FkbTJWcHRzcXp1YTRuME1iaDl1blZlam9obFV4Rk4yVkFPNXhVRHk3eko3ZzIzZXB5N3p6U00?oc=5",
-      "fingerprint": "9829cc252e093a27",
-      "rejected_at": "2026-11-24T01:06:01.778424+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://www.theblock.co/news/regulation/2026-11-23-doj-1-17-billion-usdc-binance-hack-circle-replacement-tokens-445398",
       "fingerprint": "65ed6f24533f46e5",
       "rejected_at": "2026-11-24T03:06:02.383175+07:00",
@@ -1527,6 +1481,34 @@
       "rejected_at": "2026-11-24T05:06:12.458074+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZzZHeHhRZGZsVDBEdlR0UXc0REZCS216TFlTbUh0czh1Z3FRTm1CeHFZaXg3VFJmLXBZYmZDb283Mm1ZcUpmWmxvMzc3VHhzSEl3X2poV1FPMmJtenhaNTBrb2lqbmxuTEZrZXFxQ2E3RzNMV2U4RlJCNEdqVWxsRi1WTmJLTkR5QVdNV1k3Nm1jTU0?oc=5",
+      "fingerprint": "aa90447300cc1490",
+      "rejected_at": "2026-11-24T07:06:49.734374+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNTFJGaDhOR0lLZmk5T2VKT2xGel8yZjk2ZXEyYVV3M3E4OVJHT1EzcWF4bXpQb04ybWg0a2FyeF9GTGZzYkZjQ3I5YkphSEFnOEFaR0gxdFRnRDR4NjNTejlOVnkwbjVPVV9qcjJNNUZQdF9nckVCQWpKQkNfVTFBRkhaQW1QMFdONGZOeEQ2WXd6NktQeUV5aw?oc=5",
+      "fingerprint": "1872ff09dc6069ba",
+      "rejected_at": "2026-11-24T07:06:49.734490+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://thehackernews.com/2026/11/weekly-recap-vmware-0-day-java4shell.html",
+      "fingerprint": "9615ebae532a3252",
+      "rejected_at": "2026-11-24T07:06:49.734579+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/spanish-laliga-confirms-hackers-stole-soccer-fans-personal-data/",
+      "fingerprint": "901e612b8a388883",
+      "rejected_at": "2026-11-24T07:06:49.734663+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
