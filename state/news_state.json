@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-24T17:06:02.774125+07:00",
+  "last_run": "2026-11-24T19:06:31.308248+07:00",
   "daily_posts": {
     "2026-10-26": 2,
     "2026-10-27": 3,
@@ -49,7 +49,8 @@
     "2026-11-19": 3,
     "2026-11-20": 2,
     "2026-11-21": 1,
-    "2026-11-22": 2
+    "2026-11-22": 2,
+    "2026-11-24": 1
   },
   "posts": [
     {
@@ -1378,6 +1379,23 @@
         "monday",
         "@cisco"
       ]
+    },
+    {
+      "title": "Database Leaks Expose 3.5 Billion Usernames, Passwords, and Documents",
+      "link": "https://www.wired.com/story/3-billion-usernames-passwords-and-documents-leaked-online/",
+      "source": "Wired (Security)",
+      "score": 81,
+      "fingerprint": "97d1028bb54fcb67",
+      "day": "2026-11-24",
+      "posted_at": "2026-11-24T19:06:31.307637+07:00",
+      "kind": "hot",
+      "keys": [
+        "database",
+        "documents",
+        "expose",
+        "passwords",
+        "usernames"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1547,6 +1565,20 @@
       "fingerprint": "6251ee7535758d23",
       "rejected_at": "2026-11-24T17:06:02.773990+07:00",
       "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNcFlhUFBsd2hIbTUwZTdfZFl3RjFqazVkMWdYZG1Xelp5d0FkQVdNZWVzYzZYU0F3TUxFSDA4anROcV9ac2pvdmhvQWxEUDZ5bWNZNE1qVmNya0JaZkJYbTlkazBwVEIyekEwRlRHVkVSS0hYWi0yT3Nua09tNWMyRmt3czdsSjNOYTZDakRELUFPRllJTmV1NFFTNThoMDI3S1BaTlpNT3JVbmdadXhtNWVmSkJwMUlnQ0FaMmtB0gHEAUFVX3lxTE1yQ18ycVJhNTk2X1JuclZBbDhzZjdDb3g2V2JTdzdDTWJQX1VaRTNNOVBSTFVrQU9hdlpWTHY5NURwM0U5cF93VWM0WUpXNkdzUnB0LUpQZUdlVlV5bHhPR3daQkZyN0FTdm0wVkg2VzIyaVRONXdIcU0zWDRoRVVGamdOb2d6cDBkbGFxWmNPZktfTnpkQVMyeUd5cGpISHpLN0g0aDRwN0RiVWxjNGxHZTFsR2dxX3d1MjBCTTlVbWhwR0Q?oc=5",
+      "fingerprint": "fd1ab1bfc605723f",
+      "rejected_at": "2026-11-24T19:06:31.307973+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQTEt2YVpXeUFmTnZ1dW54aVN1OUM2THAwb2ItbC1zbFBJdnU4bEVlaWlLdEFBVVdoMndIbTBoQ203ZGdjbWM5cGdnYnhUOXdtX0xrX2N4Xy1tdDFUMVJJNFB3MVBjdFhCeV9PU0RKYUdjbmhWWi1zUHJTNnFGNTdRZ1RSX01aTVBaTmZOSm90Yw?oc=5",
+      "fingerprint": "d1abe3ba92e20dd6",
+      "rejected_at": "2026-11-24T19:06:31.308096+07:00",
+      "scope": "all",
       "ttl_hours": 6
     }
   ]
