@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-26T04:39:13.591627+07:00",
+  "last_run": "2026-11-26T05:06:08.232693+07:00",
   "daily_posts": {
     "2026-10-27": 3,
     "2026-10-28": 3,
@@ -1629,6 +1629,13 @@
       "link": "https://www.bleepingcomputer.com/news/security/european-commission-confirms-data-theft-in-eu-academy-breach/",
       "fingerprint": "f925edafc1b49e01",
       "rejected_at": "2026-11-26T04:39:13.591551+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://www.theregister.com/cyber-crime/2026/11/24/european-commission-confirms-personal-data-stolen-in-ai-assisted-cyberattack/5311834",
+      "fingerprint": "0ac6eb4590a8fcad",
+      "rejected_at": "2026-11-26T05:06:08.232574+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
     }
