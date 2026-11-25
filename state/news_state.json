@@ -1,8 +1,7 @@
 {
   "version": 1,
-  "last_run": "2026-11-25T05:06:02.533226+07:00",
+  "last_run": "2026-11-25T07:07:07.499341+07:00",
   "daily_posts": {
-    "2026-10-26": 2,
     "2026-10-27": 3,
     "2026-10-28": 3,
     "2026-10-29": 3,
@@ -31,7 +30,8 @@
     "2026-11-21": 2,
     "2026-11-22": 2,
     "2026-11-23": 2,
-    "2026-11-24": 2
+    "2026-11-24": 2,
+    "2026-11-25": 1
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -1396,6 +1396,24 @@
         "passwords",
         "usernames"
       ]
+    },
+    {
+      "title": "Indicted Kosovo credit card theft suspect extradited to US",
+      "link": "https://cyberscoop.com/hektor-avdyli-kosovo-credit-card-fraud-extradition/",
+      "source": "CyberScoop",
+      "score": 69,
+      "fingerprint": "d3ff57ea15501a11",
+      "day": "2026-11-25",
+      "posted_at": "2026-11-25T07:07:07.498541+07:00",
+      "kind": "normal",
+      "keys": [
+        "authorities",
+        "avdyli",
+        "cyberscoop",
+        "hektor",
+        "indicted",
+        "kosovo"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1463,27 +1481,6 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://www.securityweek.com/european-commission-uncovers-data-breach-in-cyberattack-investigation/",
-      "fingerprint": "9decf8826ea727d0",
-      "rejected_at": "2026-11-24T23:06:48.243799+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://thecyberexpress.com/eu-academy-data-breach-exposes-users-names/",
-      "fingerprint": "6251ee7535758d23",
-      "rejected_at": "2026-11-25T01:05:59.400309+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQNFlPeFB2MDZzZ1FwX2NaMUMwejFOdHVEOFIxWFduZEJFczIzakhBMERQVjZ0OTdoS2oybmhCQUptNjk1c2I3QWtvSmk3R1dMNF8tX2c5MXY5YndRUl9GREF4VEw3eGZocnBNTllnaE1YTS1hTTFzZlJ1SEJEcXNDdk9lZ2tfX1drU25ybFJtaDNyLUFkN0tpZXRwdXlfWFNqcm0zMHRRbmtQQ2FWR0RfMTBPN0NoNGZTYWZKWnhmNU9BRThPNk5oT1h2bw?oc=5",
-      "fingerprint": "5fca2bb65fda6736",
-      "rejected_at": "2026-11-25T01:05:59.400422+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNcFlhUFBsd2hIbTUwZTdfZFl3RjFqazVkMWdYZG1Xelp5d0FkQVdNZWVzYzZYU0F3TUxFSDA4anROcV9ac2pvdmhvQWxEUDZ5bWNZNE1qVmNya0JaZkJYbTlkazBwVEIyekEwRlRHVkVSS0hYWi0yT3Nua09tNWMyRmt3czdsSjNOYTZDakRELUFPRllJTmV1NFFTNThoMDI3S1BaTlpNT3JVbmdadXhtNWVmSkJwMUlnQ0FaMmtB0gHEAUFVX3lxTE1yQ18ycVJhNTk2X1JuclZBbDhzZjdDb3g2V2JTdzdDTWJQX1VaRTNNOVBSTFVrQU9hdlpWTHY5NURwM0U5cF93VWM0WUpXNkdzUnB0LUpQZUdlVlV5bHhPR3daQkZyN0FTdm0wVkg2VzIyaVRONXdIcU0zWDRoRVVGamdOb2d6cDBkbGFxWmNPZktfTnpkQVMyeUd5cGpISHpLN0g0aDRwN0RiVWxjNGxHZTFsR2dxX3d1MjBCTTlVbWhwR0Q?oc=5",
       "fingerprint": "fd1ab1bfc605723f",
       "rejected_at": "2026-11-25T03:06:05.977857+07:00",
@@ -1510,6 +1507,48 @@
       "rejected_at": "2026-11-25T05:06:02.533129+07:00",
       "scope": "hot_only",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://thecyberexpress.com/nvidia-cyberattack-data-breach-the-gentlemen/",
+      "fingerprint": "45c56e30914983fc",
+      "rejected_at": "2026-11-25T07:07:07.498787+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/shinyhunters-resurfaces-after-fbi-arrests-uses-old-pgp-keys-as-proof/",
+      "fingerprint": "c2342b470e5c2aec",
+      "rejected_at": "2026-11-25T07:07:07.498897+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.bleepingcomputer.com/news/security/police-disrupt-57-illegal-streaming-services-with-73-million-visits/",
+      "fingerprint": "8c29298c76cb6ede",
+      "rejected_at": "2026-11-25T07:07:07.498980+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPV0NMenkxV0syODJnaXkyVko2VkdEaG9hbDVjZURJUmJaVmppQldxal9xN0hmZHpaRkJtaUVSNk9mU3FyRkhGWloweUVWaXFxemVVSVFMVlZleTJFbDB2Q1Z1TDlMeHBhZ0xFdF9DNi12c3BGX3ZsUkVyTEJNMExQLU53QjVkMEJXcm1TdkdUeTdRTV8yRkE?oc=5",
+      "fingerprint": "9324bd600150a7ab",
+      "rejected_at": "2026-11-25T07:07:07.499059+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSF9NZUF3azFuOXp4SDdHaXJSaVVlUVlpckEtTWprUHZ6clhVUFgwbDlGRUl3S1poOHNTUXpySklSSk43OEZNazROWm1CcXBoUS10ckZnTmxNMmtqaS05Z2xiQ1BFemkxRjZfUk50RHdNX2dyb21TR0YzcEhyVVhZSU80NGxlRjluVUF6MG90LXpPUW9lakYySGN5S1JUTUVDTGJ2VHhJVV9iWXI1N3FfLWZhSVdHUzRG?oc=5",
+      "fingerprint": "ee30f2aad6773914",
+      "rejected_at": "2026-11-25T07:07:07.499137+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQWGtuT1NhQkJGLVliOUYwZnFpMktlZWh2THIybGY2bS1VTFpYd2pxWG8zWDN6c29nU05GQms2Y0ZRdGo0Rkw0UWhuY1N3QTVDckVEMXF1TXZwTFo2OVVuRWtZTWRxTFBHTVJhXzVJSnQ1RGVDMEQxM2NwTTMyMFpKcHdHeGZsSTkyRVZ1eGRKVV81SUVRblg2SEw1Ul96XzNadzUzU0FLSlYwR2RkV2dnbFV2X01xTHFkUmhtcmZFcjRZd0E?oc=5",
+      "fingerprint": "fd0e1ed9af0baa73",
+      "rejected_at": "2026-11-25T07:07:07.499213+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
