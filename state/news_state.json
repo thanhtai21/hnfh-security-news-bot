@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-26T01:06:20.468946+07:00",
+  "last_run": "2026-11-26T03:05:26.136917+07:00",
   "daily_posts": {
     "2026-10-27": 3,
     "2026-10-28": 3,
@@ -1457,41 +1457,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/call-center-operator-gets-8-years-for-helping-scam-30-000-americans/",
-      "fingerprint": "707541648894e0ec",
-      "rejected_at": "2026-11-24T13:07:02.158652+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNMjk2b2JibTVjYjc1X3RIU0RuT0diTEd4Z0o3czRqTDlfNFJwMS1IU0lvM2MzZ3YzaWUzZGV4T3I2SkRKNkZZaFNoeXpvYkFqZHRQbkh5VHo1ZTlSWlVndG9kLVNTRThDS0VUelJKYW5Vcnl0TTBzTlRNTW9ld1FfLW5TVkl2OWpZSUNDU0tnOVI?oc=5",
-      "fingerprint": "1ff102b1eaa73a1d",
-      "rejected_at": "2026-11-24T13:07:02.158694+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQVVlFUWlNbGx3aFluUlFsMTl4a1E1bFFwYURicy1uOHNfQ3FZWDg4UW4zbGZMWlFPTURGVzVYNmxuclFhMGM4YUoybGJ1YTZNWTVZNG9JeFY0UHFpczh2OGZxQ2FXWDdjeHdwaFR2Q1lLcVBBSWNKeVRLd0lvRFlPZG1KUWk3dUR3OUw5eWMzTG52TXNJNHM3b1RvaTlkeFZuMnZV?oc=5",
-      "fingerprint": "b1fbea603a8e5fdb",
-      "rejected_at": "2026-11-24T13:07:02.158733+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQmZfUGx0eGtlLURwUnVWVUFMZ0YyYWZTeC1HQ0xZcERZYWpJYV9ONExRU2hka25DMHJjYUp2ZTllMFZacTBzcUFNeXlGYUxid2RLQUZQVm1OMlp0YWdBSk1zLWIzSXROOWxyc2lEM2FmM25tdF9DSzQ1d2F4WnlQMzEyTXpvTWpMZ3c?oc=5",
-      "fingerprint": "41d66dc04cf5a4ee",
-      "rejected_at": "2026-11-24T13:07:02.158771+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNTEMyQmdTaHNwaXJCQjA5cmRWNzlhSDdTUFQzLWVrLWNrWGlaSXlhUWhmdkVheXNIVEZFUFpIQ2tvMDZaMjBDb0U4TWJHWDJucW9IY2JtVkQzY1pOYTZwSmtac0RLa294bTBGVFVaV3ZtTnk2Njl5cnYxeUxyMGFLTFFabndLaERKYlFEZ3RIa3JuMk9TcmdNZWpDdXNIcVNjRHliN1VUdndTUzU0?oc=5",
-      "fingerprint": "76482f3c122d3c7f",
-      "rejected_at": "2026-11-24T13:07:02.158832+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://thecyberexpress.com/nvidia-cyberattack-data-breach-the-gentlemen/",
       "fingerprint": "45c56e30914983fc",
