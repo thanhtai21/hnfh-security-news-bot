@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-26T19:05:27.160381+07:00",
+  "last_run": "2026-11-26T20:51:54.631367+07:00",
   "daily_posts": {
     "2026-10-28": 3,
     "2026-10-29": 3,
@@ -1507,48 +1507,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://thecyberexpress.com/nvidia-cyberattack-data-breach-the-gentlemen/",
-      "fingerprint": "45c56e30914983fc",
-      "rejected_at": "2026-11-25T07:07:07.498787+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/shinyhunters-resurfaces-after-fbi-arrests-uses-old-pgp-keys-as-proof/",
-      "fingerprint": "c2342b470e5c2aec",
-      "rejected_at": "2026-11-25T07:07:07.498897+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.bleepingcomputer.com/news/security/police-disrupt-57-illegal-streaming-services-with-73-million-visits/",
-      "fingerprint": "8c29298c76cb6ede",
-      "rejected_at": "2026-11-25T07:07:07.498980+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPV0NMenkxV0syODJnaXkyVko2VkdEaG9hbDVjZURJUmJaVmppQldxal9xN0hmZHpaRkJtaUVSNk9mU3FyRkhGWloweUVWaXFxemVVSVFMVlZleTJFbDB2Q1Z1TDlMeHBhZ0xFdF9DNi12c3BGX3ZsUkVyTEJNMExQLU53QjVkMEJXcm1TdkdUeTdRTV8yRkE?oc=5",
-      "fingerprint": "9324bd600150a7ab",
-      "rejected_at": "2026-11-25T07:07:07.499059+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSF9NZUF3azFuOXp4SDdHaXJSaVVlUVlpckEtTWprUHZ6clhVUFgwbDlGRUl3S1poOHNTUXpySklSSk43OEZNazROWm1CcXBoUS10ckZnTmxNMmtqaS05Z2xiQ1BFemkxRjZfUk50RHdNX2dyb21TR0YzcEhyVVhZSU80NGxlRjluVUF6MG90LXpPUW9lakYySGN5S1JUTUVDTGJ2VHhJVV9iWXI1N3FfLWZhSVdHUzRG?oc=5",
-      "fingerprint": "ee30f2aad6773914",
-      "rejected_at": "2026-11-25T07:07:07.499137+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQWGtuT1NhQkJGLVliOUYwZnFpMktlZWh2THIybGY2bS1VTFpYd2pxWG8zWDN6c29nU05GQms2Y0ZRdGo0Rkw0UWhuY1N3QTVDckVEMXF1TXZwTFo2OVVuRWtZTWRxTFBHTVJhXzVJSnQ1RGVDMEQxM2NwTTMyMFpKcHdHeGZsSTkyRVZ1eGRKVV81SUVRblg2SEw1Ul96XzNadzUzU0FLSlYwR2RkV2dnbFV2X01xTHFkUmhtcmZFcjRZd0E?oc=5",
-      "fingerprint": "fd0e1ed9af0baa73",
-      "rejected_at": "2026-11-25T07:07:07.499213+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html",
       "fingerprint": "e3aa3d2ab135ac1f",
