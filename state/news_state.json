@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-27T01:05:56.969704+07:00",
+  "last_run": "2026-11-27T03:05:58.532307+07:00",
   "daily_posts": {
     "2026-10-28": 3,
     "2026-10-29": 3,
@@ -1507,69 +1507,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://thehackernews.com/2026/11/okta-links-shinyhunters-associated.html",
-      "fingerprint": "e3aa3d2ab135ac1f",
-      "rejected_at": "2026-11-25T13:07:29.769440+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNb3Iyc1dDM3BTNGV6NFpFQTZ4aFNkb3RqLXZIbnJSMDlwMTRPY3BTazdpZ1RQYUZqMTlWeUZmVFR4S3ZxX1gxQUZQeWlMbUk5bC02Rl9ramtfTElpajhDdVlSUldQLVJJN1dVZHVVWmx0TW9DWjRHenVzTnhfQkZENmQweC1mVmxJWVJlNDZrcVFDWVFtSlpYYy1oYWlOcEVTdDU0LV8xMU84eGdNZkRKUXhn?oc=5",
-      "fingerprint": "09d2093afc4517d1",
-      "rejected_at": "2026-11-25T13:07:29.769544+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxQQWRWMldwZ2ZPLTJuQjFxOTVRUjYxY2MyLU1nX3JDXzRFMkE1MHJ6NWU1T3BwWU85MDc5b0tGc2c3eDRnb3o4QWNqb1lZS2M3MDdHREdWQmJmMjZJbTVjanpZb1pDX3QxX18tVV9lZFprc3A4dFl5TlZseHd4b0kwN1RLdTB1eGVjZlFrbTlMdGRCQThJcmd0QnR3ZXRkTTlKakdPYVRoQkEwd3pidUpTN2F1U1NjMFhUd21JUG5MTDJ6R0JIa3RkaDFvaGl2clpBWlBVV2U3Wk1oRjNWX1RIMkRMTWh5enVSR193QkhGdTZ3X1k2a1Y1OQ?oc=5",
-      "fingerprint": "a45fc6c22dfd5f9d",
-      "rejected_at": "2026-11-25T13:07:29.769627+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPczRhSTdYX2x1SFA3bk9xdmNHWmlZU3R2WWRyemhfaV9laXFscE5SM2p0eTdHbEwtRHR3VHZsQkhMaHZTdWRBQ0dNZ1lVc0FRN0gwUGpPYnpSc1kzUVRtU3RRQ0J5bGxuenRubl9BOFdvR0Z3dEJuMlBsQWV1VmM4YUQzZHc3UURVVDI1VTc5R2h6WmJaWEJPNW5WQWI2RnBNdW1XREk1c3JoSnM?oc=5",
-      "fingerprint": "70878db79f06d2b7",
-      "rejected_at": "2026-11-25T13:07:29.769706+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPN2R0cDhvRE41WXZWTUliWTRpQUV0TDRhQmZFT3FYVUp2cmM5bllyUkFmUlI4SXczd2M1RDRwRzRRMGY5QXU4NkpZaFZIUE1iU1FSZG4wZ0IyNTZMNTRlTUM1Y253X3puSFdmZWFDVGg3bUlKVkNPUFpyMUwwVThzSzFEUEJTN2RPenZHMHZrdDdZVVZzbkg2N2p2a21saEhVd1JWVVNR?oc=5",
-      "fingerprint": "adbaec4a162a2558",
-      "rejected_at": "2026-11-25T13:07:29.769783+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQQXQyMzVEOUd5d21BeUh2OC1EajU0LUUxUWVvSUE3VkZJYXVVakpmaXV1ZWxoQ1VrSkRTanlxYXpCTXNHVEwxT0VWSVRORENzUmhVcXZNR0s3RU92MVptYzJIcnRXTnBsMTZwb21sMFZqdTRCTU9lSzV5cTdOUVQzdEc3aDVOUk9NUTAzUW9UdjdYWTBHckZaS2xReU9jWG51OXI0bmRRRE1GUQ?oc=5",
-      "fingerprint": "5240b06c0e2f8e7d",
-      "rejected_at": "2026-11-25T13:07:29.769862+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNMnJZM003NkY1cDRabUVVQy03TVl0bktWcmJORVJvNHVDTzZfRFE3bkUzczVDS19UQVdjcjBLT0dURmlsSGlKV3hLSFFhbWpzclpOY1loLVN5cTlmb2R0RTVMamRhTjZTWHhTQjR5VUh5UnMxNFVSX2lGVER4SHlvOG5sODQxc2R6TWpJRi13ZW9LY0p4UTlZZ2ptVGg0OWhJQWQ1NVV5VQ?oc=5",
-      "fingerprint": "eacf8117dc420780",
-      "rejected_at": "2026-11-25T13:07:29.769942+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNWi1nWXVzRzBOcm1YOG5aUGVUMnI5WjBCWjkxWTBWT0xsNktwSFZuSGJ3UmFaM1NpZEJ1RjJOeHFZZXFPMEI5UTJuWUsxSnppZXJSR2E2dElieVNTUE50R0dvcnp1cUJxTEMtaXhZTmNkRFZ0MFpfU1lDbDNnNEUtczRYMmRyMGpSWFE?oc=5",
-      "fingerprint": "a6e0fd653a0e6f43",
-      "rejected_at": "2026-11-25T13:07:29.770021+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOWEFjVVZxbDRmZmJwMllxZkg3SHRPaGFNUE9QOF9uakFXaGdFdTN4S3hWSk5Lb2lqR09VZklJSVhVbmQ3N0dmOWM5UEI4NE9RbjBZalJSVTlFd3U4cnFCbEZSTUl1OXVxTmZSUHFOaDJOMVo5eGJyMWVJMy0zYzFjS0hYczM4aXRYWDJFUg?oc=5",
-      "fingerprint": "3b99004fd640c27d",
-      "rejected_at": "2026-11-25T13:07:29.770098+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://decrypt.co/383857/certik-trains-interpol-investigators-to-trace-and-freeze-stolen-crypto",
       "fingerprint": "46c0457ec2c42376",
