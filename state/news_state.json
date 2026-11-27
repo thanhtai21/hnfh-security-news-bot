@@ -1,8 +1,7 @@
 {
   "version": 1,
-  "last_run": "2026-11-27T05:59:01.340121+07:00",
+  "last_run": "2026-11-27T07:06:52.267799+07:00",
   "daily_posts": {
-    "2026-10-28": 3,
     "2026-10-29": 3,
     "2026-10-30": 3,
     "2026-10-31": 3,
@@ -31,7 +30,8 @@
     "2026-11-23": 2,
     "2026-11-24": 2,
     "2026-11-25": 1,
-    "2026-11-26": 2
+    "2026-11-26": 2,
+    "2026-11-27": 1
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -1504,6 +1504,22 @@
       "keys": [
         "vietstock"
       ]
+    },
+    {
+      "title": "Drupal Core: Critical vulnerability CVE-2026-136716 actively exploited",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9mSEZ2Y2JiSWNheUxkQ21ELW9rdndSdzFxUnlMb1VvM3ZOdjY4aFBway1QdjJSbzVtb3hLNkxMWk5mYk9TZVFVX3hybC02RFhXdDhVclctUHZUSkoxeWhISlpsQzBVOUlBaUQ2UW1nWmtVS1FzeW1Tc0o0Zw?oc=5",
+      "source": "GNews EN Zero-day",
+      "score": 70,
+      "fingerprint": "758e5ebe86c86bfc",
+      "day": "2026-11-27",
+      "posted_at": "2026-11-27T07:06:52.267397+07:00",
+      "kind": "normal",
+      "keys": [
+        "cve-2026-136716",
+        "drupal",
+        "secnews",
+        "#136716"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1620,18 +1636,39 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOY3FITW05alk1cklXeXc4emN2by1uZmthVzFwV2c1Uy1XX2RQMmc5ckxzV2hlSDZSSE1XOGtER0RSVDBPVnh6RHRJTUg3ZzhHbkpGV2ZEUGRqTVQ0Tk5MbXFYMWFqeEd1dHRuM2pHSjdabWRzWXd4eUVZZW1jWmE5TU1NVWlaUHBDUERwSkdaTEhobU1BcEEwMGVUTWpwX1dDakZwWmVOOHE4a2RyS2l4b2pDemZOZVRqeW11LUtKY1JDclVP?oc=5",
-      "fingerprint": "7dc53b959930e92d",
-      "rejected_at": "2026-11-27T01:05:56.969623+07:00",
-      "scope": "all",
-      "ttl_hours": 6
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQTkowMjY0ZHRDa0xWakY1V2ZzRUR0WFFnMDhEaUxBT1B0WTlpclp0YUdENnhzaFc4R0lfYllhcHhnN0NxTlhMTmpEa3laTmRSOVVXV3hrTDlSQXRieFdsZXNYTGtEaEJyUGptSUZjNzZCUUo2cVFLZWhjRjVYODhoRU9R?oc=5",
       "fingerprint": "83c5dd2d4c7a218c",
       "rejected_at": "2026-11-27T05:05:58.113528+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQY2pxMXNtaFdiLTA0OHNSREthRG5pWWVNbnA3cWxDclNiMXFSNVpEUWNubERTVnNOU3I5VGY3YTlpdnZUeE5Sa0gzVk5DMjZkYkdtRzJhdzM0WDQ0dWxUWnVWQ0wwbkhad3I3VV93SnJzYkdfelh5cXdGUUd2OWJiYWMtT2lHc0JNWEttYlNDX0puSDVwcHRNbE1HS2lfZ1BEZ2M2NHNMc2xLUC1ZXzQxMThINlRMbTA?oc=5",
+      "fingerprint": "839fc8179dabb8ab",
+      "rejected_at": "2026-11-27T07:06:52.267587+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNbS0yUnhyUWhMd2pnWmhuaUhwcjhHaFZYTVNGc01sUEwzSk9KOS1JTWJWNzU5ZG5STWNLd2tGcnpoSTNYSnlRZDRyVE9KeWNoZW5aelZnT3hMejhBNXBrdC1ubFBVU2NPa0dyRG9GWEhNQnlJdGJSZWp0QTAySDZOdA?oc=5",
+      "fingerprint": "ffdbb4eea3401a8b",
+      "rejected_at": "2026-11-27T07:06:52.267651+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://www.infosecurity-magazine.com/news/chinese-north-korea-artex/",
+      "fingerprint": "2d1e33d231e5c215",
+      "rejected_at": "2026-11-27T07:06:52.267689+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNQzMwbnNLUzh4UnpSMG9aQk5fckxMTzFXQ2RYSHdJRG5sWlJLNWtoSmdUMThTSnhSX0FVcHRkaGdJNWg3aXFyWDNKY2N4dVhVZklkdUU4UVNFa2pGRmpQTW9YcUdWX2xMOW93MEFwTEhWUl9Da3VwYWtSenFuMDRhcUMwZ0dVcWR3ZTJwVk5qbEtXbjFPek9iVnpFR242aFdtVHJuU0dQMVRpandReWFUbzVFMVduTE9NSGJoanFhRWtta3BhZFVj0gHMAUFVX3lxTE1fM1RMTkx6ckxGR3JPczdIek1HZTJZODljd1pXakY3OWpmVUxzc2dXakpFdDRDYWdhVWduTVVNcnYxSGNkNlY3MVl4WmZMNkZERFNsMEN3aDFRSnd1VGNIdjgtMXdnNEhXOFRkV3lvM3cxMVBEMVQyMTJhMHFySlZwMmNqUEJBdUM0ZXlkU2hNLTZOVnlVazAtVWoxX18takwwSVppeng0WGZWUWlIcWZSVlI2UkVYMVNDSkQzTXR4aDdpNVdzdEc4akV0dw?oc=5",
+      "fingerprint": "79a8d817df436340",
+      "rejected_at": "2026-11-27T07:06:52.267722+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
