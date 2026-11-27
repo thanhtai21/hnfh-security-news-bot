@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-27T19:06:07.155278+07:00",
+  "last_run": "2026-11-27T21:06:33.466342+07:00",
   "daily_posts": {
     "2026-10-29": 3,
     "2026-10-30": 3,
@@ -1557,34 +1557,6 @@
   ],
   "ai_rejected": [
     {
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQOC1DYjY4amNjOFN4UHJtVnBCR0U0MlBNR2FxWGk2TXhHV3VjcGNVUmtHaHpHVjZLY0dZNVg1S01kWnhvWndYNnQ0S3RJU1QycHNaeVd4RjA4NXU1ZTBwUzNRMUw2RGdFeFJuTHNlU2kyLUZuUldHTU5BaGk0LUkydWR3MVlhci1OTnB0R2x3?oc=5",
-      "fingerprint": "efa12bddffd63b5e",
-      "rejected_at": "2026-11-26T07:07:20.313759+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://therecord.media/ransomware-doj-indictment-recovery",
-      "fingerprint": "36aec24b483c975f",
-      "rejected_at": "2026-11-26T07:07:20.313810+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.infosecurity-magazine.com/news/ransomware-surge-october-record/",
-      "fingerprint": "8d76808549f0aa67",
-      "rejected_at": "2026-11-26T07:07:20.313844+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOM0hIeVNPNWlNRmFqRzZ6TTd4NXJjbGdoXzkycTdILTlmU0RkWFVHMmVGNnVVSzBuTGhQTzNEOVl3WE5wc3h1Uk5SUmRjLU9hUmFSVjJEUTVQOEdIWjhQazFtVHlZazlaeTVQQXpOM2ZqMEhCYzF5VlhtWWFtbmhubzREV3lCeC1Oc3dJcHU1OGVQaHlK?oc=5",
-      "fingerprint": "56e6452551887b2f",
-      "rejected_at": "2026-11-26T07:07:20.313874+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
       "link": "https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html",
       "fingerprint": "e1697787a228f83e",
       "rejected_at": "2026-11-26T11:07:13.574280+07:00",
@@ -1749,6 +1721,20 @@
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOY3FITW05alk1cklXeXc4emN2by1uZmthVzFwV2c1Uy1XX2RQMmc5ckxzV2hlSDZSSE1XOGtER0RSVDBPVnh6RHRJTUg3ZzhHbkpGV2ZEUGRqTVQ0Tk5MbXFYMWFqeEd1dHRuM2pHSjdabWRzWXd4eUVZZW1jWmE5TU1NVWlaUHBDUERwSkdaTEhobU1BcEEwMGVUTWpwX1dDakZwWmVOOHE4a2RyS2l4b2pDemZOZVRqeW11LUtKY1JDclVP?oc=5",
       "fingerprint": "7dc53b959930e92d",
       "rejected_at": "2026-11-27T19:06:07.155187+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBlZENPUWNLaFIwRmdXdVhhUVFTTVV2T3NUMkJCT0VIbElCd3dBOXZrTDlhU0hWVW5CczdiZFBpWG9fN1J2MTd6LWh1OXV1aF83c1BTaExmb1NzN1dJd29QYmg5Zjlmdw?oc=5",
+      "fingerprint": "4a16d0e050425046",
+      "rejected_at": "2026-11-27T21:06:33.466195+07:00",
+      "scope": "hot_only",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOb1RHOG1SYXFUd1B5bnNOZUd5cU9GSUhaM3VjYXZRTUxFR1BjTWtNWk9DZG9ZcUpsRDR2WXZOc1Q3UUJMdWRvVVlqMnhUcDdWazNEMW1PM01LcW9nZndSX1BKcXNvdF9nejVzWVRZNjFsY3l2V3ltQXQ4eWkzM1U1SHFEVXpzem5tUURMckdpbHI0Snd2THFpeHkxWlA1a0pacm53?oc=5",
+      "fingerprint": "5d5907fadb9e93c2",
+      "rejected_at": "2026-11-27T21:06:33.466282+07:00",
       "scope": "all",
       "ttl_hours": 6
     }
