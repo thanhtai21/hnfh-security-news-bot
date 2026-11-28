@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_run": "2026-11-28T19:06:07.098530+07:00",
+  "last_run": "2026-11-28T19:57:31.831987+07:00",
   "daily_posts": {
     "2026-10-30": 3,
     "2026-10-31": 3,
@@ -1585,34 +1585,6 @@
     }
   ],
   "ai_rejected": [
-    {
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQY2pxMXNtaFdiLTA0OHNSREthRG5pWWVNbnA3cWxDclNiMXFSNVpEUWNubERTVnNOU3I5VGY3YTlpdnZUeE5Sa0gzVk5DMjZkYkdtRzJhdzM0WDQ0dWxUWnVWQ0wwbkhad3I3VV93SnJzYkdfelh5cXdGUUd2OWJiYWMtT2lHc0JNWEttYlNDX0puSDVwcHRNbE1HS2lfZ1BEZ2M2NHNMc2xLUC1ZXzQxMThINlRMbTA?oc=5",
-      "fingerprint": "839fc8179dabb8ab",
-      "rejected_at": "2026-11-27T07:06:52.267587+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNbS0yUnhyUWhMd2pnWmhuaUhwcjhHaFZYTVNGc01sUEwzSk9KOS1JTWJWNzU5ZG5STWNLd2tGcnpoSTNYSnlRZDRyVE9KeWNoZW5aelZnT3hMejhBNXBrdC1ubFBVU2NPa0dyRG9GWEhNQnlJdGJSZWp0QTAySDZOdA?oc=5",
-      "fingerprint": "ffdbb4eea3401a8b",
-      "rejected_at": "2026-11-27T07:06:52.267651+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://www.infosecurity-magazine.com/news/chinese-north-korea-artex/",
-      "fingerprint": "2d1e33d231e5c215",
-      "rejected_at": "2026-11-27T07:06:52.267689+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNQzMwbnNLUzh4UnpSMG9aQk5fckxMTzFXQ2RYSHdJRG5sWlJLNWtoSmdUMThTSnhSX0FVcHRkaGdJNWg3aXFyWDNKY2N4dVhVZklkdUU4UVNFa2pGRmpQTW9YcUdWX2xMOW93MEFwTEhWUl9Da3VwYWtSenFuMDRhcUMwZ0dVcWR3ZTJwVk5qbEtXbjFPek9iVnpFR242aFdtVHJuU0dQMVRpandReWFUbzVFMVduTE9NSGJoanFhRWtta3BhZFVj0gHMAUFVX3lxTE1fM1RMTkx6ckxGR3JPczdIek1HZTJZODljd1pXakY3OWpmVUxzc2dXakpFdDRDYWdhVWduTVVNcnYxSGNkNlY3MVl4WmZMNkZERFNsMEN3aDFRSnd1VGNIdjgtMXdnNEhXOFRkV3lvM3cxMVBEMVQyMTJhMHFySlZwMmNqUEJBdUM0ZXlkU2hNLTZOVnlVazAtVWoxX18takwwSVppeng0WGZWUWlIcWZSVlI2UkVYMVNDSkQzTXR4aDdpNVdzdEc4akV0dw?oc=5",
-      "fingerprint": "79a8d817df436340",
-      "rejected_at": "2026-11-27T07:06:52.267722+07:00",
-      "scope": "all",
-      "ttl_hours": 36
-    },
     {
       "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNbVBfVlliYV9wMXEzZkF6NkxabTdNVGc0N2hpUVZwQ1BEN2M0bTFRMGs2eTNzUHZBU3RUUUxZMW1SRXlnUUtLTzVhMjNIYk92bVBWNWtQbHNhVWJlaE5rd3NGS3VBOENGc2Y3Vi1lUWthaHNkOTBpMVVfV1k5M1pUby1BZ1dQWlMzOWpVUmx3QmZhUnJPdllucFZIVWhGNEZ0ZmtfbnZGQVhjRkJmc0E?oc=5",
       "fingerprint": "e8be846275cd2076",
