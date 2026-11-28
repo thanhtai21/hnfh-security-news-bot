@@ -1,8 +1,7 @@
 {
   "version": 1,
-  "last_run": "2026-11-28T05:06:04.414859+07:00",
+  "last_run": "2026-11-28T07:06:49.560912+07:00",
   "daily_posts": {
-    "2026-10-29": 3,
     "2026-10-30": 3,
     "2026-10-31": 3,
     "2026-11-01": 3,
@@ -31,7 +30,8 @@
     "2026-11-24": 2,
     "2026-11-25": 1,
     "2026-11-26": 2,
-    "2026-11-27": 2
+    "2026-11-27": 2,
+    "2026-11-28": 1
   },
   "daily_hot_posts": {
     "2026-11-01": 1,
@@ -1553,6 +1553,21 @@
         "requests",
         "unpatched"
       ]
+    },
+    {
+      "title": "New NFS2ROOT Linux flaw can let attackers gain root privileges",
+      "link": "https://www.bleepingcomputer.com/news/security/new-nfs2root-linux-flaw-can-let-attackers-gain-root-privileges/",
+      "source": "BleepingComputer",
+      "score": 62,
+      "fingerprint": "c39d0022770ece14",
+      "day": "2026-11-28",
+      "posted_at": "2026-11-28T07:06:49.560163+07:00",
+      "kind": "normal",
+      "keys": [
+        "cve-2026-99362",
+        "nfs2root",
+        "#99362"
+      ]
     }
   ],
   "ai_rejected": [
@@ -1606,39 +1621,74 @@
       "ttl_hours": 36
     },
     {
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE8tclBmZDJNLUh3SDJNZzFDRXlUaW9JaXRHemdaQzhTRnBrUHBZd1VXS2NoUy1zVW43R0pFdE15R09zemNkLWhzNnFrUDA4eWJFMHdzVEZWaHllc1V2anlkbDdPVEJDcm85SGc5Qm5KaTFMU3BkR1FGVFRR?oc=5",
-      "fingerprint": "69ed637d25d6ce45",
-      "rejected_at": "2026-11-27T23:06:05.356214+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9iVjZXeFRDZ290VFFka1ZoMFlOSjV5cHlMazQ4TG84ZHh6YUVEaTJUYXY3d2RuN00xZ185eC1yVDJsUTlnLUhSLUZRNFNHak9TYXp2ajdXYVlVZ2FaOUpuXzBGdlNHTFV5?oc=5",
-      "fingerprint": "dbfc2810eff5f9fe",
-      "rejected_at": "2026-11-27T23:06:05.356329+07:00",
-      "scope": "hot_only",
-      "ttl_hours": 6
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObHF2SFkwMi12Vm9sc0VBejNTTzZ1X3VCLTVJTVA2a1lBUGpobV9zS3FLY3lTeVNCZDQtX0lFcHFSaENsZFczdFVqUmZTcTNoODV3RXVXYV82enlfV3I1Tjg4all5MS1xYjZEZHhEd3pGNGxrazZaMmxzX1VFaXZtYlJMdmlfTHYwNzJ6WmR1NXdqYmpyd1hDOHJsMldXQzQ4VDROTy1HbWFEMGJpVXZJT0wxQ3ZVLU9EejY5djZMeEZjOGxxZmc?oc=5",
-      "fingerprint": "8543e054f2173ec3",
-      "rejected_at": "2026-11-27T23:06:05.356375+07:00",
+      "link": "https://www.coindesk.com/business/2026/11/27/tether-can-freeze-stolen-crypto-in-minutes-getting-it-back-can-take-years",
+      "fingerprint": "6b3939818ca2c916",
+      "rejected_at": "2026-11-28T02:28:27.117568+07:00",
       "scope": "all",
       "ttl_hours": 6
     },
     {
       "link": "https://vnexpress.net/tham-vong-lien-hanh-tinh-nang-gia-tri-spacex-cua-elon-musk-5149606.html",
       "fingerprint": "bb2956ab0b063c22",
-      "rejected_at": "2026-11-27T23:06:05.356414+07:00",
+      "rejected_at": "2026-11-28T07:06:49.560413+07:00",
       "scope": "all",
       "ttl_hours": 6
     },
     {
-      "link": "https://www.coindesk.com/business/2026/11/27/tether-can-freeze-stolen-crypto-in-minutes-getting-it-back-can-take-years",
-      "fingerprint": "6b3939818ca2c916",
-      "rejected_at": "2026-11-28T02:28:27.117568+07:00",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9iVjZXeFRDZ290VFFka1ZoMFlOSjV5cHlMazQ4TG84ZHh6YUVEaTJUYXY3d2RuN00xZ185eC1yVDJsUTlnLUhSLUZRNFNHak9TYXp2ajdXYVlVZ2FaOUpuXzBGdlNHTFV5?oc=5",
+      "fingerprint": "dbfc2810eff5f9fe",
+      "rejected_at": "2026-11-28T07:06:49.560488+07:00",
       "scope": "all",
       "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObHF2SFkwMi12Vm9sc0VBejNTTzZ1X3VCLTVJTVA2a1lBUGpobV9zS3FLY3lTeVNCZDQtX0lFcHFSaENsZFczdFVqUmZTcTNoODV3RXVXYV82enlfV3I1Tjg4all5MS1xYjZEZHhEd3pGNGxrazZaMmxzX1VFaXZtYlJMdmlfTHYwNzJ6WmR1NXdqYmpyd1hDOHJsMldXQzQ4VDROTy1HbWFEMGJpVXZJT0wxQ3ZVLU9EejY5djZMeEZjOGxxZmc?oc=5",
+      "fingerprint": "8543e054f2173ec3",
+      "rejected_at": "2026-11-28T07:06:49.560557+07:00",
+      "scope": "all",
+      "ttl_hours": 6
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQM083LVF1MW1nak85Q29LR2d3a2lQZXJpU0ZxV3UtS290cWlNUVR0d3lfWUhGc2lyNjgyXzlTdE83YVUyMmFVVVNNdC1icmx4VUJWLTIyZ2VxMTJ4XzVXVlh3bjVnOERWTERiU3JLOGR4cHc5MVM0X3Vhcy1EMTY0OEdkT0VGWE5WU2liV2pwVkRTQ3VFMUd4MHZza1dzWFdoZmlIYmNMWHNURl9JUWtETEs1RTZjQQ?oc=5",
+      "fingerprint": "bd7d713666802fd8",
+      "rejected_at": "2026-11-28T07:06:49.560610+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPNnRfenpseEhzb3lQa19FOThBLXlZclpfcS1qZnp1YjJHeUV6d2tiNFpvZnJnWkFUWFpYQkRUOUkzLWVIWW1KLWpQN2pRWlpPNno2eFRreldrUm9WaVVfZFRMdFhaYjhOdW5CXzRqanBHTk1lSlBRUGw3Q1hMQkRfQ1kyTVBJZw?oc=5",
+      "fingerprint": "10a592c2a678bffc",
+      "rejected_at": "2026-11-28T07:06:49.560657+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQYnlLWmpONkNpc2NlSGRUTk85VXZuWmt6UFR3WXA2eGVMbVl6QzN5ZFZBUkdMczkxd2pEdlZBNkZWQkcxZTRVWkJqZXo4WjN3WGFweXZ6VmZPOUt1QXVlYU9SMHVDOTQwckY1TTFsTVA3LXc1VXg4ZnhrUWQ3NldOOFdaVzhHQUZhcVM0SEk3VHdsblpkVTFnczRHS2wxZnVmTzkxU3NJUHpCRXhpMnl3T3Z1R3pLQ05TZWt3Y3BLQ2lkMVViM1BBdFJOMlV2d3RCUGRSNHUwdFdybkp2bTB1a2FWNnVCS2lQeEkxTFh6c2FyX3lqUzJLN1diZw?oc=5",
+      "fingerprint": "b78f790328ecdb9d",
+      "rejected_at": "2026-11-28T07:06:49.560701+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPcmI3NEUyaGhPYlF0Rm9ZaHl0YlM5TS0wcE5ocVF5a2JLVVFYM0xIRmdfMzlyZFVUamZJTWpUeTlMaDJ5VVNaZEpLaHRENUdocmRSQzUzQWlFMXRnOTA2NGRyV1BZejZTQVd3dGdESE1NNDZTT3NzSENFVllyRDE5Mk0zUUNlbDdJc3lWTWt5NzZHWkU1R1J0U0taX284REE?oc=5",
+      "fingerprint": "8e8d3cd13860cb7a",
+      "rejected_at": "2026-11-28T07:06:49.560748+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/uk-department-work-pensions-cyber-incident",
+      "fingerprint": "4982ece440dc8523",
+      "rejected_at": "2026-11-28T07:06:49.560793+07:00",
+      "scope": "all",
+      "ttl_hours": 36
+    },
+    {
+      "link": "https://therecord.media/japan-education-ministry-cyberattack",
+      "fingerprint": "3033aa09734d1311",
+      "rejected_at": "2026-11-28T07:06:49.560838+07:00",
+      "scope": "all",
+      "ttl_hours": 36
     }
   ]
 }
